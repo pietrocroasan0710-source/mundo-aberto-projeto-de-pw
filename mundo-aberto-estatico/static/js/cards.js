@@ -1,4 +1,4 @@
-/* Pequenos comportamentos dos cards do guia turístico. */
+/* Aplica um pequeno atraso diferente em cada cartão para a grade surgir suavemente. */
 document.addEventListener('DOMContentLoaded',
  function ()  {
     document.querySelectorAll('.destination-card').forEach(function (card,

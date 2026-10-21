@@ -1,4 +1,6 @@
+/* Fontes externas usadas nos títulos e no texto do site. */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+/* Cores e medidas principais. Altere estes valores para mudar o tema inteiro. */
 :root{
   --ink:#152334;
   --muted:#667586;
@@ -36,6 +38,7 @@ button,a,select{
 button{
   cursor:pointer
 }
+/* Cabeçalho fixo e navegação, incluindo o menu de celular. */
 .navbar{
   height:82px;
   display:flex;
@@ -142,6 +145,7 @@ button{
 .flash.aviso{
   border-color:#e4b15b
 }
+/* Página inicial: imagem de fundo, texto principal e busca rápida. */
 .hero{
   min-height:650px;
   height:min(790px,calc(100vh - 82px));
@@ -347,6 +351,7 @@ button{
 .text-link span{
   margin-left:8px
 }
+/* Cartões que apresentam os destinos em grade. */
 .destination-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -574,6 +579,7 @@ button{
   color:#bfe4d6;
   font-weight:700
 }
+/* Cabeçalhos das páginas internas e controles da busca. */
 .page-banner{
   background:var(--navy);
   color:white;
@@ -688,6 +694,7 @@ button{
   color:var(--muted);
   margin-bottom:24px
 }
+/* Página de detalhes de um destino e suas informações. */
 .detail-hero{
   height:480px;
   position:relative;
@@ -895,6 +902,7 @@ button{
   font-size:11px;
   font-weight:700
 }
+/* Telas informativas de login e cadastro sem backend. */
 .auth-layout{
   min-height:calc(100vh - 155px);
   display:grid;
@@ -1012,6 +1020,7 @@ button{
   opacity:1;
   transform:translateY(0)
 }
+/* Animações suaves e ajustes para telas menores. */
 @keyframes kenburns{
   from{
     transform:scale(1.03)

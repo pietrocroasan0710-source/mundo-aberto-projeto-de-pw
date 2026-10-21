@@ -26,3 +26,17 @@ As notas e tags do catálogo são demonstrativas e estão em `static/json/dados.
 
 As imagens são hospedadas externamente no Unsplash e requerem conexão com a internet.
 
+## Como ler e editar o catálogo
+
+O arquivo JSON não aceita comentários dentro dele, então esta seção explica o que cada campo significa:
+
+- `paisagens`: imagens e legendas usadas no slideshow da página inicial.
+- `destinos`: lista de lugares exibidos pelo site.
+- `slug`: identificador usado no endereço da página de detalhes.
+- `categoria`, `pais`, `cidade` e `continente`: informações usadas nos filtros e na busca.
+- `atracoes`, `melhor_epoca` e `duracao`: conteúdo mostrado na página de detalhes.
+- `nota`: nota demonstrativa de 0 a 5, usada no filtro por faixa.
+- `tags`: temas usados pela busca semântica, como `bonito`, `historico`, `natureza`, `aventura` e `gastronomia`.
+
+Ao adicionar um destino, mantenha os mesmos campos dos destinos existentes e use uma nota entre 0 e 5.
+
