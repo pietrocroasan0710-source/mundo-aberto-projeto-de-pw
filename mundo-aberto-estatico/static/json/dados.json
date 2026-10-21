@@ -1,23 +1,359 @@
 {
   "paisagens": [
-    {"local":"Praia tropical","url":"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=85"},
-    {"local":"Montanhas ao amanhecer","url":"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=85"},
-    {"local":"Floresta com neblina","url":"https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1920&q=85"},
-    {"local":"Lago entre montanhas","url":"https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=85"},
-    {"local":"Natureza pelo mundo","url":"https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1920&q=85"}
+    {
+      "local": "Praia tropical",
+      "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=85"
+    },
+    {
+      "local": "Montanhas ao amanhecer",
+      "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=85"
+    },
+    {
+      "local": "Floresta com neblina",
+      "url": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1920&q=85"
+    },
+    {
+      "local": "Lago entre montanhas",
+      "url": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=85"
+    },
+    {
+      "local": "Natureza pelo mundo",
+      "url": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1920&q=85"
+    }
   ],
   "destinos": [
-    {"id":1,"slug":"rio-de-janeiro","nome":"Rio de Janeiro","cidade":"Rio de Janeiro","pais":"Brasil","continente":"América do Sul","categoria":"Praias e natureza","emoji":"🇧🇷","imagem":"https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1100&q=85","resumo":"Montanhas, praias famosas e uma energia que é só do Rio.","descricao":"O Rio de Janeiro combina paisagens naturais impressionantes com cultura, música e vida urbana. Reserve tempo para conhecer o Cristo Redentor, caminhar pela orla e apreciar a vista do Pão de Açúcar.","atracoes":["Cristo Redentor","Pão de Açúcar","Praia de Copacabana","Jardim Botânico"],"melhor_epoca":"Maio a outubro","duracao":"3 a 5 dias"},
-    {"id":2,"slug":"paris","nome":"Paris","cidade":"Paris","pais":"França","continente":"Europa","categoria":"Cultura e história","emoji":"🇫🇷","imagem":"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1100&q=85","resumo":"Arte, arquitetura, cafés charmosos e passeios às margens do Sena.","descricao":"Paris é um destino marcante para quem gosta de arte, arquitetura e gastronomia. Além dos monumentos conhecidos, explore bairros a pé, jardins e pequenas livrarias.","atracoes":["Torre Eiffel","Museu do Louvre","Catedral de Notre-Dame","Montmartre"],"melhor_epoca":"Abril a junho e setembro a outubro","duracao":"3 a 5 dias"},
-    {"id":3,"slug":"kyoto","nome":"Kyoto","cidade":"Kyoto","pais":"Japão","continente":"Ásia","categoria":"Cultura e história","emoji":"🇯🇵","imagem":"https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1100&q=85","resumo":"Templos, jardins tradicionais e ruas históricas.","descricao":"Kyoto preserva templos, santuários, jardins e bairros tradicionais. É um lugar para desacelerar, observar a arquitetura e descobrir a cultura japonesa com respeito aos costumes locais.","atracoes":["Fushimi Inari-taisha","Arashiyama","Kinkaku-ji","Gion"],"melhor_epoca":"Março a maio e outubro a novembro","duracao":"2 a 4 dias"},
-    {"id":4,"slug":"machu-picchu","nome":"Machu Picchu","cidade":"Cusco","pais":"Peru","continente":"América do Sul","categoria":"Aventura","emoji":"🇵🇪","imagem":"https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1100&q=85","resumo":"Uma cidade histórica inca em meio às montanhas dos Andes.","descricao":"Machu Picchu é um sítio arqueológico extraordinário cercado pela paisagem andina. A visita exige planejamento prévio, atenção às regras de acesso e consideração com a preservação do patrimônio.","atracoes":["Cidadela de Machu Picchu","Montanha Huayna Picchu","Cusco histórico","Vale Sagrado"],"melhor_epoca":"Maio a setembro","duracao":"2 a 3 dias na região"},
-    {"id":5,"slug":"santorini","nome":"Santorini","cidade":"Santorini","pais":"Grécia","continente":"Europa","categoria":"Praias e natureza","emoji":"🇬🇷","imagem":"https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1100&q=85","resumo":"Casas brancas, mar azul e vilarejos com vista para a caldeira.","descricao":"Santorini é conhecida por suas vilas nas encostas, praias de origem vulcânica e vistas para o mar Egeu. Caminhadas entre vilarejos ajudam a descobrir ângulos mais tranquilos da ilha.","atracoes":["Oia","Fira","Praia Vermelha","Akrotiri"],"melhor_epoca":"Abril a junho e setembro a outubro","duracao":"2 a 4 dias"},
-    {"id":6,"slug":"nova-york","nome":"Nova York","cidade":"Nova York","pais":"Estados Unidos","continente":"América do Norte","categoria":"Cidade e gastronomia","emoji":"🇺🇸","imagem":"https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=1100&q=85","resumo":"Museus, parques, bairros criativos e uma cidade que nunca para.","descricao":"Nova York reúne arte, gastronomia e bairros muito diferentes entre si. Planeje por regiões para aproveitar melhor o tempo e lembre que muitos museus e atrações exigem ingresso reservado.","atracoes":["Central Park","Estátua da Liberdade","Times Square","Metropolitan Museum of Art"],"melhor_epoca":"Abril a junho e setembro a novembro","duracao":"4 a 6 dias"},
-    {"id":7,"slug":"cape-town","nome":"Cidade do Cabo","cidade":"Cidade do Cabo","pais":"África do Sul","continente":"África","categoria":"Aventura","emoji":"🇿🇦","imagem":"https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1100&q=85","resumo":"Montanhas, litoral, vinícolas e uma natureza impressionante.","descricao":"A Cidade do Cabo é cercada por paisagens costeiras e montanhas. Combine mirantes, passeios culturais e áreas naturais, verificando condições meteorológicas e orientações locais antes das trilhas.","atracoes":["Table Mountain","V&A Waterfront","Cabo da Boa Esperança","Kirstenbosch"],"melhor_epoca":"Novembro a março","duracao":"4 a 6 dias"},
-    {"id":8,"slug":"queenstown","nome":"Queenstown","cidade":"Queenstown","pais":"Nova Zelândia","continente":"Oceania","categoria":"Aventura","emoji":"🇳🇿","imagem":"https://images.unsplash.com/photo-1469521669194-babb45599def?auto=format&fit=crop&w=1100&q=85","resumo":"Lagos cristalinos, montanhas e atividades ao ar livre.","descricao":"Queenstown é uma base popular para explorar lagos e montanhas da Ilha Sul. Há opções de trilhas, passeios panorâmicos e atividades de aventura, sempre escolhendo operadores e equipamentos adequados.","atracoes":["Lake Wakatipu","Skyline Queenstown","Glenorchy","Queenstown Gardens"],"melhor_epoca":"Dezembro a fevereiro para o verão; junho a agosto para neve","duracao":"3 a 5 dias"},
-    {"id":9,"slug":"roma","nome":"Roma","cidade":"Roma","pais":"Itália","continente":"Europa","categoria":"Cultura e história","emoji":"🇮🇹","imagem":"https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1100&q=85","resumo":"Ruínas antigas, praças históricas e uma culinária inesquecível.","descricao":"Roma é um museu a céu aberto, com camadas de história espalhadas pela cidade. Reserve entradas para atrações concorridas e caminhe pelas praças e ruas para conhecer a cidade além dos pontos mais famosos.","atracoes":["Coliseu","Fórum Romano","Fontana di Trevi","Museus do Vaticano"],"melhor_epoca":"Abril a junho e setembro a outubro","duracao":"3 a 5 dias"},
-    {"id":10,"slug":"bali","nome":"Bali","cidade":"Ubud e região","pais":"Indonésia","continente":"Ásia","categoria":"Praias e natureza","emoji":"🇮🇩","imagem":"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1100&q=85","resumo":"Terraços de arroz, templos, florestas e praias tropicais.","descricao":"Bali combina paisagens tropicais, templos e comunidades com tradições próprias. Vista-se de acordo com as regras dos locais sagrados e procure opções de turismo que respeitem a natureza e os moradores.","atracoes":["Terraços de arroz de Tegallalang","Ubud","Templo de Uluwatu","Floresta dos Macacos"],"melhor_epoca":"Abril a outubro","duracao":"5 a 7 dias"},
-    {"id":11,"slug":"banff","nome":"Parque Nacional Banff","cidade":"Alberta","pais":"Canadá","continente":"América do Norte","categoria":"Praias e natureza","emoji":"🇨🇦","imagem":"https://images.unsplash.com/photo-1503614472-8c93d56cd4b0?auto=format&fit=crop&w=1100&q=85","resumo":"Lagos glaciais e trilhas em meio às Montanhas Rochosas.","descricao":"Banff é conhecido por seus lagos de cor intensa e trilhas alpinas. Consulte avisos do parque, regras para vida selvagem e condições sazonais antes de sair para explorar.","atracoes":["Lake Louise","Moraine Lake","Banff Gondola","Johnston Canyon"],"melhor_epoca":"Junho a setembro para trilhas; dezembro a março para neve","duracao":"3 a 5 dias"},
-    {"id":12,"slug":"lisboa","nome":"Lisboa","cidade":"Lisboa","pais":"Portugal","continente":"Europa","categoria":"Cidade e gastronomia","emoji":"🇵🇹","imagem":"https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1100&q=85","resumo":"Miradouros, elétricos, azulejos e sabores portugueses.","descricao":"Lisboa mistura bairros históricos, miradouros e uma cena gastronômica rica. Use calçados confortáveis para as ladeiras e considere passeios de um dia a Sintra ou Cascais.","atracoes":["Torre de Belém","Alfama","Mosteiro dos Jerónimos","Praça do Comércio"],"melhor_epoca":"Março a junho e setembro a outubro","duracao":"3 a 4 dias"}
+    {
+      "id": 1,
+      "slug": "rio-de-janeiro",
+      "nome": "Rio de Janeiro",
+      "cidade": "Rio de Janeiro",
+      "pais": "Brasil",
+      "continente": "América do Sul",
+      "categoria": "Praias e natureza",
+      "emoji": "🇧🇷",
+      "imagem": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1100&q=85",
+      "resumo": "Montanhas, praias famosas e uma energia que é só do Rio.",
+      "descricao": "O Rio de Janeiro combina paisagens naturais impressionantes com cultura, música e vida urbana. Reserve tempo para conhecer o Cristo Redentor, caminhar pela orla e apreciar a vista do Pão de Açúcar.",
+      "atracoes": [
+        "Cristo Redentor",
+        "Pão de Açúcar",
+        "Praia de Copacabana",
+        "Jardim Botânico"
+      ],
+      "melhor_epoca": "Maio a outubro",
+      "duracao": "3 a 5 dias",
+      "nota": 4.8,
+      "tags": [
+        "bonito",
+        "natureza",
+        "praia",
+        "cidade"
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "paris",
+      "nome": "Paris",
+      "cidade": "Paris",
+      "pais": "França",
+      "continente": "Europa",
+      "categoria": "Cultura e história",
+      "emoji": "🇫🇷",
+      "imagem": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1100&q=85",
+      "resumo": "Arte, arquitetura, cafés charmosos e passeios às margens do Sena.",
+      "descricao": "Paris é um destino marcante para quem gosta de arte, arquitetura e gastronomia. Além dos monumentos conhecidos, explore bairros a pé, jardins e pequenas livrarias.",
+      "atracoes": [
+        "Torre Eiffel",
+        "Museu do Louvre",
+        "Catedral de Notre-Dame",
+        "Montmartre"
+      ],
+      "melhor_epoca": "Abril a junho e setembro a outubro",
+      "duracao": "3 a 5 dias",
+      "nota": 4.9,
+      "tags": [
+        "bonito",
+        "historico",
+        "cultura",
+        "cidade",
+        "gastronomia"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "kyoto",
+      "nome": "Kyoto",
+      "cidade": "Kyoto",
+      "pais": "Japão",
+      "continente": "Ásia",
+      "categoria": "Cultura e história",
+      "emoji": "🇯🇵",
+      "imagem": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1100&q=85",
+      "resumo": "Templos, jardins tradicionais e ruas históricas.",
+      "descricao": "Kyoto preserva templos, santuários, jardins e bairros tradicionais. É um lugar para desacelerar, observar a arquitetura e descobrir a cultura japonesa com respeito aos costumes locais.",
+      "atracoes": [
+        "Fushimi Inari-taisha",
+        "Arashiyama",
+        "Kinkaku-ji",
+        "Gion"
+      ],
+      "melhor_epoca": "Março a maio e outubro a novembro",
+      "duracao": "2 a 4 dias",
+      "nota": 4.9,
+      "tags": [
+        "bonito",
+        "historico",
+        "cultura",
+        "natureza"
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "machu-picchu",
+      "nome": "Machu Picchu",
+      "cidade": "Cusco",
+      "pais": "Peru",
+      "continente": "América do Sul",
+      "categoria": "Aventura",
+      "emoji": "🇵🇪",
+      "imagem": "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1100&q=85",
+      "resumo": "Uma cidade histórica inca em meio às montanhas dos Andes.",
+      "descricao": "Machu Picchu é um sítio arqueológico extraordinário cercado pela paisagem andina. A visita exige planejamento prévio, atenção às regras de acesso e consideração com a preservação do patrimônio.",
+      "atracoes": [
+        "Cidadela de Machu Picchu",
+        "Montanha Huayna Picchu",
+        "Cusco histórico",
+        "Vale Sagrado"
+      ],
+      "melhor_epoca": "Maio a setembro",
+      "duracao": "2 a 3 dias na região",
+      "nota": 4.9,
+      "tags": [
+        "bonito",
+        "historico",
+        "aventura",
+        "natureza"
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "santorini",
+      "nome": "Santorini",
+      "cidade": "Santorini",
+      "pais": "Grécia",
+      "continente": "Europa",
+      "categoria": "Praias e natureza",
+      "emoji": "🇬🇷",
+      "imagem": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1100&q=85",
+      "resumo": "Casas brancas, mar azul e vilarejos com vista para a caldeira.",
+      "descricao": "Santorini é conhecida por suas vilas nas encostas, praias de origem vulcânica e vistas para o mar Egeu. Caminhadas entre vilarejos ajudam a descobrir ângulos mais tranquilos da ilha.",
+      "atracoes": [
+        "Oia",
+        "Fira",
+        "Praia Vermelha",
+        "Akrotiri"
+      ],
+      "melhor_epoca": "Abril a junho e setembro a outubro",
+      "duracao": "2 a 4 dias",
+      "nota": 4.8,
+      "tags": [
+        "bonito",
+        "natureza",
+        "praia"
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "nova-york",
+      "nome": "Nova York",
+      "cidade": "Nova York",
+      "pais": "Estados Unidos",
+      "continente": "América do Norte",
+      "categoria": "Cidade e gastronomia",
+      "emoji": "🇺🇸",
+      "imagem": "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=1100&q=85",
+      "resumo": "Museus, parques, bairros criativos e uma cidade que nunca para.",
+      "descricao": "Nova York reúne arte, gastronomia e bairros muito diferentes entre si. Planeje por regiões para aproveitar melhor o tempo e lembre que muitos museus e atrações exigem ingresso reservado.",
+      "atracoes": [
+        "Central Park",
+        "Estátua da Liberdade",
+        "Times Square",
+        "Metropolitan Museum of Art"
+      ],
+      "melhor_epoca": "Abril a junho e setembro a novembro",
+      "duracao": "4 a 6 dias",
+      "nota": 4.7,
+      "tags": [
+        "cidade",
+        "cultura",
+        "gastronomia"
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "cape-town",
+      "nome": "Cidade do Cabo",
+      "cidade": "Cidade do Cabo",
+      "pais": "África do Sul",
+      "continente": "África",
+      "categoria": "Aventura",
+      "emoji": "🇿🇦",
+      "imagem": "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1100&q=85",
+      "resumo": "Montanhas, litoral, vinícolas e uma natureza impressionante.",
+      "descricao": "A Cidade do Cabo é cercada por paisagens costeiras e montanhas. Combine mirantes, passeios culturais e áreas naturais, verificando condições meteorológicas e orientações locais antes das trilhas.",
+      "atracoes": [
+        "Table Mountain",
+        "V&A Waterfront",
+        "Cabo da Boa Esperança",
+        "Kirstenbosch"
+      ],
+      "melhor_epoca": "Novembro a março",
+      "duracao": "4 a 6 dias",
+      "nota": 4.8,
+      "tags": [
+        "bonito",
+        "aventura",
+        "natureza",
+        "praia"
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "queenstown",
+      "nome": "Queenstown",
+      "cidade": "Queenstown",
+      "pais": "Nova Zelândia",
+      "continente": "Oceania",
+      "categoria": "Aventura",
+      "emoji": "🇳🇿",
+      "imagem": "https://images.unsplash.com/photo-1469521669194-babb45599def?auto=format&fit=crop&w=1100&q=85",
+      "resumo": "Lagos cristalinos, montanhas e atividades ao ar livre.",
+      "descricao": "Queenstown é uma base popular para explorar lagos e montanhas da Ilha Sul. Há opções de trilhas, passeios panorâmicos e atividades de aventura, sempre escolhendo operadores e equipamentos adequados.",
+      "atracoes": [
+        "Lake Wakatipu",
+        "Skyline Queenstown",
+        "Glenorchy",
+        "Queenstown Gardens"
+      ],
+      "melhor_epoca": "Dezembro a fevereiro para o verão; junho a agosto para neve",
+      "duracao": "3 a 5 dias",
+      "nota": 4.8,
+      "tags": [
+        "bonito",
+        "aventura",
+        "natureza"
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "roma",
+      "nome": "Roma",
+      "cidade": "Roma",
+      "pais": "Itália",
+      "continente": "Europa",
+      "categoria": "Cultura e história",
+      "emoji": "🇮🇹",
+      "imagem": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1100&q=85",
+      "resumo": "Ruínas antigas, praças históricas e uma culinária inesquecível.",
+      "descricao": "Roma é um museu a céu aberto, com camadas de história espalhadas pela cidade. Reserve entradas para atrações concorridas e caminhe pelas praças e ruas para conhecer a cidade além dos pontos mais famosos.",
+      "atracoes": [
+        "Coliseu",
+        "Fórum Romano",
+        "Fontana di Trevi",
+        "Museus do Vaticano"
+      ],
+      "melhor_epoca": "Abril a junho e setembro a outubro",
+      "duracao": "3 a 5 dias",
+      "nota": 4.9,
+      "tags": [
+        "historico",
+        "cultura",
+        "gastronomia",
+        "cidade"
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "bali",
+      "nome": "Bali",
+      "cidade": "Ubud e região",
+      "pais": "Indonésia",
+      "continente": "Ásia",
+      "categoria": "Praias e natureza",
+      "emoji": "🇮🇩",
+      "imagem": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1100&q=85",
+      "resumo": "Terraços de arroz, templos, florestas e praias tropicais.",
+      "descricao": "Bali combina paisagens tropicais, templos e comunidades com tradições próprias. Vista-se de acordo com as regras dos locais sagrados e procure opções de turismo que respeitem a natureza e os moradores.",
+      "atracoes": [
+        "Terraços de arroz de Tegallalang",
+        "Ubud",
+        "Templo de Uluwatu",
+        "Floresta dos Macacos"
+      ],
+      "melhor_epoca": "Abril a outubro",
+      "duracao": "5 a 7 dias",
+      "nota": 4.8,
+      "tags": [
+        "bonito",
+        "natureza",
+        "praia",
+        "cultura"
+      ]
+    },
+    {
+      "id": 11,
+      "slug": "banff",
+      "nome": "Parque Nacional Banff",
+      "cidade": "Alberta",
+      "pais": "Canadá",
+      "continente": "América do Norte",
+      "categoria": "Praias e natureza",
+      "emoji": "🇨🇦",
+      "imagem": "https://images.unsplash.com/photo-1503614472-8c93d56cd4b0?auto=format&fit=crop&w=1100&q=85",
+      "resumo": "Lagos glaciais e trilhas em meio às Montanhas Rochosas.",
+      "descricao": "Banff é conhecido por seus lagos de cor intensa e trilhas alpinas. Consulte avisos do parque, regras para vida selvagem e condições sazonais antes de sair para explorar.",
+      "atracoes": [
+        "Lake Louise",
+        "Moraine Lake",
+        "Banff Gondola",
+        "Johnston Canyon"
+      ],
+      "melhor_epoca": "Junho a setembro para trilhas; dezembro a março para neve",
+      "duracao": "3 a 5 dias",
+      "nota": 4.9,
+      "tags": [
+        "bonito",
+        "natureza",
+        "aventura"
+      ]
+    },
+    {
+      "id": 12,
+      "slug": "lisboa",
+      "nome": "Lisboa",
+      "cidade": "Lisboa",
+      "pais": "Portugal",
+      "continente": "Europa",
+      "categoria": "Cidade e gastronomia",
+      "emoji": "🇵🇹",
+      "imagem": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1100&q=85",
+      "resumo": "Miradouros, elétricos, azulejos e sabores portugueses.",
+      "descricao": "Lisboa mistura bairros históricos, miradouros e uma cena gastronômica rica. Use calçados confortáveis para as ladeiras e considere passeios de um dia a Sintra ou Cascais.",
+      "atracoes": [
+        "Torre de Belém",
+        "Alfama",
+        "Mosteiro dos Jerónimos",
+        "Praça do Comércio"
+      ],
+      "melhor_epoca": "Março a junho e setembro a outubro",
+      "duracao": "3 a 4 dias",
+      "nota": 4.8,
+      "tags": [
+        "historico",
+        "cultura",
+        "gastronomia",
+        "cidade"
+      ]
+    }
   ]
 }

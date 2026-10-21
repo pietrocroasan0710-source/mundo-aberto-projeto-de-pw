@@ -1,1 +1,144 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Explorar destinos — Mundo Aberto</title><link rel="stylesheet" href="static/css/style.css"></head><body><header class="navbar"><a class="logo" href="index.html"><span class="logo-icon">✦</span> mundo<span>aberto</span></a><button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button><nav id="menu"><a href="index.html">Início</a><a href="destinos.html">Explorar destinos</a><a href="favoritos.html">♡ Favoritos</a><a href="roteiro.html">Meu roteiro <span class="nav-count" data-roteiro-count>0</span></a><a class="nav-login" href="login.html">Entrar</a></nav></header><main><section class="page-banner"><p class="eyebrow"><span></span> EXPLORE SEM FRONTEIRAS</p><h1>Encontre seu próximo destino.</h1><p>Pesquise lugares, filtre por país ou escolha o tipo de experiência que combina com você.</p></section><section class="section listing-section"><form class="filter-bar" id="filters"><label class="filter-search"><span>⌕</span><input id="search" name="q" placeholder="Buscar cidade, país ou lugar..."></label><select id="country" aria-label="Filtrar por país"><option value="">Todos os países</option></select><select id="category" aria-label="Filtrar por categoria"><option value="">Todas as experiências</option></select><button class="btn-buscar">Filtrar ↗</button><a class="clear-filter" href="destinos.html">Limpar</a></form><p class="results-count" id="results-count"></p><div class="destination-grid" id="destination-grid"></div><div class="empty-state" id="empty-state" hidden><span>✧</span><h2>Nenhum destino por aqui ainda</h2><p>Tente mudar os filtros ou pesquisar outro lugar.</p><a class="btn-dark" href="destinos.html">Limpar filtros ↗</a></div></section></main><footer class="footer"><a class="logo" href="index.html">✦ mundo<span>aberto</span></a><p>Descubra o mundo no seu ritmo. <span>Projeto acadêmico de Programação Web · 2026</span></p><a href="destinos.html">Comece a explorar ↗</a></footer><script src="static/js/animacoes.js"></script><script src="static/js/cards.js"></script><script src="static/js/main.js"></script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      Busca avançada — Mundo Aberto
+    </title>
+    <link rel="stylesheet" href="static/css/style.css">
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="logo" href="index.html">
+        <span class="logo-icon">
+          ✦
+        </span>
+        mundo
+        <span>
+          aberto
+        </span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+        ☰
+      </button>
+      <nav id="menu">
+        <a href="index.html">
+          Início
+        </a>
+        <a href="destinos.html">
+          Explorar destinos
+        </a>
+        <a href="favoritos.html">
+          ♡ Favoritos
+        </a>
+        <a href="roteiro.html">
+          Meu roteiro
+          <span class="nav-count" data-roteiro-count>
+            0
+          </span>
+        </a>
+        <a class="nav-login" href="login.html">
+          Entrar
+        </a>
+      </nav>
+    </header>
+    <main>
+      <section class="page-banner">
+        <p class="eyebrow">
+          <span>
+          </span>
+          EXPLORE SEM FRONTEIRAS
+        </p>
+        <h1>
+          Encontre seu próximo destino.
+        </h1>
+        <p>
+          Combine palavras, tipo de experiência e faixa de nota para encontrar lugares que combinam com você.
+        </p>
+      </section>
+      <section class="section listing-section">
+        <form class="filter-bar advanced-filter" id="filters">
+          <label class="filter-search">
+            <span>
+              ⌕
+            </span>
+            <input id="search" name="q" placeholder="Ex.: lugares bonitos, históricos, natureza...">
+          </label>
+          <select id="country" aria-label="Filtrar por país">
+            <option value="">
+              Todos os países
+            </option>
+          </select>
+          <select id="category" aria-label="Tipo de experiência">
+            <option value="">
+              Todos os tipos
+            </option>
+          </select>
+          <label class="rating-field">
+            <span>
+              Nota mín.
+            </span>
+            <input id="rating-min" type="number" min="0" max="5" step=".1" placeholder="0">
+          </label>
+          <label class="rating-field">
+            <span>
+              Nota máx.
+            </span>
+            <input id="rating-max" type="number" min="0" max="5" step=".1" placeholder="5">
+          </label>
+          <button class="btn-buscar">
+            Buscar ↗
+          </button>
+          <a class="clear-filter" href="destinos.html">
+            Limpar
+          </a>
+        </form>
+        <p class="rating-disclaimer">
+          As notas atuais são demonstrativas, não avaliações reais de viajantes.
+        </p>
+        <p class="results-count" id="results-count">
+        </p>
+        <div class="destination-grid" id="destination-grid">
+        </div>
+        <div class="empty-state" id="empty-state" hidden>
+          <span>
+            ✧
+          </span>
+          <h2>
+            Nenhum destino corresponde à busca
+          </h2>
+          <p>
+            Tente ampliar a faixa de nota ou usar outros termos.
+          </p>
+          <a class="btn-dark" href="destinos.html">
+            Limpar filtros ↗
+          </a>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <a class="logo" href="index.html">
+        ✦ mundo
+        <span>
+          aberto
+        </span>
+      </a>
+      <p>
+        Descubra o mundo no seu ritmo.
+        <span>
+          Projeto acadêmico de Programação Web · 2026
+        </span>
+      </p>
+      <a href="destinos.html">
+        Comece a explorar ↗
+      </a>
+    </footer>
+    <script src="static/js/animacoes.js">
+    </script>
+    <script src="static/js/cards.js">
+    </script>
+    <script src="static/js/main.js">
+    </script>
+  </body>
+</html>

@@ -1,5 +1,245 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101b2b"><meta name="description" content="Explore destinos pelo mundo e monte seu próximo roteiro."><title>Mundo Aberto — O mundo espera por você</title><link rel="preconnect" href="https://images.unsplash.com"><link rel="stylesheet" href="static/css/style.css"></head><body>
-<header class="navbar"><a class="logo" href="index.html"><span class="logo-icon">✦</span> mundo<span>aberto</span></a><button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button><nav id="menu"><a href="index.html">Início</a><a href="destinos.html">Explorar destinos</a><a href="favoritos.html">♡ Favoritos</a><a href="roteiro.html">Meu roteiro <span class="nav-count" data-roteiro-count>0</span></a><a class="nav-login" href="login.html">Entrar</a></nav></header>
-<main><section class="hero"><div class="slideshow" id="slideshow"></div><div class="hero-overlay"></div><div class="hero-conteudo"><p class="eyebrow"><span></span> SEU PRÓXIMO CAPÍTULO COMEÇA AQUI</p><h1>O mundo é grande.<br><em>Vá descobrir.</em></h1><p class="hero-copy">Inspire-se, explore lugares incríveis e monte um roteiro com a sua cara.</p><form class="busca" action="destinos.html"><label class="busca-campo"><span>⌕</span><span class="busca-texto"><small>PARA ONDE?</small><input name="q" placeholder="País, cidade ou experiência"></span></label><button class="btn-buscar">Explorar destinos <span>↗</span></button></form><div class="hero-tags"><span>✦ 12 destinos para inspirar</span><span>◉ Do seu jeito, no seu tempo</span></div></div><div class="legenda-paisagem" id="legenda">PAISAGENS PELO MUNDO</div><div class="hero-scroll">ROLE PARA DESCOBRIR <span>↓</span></div></section>
-<section class="section section-intro"><div><p class="eyebrow dark">UM PLANETA DE POSSIBILIDADES</p><h2>Pra onde a curiosidade<br>vai te levar?</h2></div><p class="intro-copy">De cidades cheias de história a paisagens que parecem de outro planeta: encontre ideias para sua próxima aventura em qualquer canto do mundo.</p></section>
-<section class="section destinations-section"><div class="section-heading"><div><p class="eyebrow dark">SELEÇÃO DO MUNDO ABERTO</p><h2>Destinos que inspiram</h2></div><a class="text-link" href="destinos.html">Ver todos os destinos <span>↗</span></a></div><div class="destination-grid" id="home-destinations" data-limit="6"></div><div class="center-action"><a class="btn-outline" href="destinos.html">Descobrir todos os lugares <span>↗</span></a></div></section><section class="quote-band"><div class="quote-mark">“</div><p>Viajar é descobrir que todo mundo está errado<br>sobre outros países.</p><span>— ALDOUS HUXLEY</span><div class="quote-deco">✳</div></section><section class="section feature-section"><div class="feature-photo"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=85" alt="Lago cercado por montanhas" loading="lazy"><span>ENCONTRE SEU PRÓXIMO HORIZONTE</span></div><div class="feature-copy"><p class="eyebrow dark">SEU MAPA, SUAS REGRAS</p><h2>Sonhou com um lugar?<br><em>Coloque no roteiro.</em></h2><p>Salve os destinos que chamarem sua atenção e reúna tudo em um roteiro de viagem simples, organizado e feito por você.</p><ul><li><span>01</span> Explore destinos de vários continentes</li><li><span>02</span> Guarde seus lugares favoritos</li><li><span>03</span> Monte seu próprio roteiro</li></ul><a class="btn-dark" href="destinos.html">Planejar uma aventura <span>↗</span></a></div></section></main><footer class="footer"><a class="logo" href="index.html"><span class="logo-icon">✦</span> mundo<span>aberto</span></a><p>Descubra o mundo no seu ritmo. <span>Projeto acadêmico de Programação Web · 2026</span></p><a href="destinos.html">Comece a explorar ↗</a></footer><script src="static/js/animacoes.js"></script><script src="static/js/cards.js"></script><script src="static/js/main.js"></script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101b2b">
+    <meta name="description" content="Explore destinos pelo mundo e monte seu próximo roteiro.">
+    <title>
+      Mundo Aberto — O mundo espera por você
+    </title>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="stylesheet" href="static/css/style.css">
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="logo" href="index.html">
+        <span class="logo-icon">
+          ✦
+        </span>
+        mundo
+        <span>
+          aberto
+        </span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+        ☰
+      </button>
+      <nav id="menu">
+        <a href="index.html">
+          Início
+        </a>
+        <a href="destinos.html">
+          Explorar destinos
+        </a>
+        <a href="favoritos.html">
+          ♡ Favoritos
+        </a>
+        <a href="roteiro.html">
+          Meu roteiro
+          <span class="nav-count" data-roteiro-count>
+            0
+          </span>
+        </a>
+        <a class="nav-login" href="login.html">
+          Entrar
+        </a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="slideshow" id="slideshow">
+        </div>
+        <div class="hero-overlay">
+        </div>
+        <div class="hero-conteudo">
+          <p class="eyebrow">
+            <span>
+            </span>
+            SEU PRÓXIMO CAPÍTULO COMEÇA AQUI
+          </p>
+          <h1>
+            O mundo é grande.
+            <br>
+            <em>
+              Vá descobrir.
+            </em>
+          </h1>
+          <p class="hero-copy">
+            Inspire-se, explore lugares incríveis e monte um roteiro com a sua cara.
+          </p>
+          <form class="busca" action="destinos.html">
+            <label class="busca-campo">
+              <span>
+                ⌕
+              </span>
+              <span class="busca-texto">
+                <small>
+                  PARA ONDE?
+                </small>
+                <input name="q" placeholder="País, cidade ou experiência">
+              </span>
+            </label>
+            <button class="btn-buscar">
+              Explorar destinos
+              <span>
+                ↗
+              </span>
+            </button>
+          </form>
+          <div class="hero-tags">
+            <span>
+              ✦ 12 destinos para inspirar
+            </span>
+            <span>
+              ◉ Do seu jeito, no seu tempo
+            </span>
+          </div>
+        </div>
+        <div class="legenda-paisagem" id="legenda">
+          PAISAGENS PELO MUNDO
+        </div>
+        <div class="hero-scroll">
+          ROLE PARA DESCOBRIR
+          <span>
+            ↓
+          </span>
+        </div>
+      </section>
+      <section class="section section-intro">
+        <div>
+          <p class="eyebrow dark">
+            UM PLANETA DE POSSIBILIDADES
+          </p>
+          <h2>
+            Pra onde a curiosidade
+            <br>
+            vai te levar?
+          </h2>
+        </div>
+        <p class="intro-copy">
+          De cidades cheias de história a paisagens que parecem de outro planeta: encontre ideias para sua próxima aventura em qualquer canto do mundo.
+        </p>
+      </section>
+      <section class="section destinations-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow dark">
+              SELEÇÃO DO MUNDO ABERTO
+            </p>
+            <h2>
+              Destinos que inspiram
+            </h2>
+          </div>
+          <a class="text-link" href="destinos.html">
+            Ver todos os destinos
+            <span>
+              ↗
+            </span>
+          </a>
+        </div>
+        <div class="destination-grid" id="home-destinations" data-limit="6">
+        </div>
+        <div class="center-action">
+          <a class="btn-outline" href="destinos.html">
+            Descobrir todos os lugares
+            <span>
+              ↗
+            </span>
+          </a>
+        </div>
+      </section>
+      <section class="quote-band">
+        <div class="quote-mark">
+          “
+        </div>
+        <p>
+          Viajar é descobrir que todo mundo está errado
+          <br>
+          sobre outros países.
+        </p>
+        <span>
+          — ALDOUS HUXLEY
+        </span>
+        <div class="quote-deco">
+          ✳
+        </div>
+      </section>
+      <section class="section feature-section">
+        <div class="feature-photo">
+          <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=85" alt="Lago cercado por montanhas" loading="lazy">
+          <span>
+            ENCONTRE SEU PRÓXIMO HORIZONTE
+          </span>
+        </div>
+        <div class="feature-copy">
+          <p class="eyebrow dark">
+            SEU MAPA, SUAS REGRAS
+          </p>
+          <h2>
+            Sonhou com um lugar?
+            <br>
+            <em>
+              Coloque no roteiro.
+            </em>
+          </h2>
+          <p>
+            Salve os destinos que chamarem sua atenção e reúna tudo em um roteiro de viagem simples, organizado e feito por você.
+          </p>
+          <ul>
+            <li>
+              <span>
+                01
+              </span>
+              Explore destinos de vários continentes
+            </li>
+            <li>
+              <span>
+                02
+              </span>
+              Guarde seus lugares favoritos
+            </li>
+            <li>
+              <span>
+                03
+              </span>
+              Monte seu próprio roteiro
+            </li>
+          </ul>
+          <a class="btn-dark" href="destinos.html">
+            Planejar uma aventura
+            <span>
+              ↗
+            </span>
+          </a>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <a class="logo" href="index.html">
+        <span class="logo-icon">
+          ✦
+        </span>
+        mundo
+        <span>
+          aberto
+        </span>
+      </a>
+      <p>
+        Descubra o mundo no seu ritmo.
+        <span>
+          Projeto acadêmico de Programação Web · 2026
+        </span>
+      </p>
+      <a href="destinos.html">
+        Comece a explorar ↗
+      </a>
+    </footer>
+    <script src="static/js/animacoes.js">
+    </script>
+    <script src="static/js/cards.js">
+    </script>
+    <script src="static/js/main.js">
+    </script>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 # Mundo Aberto — Guia turístico global
 
-Versão estática em HTML, CSS e JavaScript. Os destinos e paisagens são carregados de `static/json/dados.json` (somente leitura). O visual responsivo original, slideshow, busca, filtros, detalhes, favoritos e roteiro foram mantidos.
+Versão estática em HTML, CSS e JavaScript. Os destinos e paisagens são carregados de `static/json/dados.json` (somente leitura). O visual responsivo original, slideshow, busca avançada por texto (incluindo termos como “lugares bonitos” e “históricos”), país, tipo de experiência e faixa de notas, detalhes, favoritos e roteiro foram mantidos.
 
 ## Executar localmente
 
@@ -14,7 +14,7 @@ Como o site carrega JSON usando `fetch`, abra-o por um servidor HTTP local, não
 
 Edite `static/json/dados.json` para alterar destinos e paisagens. O navegador apenas lê esse arquivo; JavaScript comum da página não consegue gravar alterações de volta no JSON do site.
 
-Favoritos e roteiro ficam no `localStorage` deste navegador e deste endereço. Eles não sincronizam entre dispositivos e podem ser apagados pelo usuário. Cadastro/login seguro, sessões, sincronização e gravação compartilhada exigem um backend; por isso as telas de conta informam que esses recursos estão desativados. Não digite senhas neste protótipo.
+As notas e tags do catálogo são demonstrativas e estão em `static/json/dados.json`; não representam avaliações reais. Favoritos e roteiro ficam no `localStorage` deste navegador e deste endereço. Eles não sincronizam entre dispositivos e podem ser apagados pelo usuário. Cadastro/login seguro, sessões, sincronização e gravação compartilhada exigem um backend; por isso as telas de conta informam que esses recursos estão desativados. Não digite senhas neste protótipo.
 
 ## Estrutura
 
@@ -25,3 +25,4 @@ Favoritos e roteiro ficam no `localStorage` deste navegador e deste endereço. E
 - `static/json/dados.json`: catálogo de destinos e imagens.
 
 As imagens são hospedadas externamente no Unsplash e requerem conexão com a internet.
+
