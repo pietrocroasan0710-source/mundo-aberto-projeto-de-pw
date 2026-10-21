@@ -1,0 +1,126 @@
+<!doctype html>
+<!-- Formulário para cadastrar e administrar lugares neste navegador. -->
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adicionar lugar — Mundo Aberto</title>
+    <link rel="stylesheet" href="static/css/style.css">
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="logo" href="index.html"><span class="logo-icon">✦</span> mundo<span>aberto</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      <nav id="menu">
+        <a href="index.html">Início</a>
+        <a href="destinos.html">Explorar destinos</a>
+        <a href="favoritos.html">♡ Favoritos</a>
+        <a href="roteiro.html">Meu roteiro <span class="nav-count" data-roteiro-count>0</span></a>
+        <a href="adicionar.html" aria-current="page">Adicionar lugar</a>
+        <a class="nav-login" href="login.html">Entrar</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-banner">
+        <p class="eyebrow"><span></span> SEU GUIA, DO SEU JEITO</p>
+        <h1>Adicione um lugar novo.</h1>
+        <p>Cadastre um destino para encontrá-lo na busca, nos favoritos e no seu roteiro.</p>
+      </section>
+
+      <section class="section add-place-section">
+        <form class="add-place-form" id="add-place-form">
+          <div class="add-place-intro">
+            <h2>Informações do lugar</h2>
+            <p>Os campos com * são necessários. O cadastro fica salvo apenas neste navegador.</p>
+          </div>
+
+          <div class="add-place-fields">
+            <label>Nome do lugar *
+              <input name="name" required maxlength="90" placeholder="Ex.: Cachoeira da Fumaça">
+            </label>
+            <label>Cidade ou região *
+              <input name="city" required maxlength="90" placeholder="Ex.: Vale do Capão">
+            </label>
+            <label>País *
+              <input name="country" required maxlength="80" placeholder="Ex.: Brasil">
+            </label>
+            <label>Continente
+              <input name="continent" maxlength="60" placeholder="Ex.: América do Sul">
+            </label>
+            <label>Tipo de experiência *
+              <select name="category" required>
+                <option value="">Escolha uma opção</option>
+                <option>Praias e natureza</option>
+                <option>Cultura e história</option>
+                <option>Aventura</option>
+                <option>Cidade e gastronomia</option>
+                <option>Outro</option>
+              </select>
+            </label>
+            <label>Tema da busca *
+              <select name="tag" required>
+                <option value="">Escolha um tema</option>
+                <option value="bonito">Lugar bonito</option>
+                <option value="historico">História e cultura</option>
+                <option value="natureza">Natureza</option>
+                <option value="aventura">Aventura</option>
+                <option value="gastronomia">Gastronomia</option>
+              </select>
+            </label>
+            <label>Emoji
+              <input name="emoji" maxlength="8" placeholder="📍">
+            </label>
+            <label>Nota de exemplo (0 a 5)
+              <input name="rating" type="number" min="0" max="5" step="0.1" value="0">
+            </label>
+            <label class="wide-field">Endereço de imagem (opcional)
+              <input name="image" type="url" placeholder="https://...">
+              <small>Use um endereço público HTTPS. Se deixar em branco, usamos uma imagem padrão.</small>
+            </label>
+            <label class="wide-field">Resumo *
+              <input name="summary" required maxlength="180" placeholder="Uma frase curta para apresentar o lugar">
+            </label>
+            <label class="wide-field">Descrição *
+              <textarea name="description" required rows="4" maxlength="1200" placeholder="Conte o que torna este lugar especial."></textarea>
+            </label>
+            <label class="wide-field">Atrações (separadas por vírgula)
+              <input name="attractions" maxlength="300" placeholder="Ex.: Mirante, trilha principal, centro histórico">
+            </label>
+            <label>Melhor época
+              <input name="season" maxlength="100" placeholder="Ex.: Abril a setembro">
+            </label>
+            <label>Tempo recomendado
+              <input name="duration" maxlength="60" placeholder="Ex.: 2 a 3 dias">
+            </label>
+          </div>
+
+          <p class="rating-disclaimer">Notas são pessoais e demonstrativas; não são avaliações verificadas.</p>
+          <button class="btn-dark" type="submit">Salvar lugar neste navegador <span>↗</span></button>
+          <p class="form-message" id="place-form-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="section my-places-section">
+        <div class="section-heading">
+          <div><p class="eyebrow dark">CADASTROS DESTE NAVEGADOR</p><h2>Meus lugares</h2></div>
+        </div>
+        <div class="itinerary-list" id="my-places-list"></div>
+        <div class="empty-state" id="my-places-empty">
+          <span>✧</span>
+          <h2>Você ainda não adicionou lugares</h2>
+          <p>Quando salvar um lugar pelo formulário, ele aparecerá nesta lista e na busca.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a class="logo" href="index.html">✦ mundo<span>aberto</span></a>
+      <p>Seus lugares ficam guardados neste navegador.</p>
+      <a href="destinos.html">Explorar destinos ↗</a>
+    </footer>
+
+    <script src="static/js/animacoes.js"></script>
+    <script src="static/js/main.js"></script>
+  </body>
+</html>

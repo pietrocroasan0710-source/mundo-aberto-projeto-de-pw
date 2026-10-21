@@ -40,3 +40,9 @@ O arquivo JSON não aceita comentários dentro dele, então esta seção explica
 
 Ao adicionar um destino, mantenha os mesmos campos dos destinos existentes e use uma nota entre 0 e 5.
 
+
+## Adicionar lugares pelo site
+
+Abra `adicionar.html` ou escolha **Adicionar lugar** no menu. O formulário salva os novos destinos no armazenamento local deste navegador; eles aparecem na busca, nos detalhes, nos favoritos e no roteiro. A seção “Meus lugares” permite removê-los.
+
+Esse cadastro não altera `static/json/dados.json`, não sincroniza com outros navegadores ou dispositivos e é apagado se os dados locais do site forem removidos.

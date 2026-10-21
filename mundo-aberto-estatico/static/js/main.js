@@ -7,6 +7,7 @@
   const STORAGE_KEYS = {
     favorites: 'mundoAberto.favoritos',
     itinerary: 'mundoAberto.roteiro',
+    userDestinations: 'mundoAberto.lugaresAdicionados',
   };
 
   // Lê uma lista do localStorage e recupera uma lista vazia se o conteúdo estiver inválido.
@@ -327,6 +328,91 @@
     if (action) action.hidden = !selected.length;
   }
 
+  // Cria um identificador simples para usar no endereço dos lugares adicionados.
+  function createSlug(value) {
+    return normalizeText(value)
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+  }
+
+  // Exibe os lugares próprios e permite remover um cadastro salvo por engano.
+  function renderUserPlaces() {
+    const list = document.getElementById('my-places-list');
+    if (!list) return;
+
+    const places = readList(STORAGE_KEYS.userDestinations);
+    const empty = document.getElementById('my-places-empty');
+    if (empty) empty.hidden = places.length > 0;
+
+    list.innerHTML = places.map((place) => `
+      <article class="itinerary-item">
+        <img src="${escapeHtml(place.imagem)}" alt="${escapeHtml(place.nome)}">
+        <div>
+          <span>${escapeHtml(place.emoji)} ${escapeHtml(place.pais)} · ${escapeHtml(place.categoria)}</span>
+          <h2><a href="${detailUrl(place.slug)}">${escapeHtml(place.nome)}</a></h2>
+          <p>${escapeHtml(place.resumo)}</p>
+        </div>
+        <button class="remove-btn" data-delete-place="${escapeHtml(place.slug)}">Excluir</button>
+      </article>`).join('');
+  }
+
+  // Guarda o formulário no navegador e mostra o lugar junto com o catálogo original.
+  function initializePlaceForm(destinations) {
+    const form = document.getElementById('add-place-form');
+    if (!form || form.dataset.bound) return;
+
+    form.dataset.bound = 'true';
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const values = new FormData(form);
+      const name = String(values.get('name')).trim();
+      const slugBase = createSlug(name);
+      const places = readList(STORAGE_KEYS.userDestinations);
+      const slug = destinations.some((place) => place.slug === slugBase)
+        ? slugBase + '-' + Date.now().toString(36)
+        : slugBase;
+      const imageInput = String(values.get('image') || '').trim();
+      const imageUrl = imageInput || 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1100&q=85';
+
+      // Aceita somente endereços HTTPS para imagens adicionadas pelo formulário.
+      if (imageInput && !/^https:\/\//i.test(imageInput)) {
+        document.getElementById('place-form-message').textContent = 'Use um endereço de imagem que comece com https://.';
+        return;
+      }
+
+      const place = {
+        id: 'custom-' + Date.now(),
+        slug,
+        nome: name,
+        cidade: String(values.get('city')).trim(),
+        pais: String(values.get('country')).trim(),
+        continente: String(values.get('continent')).trim() || 'Não informado',
+        categoria: String(values.get('category')),
+        emoji: String(values.get('emoji')).trim() || '📍',
+        imagem: imageUrl,
+        resumo: String(values.get('summary')).trim(),
+        descricao: String(values.get('description')).trim(),
+        atracoes: String(values.get('attractions')).split(',').map((item) => item.trim()).filter(Boolean),
+        melhor_epoca: String(values.get('season')).trim() || 'Consulte fontes locais',
+        duracao: String(values.get('duration')).trim() || 'A definir',
+        nota: Number(values.get('rating') || 0),
+        tags: [String(values.get('tag'))],
+        criadoPeloUsuario: true,
+      };
+
+      try {
+        saveList(STORAGE_KEYS.userDestinations, [...places, place]);
+        form.reset();
+        document.getElementById('place-form-message').textContent = 'Lugar salvo neste navegador. Ele já aparece na busca e no catálogo.';
+        renderUserPlaces();
+      } catch {
+        document.getElementById('place-form-message').textContent = 'Não foi possível salvar. O armazenamento do navegador pode estar cheio.';
+      }
+    });
+  }
+
   // Carrega os dados e monta somente a parte da página que existe no HTML atual.
   async function initializePage() {
     initializeMenu();
@@ -335,7 +421,8 @@
       const response = await fetch(DATA_URL);
       if (!response.ok) throw new Error('Não foi possível carregar os dados.');
       const data = await response.json();
-      const destinations = data.destinos || [];
+      // Junta o catálogo publicado aos lugares cadastrados neste navegador.
+      const destinations = [...(data.destinos || []), ...readList(STORAGE_KEYS.userDestinations)];
       const favorites = readList(STORAGE_KEYS.favorites);
       const homeGrid = document.getElementById('home-destinations');
 
@@ -348,6 +435,8 @@
       initializeListing(destinations);
       initializeDetails(destinations);
       initializeItinerary(destinations);
+      initializePlaceForm(destinations);
+      renderUserPlaces();
     } catch {
       const target = document.querySelector('#destination-grid, #home-destinations, #detail-root');
       if (target) {
@@ -360,6 +449,7 @@
   document.addEventListener('click', (event) => {
     const favoriteButton = event.target.closest('[data-favorite]');
     const itineraryButton = event.target.closest('[data-itinerary]');
+    const deleteButton = event.target.closest('[data-delete-place]');
 
     if (favoriteButton) {
       const slug = favoriteButton.dataset.favorite;
@@ -376,6 +466,15 @@
       const shouldAdd = !itinerary.includes(slug);
       saveList(STORAGE_KEYS.itinerary, shouldAdd ? [...itinerary, slug] : itinerary.filter((item) => item !== slug));
       showMessage(shouldAdd ? 'Destino adicionado ao roteiro!' : 'Destino removido do roteiro.');
+      initializePage();
+    }
+
+    if (deleteButton) {
+      const slug = deleteButton.dataset.deletePlace;
+      saveList(STORAGE_KEYS.userDestinations, readList(STORAGE_KEYS.userDestinations).filter((place) => place.slug !== slug));
+      saveList(STORAGE_KEYS.favorites, readList(STORAGE_KEYS.favorites).filter((item) => item !== slug));
+      saveList(STORAGE_KEYS.itinerary, readList(STORAGE_KEYS.itinerary).filter((item) => item !== slug));
+      showMessage('Lugar removido deste navegador.');
       initializePage();
     }
   });
