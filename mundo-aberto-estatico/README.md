@@ -46,3 +46,12 @@ Ao adicionar um destino, mantenha os mesmos campos dos destinos existentes e use
 Abra `adicionar.html` ou escolha **Adicionar lugar** no menu. O formulário salva os novos destinos no armazenamento local deste navegador; eles aparecem na busca, nos detalhes, nos favoritos e no roteiro. A seção “Meus lugares” permite removê-los.
 
 Esse cadastro não altera `static/json/dados.json`, não sincroniza com outros navegadores ou dispositivos e é apagado se os dados locais do site forem removidos.
+
+## Proteções da versão estática
+
+- Fotos enviadas pelo formulário aceitam apenas JPEG, PNG ou WebP, têm limites de tamanho e dimensão e são abertas e convertidas para JPEG no navegador antes de serem guardadas. O arquivo não é enviado a um servidor.
+- O formulário limita o número de lugares e o espaço ocupado pelos dados neste navegador.
+- Os textos cadastrados são escapados antes de serem apresentados nas páginas.
+- As páginas usam uma Política de Segurança de Conteúdo que bloqueia scripts externos e limita a origem das imagens e estilos.
+
+Essas medidas ajudam a reduzir riscos no navegador, mas não tornam o conteúdo local confiável para outras pessoas. Como não existe servidor, cada pessoa pode alterar seus próprios dados do navegador. Para receber cadastros compartilhados com garantias mais fortes, o projeto precisaria de backend e regras de validação no servidor. A hospedagem também deve enviar cabeçalhos de segurança próprios para reforçar a política configurada nas páginas.

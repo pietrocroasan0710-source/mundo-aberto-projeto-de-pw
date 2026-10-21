@@ -1401,3 +1401,5 @@ button{
 .my-places-section{padding-top:35px;background:var(--paper)}
 .my-places-section .section-heading{margin-bottom:25px}
 @media(max-width:720px){.add-place-form{padding:22px 17px}.add-place-fields{grid-template-columns:1fr}.add-place-fields .wide-field{grid-column:auto}}
+
+.add-place-form button:disabled{opacity:.65;cursor:wait}

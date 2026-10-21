@@ -356,59 +356,118 @@
       </article>`).join('');
   }
 
+  // Reabre e regrava a foto como JPEG, removendo conteúdo ativo e metadados do arquivo original.
+  async function prepareSafeImage(file) {
+    if (!file) return '';
+
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+    if (!allowedTypes.includes(file.type)) {
+      throw new Error('Escolha uma imagem JPEG, PNG ou WebP. SVG e outros formatos não são aceitos.');
+    }
+    if (file.size > 4 * 1024 * 1024) {
+      throw new Error('A imagem original precisa ter no máximo 4 MB.');
+    }
+
+    let bitmap;
+    try {
+      bitmap = await createImageBitmap(file);
+    } catch {
+      throw new Error('O navegador não conseguiu abrir essa imagem. Tente exportá-la novamente.');
+    }
+
+    try {
+      if (bitmap.width * bitmap.height > 12_000_000 || bitmap.width > 6000 || bitmap.height > 6000) {
+        throw new Error('A imagem tem dimensões muito grandes. Reduza-a para no máximo 12 megapixels.');
+      }
+
+      const scale = Math.min(1, 1400 / Math.max(bitmap.width, bitmap.height));
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+      canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+      const context = canvas.getContext('2d', { alpha: false });
+      if (!context) throw new Error('Não foi possível processar a imagem neste navegador.');
+
+      context.fillStyle = '#ffffff';
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      const safeBlob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg', 0.8));
+      if (!safeBlob) throw new Error('Não foi possível preparar a imagem.');
+      if (safeBlob.size > 900 * 1024) {
+        throw new Error('A imagem ficou grande mesmo depois da compressão. Escolha outra imagem.');
+      }
+
+      return await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(new Error('Não foi possível ler a imagem processada.'));
+        reader.readAsDataURL(safeBlob);
+      });
+    } finally {
+      bitmap.close();
+    }
+  }
+
   // Guarda o formulário no navegador e mostra o lugar junto com o catálogo original.
   function initializePlaceForm(destinations) {
     const form = document.getElementById('add-place-form');
     if (!form || form.dataset.bound) return;
 
     form.dataset.bound = 'true';
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
       if (!form.reportValidity()) return;
 
+      const message = document.getElementById('place-form-message');
+      const submitButton = form.querySelector('[type="submit"]');
       const values = new FormData(form);
       const name = String(values.get('name')).trim();
       const slugBase = createSlug(name);
       const places = readList(STORAGE_KEYS.userDestinations);
+      if (places.length >= 40) {
+        message.textContent = 'Este navegador já tem 40 lugares cadastrados. Exclua algum antes de adicionar outro.';
+        return;
+      }
       const slug = destinations.some((place) => place.slug === slugBase)
         ? slugBase + '-' + Date.now().toString(36)
         : slugBase;
-      const imageInput = String(values.get('image') || '').trim();
-      const imageUrl = imageInput || 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1100&q=85';
-
-      // Aceita somente endereços HTTPS para imagens adicionadas pelo formulário.
-      if (imageInput && !/^https:\/\//i.test(imageInput)) {
-        document.getElementById('place-form-message').textContent = 'Use um endereço de imagem que comece com https://.';
-        return;
-      }
-
-      const place = {
-        id: 'custom-' + Date.now(),
-        slug,
-        nome: name,
-        cidade: String(values.get('city')).trim(),
-        pais: String(values.get('country')).trim(),
-        continente: String(values.get('continent')).trim() || 'Não informado',
-        categoria: String(values.get('category')),
-        emoji: String(values.get('emoji')).trim() || '📍',
-        imagem: imageUrl,
-        resumo: String(values.get('summary')).trim(),
-        descricao: String(values.get('description')).trim(),
-        atracoes: String(values.get('attractions')).split(',').map((item) => item.trim()).filter(Boolean),
-        melhor_epoca: String(values.get('season')).trim() || 'Consulte fontes locais',
-        duracao: String(values.get('duration')).trim() || 'A definir',
-        nota: Number(values.get('rating') || 0),
-        tags: [String(values.get('tag'))],
-        criadoPeloUsuario: true,
-      };
-
+      submitButton.disabled = true;
+      message.textContent = 'Verificando e preparando as informações...';
       try {
-        saveList(STORAGE_KEYS.userDestinations, [...places, place]);
+        const imageFile = values.get('image');
+        const safeImage = await prepareSafeImage(imageFile?.size ? imageFile : null);
+        const place = {
+          id: 'custom-' + Date.now(),
+          slug,
+          nome: name,
+          cidade: String(values.get('city')).trim(),
+          pais: String(values.get('country')).trim(),
+          continente: String(values.get('continent')).trim() || 'Não informado',
+          categoria: String(values.get('category')),
+          emoji: String(values.get('emoji')).trim() || '📍',
+          imagem: safeImage || 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1100&q=85',
+          resumo: String(values.get('summary')).trim(),
+          descricao: String(values.get('description')).trim(),
+          atracoes: String(values.get('attractions')).split(',').map((item) => item.trim()).filter(Boolean),
+          melhor_epoca: String(values.get('season')).trim() || 'Consulte fontes locais',
+          duracao: String(values.get('duration')).trim() || 'A definir',
+          nota: Number(values.get('rating') || 0),
+          tags: [String(values.get('tag'))],
+          criadoPeloUsuario: true,
+        };
+
+        const updatedPlaces = [...places, place];
+        if (JSON.stringify(updatedPlaces).length > 1_800_000) {
+          throw new Error('O espaço reservado para lugares neste navegador está cheio. Exclua algum lugar e tente novamente.');
+        }
+
+        saveList(STORAGE_KEYS.userDestinations, updatedPlaces);
         form.reset();
-        document.getElementById('place-form-message').textContent = 'Lugar salvo neste navegador. Ele já aparece na busca e no catálogo.';
+        message.textContent = 'Lugar salvo neste navegador. Ele já aparece na busca e no catálogo.';
         renderUserPlaces();
-      } catch {
-        document.getElementById('place-form-message').textContent = 'Não foi possível salvar. O armazenamento do navegador pode estar cheio.';
+      } catch (error) {
+        message.textContent = error.message || 'Não foi possível salvar. O armazenamento do navegador pode estar cheio.';
+      } finally {
+        submitButton.disabled = false;
       }
     });
   }
