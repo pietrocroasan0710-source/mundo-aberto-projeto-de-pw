@@ -1403,3 +1403,17 @@ button{
 @media(max-width:720px){.add-place-form{padding:22px 17px}.add-place-fields{grid-template-columns:1fr}.add-place-fields .wide-field{grid-column:auto}}
 
 .add-place-form button:disabled{opacity:.65;cursor:wait}
+
+
+/* Mundo Aberto: preços de passeios e moedas locais */
+.card-price{font-size:12px!important;font-weight:800;color:var(--orange);margin:8px 0 2px!important}
+.price-panel,.price-summary{margin:22px 0;padding:20px 22px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+.price-panel{display:grid;gap:7px}
+.price-panel strong,.price-summary strong{font:800 21px/1.3 Manrope,sans-serif;color:var(--ink)}
+.price-panel small,.price-summary small{font-size:11px;color:var(--muted)}
+.price-summary p{font-size:20px;font-weight:800;margin:8px 0;color:var(--orange)}
+#price-max{width:115px;padding:11px;border:1px solid var(--line);background:#fffefa;border-radius:8px;color:var(--ink)}
+#price-currency,#price-sort{padding:11px;border:1px solid var(--line);background:#fffefa;border-radius:8px;color:var(--ink);max-width:100%}
+@media(max-width:720px){.advanced-filter #price-max,.advanced-filter #price-currency,.advanced-filter #price-sort{width:100%}.price-panel,.price-summary{padding:16px}}
+
+.attraction-price-row{display:grid!important;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:12px}.attraction-price-row small{font-size:11px;color:var(--orange);font-weight:700;text-align:right}@media(max-width:560px){.attraction-price-row{grid-template-columns:32px minmax(0,1fr)}.attraction-price-row small{grid-column:2;text-align:left}}

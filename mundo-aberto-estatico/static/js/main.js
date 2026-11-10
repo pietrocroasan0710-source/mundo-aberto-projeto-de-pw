@@ -42,6 +42,17 @@
     return 'destino.html?slug=' + encodeURIComponent(slug);
   }
 
+  function formatPrice(value, currency) {
+    if (value === null || value === undefined || value === '') return 'Preço não informado';
+    try { return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: currency || 'USD' }).format(Number(value)); }
+    catch { return Number(value).toFixed(2) + ' ' + (currency || ''); }
+  }
+
+  function priceLabel(destination) {
+    if (destination.preco_tipo === 'gratuito' || destination.preco_passeio === 0) return 'Gratuito';
+    return destination.preco_passeio == null ? 'Preço a consultar' : 'A partir de ' + formatPrice(destination.preco_passeio, destination.moeda);
+  }
+
   // Cria um cartão reutilizável para a página inicial, resultados e favoritos.
   function createCard(destination, favorites) {
     const isFavorite = favorites.includes(destination.slug);
@@ -55,6 +66,7 @@
         </a>
         <div class="card-info">
           <p>${escapeHtml(destination.categoria)} <span>· ${escapeHtml(destination.duracao)}</span></p>
+          <p class="card-price">${escapeHtml(priceLabel(destination))}</p>
           <h3><a href="${detailUrl(destination.slug)}">${escapeHtml(destination.nome)}</a></h3>
           <p class="card-description">${escapeHtml(destination.resumo)}</p>
           <div class="card-actions">
@@ -143,7 +155,7 @@
 
   // Filtra a lista e atualiza os cartões e a mensagem de resultados.
   function renderDestinations(destinations, grid, controls, favorites, onlyFavorites) {
-    const { search, country, category, minRating, maxRating } = controls;
+    const { search, country, category, minRating, maxRating, maxPrice, priceCurrency, sortPrice } = controls;
     const words = normalizeText(search?.value || '').trim().split(/\s+/).filter(Boolean);
     const minimum = minRating?.value === '' || !minRating ? 0 : Number(minRating.value);
     const maximum = maxRating?.value === '' || !maxRating ? 5 : Number(maxRating.value);
@@ -155,9 +167,17 @@
       if (category?.value && destination.categoria !== category.value) return false;
 
       const rating = Number(destination.nota || 0);
-      return rating >= minimum && rating <= maximum;
+      if (rating < minimum || rating > maximum) return false;
+      if (maxPrice && maxPrice.value !== '') {
+        if (!priceCurrency?.value) return false;
+        if (!destination.moeda || destination.moeda !== priceCurrency.value || destination.preco_passeio == null) return false;
+        if (Number(destination.preco_passeio) > Number(maxPrice.value)) return false;
+      }
+      return true;
     });
 
+    if (sortPrice?.value === 'menor') results.sort((a,b) => (a.preco_passeio ?? Infinity) - (b.preco_passeio ?? Infinity));
+    if (sortPrice?.value === 'maior') results.sort((a,b) => (b.preco_passeio ?? -Infinity) - (a.preco_passeio ?? -Infinity));
     grid.innerHTML = results.map((destination) => createCard(destination, favorites)).join('');
 
     const count = document.getElementById('results-count');
@@ -177,12 +197,17 @@
       category: document.getElementById('category'),
       minRating: document.getElementById('rating-min'),
       maxRating: document.getElementById('rating-max'),
+      maxPrice: document.getElementById('price-max'),
+      priceCurrency: document.getElementById('price-currency'),
+      sortPrice: document.getElementById('price-sort'),
     };
 
     // Permite abrir uma busca compartilhada por endereço, por exemplo ?q=Paris.
     if (controls.search) controls.search.value = parameters.get('q') || '';
     if (controls.minRating) controls.minRating.value = parameters.get('notaMin') || '';
     if (controls.maxRating) controls.maxRating.value = parameters.get('notaMax') || '';
+    if (controls.maxPrice) controls.maxPrice.value = parameters.get('precoMax') || '';
+    if (controls.priceCurrency) controls.priceCurrency.value = parameters.get('moeda') || '';
 
     if (controls.country) {
       [...new Set(destinations.map((destination) => destination.pais))]
@@ -190,6 +215,11 @@
         .forEach((country) => controls.country.add(new Option(country, country)));
       controls.country.value = parameters.get('pais') || '';
     }
+
+    if (controls.priceCurrency) {
+      [...new Set(destinations.map((destination) => destination.moeda).filter(Boolean))].sort().forEach((currency) => controls.priceCurrency.add(new Option(currency, currency)));
+    }
+    if (controls.priceCurrency) controls.priceCurrency.value = parameters.get('moeda') || '';
 
     if (controls.category) {
       [...new Set(destinations.map((destination) => destination.categoria))]
@@ -277,10 +307,13 @@
           <h2>Uma experiência para lembrar.</h2>
           <p class="detail-description">${escapeHtml(destination.descricao)}</p>
           <h3>O que vale conhecer</h3>
+          <div class="price-panel"><span class="eyebrow dark">PREÇO DE REFERÊNCIA DO PASSEIO</span><strong>${escapeHtml(priceLabel(destination))}</strong><small>Moeda local: ${escapeHtml(destination.moeda || 'Não informada')}</small>${destination.fonte_preco ? `<small>Fonte: ${escapeHtml(destination.fonte_preco)}</small>` : ''}${destination.atualizado_em ? `<small>Atualizado em: ${escapeHtml(destination.atualizado_em)}</small>` : ''}</div>
           <div class="attraction-list">
-            ${destination.atracoes.map((attraction, index) => `
-              <div><span>${String(index + 1).padStart(2, '0')}</span><strong>${escapeHtml(attraction)}</strong><span>↗</span></div>
-            `).join('')}
+            ${(destination.passeios?.length ? destination.passeios : destination.atracoes).map((attraction, index) => {
+              const item = typeof attraction === 'string' ? { nome: attraction, preco: null, moeda: destination.moeda } : attraction;
+              const value = item.gratuito || item.preco === 0 ? 'Gratuito' : (item.preco == null ? 'Preço a consultar' : formatPrice(item.preco, item.moeda || destination.moeda));
+              return `<div class="attraction-price-row"><span>${String(index + 1).padStart(2, '0')}</span><strong>${escapeHtml(item.nome)}</strong><small>${escapeHtml(value)}</small></div>`;
+            }).join('')}
           </div>
           <div class="travel-note">
             <span>✦</span>
@@ -308,6 +341,12 @@
 
     const itinerary = readList(STORAGE_KEYS.itinerary);
     const selected = destinations.filter((destination) => itinerary.includes(destination.slug));
+    const totals = selected.reduce((acc, destination) => {
+      if (destination.preco_passeio == null) return acc;
+      const currency = destination.moeda || 'N/A';
+      acc[currency] = (acc[currency] || 0) + Number(destination.preco_passeio);
+      return acc;
+    }, {});
 
     container.innerHTML = selected.map((destination) => `
       <article class="itinerary-item">
@@ -326,6 +365,11 @@
     if (emptyState) emptyState.hidden = selected.length > 0;
     if (count) count.textContent = selected.length + (selected.length === 1 ? ' destino no roteiro' : ' destinos no roteiro');
     if (action) action.hidden = !selected.length;
+    let summary = document.getElementById('itinerary-price-summary');
+    if (!summary) { summary = document.createElement('div'); summary.id = 'itinerary-price-summary'; summary.className = 'price-summary'; container.before(summary); }
+    const totalText = Object.entries(totals).map(([currency,total]) => formatPrice(total,currency)).join(' · ');
+    const unknownCount = selected.filter(item => item.preco_passeio == null).length;
+    summary.innerHTML = `<strong>Estimativa das entradas</strong><p>${totalText || 'Ainda não há preços cadastrados.'}</p><small>${unknownCount ? unknownCount + ' passeio(s) sem preço informado; consulte a fonte oficial.' : 'Soma dos preços cadastrados. Moedas diferentes são exibidas separadamente.'}</small>`;
   }
 
   // Cria um identificador simples para usar no endereço dos lugares adicionados.
@@ -451,6 +495,11 @@
           melhor_epoca: String(values.get('season')).trim() || 'Consulte fontes locais',
           duracao: String(values.get('duration')).trim() || 'A definir',
           nota: Number(values.get('rating') || 0),
+          moeda: String(values.get('currency') || 'USD'),
+          preco_passeio: values.get('free') === 'on' ? 0 : (values.get('price') === '' ? null : Number(values.get('price'))),
+          preco_tipo: values.get('free') === 'on' ? 'gratuito' : (values.get('price') === '' ? 'nao_informado' : 'informado'),
+          fonte_preco: String(values.get('priceSource') || '').trim(),
+          atualizado_em: values.get('free') === 'on' || values.get('price') !== '' ? new Date().toISOString().slice(0,10) : '',
           tags: [String(values.get('tag'))],
           criadoPeloUsuario: true,
         };

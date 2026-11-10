@@ -58,7 +58,7 @@
           Encontre seu próximo destino.
         </h1>
         <p>
-          Combine palavras, tipo de experiência e faixa de nota para encontrar lugares que combinam com você.
+          Explore destinos pelo mundo e encontre passeios de acordo com o preço de entrada. Os valores aparecem na moeda local.
         </p>
       </section>
       <section class="section listing-section">
@@ -80,6 +80,19 @@
             </option>
           </select>
           <label class="rating-field">
+            <span>Preço máximo</span>
+            <input id="price-max" type="number" min="0" step="0.01" placeholder="Valor">
+            <small>Selecione também a moeda</small>
+          </label>
+          <select id="price-currency" aria-label="Moeda do preço">
+            <option value="">Qualquer moeda</option>
+          </select>
+          <select id="price-sort" aria-label="Ordenar por preço">
+            <option value="">Ordenar por relevância</option>
+            <option value="menor">Menor preço primeiro</option>
+            <option value="maior">Maior preço primeiro</option>
+          </select>
+          <label class="rating-field">
             <span>
               Nota mín.
             </span>
@@ -99,7 +112,7 @@
           </a>
         </form>
         <p class="rating-disclaimer">
-          As notas atuais são demonstrativas, não avaliações reais de viajantes.
+          Preços não cadastrados aparecem como “Preço a consultar”. Confira sempre os valores e horários nos canais oficiais.
         </p>
         <p class="results-count" id="results-count">
         </p>
@@ -110,10 +123,10 @@
             ✧
           </span>
           <h2>
-            Nenhum destino corresponde à busca
+            Nenhum destino corresponde aos filtros
           </h2>
           <p>
-            Tente ampliar a faixa de nota ou usar outros termos.
+            Tente mudar o país, a categoria, a moeda ou o valor máximo. Passeios sem preço cadastrado não entram no filtro de preço.
           </p>
           <a class="btn-dark" href="destinos.html">
             Limpar filtros ↗
