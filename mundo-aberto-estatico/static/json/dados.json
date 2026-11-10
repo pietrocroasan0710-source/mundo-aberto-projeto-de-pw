@@ -48,6 +48,45 @@
         "natureza",
         "praia",
         "cidade"
+      ],
+      "moeda": "BRL",
+      "preco_passeio": null,
+      "preco_tipo": "nao_informado",
+      "fonte_preco": "",
+      "atualizado_em": "",
+      "passeios": [
+        {
+          "nome": "Cristo Redentor",
+          "preco": null,
+          "moeda": "BRL",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Pão de Açúcar",
+          "preco": null,
+          "moeda": "BRL",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Praia de Copacabana",
+          "preco": null,
+          "moeda": "BRL",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Jardim Botânico",
+          "preco": null,
+          "moeda": "BRL",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        }
       ]
     },
     {
@@ -77,6 +116,45 @@
         "cultura",
         "cidade",
         "gastronomia"
+      ],
+      "moeda": "EUR",
+      "preco_passeio": null,
+      "preco_tipo": "nao_informado",
+      "fonte_preco": "",
+      "atualizado_em": "",
+      "passeios": [
+        {
+          "nome": "Torre Eiffel",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Museu do Louvre",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Catedral de Notre-Dame",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Montmartre",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        }
       ]
     },
     {
@@ -105,6 +183,45 @@
         "historico",
         "cultura",
         "natureza"
+      ],
+      "moeda": "JPY",
+      "preco_passeio": null,
+      "preco_tipo": "nao_informado",
+      "fonte_preco": "",
+      "atualizado_em": "",
+      "passeios": [
+        {
+          "nome": "Fushimi Inari-taisha",
+          "preco": null,
+          "moeda": "JPY",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Arashiyama",
+          "preco": null,
+          "moeda": "JPY",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Kinkaku-ji",
+          "preco": null,
+          "moeda": "JPY",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Gion",
+          "preco": null,
+          "moeda": "JPY",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        }
       ]
     },
     {
@@ -133,6 +250,45 @@
         "historico",
         "aventura",
         "natureza"
+      ],
+      "moeda": "PEN",
+      "preco_passeio": null,
+      "preco_tipo": "nao_informado",
+      "fonte_preco": "",
+      "atualizado_em": "",
+      "passeios": [
+        {
+          "nome": "Cidadela de Machu Picchu",
+          "preco": null,
+          "moeda": "PEN",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Montanha Huayna Picchu",
+          "preco": null,
+          "moeda": "PEN",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Cusco histórico",
+          "preco": null,
+          "moeda": "PEN",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Vale Sagrado",
+          "preco": null,
+          "moeda": "PEN",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        }
       ]
     },
     {
@@ -160,6 +316,45 @@
         "bonito",
         "natureza",
         "praia"
+      ],
+      "moeda": "EUR",
+      "preco_passeio": null,
+      "preco_tipo": "nao_informado",
+      "fonte_preco": "",
+      "atualizado_em": "",
+      "passeios": [
+        {
+          "nome": "Oia",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Fira",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Praia Vermelha",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Akrotiri",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        }
       ]
     },
     {
@@ -187,6 +382,45 @@
         "cidade",
         "cultura",
         "gastronomia"
+      ],
+      "moeda": "USD",
+      "preco_passeio": null,
+      "preco_tipo": "nao_informado",
+      "fonte_preco": "",
+      "atualizado_em": "",
+      "passeios": [
+        {
+          "nome": "Central Park",
+          "preco": null,
+          "moeda": "USD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Estátua da Liberdade",
+          "preco": null,
+          "moeda": "USD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Times Square",
+          "preco": null,
+          "moeda": "USD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Metropolitan Museum of Art",
+          "preco": null,
+          "moeda": "USD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        }
       ]
     },
     {
@@ -215,6 +449,45 @@
         "aventura",
         "natureza",
         "praia"
+      ],
+      "moeda": "ZAR",
+      "preco_passeio": null,
+      "preco_tipo": "nao_informado",
+      "fonte_preco": "",
+      "atualizado_em": "",
+      "passeios": [
+        {
+          "nome": "Table Mountain",
+          "preco": null,
+          "moeda": "ZAR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "V&A Waterfront",
+          "preco": null,
+          "moeda": "ZAR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Cabo da Boa Esperança",
+          "preco": null,
+          "moeda": "ZAR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Kirstenbosch",
+          "preco": null,
+          "moeda": "ZAR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        }
       ]
     },
     {
@@ -242,6 +515,45 @@
         "bonito",
         "aventura",
         "natureza"
+      ],
+      "moeda": "NZD",
+      "preco_passeio": null,
+      "preco_tipo": "nao_informado",
+      "fonte_preco": "",
+      "atualizado_em": "",
+      "passeios": [
+        {
+          "nome": "Lake Wakatipu",
+          "preco": null,
+          "moeda": "USD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Skyline Queenstown",
+          "preco": null,
+          "moeda": "USD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Glenorchy",
+          "preco": null,
+          "moeda": "USD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Queenstown Gardens",
+          "preco": null,
+          "moeda": "USD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        }
       ]
     },
     {
@@ -270,6 +582,45 @@
         "cultura",
         "gastronomia",
         "cidade"
+      ],
+      "moeda": "EUR",
+      "preco_passeio": null,
+      "preco_tipo": "nao_informado",
+      "fonte_preco": "",
+      "atualizado_em": "",
+      "passeios": [
+        {
+          "nome": "Coliseu",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Fórum Romano",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Fontana di Trevi",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Museus do Vaticano",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        }
       ]
     },
     {
@@ -298,6 +649,45 @@
         "natureza",
         "praia",
         "cultura"
+      ],
+      "moeda": "IDR",
+      "preco_passeio": null,
+      "preco_tipo": "nao_informado",
+      "fonte_preco": "",
+      "atualizado_em": "",
+      "passeios": [
+        {
+          "nome": "Terraços de arroz de Tegallalang",
+          "preco": null,
+          "moeda": "USD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Ubud",
+          "preco": null,
+          "moeda": "USD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Templo de Uluwatu",
+          "preco": null,
+          "moeda": "USD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Floresta dos Macacos",
+          "preco": null,
+          "moeda": "USD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        }
       ]
     },
     {
@@ -325,6 +715,45 @@
         "bonito",
         "natureza",
         "aventura"
+      ],
+      "moeda": "CAD",
+      "preco_passeio": null,
+      "preco_tipo": "nao_informado",
+      "fonte_preco": "",
+      "atualizado_em": "",
+      "passeios": [
+        {
+          "nome": "Lake Louise",
+          "preco": null,
+          "moeda": "CAD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Moraine Lake",
+          "preco": null,
+          "moeda": "CAD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Banff Gondola",
+          "preco": null,
+          "moeda": "CAD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Johnston Canyon",
+          "preco": null,
+          "moeda": "CAD",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        }
       ]
     },
     {
@@ -353,6 +782,45 @@
         "cultura",
         "gastronomia",
         "cidade"
+      ],
+      "moeda": "EUR",
+      "preco_passeio": null,
+      "preco_tipo": "nao_informado",
+      "fonte_preco": "",
+      "atualizado_em": "",
+      "passeios": [
+        {
+          "nome": "Torre de Belém",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Alfama",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Mosteiro dos Jerónimos",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        },
+        {
+          "nome": "Praça do Comércio",
+          "preco": null,
+          "moeda": "EUR",
+          "gratuito": false,
+          "fonte_preco": "",
+          "atualizado_em": ""
+        }
       ]
     }
   ]

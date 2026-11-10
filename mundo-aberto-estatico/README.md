@@ -36,6 +36,9 @@ O arquivo JSON não aceita comentários dentro dele, então esta seção explica
 - `categoria`, `pais`, `cidade` e `continente`: informações usadas nos filtros e na busca.
 - `atracoes`, `melhor_epoca` e `duracao`: conteúdo mostrado na página de detalhes.
 - `nota`: nota demonstrativa de 0 a 5, usada no filtro por faixa.
+- `moeda`: código ISO da moeda local (por exemplo, BRL, EUR ou JPY).
+- `preco_passeio`: preço de referência da atração principal; use `null` quando não houver valor confirmado.
+- `passeios`: lista estruturada de atrações, cada uma com nome, preço, moeda, fonte e data de atualização.
 - `tags`: temas usados pela busca semântica, como `bonito`, `historico`, `natureza`, `aventura` e `gastronomia`.
 
 Ao adicionar um destino, mantenha os mesmos campos dos destinos existentes e use uma nota entre 0 e 5.
@@ -55,3 +58,12 @@ Esse cadastro não altera `static/json/dados.json`, não sincroniza com outros n
 - As páginas usam uma Política de Segurança de Conteúdo que bloqueia scripts externos e limita a origem das imagens e estilos.
 
 Essas medidas ajudam a reduzir riscos no navegador, mas não tornam o conteúdo local confiável para outras pessoas. Como não existe servidor, cada pessoa pode alterar seus próprios dados do navegador. Para receber cadastros compartilhados com garantias mais fortes, o projeto precisaria de backend e regras de validação no servidor. A hospedagem também deve enviar cabeçalhos de segurança próprios para reforçar a política configurada nas páginas.
+
+
+## Guia por preço de passeios
+
+O catálogo agora prevê `moeda`, `preco_passeio`, `preco_tipo`, `fonte_preco` e `atualizado_em` em cada destino, além de uma estrutura `passeios` para evoluir os preços por atração. Os preços antigos não foram inventados: quando não há valor confirmado, o site mostra “Preço a consultar”.
+
+Na página Explorar, é possível filtrar por preço máximo e moeda e ordenar pelos valores cadastrados. A página de roteiro soma preços conhecidos separadamente por moeda, sem misturar moedas diferentes. O formulário de cadastro aceita preço, moeda e fonte do preço.
+
+**Limitação da versão estática:** favoritos, roteiros e lugares adicionados ficam no `localStorage` do navegador e não são sincronizados entre dispositivos. Para cadastro compartilhado e atualização automática de preços, será necessário um backend/API.
