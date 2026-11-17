@@ -50,7 +50,7 @@
         "cidade"
       ],
       "moeda": "BRL",
-      "preco_passeio": 50000,
+      "preco_passeio": null,
       "preco_tipo": "nao_informado",
       "fonte_preco": "",
       "atualizado_em": "",

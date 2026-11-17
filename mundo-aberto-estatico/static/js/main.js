@@ -111,74 +111,128 @@
     setTimeout(() => container.remove(), 2800);
   }
 
-  // Converte variações com e sem acento para a mesma forma de busca.
+  // Normaliza acentos, pontuação e espaços para tornar a busca mais tolerante.
   function normalizeText(value) {
-    return value
+    return String(value ?? '')
       .toLocaleLowerCase('pt-BR')
       .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '');
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim()
+      .replace(/\s+/g, ' ');
   }
 
-  // Palavras relacionadas ajudam a busca a entender pedidos como “lugares bonitos”.
-  const searchSynonyms = {
-    bonito: ['bonito', 'bonita', 'bonitos', 'bonitas', 'lindo', 'linda', 'lindos', 'lindas', 'belo', 'bela', 'beleza', 'paisagem', 'paisagens', 'beautiful'],
-    historico: ['historico', 'historica', 'historicos', 'historicas', 'historia', 'cultura', 'cultural', 'antigo', 'antiga', 'historical'],
-    natureza: ['natureza', 'natural', 'praia', 'praias', 'montanha', 'montanhas', 'floresta', 'lago', 'trilha'],
-    aventura: ['aventura', 'aventuras', 'ao', 'ar', 'livre', 'trilha'],
-    gastronomia: ['comida', 'gastronomia', 'culinaria', 'restaurante'],
-  };
-  const fillerWords = new Set(['lugar', 'lugares', 'destino', 'destinos', 'de', 'do', 'da', 'dos', 'das', 'para', 'com']);
+  const STOP_WORDS = new Set([
+    'a', 'o', 'as', 'os', 'um', 'uma', 'uns', 'umas', 'de', 'do', 'da', 'dos', 'das',
+    'em', 'no', 'na', 'nos', 'nas', 'para', 'por', 'com', 'que', 'e', 'ou', 'me',
+    'lembre', 'lembrem', 'pareca', 'parecem', 'tipo', 'estilo', 'como', 'lugares',
+    'lugar', 'destino', 'destinos', 'quero', 'ver', 'conhecer', 'encontrar', 'um', 'uma'
+  ]);
 
-  function matchesSearch(destination, words) {
-    if (!words.length) return true;
+  // Cada intenção representa uma ideia, não apenas uma palavra exata.
+  // Os termos são comparados com tags, descrições, atrações e o campo opcional "busca" do JSON.
+  const SEARCH_INTENTS = [
+    { id: 'retro', triggers: ['anos 80', '1980', '80s', 'oitenta', 'retro', 'retro anos 80', 'vintage'], terms: ['retro', 'anos 80', '1980', '80s', 'vintage', 'art deco', 'carros classicos', 'neon antigo'] },
+    { id: 'rio-like', triggers: ['parecido com rio', 'parecem o rio', 'lembra o rio', 'estilo rio', 'rio de janeiro', 'paisagem do rio'], terms: ['parecido rio', 'semelhante rio', 'montanhas junto ao mar', 'cidade costeira', 'praias urbanas', 'morros', 'baia'] },
+    { id: 'medieval', triggers: ['medieval', 'idade media', 'castelos', 'castelo', 'cidade medieval'], terms: ['medieval', 'castelo', 'muralha', 'cidade antiga', 'idade media', 'arquitetura gotica', 'ruas de pedra'] },
+    { id: 'snow', triggers: ['neve', 'com neve', 'lugares frios', 'inverno', 'gelado', 'geleiras'], terms: ['neve', 'inverno', 'geleira', 'glaciar', 'montanha nevada', 'esqui', 'frio'] },
+    { id: 'other-planet', triggers: ['outro planeta', 'parece outro planeta', 'extraterrestre', 'marte', 'lunar', 'alienigena'], terms: ['outro planeta', 'paisagem surreal', 'formacoes rochosas', 'deserto', 'vulcanico', 'lunar', 'extraterrestre'] },
+    { id: 'futuristic', triggers: ['futurista', 'cyberpunk', 'tecnologico', 'neon', 'futuro'], terms: ['futurista', 'cyberpunk', 'neon', 'tecnologia', 'arranha ceus', 'cidade iluminada'] },
+    { id: 'beach', triggers: ['praia', 'praias', 'mar', 'litoral', 'tropical'], terms: ['praia', 'praias', 'mar', 'litoral', 'ilha', 'areia', 'oceano'] },
+    { id: 'nature', triggers: ['natureza', 'natural', 'floresta', 'montanhas', 'montanha', 'cachoeira'], terms: ['natureza', 'floresta', 'montanha', 'cachoeira', 'lago', 'parque nacional', 'trilha'] },
+    { id: 'historic', triggers: ['historico', 'historica', 'historia', 'cultura', 'antigo', 'antiga'], terms: ['historico', 'historia', 'cultura', 'antigo', 'monumento', 'museu', 'arquitetura'] },
+    { id: 'colorful', triggers: ['colorido', 'colorida', 'coloridas', 'cores', 'cheio de cores'], terms: ['colorido', 'colorida', 'casas coloridas', 'arte urbana', 'fachadas coloridas'] },
+    { id: 'romantic', triggers: ['romantico', 'romantica', 'casal', 'lua de mel'], terms: ['romantico', 'romantica', 'casal', 'por do sol', 'lua de mel'] },
+  ];
 
-    const searchableText = normalizeText([
+  function getDestinationSearchText(destination) {
+    return normalizeText([
       destination.nome,
       destination.cidade,
       destination.pais,
-      destination.descricao,
-      destination.categoria,
       destination.continente,
+      destination.categoria,
+      destination.resumo,
+      destination.descricao,
+      ...(destination.atracoes || []),
       ...(destination.tags || []),
+      ...(destination.busca || []),
     ].join(' '));
-    const tags = destination.tags || [];
-    const hasSemanticMatch = Object.entries(searchSynonyms).some(([tag, synonyms]) =>
-      synonyms.some((word) => words.includes(word)) && tags.includes(tag)
-    );
-    const knownSynonyms = new Set(Object.values(searchSynonyms).flat());
-    const remainingWords = words.filter((word) => !knownSynonyms.has(word) && !fillerWords.has(word));
-
-    // Termos adicionais, como o nome de uma cidade, ainda precisam combinar com o destino.
-    return remainingWords.every((word) => searchableText.includes(word))
-      && (hasSemanticMatch || words.every((word) => searchableText.includes(word)));
   }
 
-  // Filtra a lista e atualiza os cartões e a mensagem de resultados.
+  function getSearchIntents(query) {
+    const normalized = normalizeText(query);
+    return SEARCH_INTENTS.filter((intent) =>
+      intent.triggers.some((trigger) => normalized.includes(normalizeText(trigger)))
+    );
+  }
+
+  function scoreDestination(destination, query) {
+    const normalizedQuery = normalizeText(query);
+    if (!normalizedQuery) return 1;
+
+    const text = getDestinationSearchText(destination);
+    const words = normalizedQuery.split(' ').filter((word) => word && !STOP_WORDS.has(word));
+    let score = 0;
+
+    // Correspondências exatas no nome, cidade e país têm prioridade.
+    const name = normalizeText(destination.nome);
+    const city = normalizeText(destination.cidade);
+    const country = normalizeText(destination.pais);
+    if (name === normalizedQuery) score += 100;
+    else if (name.includes(normalizedQuery)) score += 65;
+    if (city.includes(normalizedQuery)) score += 45;
+    if (country.includes(normalizedQuery)) score += 35;
+
+    // Não exige que todas as palavras apareçam: a busca pode encontrar resultados relacionados.
+    words.forEach((word) => {
+      if (text.includes(word)) score += word.length >= 5 ? 9 : 5;
+    });
+
+    // Intenções semânticas dão prioridade a destinos preparados com tags/descrições relacionadas.
+    getSearchIntents(normalizedQuery).forEach((intent) => {
+      const matchedTerms = intent.terms.filter((term) => text.includes(normalizeText(term)));
+      if (matchedTerms.length) score += 24 + Math.min(matchedTerms.length, 4) * 5;
+      if ((destination.tags || []).map(normalizeText).includes(intent.id)) score += 35;
+    });
+
+    // Um destino sem nenhuma relação não aparece só porque a consulta contém palavras genéricas.
+    return score;
+  }
+
+  // Filtra, ordena por relevância e atualiza os cartões e a mensagem de resultados.
   function renderDestinations(destinations, grid, controls, favorites, onlyFavorites) {
     const { search, country, category, minRating, maxRating, maxPrice, priceCurrency, sortPrice } = controls;
-    const words = normalizeText(search?.value || '').trim().split(/\s+/).filter(Boolean);
+    const query = search?.value || '';
     const minimum = minRating?.value === '' || !minRating ? 0 : Number(minRating.value);
     const maximum = maxRating?.value === '' || !maxRating ? 5 : Number(maxRating.value);
 
-    const results = destinations.filter((destination) => {
-      if (onlyFavorites && !favorites.includes(destination.slug)) return false;
-      if (!matchesSearch(destination, words)) return false;
-      if (country?.value && destination.pais !== country.value) return false;
-      if (category?.value && destination.categoria !== category.value) return false;
+    let results = destinations
+      .map((destination) => ({ destination, score: scoreDestination(destination, query) }))
+      .filter(({ destination, score }) => {
+        if (onlyFavorites && !favorites.includes(destination.slug)) return false;
+        if (normalizeText(query) && score <= 0) return false;
+        if (country?.value && destination.pais !== country.value) return false;
+        if (category?.value && destination.categoria !== category.value) return false;
 
-      const rating = Number(destination.nota || 0);
-      if (rating < minimum || rating > maximum) return false;
-      if (maxPrice && maxPrice.value !== '') {
-        if (!priceCurrency?.value) return false;
-        if (!destination.moeda || destination.moeda !== priceCurrency.value || destination.preco_passeio == null) return false;
-        if (Number(destination.preco_passeio) > Number(maxPrice.value)) return false;
-      }
-      return true;
-    });
+        const rating = Number(destination.nota || 0);
+        if (rating < minimum || rating > maximum) return false;
+        if (maxPrice && maxPrice.value !== '') {          if (!priceCurrency?.value) return false;
+          if (!destination.moeda || destination.moeda !== priceCurrency.value || destination.preco_passeio == null) return false;
+          if (Number(destination.preco_passeio) > Number(maxPrice.value)) return false;
+        }
+        return true;
+      });
 
-    if (sortPrice?.value === 'menor') results.sort((a,b) => (a.preco_passeio ?? Infinity) - (b.preco_passeio ?? Infinity));
-    if (sortPrice?.value === 'maior') results.sort((a,b) => (b.preco_passeio ?? -Infinity) - (a.preco_passeio ?? -Infinity));
-    grid.innerHTML = results.map((destination) => createCard(destination, favorites)).join('');
+    if (sortPrice?.value === 'menor') {
+      results.sort((a, b) => (a.destination.preco_passeio ?? Infinity) - (b.destination.preco_passeio ?? Infinity));
+    } else if (sortPrice?.value === 'maior') {
+      results.sort((a, b) => (b.destination.preco_passeio ?? -Infinity) - (a.destination.preco_passeio ?? -Infinity));
+    } else if (normalizeText(query)) {
+      results.sort((a, b) => b.score - a.score);
+    }
+
+    grid.innerHTML = results.map(({ destination }) => createCard(destination, favorites)).join('');
 
     const count = document.getElementById('results-count');
     const emptyState = document.getElementById('empty-state');
@@ -402,9 +456,7 @@
 
   // Reabre e regrava a foto como JPEG, removendo conteúdo ativo e metadados do arquivo original.
   async function prepareSafeImage(file) {
-    if (!file) return '';
-
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+    if (!file) return '';    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
     if (!allowedTypes.includes(file.type)) {
       throw new Error('Escolha uma imagem JPEG, PNG ou WebP. SVG e outros formatos não são aceitos.');
     }
