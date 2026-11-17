@@ -203,7 +203,11 @@
   // Filtra, ordena por relevância e atualiza os cartões e a mensagem de resultados.
   function renderDestinations(destinations, grid, controls, favorites, onlyFavorites) {
     const { search, country, category, minRating, maxRating, maxPrice, priceCurrency, sortPrice } = controls;
+ HEAD
     const query = search?.value || '';
+
+    const words = normalizeText(search?.value || '').trim().split(/\s+/).filter(Boolean);
+
     const minimum = minRating?.value === '' || !minRating ? 0 : Number(minRating.value);
     const maximum = maxRating?.value === '' || !maxRating ? 5 : Number(maxRating.value);
 
@@ -215,6 +219,7 @@
         if (country?.value && destination.pais !== country.value) return false;
         if (category?.value && destination.categoria !== category.value) return false;
 
+      HEAD
         const rating = Number(destination.nota || 0);
         if (rating < minimum || rating > maximum) return false;
         if (maxPrice && maxPrice.value !== '') {          if (!priceCurrency?.value) return false;
@@ -234,11 +239,26 @@
 
     grid.innerHTML = results.map(({ destination }) => createCard(destination, favorites)).join('');
 
+      const rating = Number(destination.nota || 0);
+      if (rating < minimum || rating > maximum) return false;
+      if (maxPrice && maxPrice.value !== '') {
+        if (!priceCurrency?.value) return false;
+        if (!destination.moeda || destination.moeda !== priceCurrency.value || destination.preco_passeio == null) return false;
+        if (Number(destination.preco_passeio) > Number(maxPrice.value)) return false;
+      }
+      return true;
+    };
+
+    if (sortPrice?.value === 'menor') results.sort((a,b) => (a.preco_passeio ?? Infinity) - (b.preco_passeio ?? Infinity));
+    if (sortPrice?.value === 'maior') results.sort((a,b) => (b.preco_passeio ?? -Infinity) - (a.preco_passeio ?? -Infinity));
+    grid.innerHTML = results.map((destination) => createCard(destination, favorites)).join('');
+
+
     const count = document.getElementById('results-count');
     const emptyState = document.getElementById('empty-state');
     if (count) count.textContent = results.length + (results.length === 1 ? ' destino encontrado' : ' destinos encontrados');
     if (emptyState) emptyState.hidden = results.length > 0;
-  }
+  
 
   function initializeListing(destinations) {
     const grid = document.getElementById('destination-grid');
