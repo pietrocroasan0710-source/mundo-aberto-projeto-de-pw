@@ -1385,6 +1385,159 @@ button{
   margin:0 12px
 }
 
+/* pagina de comparação */
+.compare-results{
+  margin-bottom:56px
+}
+.compare-result .card-image{
+  height:210px
+}
+.compare-result .card-price{
+  font:800 14px Manrope,sans-serif;
+  color:var(--ink);
+  margin:0 0 6px
+}
+.btn-compare{
+  border:1px solid var(--ink);
+  background:var(--ink);
+  color:#fff;
+  border-radius:10px;
+  padding:9px 14px;
+  font-size:11px;
+  font-weight:700;
+  transition:background .2s,border .2s,color .2s
+}
+.btn-compare:hover{
+  background:var(--orange);
+  border-color:var(--orange)
+}
+.btn-compare.is-selected{
+  background:var(--teal);
+  border-color:var(--teal);
+  color:var(--navy)
+}
+.btn-compare.is-selected:hover{
+  background:#fff5f0;
+  border-color:#e9b4a3;
+  color:#b55d4c
+}
+
+/* Área da comparação */
+.compare-section{
+  margin-top:48px;
+  padding-top:40px;
+  border-top:1px solid var(--line)
+}
+.compare-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:26px
+}
+.compare-header h2{
+  font:800 32px Manrope,sans-serif;
+  letter-spacing:-1px;
+  margin:6px 0 8px
+}
+.compare-header .results-count{
+  margin:0
+}
+
+/* Destinos lado a lado */
+.compare-grid{
+  display:grid;
+  grid-template-columns:repeat(var(--cols,1),minmax(260px,1fr));
+  gap:20px;
+  align-items:start;
+  overflow-x:auto;
+  padding-bottom:14px
+}
+.compare-grid[data-count="1"]{
+  grid-template-columns:minmax(260px,380px)
+}
+.compare-grid[data-count="2"]{
+  grid-template-columns:repeat(2,minmax(260px,430px))
+}
+
+.compare-card{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:14px;
+  animation:cardUp .55s both
+}
+.compare-card.is-best{
+  border-color:var(--orange);
+  box-shadow:0 12px 35px #e8795218
+}
+.compare-card .remove-btn{
+  align-self:flex-end;
+  padding:0 0 10px
+}
+.compare-card .remove-btn:hover{
+  text-decoration:underline
+}
+.compare-card .card-image{
+  height:190px
+}
+.compare-card .card-info{
+  padding:15px 3px 0
+}
+.compare-card .card-info h3{
+  font-size:21px
+}
+.compare-card .price-panel{
+  margin:18px 0 0;
+  padding:16px 18px
+}
+.compare-card .aside-meta{
+  margin-top:16px;
+  padding-top:14px
+}
+.compare-card h4{
+  font:800 13px Manrope,sans-serif;
+  letter-spacing:-.2px;
+  margin:22px 0 8px
+}
+.compare-card .attraction-price-row{
+  grid-template-columns:30px minmax(0,1fr) auto;
+  padding:11px 0;
+  font-size:12px
+}
+.compare-card .btn-outline{
+  margin-top:20px
+}
+.best-badge{
+  justify-self:start;
+  background:var(--teal);
+  color:var(--navy);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.3px;
+  padding:3px 10px;
+  border-radius:99px
+}
+
+@media(max-width:720px){
+  .compare-header h2{
+    font-size:26px
+  }
+  .compare-grid,
+  .compare-grid[data-count="1"],
+  .compare-grid[data-count="2"]{
+    grid-template-columns:repeat(var(--cols,1),minmax(250px,82%));
+    scroll-snap-type:x mandatory
+  }
+  .compare-card{
+    scroll-snap-align:start
+  }
+}
+
 /* Formulário e lista pessoal da página para adicionar destinos. */
 .add-place-section{padding-top:55px;padding-bottom:55px}
 .add-place-form{max-width:900px;margin:0 auto;padding:30px;background:var(--paper);border:1px solid var(--line);border-radius:16px}
