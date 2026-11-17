@@ -256,8 +256,7 @@
       "preco_tipo": "nao_informado",
       "fonte_preco": "",
       "atualizado_em": "",
-      "passeios": [
-        {
+      "passeios": [        {
           "nome": "Cidadela de Machu Picchu",
           "preco": null,
           "moeda": "PEN",
@@ -517,8 +516,7 @@
         "natureza"
       ],
       "moeda": "NZD",
-      "preco_passeio": null,
-      "preco_tipo": "nao_informado",
+      "preco_passeio": null,      "preco_tipo": "nao_informado",
       "fonte_preco": "",
       "atualizado_em": "",
       "passeios": [

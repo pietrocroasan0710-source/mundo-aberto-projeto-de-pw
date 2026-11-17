@@ -10,7 +10,6 @@
     userDestinations: 'mundoAberto.lugaresAdicionados',
   };
 
-  // Lê uma lista do localStorage e recupera uma lista vazia se o conteúdo estiver inválido.
   function readList(key) {
     try {
       const value = JSON.parse(localStorage.getItem(key) || '[]');
@@ -20,12 +19,10 @@
     }
   }
 
-  // Salva favoritos ou roteiro localmente, sem tentar alterar o arquivo JSON do projeto.
   function saveList(key, list) {
     localStorage.setItem(key, JSON.stringify(list));
   }
 
-  // Escapa texto vindo dos dados antes de inseri-lo no HTML.
   function escapeHtml(value) {
     const characters = {
       '&': '&amp;',
@@ -44,21 +41,28 @@
 
   function formatPrice(value, currency) {
     if (value === null || value === undefined || value === '') return 'Preço não informado';
-    try { return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: currency || 'USD' }).format(Number(value)); }
-    catch { return Number(value).toFixed(2) + ' ' + (currency || ''); }
+    try {
+      return new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: currency || 'USD'
+      }).format(Number(value));
+    } catch {
+      return Number(value).toFixed(2) + ' ' + (currency || '');
+    }
   }
 
   function priceLabel(destination) {
     if (destination.preco_tipo === 'gratuito' || destination.preco_passeio === 0) return 'Gratuito';
-    return destination.preco_passeio == null ? 'Preço a consultar' : 'A partir de ' + formatPrice(destination.preco_passeio, destination.moeda);
+    return destination.preco_passeio == null
+      ? 'Preço a consultar'
+      : 'A partir de ' + formatPrice(destination.preco_passeio, destination.moeda);
   }
 
-  // Cria um cartão reutilizável para a página inicial, resultados e favoritos.
   function createCard(destination, favorites) {
     const isFavorite = favorites.includes(destination.slug);
 
     return `
-      <article class="destination-card reveal">
+      <article class="destination-card reveal visivel">
         <a class="card-image" href="${detailUrl(destination.slug)}">
           <img src="${escapeHtml(destination.imagem)}" alt="Paisagem de ${escapeHtml(destination.nome)}" loading="lazy">
           <span class="card-country">${escapeHtml(destination.emoji)} ${escapeHtml(destination.pais)}</span>
@@ -80,7 +84,6 @@
       </article>`;
   }
 
-  // Controla o menu compacto e atualiza a quantidade de destinos no roteiro.
   function initializeMenu() {
     const button = document.getElementById('menuToggle');
     const menu = document.getElementById('menu');
@@ -111,7 +114,6 @@
     setTimeout(() => container.remove(), 2800);
   }
 
-  // Normaliza acentos, pontuação e espaços para tornar a busca mais tolerante.
   function normalizeText(value) {
     return String(value ?? '')
       .toLocaleLowerCase('pt-BR')
@@ -129,20 +131,62 @@
     'lugar', 'destino', 'destinos', 'quero', 'ver', 'conhecer', 'encontrar', 'um', 'uma'
   ]);
 
-  // Cada intenção representa uma ideia, não apenas uma palavra exata.
-  // Os termos são comparados com tags, descrições, atrações e o campo opcional "busca" do JSON.
   const SEARCH_INTENTS = [
-    { id: 'retro', triggers: ['anos 80', '1980', '80s', 'oitenta', 'retro', 'retro anos 80', 'vintage'], terms: ['retro', 'anos 80', '1980', '80s', 'vintage', 'art deco', 'carros classicos', 'neon antigo'] },
-    { id: 'rio-like', triggers: ['parecido com rio', 'parecem o rio', 'lembra o rio', 'estilo rio', 'rio de janeiro', 'paisagem do rio'], terms: ['parecido rio', 'semelhante rio', 'montanhas junto ao mar', 'cidade costeira', 'praias urbanas', 'morros', 'baia'] },
-    { id: 'medieval', triggers: ['medieval', 'idade media', 'castelos', 'castelo', 'cidade medieval'], terms: ['medieval', 'castelo', 'muralha', 'cidade antiga', 'idade media', 'arquitetura gotica', 'ruas de pedra'] },
-    { id: 'snow', triggers: ['neve', 'com neve', 'lugares frios', 'inverno', 'gelado', 'geleiras'], terms: ['neve', 'inverno', 'geleira', 'glaciar', 'montanha nevada', 'esqui', 'frio'] },
-    { id: 'other-planet', triggers: ['outro planeta', 'parece outro planeta', 'extraterrestre', 'marte', 'lunar', 'alienigena'], terms: ['outro planeta', 'paisagem surreal', 'formacoes rochosas', 'deserto', 'vulcanico', 'lunar', 'extraterrestre'] },
-    { id: 'futuristic', triggers: ['futurista', 'cyberpunk', 'tecnologico', 'neon', 'futuro'], terms: ['futurista', 'cyberpunk', 'neon', 'tecnologia', 'arranha ceus', 'cidade iluminada'] },
-    { id: 'beach', triggers: ['praia', 'praias', 'mar', 'litoral', 'tropical'], terms: ['praia', 'praias', 'mar', 'litoral', 'ilha', 'areia', 'oceano'] },
-    { id: 'nature', triggers: ['natureza', 'natural', 'floresta', 'montanhas', 'montanha', 'cachoeira'], terms: ['natureza', 'floresta', 'montanha', 'cachoeira', 'lago', 'parque nacional', 'trilha'] },
-    { id: 'historic', triggers: ['historico', 'historica', 'historia', 'cultura', 'antigo', 'antiga'], terms: ['historico', 'historia', 'cultura', 'antigo', 'monumento', 'museu', 'arquitetura'] },
-    { id: 'colorful', triggers: ['colorido', 'colorida', 'coloridas', 'cores', 'cheio de cores'], terms: ['colorido', 'colorida', 'casas coloridas', 'arte urbana', 'fachadas coloridas'] },
-    { id: 'romantic', triggers: ['romantico', 'romantica', 'casal', 'lua de mel'], terms: ['romantico', 'romantica', 'casal', 'por do sol', 'lua de mel'] },
+    {
+      id: 'retro',
+      triggers: ['anos 80', '1980', '80s', 'oitenta', 'retro', 'retro anos 80', 'vintage'],
+      terms: ['retro', 'anos 80', '1980', '80s', 'vintage', 'art deco', 'carros classicos', 'neon antigo']
+    },
+    {
+      id: 'rio-like',
+      triggers: ['parecido com rio', 'parecem o rio', 'lembra o rio', 'estilo rio', 'rio de janeiro', 'paisagem do rio'],
+      terms: ['parecido rio', 'semelhante rio', 'montanhas junto ao mar', 'cidade costeira', 'praias urbanas', 'morros', 'baia']
+    },
+    {
+      id: 'medieval',
+      triggers: ['medieval', 'idade media', 'castelos', 'castelo', 'cidade medieval'],
+      terms: ['medieval', 'castelo', 'muralha', 'cidade antiga', 'idade media', 'arquitetura gotica', 'ruas de pedra']
+    },
+    {
+      id: 'snow',
+      triggers: ['neve', 'com neve', 'lugares frios', 'inverno', 'gelado', 'geleiras'],
+      terms: ['neve', 'inverno', 'geleira', 'glaciar', 'montanha nevada', 'esqui', 'frio']
+    },
+    {
+      id: 'other-planet',
+      triggers: ['outro planeta', 'parece outro planeta', 'extraterrestre', 'marte', 'lunar', 'alienigena'],
+      terms: ['outro planeta', 'paisagem surreal', 'formacoes rochosas', 'deserto', 'vulcanico', 'lunar', 'extraterrestre']
+    },
+    {
+      id: 'futuristic',
+      triggers: ['futurista', 'cyberpunk', 'tecnologico', 'neon', 'futuro'],
+      terms: ['futurista', 'cyberpunk', 'neon', 'tecnologia', 'arranha ceus', 'cidade iluminada']
+    },
+    {
+      id: 'beach',
+      triggers: ['praia', 'praias', 'mar', 'litoral', 'tropical'],
+      terms: ['praia', 'praias', 'mar', 'litoral', 'ilha', 'areia', 'oceano']
+    },
+    {
+      id: 'nature',
+      triggers: ['natureza', 'natural', 'floresta', 'montanhas', 'montanha', 'cachoeira'],
+      terms: ['natureza', 'floresta', 'montanha', 'cachoeira', 'lago', 'parque nacional', 'trilha']
+    },
+    {
+      id: 'historic',
+      triggers: ['historico', 'historica', 'historia', 'cultura', 'antigo', 'antiga'],
+      terms: ['historico', 'historia', 'cultura', 'antigo', 'monumento', 'museu', 'arquitetura']
+    },
+    {
+      id: 'colorful',
+      triggers: ['colorido', 'colorida', 'coloridas', 'cores', 'cheio de cores'],
+      terms: ['colorido', 'colorida', 'casas coloridas', 'arte urbana', 'fachadas coloridas']
+    },
+    {
+      id: 'romantic',
+      triggers: ['romantico', 'romantica', 'casal', 'lua de mel'],
+      terms: ['romantico', 'romantica', 'casal', 'por do sol', 'lua de mel']
+    },
   ];
 
   function getDestinationSearchText(destination) {
@@ -175,57 +219,54 @@
     const words = normalizedQuery.split(' ').filter((word) => word && !STOP_WORDS.has(word));
     let score = 0;
 
-    // Correspondências exatas no nome, cidade e país têm prioridade.
     const name = normalizeText(destination.nome);
     const city = normalizeText(destination.cidade);
     const country = normalizeText(destination.pais);
+
     if (name === normalizedQuery) score += 100;
     else if (name.includes(normalizedQuery)) score += 65;
     if (city.includes(normalizedQuery)) score += 45;
     if (country.includes(normalizedQuery)) score += 35;
 
-    // Não exige que todas as palavras apareçam: a busca pode encontrar resultados relacionados.
     words.forEach((word) => {
       if (text.includes(word)) score += word.length >= 5 ? 9 : 5;
     });
 
-    // Intenções semânticas dão prioridade a destinos preparados com tags/descrições relacionadas.
     getSearchIntents(normalizedQuery).forEach((intent) => {
       const matchedTerms = intent.terms.filter((term) => text.includes(normalizeText(term)));
       if (matchedTerms.length) score += 24 + Math.min(matchedTerms.length, 4) * 5;
       if ((destination.tags || []).map(normalizeText).includes(intent.id)) score += 35;
     });
 
-    // Um destino sem nenhuma relação não aparece só porque a consulta contém palavras genéricas.
     return score;
   }
 
-  // Filtra, ordena por relevância e atualiza os cartões e a mensagem de resultados.
   function renderDestinations(destinations, grid, controls, favorites, onlyFavorites) {
     const { search, country, category, minRating, maxRating, maxPrice, priceCurrency, sortPrice } = controls;
- HEAD
     const query = search?.value || '';
-
-    const words = normalizeText(search?.value || '').trim().split(/\s+/).filter(Boolean);
-
     const minimum = minRating?.value === '' || !minRating ? 0 : Number(minRating.value);
     const maximum = maxRating?.value === '' || !maxRating ? 5 : Number(maxRating.value);
 
     let results = destinations
-      .map((destination) => ({ destination, score: scoreDestination(destination, query) }))
+      .map((destination) => ({
+        destination,
+        score: scoreDestination(destination, query)
+      }))
       .filter(({ destination, score }) => {
         if (onlyFavorites && !favorites.includes(destination.slug)) return false;
         if (normalizeText(query) && score <= 0) return false;
         if (country?.value && destination.pais !== country.value) return false;
         if (category?.value && destination.categoria !== category.value) return false;
 
-      HEAD
         const rating = Number(destination.nota || 0);
         if (rating < minimum || rating > maximum) return false;
-        if (maxPrice && maxPrice.value !== '') {          if (!priceCurrency?.value) return false;
+
+        if (maxPrice && maxPrice.value !== '') {
+          if (!priceCurrency?.value) return false;
           if (!destination.moeda || destination.moeda !== priceCurrency.value || destination.preco_passeio == null) return false;
           if (Number(destination.preco_passeio) > Number(maxPrice.value)) return false;
         }
+
         return true;
       });
 
@@ -237,28 +278,19 @@
       results.sort((a, b) => b.score - a.score);
     }
 
-    grid.innerHTML = results.map(({ destination }) => createCard(destination, favorites)).join('');
-
-      const rating = Number(destination.nota || 0);
-      if (rating < minimum || rating > maximum) return false;
-      if (maxPrice && maxPrice.value !== '') {
-        if (!priceCurrency?.value) return false;
-        if (!destination.moeda || destination.moeda !== priceCurrency.value || destination.preco_passeio == null) return false;
-        if (Number(destination.preco_passeio) > Number(maxPrice.value)) return false;
-      }
-      return true;
-    };
-
-    if (sortPrice?.value === 'menor') results.sort((a,b) => (a.preco_passeio ?? Infinity) - (b.preco_passeio ?? Infinity));
-    if (sortPrice?.value === 'maior') results.sort((a,b) => (b.preco_passeio ?? -Infinity) - (a.preco_passeio ?? -Infinity));
-    grid.innerHTML = results.map((destination) => createCard(destination, favorites)).join('');
-
+    grid.innerHTML = results
+      .map(({ destination }) => createCard(destination, favorites))
+      .join('');
 
     const count = document.getElementById('results-count');
     const emptyState = document.getElementById('empty-state');
-    if (count) count.textContent = results.length + (results.length === 1 ? ' destino encontrado' : ' destinos encontrados');
+
+    if (count) {
+      count.textContent = results.length + (results.length === 1 ? ' destino encontrado' : ' destinos encontrados');
+    }
+
     if (emptyState) emptyState.hidden = results.length > 0;
-  
+  }
 
   function initializeListing(destinations) {
     const grid = document.getElementById('destination-grid');
@@ -276,7 +308,6 @@
       sortPrice: document.getElementById('price-sort'),
     };
 
-    // Permite abrir uma busca compartilhada por endereço, por exemplo ?q=Paris.
     if (controls.search) controls.search.value = parameters.get('q') || '';
     if (controls.minRating) controls.minRating.value = parameters.get('notaMin') || '';
     if (controls.maxRating) controls.maxRating.value = parameters.get('notaMax') || '';
@@ -291,8 +322,11 @@
     }
 
     if (controls.priceCurrency) {
-      [...new Set(destinations.map((destination) => destination.moeda).filter(Boolean))].sort().forEach((currency) => controls.priceCurrency.add(new Option(currency, currency)));
+      [...new Set(destinations.map((destination) => destination.moeda).filter(Boolean))]
+        .sort()
+        .forEach((currency) => controls.priceCurrency.add(new Option(currency, currency)));
     }
+
     if (controls.priceCurrency) controls.priceCurrency.value = parameters.get('moeda') || '';
 
     if (controls.category) {
@@ -303,6 +337,7 @@
     }
 
     const onlyFavorites = grid.hasAttribute('data-favorites-only');
+
     const updateResults = () => renderDestinations(
       destinations,
       grid,
@@ -312,6 +347,7 @@
     );
 
     updateResults();
+
     Object.values(controls).filter(Boolean).forEach((control) => {
       if (control.dataset.bound) return;
       control.dataset.bound = 'true';
@@ -344,14 +380,13 @@
 
     showNextLandscape();
     setInterval(showNextLandscape, 6000);
-  }
-
-  function initializeDetails(destinations) {
+  }  function initializeDetails(destinations) {
     const container = document.getElementById('detail-root');
     if (!container) return;
 
     const slug = new URLSearchParams(location.search).get('slug');
     const destination = destinations.find((item) => item.slug === slug);
+
     if (!destination) {
       container.innerHTML = '<section class="error-state"><p class="eyebrow dark">404</p><h1>Destino não encontrado</h1><a class="btn-dark" href="destinos.html">Ver destinos ↗</a></section>';
       return;
@@ -361,6 +396,7 @@
     const itinerary = readList(STORAGE_KEYS.itinerary);
     const isFavorite = favorites.includes(destination.slug);
     const isPlanned = itinerary.includes(destination.slug);
+
     document.title = destination.nome + ' — Mundo Aberto';
 
     container.innerHTML = `
@@ -381,17 +417,32 @@
           <h2>Uma experiência para lembrar.</h2>
           <p class="detail-description">${escapeHtml(destination.descricao)}</p>
           <h3>O que vale conhecer</h3>
-          <div class="price-panel"><span class="eyebrow dark">PREÇO DE REFERÊNCIA DO PASSEIO</span><strong>${escapeHtml(priceLabel(destination))}</strong><small>Moeda local: ${escapeHtml(destination.moeda || 'Não informada')}</small>${destination.fonte_preco ? `<small>Fonte: ${escapeHtml(destination.fonte_preco)}</small>` : ''}${destination.atualizado_em ? `<small>Atualizado em: ${escapeHtml(destination.atualizado_em)}</small>` : ''}</div>
+          <div class="price-panel">
+            <span class="eyebrow dark">PREÇO DE REFERÊNCIA DO PASSEIO</span>
+            <strong>${escapeHtml(priceLabel(destination))}</strong>
+            <small>Moeda local: ${escapeHtml(destination.moeda || 'Não informada')}</small>
+            ${destination.fonte_preco ? `<small>Fonte: ${escapeHtml(destination.fonte_preco)}</small>` : ''}
+            ${destination.atualizado_em ? `<small>Atualizado em: ${escapeHtml(destination.atualizado_em)}</small>` : ''}
+          </div>
           <div class="attraction-list">
             ${(destination.passeios?.length ? destination.passeios : destination.atracoes).map((attraction, index) => {
-              const item = typeof attraction === 'string' ? { nome: attraction, preco: null, moeda: destination.moeda } : attraction;
-              const value = item.gratuito || item.preco === 0 ? 'Gratuito' : (item.preco == null ? 'Preço a consultar' : formatPrice(item.preco, item.moeda || destination.moeda));
+              const item = typeof attraction === 'string'
+                ? { nome: attraction, preco: null, moeda: destination.moeda }
+                : attraction;
+
+              const value = item.gratuito || item.preco === 0
+                ? 'Gratuito'
+                : (item.preco == null ? 'Preço a consultar' : formatPrice(item.preco, item.moeda || destination.moeda));
+
               return `<div class="attraction-price-row"><span>${String(index + 1).padStart(2, '0')}</span><strong>${escapeHtml(item.nome)}</strong><small>${escapeHtml(value)}</small></div>`;
             }).join('')}
           </div>
           <div class="travel-note">
             <span>✦</span>
-            <div><strong>Dica de planejamento</strong><p>Melhor época: ${escapeHtml(destination.melhor_epoca)}. Para aproveitar com calma, reserve ${escapeHtml(destination.duracao)}.</p></div>
+            <div>
+              <strong>Dica de planejamento</strong>
+              <p>Melhor época: ${escapeHtml(destination.melhor_epoca)}. Para aproveitar com calma, reserve ${escapeHtml(destination.duracao)}.</p>
+            </div>
           </div>
         </article>
         <aside class="detail-aside">
@@ -415,10 +466,13 @@
 
     const itinerary = readList(STORAGE_KEYS.itinerary);
     const selected = destinations.filter((destination) => itinerary.includes(destination.slug));
+
     const totals = selected.reduce((acc, destination) => {
       if (destination.preco_passeio == null) return acc;
+
       const currency = destination.moeda || 'N/A';
       acc[currency] = (acc[currency] || 0) + Number(destination.preco_passeio);
+
       return acc;
     }, {});
 
@@ -436,30 +490,45 @@
     const emptyState = document.getElementById('empty-state');
     const count = document.getElementById('results-count');
     const action = document.getElementById('itinerary-action');
+
     if (emptyState) emptyState.hidden = selected.length > 0;
     if (count) count.textContent = selected.length + (selected.length === 1 ? ' destino no roteiro' : ' destinos no roteiro');
     if (action) action.hidden = !selected.length;
+
     let summary = document.getElementById('itinerary-price-summary');
-    if (!summary) { summary = document.createElement('div'); summary.id = 'itinerary-price-summary'; summary.className = 'price-summary'; container.before(summary); }
-    const totalText = Object.entries(totals).map(([currency,total]) => formatPrice(total,currency)).join(' · ');
+
+    if (!summary) {
+      summary = document.createElement('div');
+      summary.id = 'itinerary-price-summary';
+      summary.className = 'price-summary';
+      container.before(summary);
+    }
+
+    const totalText = Object.entries(totals)
+      .map(([currency, total]) => formatPrice(total, currency))
+      .join(' · ');
+
     const unknownCount = selected.filter(item => item.preco_passeio == null).length;
-    summary.innerHTML = `<strong>Estimativa das entradas</strong><p>${totalText || 'Ainda não há preços cadastrados.'}</p><small>${unknownCount ? unknownCount + ' passeio(s) sem preço informado; consulte a fonte oficial.' : 'Soma dos preços cadastrados. Moedas diferentes são exibidas separadamente.'}</small>`;
+
+    summary.innerHTML = `
+      <strong>Estimativa das entradas</strong>
+      <p>${totalText || 'Ainda não há preços cadastrados.'}</p>
+      <small>${unknownCount ? unknownCount + ' passeio(s) sem preço informado; consulte a fonte oficial.' : 'Soma dos preços cadastrados. Moedas diferentes são exibidas separadamente.'}</small>`;
   }
 
-  // Cria um identificador simples para usar no endereço dos lugares adicionados.
   function createSlug(value) {
     return normalizeText(value)
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-|-$/g, '');
   }
 
-  // Exibe os lugares próprios e permite remover um cadastro salvo por engano.
   function renderUserPlaces() {
     const list = document.getElementById('my-places-list');
     if (!list) return;
 
     const places = readList(STORAGE_KEYS.userDestinations);
     const empty = document.getElementById('my-places-empty');
+
     if (empty) empty.hidden = places.length > 0;
 
     list.innerHTML = places.map((place) => `
@@ -474,17 +543,21 @@
       </article>`).join('');
   }
 
-  // Reabre e regrava a foto como JPEG, removendo conteúdo ativo e metadados do arquivo original.
   async function prepareSafeImage(file) {
-    if (!file) return '';    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+    if (!file) return '';
+
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+
     if (!allowedTypes.includes(file.type)) {
       throw new Error('Escolha uma imagem JPEG, PNG ou WebP. SVG e outros formatos não são aceitos.');
     }
+
     if (file.size > 4 * 1024 * 1024) {
       throw new Error('A imagem original precisa ter no máximo 4 MB.');
     }
 
     let bitmap;
+
     try {
       bitmap = await createImageBitmap(file);
     } catch {
@@ -498,24 +571,36 @@
 
       const scale = Math.min(1, 1400 / Math.max(bitmap.width, bitmap.height));
       const canvas = document.createElement('canvas');
+
       canvas.width = Math.max(1, Math.round(bitmap.width * scale));
       canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+
       const context = canvas.getContext('2d', { alpha: false });
-      if (!context) throw new Error('Não foi possível processar a imagem neste navegador.');
+
+      if (!context) {
+        throw new Error('Não foi possível processar a imagem neste navegador.');
+      }
 
       context.fillStyle = '#ffffff';
       context.fillRect(0, 0, canvas.width, canvas.height);
       context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+
       const safeBlob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg', 0.8));
-      if (!safeBlob) throw new Error('Não foi possível preparar a imagem.');
+
+      if (!safeBlob) {
+        throw new Error('Não foi possível preparar a imagem.');
+      }
+
       if (safeBlob.size > 900 * 1024) {
         throw new Error('A imagem ficou grande mesmo depois da compressão. Escolha outra imagem.');
       }
 
       return await new Promise((resolve, reject) => {
         const reader = new FileReader();
+
         reader.onload = () => resolve(reader.result);
         reader.onerror = () => reject(new Error('Não foi possível ler a imagem processada.'));
+
         reader.readAsDataURL(safeBlob);
       });
     } finally {
@@ -523,34 +608,41 @@
     }
   }
 
-  // Guarda o formulário no navegador e mostra o lugar junto com o catálogo original.
   function initializePlaceForm(destinations) {
     const form = document.getElementById('add-place-form');
     if (!form || form.dataset.bound) return;
 
     form.dataset.bound = 'true';
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
+
       if (!form.reportValidity()) return;
 
       const message = document.getElementById('place-form-message');
       const submitButton = form.querySelector('[type="submit"]');
       const values = new FormData(form);
+
       const name = String(values.get('name')).trim();
       const slugBase = createSlug(name);
       const places = readList(STORAGE_KEYS.userDestinations);
+
       if (places.length >= 40) {
         message.textContent = 'Este navegador já tem 40 lugares cadastrados. Exclua algum antes de adicionar outro.';
         return;
       }
+
       const slug = destinations.some((place) => place.slug === slugBase)
         ? slugBase + '-' + Date.now().toString(36)
         : slugBase;
+
       submitButton.disabled = true;
       message.textContent = 'Verificando e preparando as informações...';
+
       try {
         const imageFile = values.get('image');
         const safeImage = await prepareSafeImage(imageFile?.size ? imageFile : null);
+
         const place = {
           id: 'custom-' + Date.now(),
           slug,
@@ -568,21 +660,29 @@
           duracao: String(values.get('duration')).trim() || 'A definir',
           nota: Number(values.get('rating') || 0),
           moeda: String(values.get('currency') || 'USD'),
-          preco_passeio: values.get('free') === 'on' ? 0 : (values.get('price') === '' ? null : Number(values.get('price'))),
-          preco_tipo: values.get('free') === 'on' ? 'gratuito' : (values.get('price') === '' ? 'nao_informado' : 'informado'),
+          preco_passeio: values.get('free') === 'on'
+            ? 0
+            : (values.get('price') === '' ? null : Number(values.get('price'))),
+          preco_tipo: values.get('free') === 'on'
+            ? 'gratuito'
+            : (values.get('price') === '' ? 'nao_informado' : 'informado'),
           fonte_preco: String(values.get('priceSource') || '').trim(),
-          atualizado_em: values.get('free') === 'on' || values.get('price') !== '' ? new Date().toISOString().slice(0,10) : '',
+          atualizado_em: values.get('free') === 'on' || values.get('price') !== ''
+            ? new Date().toISOString().slice(0, 10)
+            : '',
           tags: [String(values.get('tag'))],
           criadoPeloUsuario: true,
         };
 
         const updatedPlaces = [...places, place];
+
         if (JSON.stringify(updatedPlaces).length > 1_800_000) {
           throw new Error('O espaço reservado para lugares neste navegador está cheio. Exclua algum lugar e tente novamente.');
         }
 
         saveList(STORAGE_KEYS.userDestinations, updatedPlaces);
         form.reset();
+
         message.textContent = 'Lugar salvo neste navegador. Ele já aparece na busca e no catálogo.';
         renderUserPlaces();
       } catch (error) {
@@ -593,23 +693,34 @@
     });
   }
 
-  // Carrega os dados e monta somente a parte da página que existe no HTML atual.
   async function initializePage() {
     initializeMenu();
 
     try {
       const response = await fetch(DATA_URL);
-      if (!response.ok) throw new Error('Não foi possível carregar os dados.');
+
+      if (!response.ok) {
+        throw new Error('Não foi possível carregar os dados.');
+      }
+
       const data = await response.json();
-      // Junta o catálogo publicado aos lugares cadastrados neste navegador.
-      const destinations = [...(data.destinos || []), ...readList(STORAGE_KEYS.userDestinations)];
+
+      const destinations = [
+        ...(data.destinos || []),
+        ...readList(STORAGE_KEYS.userDestinations)
+      ];
+
       const favorites = readList(STORAGE_KEYS.favorites);
       const homeGrid = document.getElementById('home-destinations');
 
       initializeSlideshow(data);
+
       if (homeGrid) {
         const limit = Number(homeGrid.dataset.limit || 6);
-        homeGrid.innerHTML = destinations.slice(0, limit).map((item) => createCard(item, favorites)).join('');
+        homeGrid.innerHTML = destinations
+          .slice(0, limit)
+          .map((item) => createCard(item, favorites))
+          .join('');
       }
 
       initializeListing(destinations);
@@ -617,15 +728,16 @@
       initializeItinerary(destinations);
       initializePlaceForm(destinations);
       renderUserPlaces();
+
     } catch {
       const target = document.querySelector('#destination-grid, #home-destinations, #detail-root');
+
       if (target) {
         target.innerHTML = '<div class="empty-state"><h2>Não foi possível carregar os destinos</h2><p>Abra o projeto com um servidor estático local, por exemplo, Live Server.</p></div>';
       }
     }
   }
 
-  // Os cliques são tratados no documento para continuar funcionando após recriar os cartões.
   document.addEventListener('click', (event) => {
     const favoriteButton = event.target.closest('[data-favorite]');
     const itineraryButton = event.target.closest('[data-itinerary]');
@@ -635,7 +747,12 @@
       const slug = favoriteButton.dataset.favorite;
       const favorites = readList(STORAGE_KEYS.favorites);
       const shouldAdd = !favorites.includes(slug);
-      saveList(STORAGE_KEYS.favorites, shouldAdd ? [...favorites, slug] : favorites.filter((item) => item !== slug));
+
+      saveList(
+        STORAGE_KEYS.favorites,
+        shouldAdd ? [...favorites, slug] : favorites.filter((item) => item !== slug)
+      );
+
       showMessage(shouldAdd ? 'Destino salvo nos favoritos!' : 'Destino removido dos favoritos.');
       initializePage();
     }
@@ -644,16 +761,34 @@
       const slug = itineraryButton.dataset.itinerary;
       const itinerary = readList(STORAGE_KEYS.itinerary);
       const shouldAdd = !itinerary.includes(slug);
-      saveList(STORAGE_KEYS.itinerary, shouldAdd ? [...itinerary, slug] : itinerary.filter((item) => item !== slug));
+
+      saveList(
+        STORAGE_KEYS.itinerary,
+        shouldAdd ? [...itinerary, slug] : itinerary.filter((item) => item !== slug)
+      );
+
       showMessage(shouldAdd ? 'Destino adicionado ao roteiro!' : 'Destino removido do roteiro.');
       initializePage();
     }
 
     if (deleteButton) {
       const slug = deleteButton.dataset.deletePlace;
-      saveList(STORAGE_KEYS.userDestinations, readList(STORAGE_KEYS.userDestinations).filter((place) => place.slug !== slug));
-      saveList(STORAGE_KEYS.favorites, readList(STORAGE_KEYS.favorites).filter((item) => item !== slug));
-      saveList(STORAGE_KEYS.itinerary, readList(STORAGE_KEYS.itinerary).filter((item) => item !== slug));
+
+      saveList(
+        STORAGE_KEYS.userDestinations,
+        readList(STORAGE_KEYS.userDestinations).filter((place) => place.slug !== slug)
+      );
+
+      saveList(
+        STORAGE_KEYS.favorites,
+        readList(STORAGE_KEYS.favorites).filter((item) => item !== slug)
+      );
+
+      saveList(
+        STORAGE_KEYS.itinerary,
+        readList(STORAGE_KEYS.itinerary).filter((item) => item !== slug)
+      );
+
       showMessage('Lugar removido deste navegador.');
       initializePage();
     }
