@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; frame-src https://www.openstreetmap.org; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="no-referrer">
     <title>
       Busca avançada — Mundo Aberto
@@ -41,10 +41,7 @@
             0
           </span>
         </a>
-        
-        <a class="nav-login" href="login.html">
-          Entrar
-        </a>
+        <a href="mapa.html">Mapa dos destinos</a>
       </nav>
     </header>
     <main>
@@ -58,7 +55,7 @@
           Encontre seu próximo destino.
         </h1>
         <p>
-          Explore destinos pelo mundo e encontre passeios de acordo com o preço de entrada. Os valores aparecem na moeda local.
+          Busque lugares por nome ou informe seu orçamento em reais para encontrar pacotes de viagem por pessoa.
         </p>
       </section>
       <section class="section listing-section">
@@ -67,8 +64,9 @@
             <span>
               ⌕
             </span>
-            <input id="search" name="q" placeholder="Ex.: lugares que lembram os anos 80, medievais, com neve...">
+            <input id="search" name="q" placeholder="Ex.: lugares bonitos, históricos, natureza...">
           </label>
+          <label class="rating-field budget-filter-field" id="budget-filter-field"><span>Orçamento máximo (R$)</span><input id="budget-max" name="orcamento" type="text" inputmode="numeric" autocomplete="off" placeholder="Ex.: R$ 2.000"></label>
           <select id="country" aria-label="Filtrar por país">
             <option value="">
               Todos os países
@@ -153,8 +151,8 @@
     </footer>
     <script src="static/js/animacoes.js">
     </script>
-    <script src="static/js/cards.js">
-    </script>
+    <script src="static/js/planejamento.js"></script>
+    <script src="static/js/mapa.js"></script>
     <script src="static/js/main.js">
     </script>
   </body>
