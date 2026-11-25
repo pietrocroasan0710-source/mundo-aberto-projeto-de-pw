@@ -30,13 +30,17 @@ Não é necessário instalar bibliotecas JavaScript. O mapa OpenStreetMap e as f
 
 ## Buscar pacotes por orçamento
 
-Na busca da página inicial, informe o limite por pessoa em reais (por exemplo, `2000`); o campo formata o valor como moeda brasileira. Há pacotes demonstrativos nos 24 destinos, de R$ 1 mil a R$ 20 mil por pessoa, em faixas essenciais, de conforto e de luxo. Ao abrir um destino, a página lista as opções dentro do orçamento, da menor para a maior; cada pacote tem transporte, hotel, refeições, roteiro, atividades, benefícios especiais, taxas incluídas e itens não incluídos. Os benefícios crescem com a faixa de preço. Hotéis, pacotes, benefícios e preços em `static/json/pacotes.json` são fictícios: o site não consulta disponibilidade nem realiza reservas.
+Na busca da página inicial, informe o limite por pessoa em reais (por exemplo, `2000`); o campo formata o valor como moeda brasileira. Há pacotes demonstrativos nos 24 destinos, de R$ 1 mil a R$ 20 mil por pessoa, em faixas essenciais, de conforto e de luxo. Ao abrir um destino, a página lista as opções dentro do orçamento, da menor para a maior; cada pacote tem transporte, hotel, refeições, roteiro, atividades, benefícios especiais, taxas incluídas e itens não incluídos. Em **Personalizar e montar meu plano**, escolha a data, o número de viajantes e adicionais opcionais para revisar o total. Ao salvar, o site cria um calendário com horários e lugares sugeridos; você pode ajustar horários/lugares e adicionar atividades. Os planos ficam no armazenamento local do navegador. Hotéis, pacotes, benefícios, adicionais e preços são exemplos fictícios; salvar não compra, paga nem reserva uma viagem.
 
 ```text
 Mundo_Aberto_Melhorado/
   index.html                Página inicial
   destinos.html             Busca e filtros
   destino.html              Detalhe de cada destino e mapa da região
+  montar-pacote.html        Personalização de viajantes, data e adicionais
+  calendario.html           Cronograma por dia salvo neste navegador
+  montar-pacote.html        Personalização de viajantes, data e adicionais
+  calendario.html           Cronograma da viagem salvo neste navegador
   favoritos.html            Favoritos locais
   roteiro.html              Roteiro por dias, passagens e orçamento
   mapa.html                 Mapa interativo das regiões
@@ -74,4 +78,5 @@ Favoritos, plano por dia e orçamento são guardados com `localStorage` e ficam 
 - [ ] **Usar no orçamento** preenche o campo de transporte em BRL.
 - [ ] Orçamento calcula uma noite a menos que o número de dias e atualiza imediatamente.
 - [ ] Mapa troca de região quando selecionado outro destino.
+- [ ] Personalizar um pacote altera o total por viajantes e adicionais; salvar abre o calendário com horários e lugares, que podem ser editados, e permite inserir atividades.
 - [ ] Menu abre no celular e fecha por Escape ou toque em um link.

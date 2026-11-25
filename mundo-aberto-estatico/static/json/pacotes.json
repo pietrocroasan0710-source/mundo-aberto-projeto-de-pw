@@ -36,6 +36,36 @@
         "Ingresso do Cristo já incluído",
         "Hotel perto da praia",
         "Ônibus executivo"
+      ],
+      "extras": [
+        {
+          "id": "tour-local",
+          "nome": "Tour guiado extra",
+          "descricao": "Passeio local em grupo pequeno",
+          "preco": 180,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-regional",
+          "nome": "Jantar regional",
+          "descricao": "Uma refeição especial com menu local",
+          "preco": 220,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional com café da manhã",
+          "preco": 450,
+          "por_pessoa": true
+        },
+        {
+          "id": "seguro",
+          "nome": "Seguro viagem demonstrativo",
+          "descricao": "Proteção ilustrativa para a viagem",
+          "preco": 90,
+          "por_pessoa": true
+        }
       ]
     },
     {
@@ -74,6 +104,36 @@
         "Três cafés da manhã",
         "Trilha leve com guia",
         "Mais uma noite na cidade"
+      ],
+      "extras": [
+        {
+          "id": "tour-local",
+          "nome": "Tour guiado extra",
+          "descricao": "Passeio local em grupo pequeno",
+          "preco": 180,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-regional",
+          "nome": "Jantar regional",
+          "descricao": "Uma refeição especial com menu local",
+          "preco": 220,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional com café da manhã",
+          "preco": 450,
+          "por_pessoa": true
+        },
+        {
+          "id": "seguro",
+          "nome": "Seguro viagem demonstrativo",
+          "descricao": "Proteção ilustrativa para a viagem",
+          "preco": 90,
+          "por_pessoa": true
+        }
       ]
     },
     {
@@ -109,6 +169,36 @@
         "Aéreo ida e volta demonstrativo",
         "Passeio guiado no centro",
         "Hospedagem no centro histórico"
+      ],
+      "extras": [
+        {
+          "id": "tour-local",
+          "nome": "Tour guiado extra",
+          "descricao": "Passeio local em grupo pequeno",
+          "preco": 180,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-regional",
+          "nome": "Jantar regional",
+          "descricao": "Uma refeição especial com menu local",
+          "preco": 220,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional com café da manhã",
+          "preco": 450,
+          "por_pessoa": true
+        },
+        {
+          "id": "seguro",
+          "nome": "Seguro viagem demonstrativo",
+          "descricao": "Proteção ilustrativa para a viagem",
+          "preco": 90,
+          "por_pessoa": true
+        }
       ]
     },
     {
@@ -145,6 +235,36 @@
         "Ingresso das Cataratas incluído",
         "Ônibus leito",
         "Hotel com café da manhã"
+      ],
+      "extras": [
+        {
+          "id": "tour-local",
+          "nome": "Tour guiado extra",
+          "descricao": "Passeio local em grupo pequeno",
+          "preco": 180,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-regional",
+          "nome": "Jantar regional",
+          "descricao": "Uma refeição especial com menu local",
+          "preco": 220,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional com café da manhã",
+          "preco": 450,
+          "por_pessoa": true
+        },
+        {
+          "id": "seguro",
+          "nome": "Seguro viagem demonstrativo",
+          "descricao": "Proteção ilustrativa para a viagem",
+          "preco": 90,
+          "por_pessoa": true
+        }
       ]
     },
     {
@@ -182,6 +302,36 @@
         "Hotel com piscina",
         "Jantar de boas-vindas",
         "Transfer da rodoviária"
+      ],
+      "extras": [
+        {
+          "id": "tour-local",
+          "nome": "Tour guiado extra",
+          "descricao": "Passeio local em grupo pequeno",
+          "preco": 180,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-regional",
+          "nome": "Jantar regional",
+          "descricao": "Uma refeição especial com menu local",
+          "preco": 220,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional com café da manhã",
+          "preco": 450,
+          "por_pessoa": true
+        },
+        {
+          "id": "seguro",
+          "nome": "Seguro viagem demonstrativo",
+          "descricao": "Proteção ilustrativa para a viagem",
+          "preco": 90,
+          "por_pessoa": true
+        }
       ]
     },
     {
@@ -223,6 +373,36 @@
         "Transfers privativos",
         "Guia e passeio de barco privativos",
         "Dois jantares no hotel"
+      ],
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
       ]
     },
     {
@@ -261,6 +441,36 @@
         "Transfer aeroporto-hotel",
         "Jantar regional de boas-vindas",
         "Café da manhã diário"
+      ],
+      "extras": [
+        {
+          "id": "tour-local",
+          "nome": "Tour guiado extra",
+          "descricao": "Passeio local em grupo pequeno",
+          "preco": 180,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-regional",
+          "nome": "Jantar regional",
+          "descricao": "Uma refeição especial com menu local",
+          "preco": 220,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional com café da manhã",
+          "preco": 450,
+          "por_pessoa": true
+        },
+        {
+          "id": "seguro",
+          "nome": "Seguro viagem demonstrativo",
+          "descricao": "Proteção ilustrativa para a viagem",
+          "preco": 90,
+          "por_pessoa": true
+        }
       ]
     },
     {
@@ -301,6 +511,36 @@
         "Transfers privativos",
         "Tour privativo pelo Pelourinho",
         "Dois jantares regionais"
+      ],
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
       ]
     },
     {
@@ -339,6 +579,36 @@
         "Ingresso para dois parques",
         "Transfer compartilhado",
         "Café da manhã diário"
+      ],
+      "extras": [
+        {
+          "id": "tour-local",
+          "nome": "Tour guiado extra",
+          "descricao": "Passeio local em grupo pequeno",
+          "preco": 180,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-regional",
+          "nome": "Jantar regional",
+          "descricao": "Uma refeição especial com menu local",
+          "preco": 220,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional com café da manhã",
+          "preco": 450,
+          "por_pessoa": true
+        },
+        {
+          "id": "seguro",
+          "nome": "Seguro viagem demonstrativo",
+          "descricao": "Proteção ilustrativa para a viagem",
+          "preco": 90,
+          "por_pessoa": true
+        }
       ]
     },
     {
@@ -381,6 +651,36 @@
         "Visita guiada às Cataratas",
         "Passeio de barco incluído",
         "Dois jantares no hotel"
+      ],
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
       ]
     },
     {
@@ -416,7 +716,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-local",
+          "nome": "Tour guiado extra",
+          "descricao": "Passeio local em grupo pequeno",
+          "preco": 180,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-regional",
+          "nome": "Jantar regional",
+          "descricao": "Uma refeição especial com menu local",
+          "preco": 220,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional com café da manhã",
+          "preco": 450,
+          "por_pessoa": true
+        },
+        {
+          "id": "seguro",
+          "nome": "Seguro viagem demonstrativo",
+          "descricao": "Proteção ilustrativa para a viagem",
+          "preco": 90,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "rio-de-janeiro-conforto-completo",
@@ -453,7 +783,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "rio-de-janeiro-luxo-completo",
@@ -492,7 +852,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "paris-essencial-completo",
@@ -527,7 +917,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "paris-conforto-completo",
@@ -564,7 +984,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "paris-luxo-completo",
@@ -603,7 +1053,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "kyoto-essencial-completo",
@@ -638,7 +1118,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "kyoto-conforto-completo",
@@ -675,7 +1185,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "kyoto-luxo-completo",
@@ -714,7 +1254,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "machu-picchu-essencial-completo",
@@ -749,7 +1319,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "machu-picchu-conforto-completo",
@@ -786,7 +1386,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "machu-picchu-luxo-completo",
@@ -825,7 +1455,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "santorini-essencial-completo",
@@ -860,7 +1520,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "santorini-conforto-completo",
@@ -897,7 +1587,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "santorini-luxo-completo",
@@ -936,7 +1656,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "nova-york-essencial-completo",
@@ -971,7 +1721,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "nova-york-conforto-completo",
@@ -1008,7 +1788,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "nova-york-luxo-completo",
@@ -1047,7 +1857,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "foz-do-iguacu-essencial-completo",
@@ -1082,7 +1922,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "static/img/destinos/foz-do-iguacu.webp"
+      "imagem": "static/img/destinos/foz-do-iguacu.webp",
+      "extras": [
+        {
+          "id": "tour-local",
+          "nome": "Tour guiado extra",
+          "descricao": "Passeio local em grupo pequeno",
+          "preco": 180,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-regional",
+          "nome": "Jantar regional",
+          "descricao": "Uma refeição especial com menu local",
+          "preco": 220,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional com café da manhã",
+          "preco": 450,
+          "por_pessoa": true
+        },
+        {
+          "id": "seguro",
+          "nome": "Seguro viagem demonstrativo",
+          "descricao": "Proteção ilustrativa para a viagem",
+          "preco": 90,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "foz-do-iguacu-conforto-completo",
@@ -1119,7 +1989,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/foz-do-iguacu.webp"
+      "imagem": "static/img/destinos/foz-do-iguacu.webp",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "foz-do-iguacu-luxo-completo",
@@ -1158,7 +2058,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/foz-do-iguacu.webp"
+      "imagem": "static/img/destinos/foz-do-iguacu.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "lencois-maranhenses-essencial-completo",
@@ -1193,7 +2123,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "static/img/destinos/lencois-maranhenses.webp"
+      "imagem": "static/img/destinos/lencois-maranhenses.webp",
+      "extras": [
+        {
+          "id": "tour-local",
+          "nome": "Tour guiado extra",
+          "descricao": "Passeio local em grupo pequeno",
+          "preco": 180,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-regional",
+          "nome": "Jantar regional",
+          "descricao": "Uma refeição especial com menu local",
+          "preco": 220,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional com café da manhã",
+          "preco": 450,
+          "por_pessoa": true
+        },
+        {
+          "id": "seguro",
+          "nome": "Seguro viagem demonstrativo",
+          "descricao": "Proteção ilustrativa para a viagem",
+          "preco": 90,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "lencois-maranhenses-conforto-completo",
@@ -1230,7 +2190,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/lencois-maranhenses.webp"
+      "imagem": "static/img/destinos/lencois-maranhenses.webp",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "lencois-maranhenses-luxo-completo",
@@ -1269,7 +2259,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/lencois-maranhenses.webp"
+      "imagem": "static/img/destinos/lencois-maranhenses.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "gize-essencial-completo",
@@ -1304,7 +2324,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "static/img/destinos/gize.webp"
+      "imagem": "static/img/destinos/gize.webp",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "gize-conforto-completo",
@@ -1341,7 +2391,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/gize.webp"
+      "imagem": "static/img/destinos/gize.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "gize-luxo-completo",
@@ -1380,7 +2460,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/gize.webp"
+      "imagem": "static/img/destinos/gize.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "cape-town-essencial-completo",
@@ -1415,7 +2525,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "cape-town-conforto-completo",
@@ -1452,7 +2592,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "cape-town-luxo-completo",
@@ -1491,7 +2661,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "queenstown-essencial-completo",
@@ -1526,7 +2726,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "https://images.unsplash.com/photo-1469521669194-babb45599def?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1469521669194-babb45599def?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "queenstown-conforto-completo",
@@ -1563,7 +2793,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1469521669194-babb45599def?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1469521669194-babb45599def?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "queenstown-luxo-completo",
@@ -1602,7 +2862,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1469521669194-babb45599def?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1469521669194-babb45599def?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "roma-essencial-completo",
@@ -1637,7 +2927,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "roma-conforto-completo",
@@ -1674,7 +2994,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "roma-luxo-completo",
@@ -1713,7 +3063,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "bali-essencial-completo",
@@ -1748,7 +3128,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "bali-conforto-completo",
@@ -1785,7 +3195,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "bali-luxo-completo",
@@ -1824,7 +3264,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "banff-essencial-completo",
@@ -1859,7 +3329,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "https://images.unsplash.com/photo-1503614472-8c93d56cd4b0?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1503614472-8c93d56cd4b0?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "banff-conforto-completo",
@@ -1896,7 +3396,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1503614472-8c93d56cd4b0?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1503614472-8c93d56cd4b0?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "banff-luxo-completo",
@@ -1935,7 +3465,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1503614472-8c93d56cd4b0?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1503614472-8c93d56cd4b0?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "lisboa-essencial-completo",
@@ -1970,7 +3530,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "lisboa-conforto-completo",
@@ -2007,7 +3597,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "lisboa-luxo-completo",
@@ -2046,7 +3666,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1100&q=85"
+      "imagem": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1100&q=85",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "sao-paulo-essencial-completo",
@@ -2081,7 +3731,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "static/img/destinos/sao-paulo.webp"
+      "imagem": "static/img/destinos/sao-paulo.webp",
+      "extras": [
+        {
+          "id": "tour-local",
+          "nome": "Tour guiado extra",
+          "descricao": "Passeio local em grupo pequeno",
+          "preco": 180,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-regional",
+          "nome": "Jantar regional",
+          "descricao": "Uma refeição especial com menu local",
+          "preco": 220,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional com café da manhã",
+          "preco": 450,
+          "por_pessoa": true
+        },
+        {
+          "id": "seguro",
+          "nome": "Seguro viagem demonstrativo",
+          "descricao": "Proteção ilustrativa para a viagem",
+          "preco": 90,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "sao-paulo-conforto-completo",
@@ -2118,7 +3798,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/sao-paulo.webp"
+      "imagem": "static/img/destinos/sao-paulo.webp",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "sao-paulo-luxo-completo",
@@ -2157,7 +3867,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/sao-paulo.webp"
+      "imagem": "static/img/destinos/sao-paulo.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "salvador-essencial-completo",
@@ -2192,7 +3932,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "static/img/destinos/salvador.webp"
+      "imagem": "static/img/destinos/salvador.webp",
+      "extras": [
+        {
+          "id": "tour-local",
+          "nome": "Tour guiado extra",
+          "descricao": "Passeio local em grupo pequeno",
+          "preco": 180,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-regional",
+          "nome": "Jantar regional",
+          "descricao": "Uma refeição especial com menu local",
+          "preco": 220,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional com café da manhã",
+          "preco": 450,
+          "por_pessoa": true
+        },
+        {
+          "id": "seguro",
+          "nome": "Seguro viagem demonstrativo",
+          "descricao": "Proteção ilustrativa para a viagem",
+          "preco": 90,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "salvador-conforto-completo",
@@ -2229,7 +3999,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/salvador.webp"
+      "imagem": "static/img/destinos/salvador.webp",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "salvador-luxo-completo",
@@ -2268,7 +4068,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/salvador.webp"
+      "imagem": "static/img/destinos/salvador.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "campos-do-jordao-essencial-completo",
@@ -2303,7 +4133,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "static/img/destinos/campos-do-jordao.webp"
+      "imagem": "static/img/destinos/campos-do-jordao.webp",
+      "extras": [
+        {
+          "id": "tour-local",
+          "nome": "Tour guiado extra",
+          "descricao": "Passeio local em grupo pequeno",
+          "preco": 180,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-regional",
+          "nome": "Jantar regional",
+          "descricao": "Uma refeição especial com menu local",
+          "preco": 220,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional com café da manhã",
+          "preco": 450,
+          "por_pessoa": true
+        },
+        {
+          "id": "seguro",
+          "nome": "Seguro viagem demonstrativo",
+          "descricao": "Proteção ilustrativa para a viagem",
+          "preco": 90,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "campos-do-jordao-conforto-completo",
@@ -2340,7 +4200,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/campos-do-jordao.webp"
+      "imagem": "static/img/destinos/campos-do-jordao.webp",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "campos-do-jordao-luxo-completo",
@@ -2379,7 +4269,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/campos-do-jordao.webp"
+      "imagem": "static/img/destinos/campos-do-jordao.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "buenos-aires-essencial-completo",
@@ -2414,7 +4334,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "static/img/destinos/buenos-aires.webp"
+      "imagem": "static/img/destinos/buenos-aires.webp",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "buenos-aires-conforto-completo",
@@ -2451,7 +4401,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/buenos-aires.webp"
+      "imagem": "static/img/destinos/buenos-aires.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "buenos-aires-luxo-completo",
@@ -2490,7 +4470,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/buenos-aires.webp"
+      "imagem": "static/img/destinos/buenos-aires.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "chichen-itza-essencial-completo",
@@ -2525,7 +4535,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "static/img/destinos/chichen-itza.webp"
+      "imagem": "static/img/destinos/chichen-itza.webp",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "chichen-itza-conforto-completo",
@@ -2562,7 +4602,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/chichen-itza.webp"
+      "imagem": "static/img/destinos/chichen-itza.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "chichen-itza-luxo-completo",
@@ -2601,7 +4671,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/chichen-itza.webp"
+      "imagem": "static/img/destinos/chichen-itza.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "londres-essencial-completo",
@@ -2636,7 +4736,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "static/img/destinos/londres.webp"
+      "imagem": "static/img/destinos/londres.webp",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "londres-conforto-completo",
@@ -2673,7 +4803,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/londres.webp"
+      "imagem": "static/img/destinos/londres.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "londres-luxo-completo",
@@ -2712,7 +4872,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/londres.webp"
+      "imagem": "static/img/destinos/londres.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "toquio-essencial-completo",
@@ -2747,7 +4937,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "static/img/destinos/toquio.webp"
+      "imagem": "static/img/destinos/toquio.webp",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "toquio-conforto-completo",
@@ -2784,7 +5004,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/toquio.webp"
+      "imagem": "static/img/destinos/toquio.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "toquio-luxo-completo",
@@ -2823,7 +5073,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/toquio.webp"
+      "imagem": "static/img/destinos/toquio.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "sydney-essencial-completo",
@@ -2858,7 +5138,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "static/img/destinos/sydney.webp"
+      "imagem": "static/img/destinos/sydney.webp",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "sydney-conforto-completo",
@@ -2895,7 +5205,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/sydney.webp"
+      "imagem": "static/img/destinos/sydney.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "sydney-luxo-completo",
@@ -2934,7 +5274,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/sydney.webp"
+      "imagem": "static/img/destinos/sydney.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "barcelona-essencial-completo",
@@ -2969,7 +5339,37 @@
         "Passeios opcionais e upgrades",
         "Despesas pessoais e seguro viagem"
       ],
-      "imagem": "static/img/destinos/barcelona.webp"
+      "imagem": "static/img/destinos/barcelona.webp",
+      "extras": [
+        {
+          "id": "tour-privativo",
+          "nome": "Tour privativo",
+          "descricao": "Guia dedicado por meio período",
+          "preco": 480,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-chef",
+          "nome": "Experiência gastronômica",
+          "descricao": "Jantar especial de menu regional",
+          "preco": 350,
+          "por_pessoa": true
+        },
+        {
+          "id": "noite-extra",
+          "nome": "Uma noite extra no hotel",
+          "descricao": "Noite adicional no quarto selecionado",
+          "preco": 700,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer",
+          "nome": "Transfer privativo",
+          "descricao": "Deslocamento privativo de chegada ou saída",
+          "preco": 420,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "barcelona-conforto-completo",
@@ -3006,7 +5406,37 @@
         "Atividades opcionais não listadas",
         "Seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/barcelona.webp"
+      "imagem": "static/img/destinos/barcelona.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     },
     {
       "id": "barcelona-luxo-completo",
@@ -3045,7 +5475,37 @@
         "Spa, compras e atividades opcionais",
         "Gorjetas, seguro viagem e despesas pessoais"
       ],
-      "imagem": "static/img/destinos/barcelona.webp"
+      "imagem": "static/img/destinos/barcelona.webp",
+      "extras": [
+        {
+          "id": "spa",
+          "nome": "Experiência de spa",
+          "descricao": "Sessão relaxante no hotel",
+          "preco": 750,
+          "por_pessoa": true
+        },
+        {
+          "id": "guia-privativo",
+          "nome": "Guia privativo extra",
+          "descricao": "Mais um passeio com guia dedicado",
+          "preco": 900,
+          "por_pessoa": true
+        },
+        {
+          "id": "jantar-premium",
+          "nome": "Jantar premium",
+          "descricao": "Menu degustação para uma noite",
+          "preco": 650,
+          "por_pessoa": true
+        },
+        {
+          "id": "transfer-premium",
+          "nome": "Transfer premium",
+          "descricao": "Veículo privativo para deslocamentos locais",
+          "preco": 800,
+          "por_pessoa": true
+        }
+      ]
     }
   ]
 }
