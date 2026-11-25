@@ -2,7 +2,7 @@
  * Mundo Aberto — catálogo público.
  * Dados publicados: static/json/dados.json (somente leitura).
  * Favoritos e seleção do roteiro: armazenamento local do visitante.
- * Não existe cadastro de destinos nem autenticação administrativa nesta versão.
+ * O catálogo e os pacotes demonstrativos são publicados como arquivos estáticos.
  */
 (() => {
   'use strict';
@@ -10,6 +10,7 @@
   const STORAGE = { favorites: 'mundoAberto.favoritos', itinerary: 'mundoAberto.roteiro', packagePlans: 'mundoAberto.pacotesSalvos' };
   let catalog = [];
   let packages = [];
+  let comparisonSelection = [];
   let listingControls = null;
   let slideInterval = null;
   let toastTimer = null;
@@ -347,8 +348,42 @@
   function renderDestinationPackages(root, d, available, budget) {
     document.title = `Pacotes em ${d.nome} — Mundo Aberto`;
     const back = 'destinos.html?orcamento=' + encodeURIComponent(budget);
-    const cards = available.map(pack => `<article class="package-card"><img src="${html(pack.imagem || d.imagem)}" alt="Paisagem de ${html(d.nome)}" loading="lazy"><div class="package-card-body"><span class="package-duration">${html(pack.duracao)}</span><h3>${html(pack.nome)}</h3><p>${html(pack.subtitulo)}</p><ul class="package-highlights">${(pack.beneficios || []).slice(0, 3).map(item => `<li>${html(item)}</li>`).join('')}</ul><strong>${html(formatPrice(pack.preco, 'BRL'))} <small>/ pessoa</small></strong><a class="btn-dark" href="destino.html?slug=${encodeURIComponent(d.slug)}&pacote=${encodeURIComponent(pack.id)}&orcamento=${encodeURIComponent(budget)}">Ver tudo que inclui ↗</a></div></article>`).join('');
-    root.innerHTML = `<section class="detail-hero"><img src="${html(d.imagem)}" alt="Paisagem de ${html(d.nome)}"><div class="detail-shade"></div><div class="detail-hero-content"><a class="back-link" href="${back}">← Destinos no meu orçamento</a><p class="eyebrow"><span></span>PACOTES DEMONSTRATIVOS · ${html(d.pais.toUpperCase())}</p><h1>${html(d.nome)}</h1><p>Opções por pessoa até ${html(formatPrice(budget, 'BRL'))}. Compare o que está incluído em cada viagem.</p></div></section><section class="section package-section"><div class="section-heading"><div><p class="eyebrow dark">SUA PRÓXIMA VIAGEM</p><h2>${available.length ? 'Pacotes disponíveis' : 'Nenhum pacote nesta faixa'}</h2></div><span class="package-disclaimer">Valores fictícios para demonstração</span></div>${available.length ? `<div class="package-grid">${cards}</div>` : '<p class="package-empty">Aumente o orçamento na busca para ver mais opções.</p>'}</section>`;
+    comparisonSelection = [];
+    const cards = available.map(pack => `<article class="package-card"><img src="${html(pack.imagem || d.imagem)}" alt="Paisagem de ${html(d.nome)}" loading="lazy"><div class="package-card-body"><span class="package-duration">${html(pack.duracao)}</span><h3>${html(pack.nome)}</h3><p>${html(pack.subtitulo)}</p><ul class="package-highlights">${(pack.beneficios || []).slice(0, 3).map(item => `<li>${html(item)}</li>`).join('')}</ul><strong>${html(formatPrice(pack.preco, 'BRL'))} <small>/ pessoa</small></strong><label class="compare-check"><input type="checkbox" value="${html(pack.id)}" data-compare-package> Comparar pacote</label><a class="btn-dark" href="destino.html?slug=${encodeURIComponent(d.slug)}&pacote=${encodeURIComponent(pack.id)}&orcamento=${encodeURIComponent(budget)}">Ver detalhes ↗</a></div></article>`).join('');
+    root.innerHTML = `<section class="detail-hero"><img src="${html(d.imagem)}" alt="Paisagem de ${html(d.nome)}"><div class="detail-shade"></div><div class="detail-hero-content"><a class="back-link" href="${back}">← Destinos no meu orçamento</a><p class="eyebrow"><span></span>PACOTES DEMONSTRATIVOS · ${html(d.pais.toUpperCase())}</p><h1>${html(d.nome)}</h1><p>Opções por pessoa até ${html(formatPrice(budget, 'BRL'))}. Compare o que está incluído em cada viagem.</p></div></section><section class="section package-section"><div class="section-heading"><div><p class="eyebrow dark">SUA PRÓXIMA VIAGEM</p><h2>${available.length ? 'Pacotes disponíveis' : 'Nenhum pacote nesta faixa'}</h2></div><span class="package-disclaimer">Valores fictícios para demonstração</span></div>${available.length ? `<div class="package-grid">${cards}</div><div id="package-comparison" class="package-comparison"></div>` : '<p class="package-empty">Aumente o orçamento na busca para ver mais opções.</p>'}</section>`;
+    const comparisonRoot = document.getElementById('package-comparison');
+    renderPackageComparison(comparisonRoot, []);
+    if (comparisonRoot && !root.dataset.compareHandlerBound) {
+      root.dataset.compareHandlerBound = 'true';
+      root.addEventListener('change', event => {
+        const checkbox = event.target.closest('[data-compare-package]');
+        if (!checkbox) return;
+        comparisonSelection = checkbox.checked
+          ? [...comparisonSelection.filter(id => id !== checkbox.value), checkbox.value].slice(-3)
+          : comparisonSelection.filter(id => id !== checkbox.value);
+        root.querySelectorAll('[data-compare-package]').forEach(input => {
+          input.checked = comparisonSelection.includes(input.value);
+          input.disabled = comparisonSelection.length >= 3 && !input.checked;
+        });
+        renderPackageComparison(document.getElementById('package-comparison'), comparisonSelection.map(id => packages.find(item => item.id === id)).filter(Boolean));
+      });
+    }
+  }
+
+  function renderPackageComparison(target, selected) {
+    if (!target) return;
+    if (selected.length < 2) {
+      target.innerHTML = '<div class="comparison-hint"><strong>Compare até 3 opções</strong><span>Marque “Comparar pacote” em duas ou três opções para ver as diferenças lado a lado.</span></div>';
+      return;
+    }
+    const rows = [
+      ['Preço por pessoa', p => formatPrice(p.preco, 'BRL')],
+      ['Duração', p => p.duracao], ['Hotel', p => p.hospedagem], ['Transporte', p => p.transporte],
+      ['Refeições', p => p.refeicoes], ['Benefícios', p => (p.beneficios || []).join(' · ')],
+      ['Atividades', p => (p.atividades || []).join(' · ')], ['Taxas incluídas', p => (p.taxas || []).join(' · ')],
+      ['Não incluído', p => (p.nao_inclui || []).join(' · ')]
+    ];
+    target.innerHTML = `<div class="comparison-heading"><div><p class="eyebrow dark">ESCOLHA COM CLAREZA</p><h2>Comparação de pacotes</h2></div><span>${selected.length} opções selecionadas</span></div><div class="comparison-scroll"><table class="comparison-table"><thead><tr><th>O que comparar</th>${selected.map(pack => `<th>${html(pack.nome)}</th>`).join('')}</tr></thead><tbody>${rows.map(([label, value]) => `<tr><th scope="row">${html(label)}</th>${selected.map(pack => `<td>${html(value(pack))}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p class="package-disclaimer">Valores e condições são exemplos fictícios. Confira os detalhes de cada pacote antes de montar seu plano.</p>`;
   }
 
   function renderPackageDetail(root, d, pack, budget) {
@@ -387,24 +422,30 @@
       let events;
       if (day === 0) {
         events = [
-          { time: '14:00', activity: 'Chegada e check-in', place: hotel, details: 'Confira o horário de chegada e as orientações do hotel.' },
-          { time: '16:00', activity: `Passeio de reconhecimento: ${attractions[0]}`, place: attractions[0], details: 'Atividade leve para começar a conhecer o destino.' }
+          { time: '14:00', duration: '60 min', activity: 'Chegada e check-in', place: hotel, details: 'Horário sugerido. Confirme a entrada e a bagagem diretamente com a hospedagem.' },
+          { time: '15:15', duration: '45 min estimados', activity: 'Deslocamento até a região do passeio', place: `Hotel → ${attractions[0]}`, details: 'Tempo ilustrativo para planejamento; confira a rota e o trânsito local.' },
+          { time: '16:00', duration: '90 min', activity: `Passeio de reconhecimento: ${attractions[0]}`, place: attractions[0], details: 'Atividade leve para começar a conhecer o destino.' }
         ];
       } else if (day === days - 1) {
         events = [
-          { time: '08:00', activity: 'Café da manhã', place: hotel, details: 'Conforme a hospedagem descrita no pacote.' },
-          { time: '10:00', activity: `Última visita: ${attractions[(day * 2) % attractions.length]}`, place: attractions[(day * 2) % attractions.length], details: 'Confira o tempo de deslocamento até o terminal.' },
-          { time: '13:00', activity: 'Check-out e retorno', place: hotel, details: pack.transporte }
+          { time: '08:00', duration: '45 min', activity: 'Café da manhã', place: hotel, details: 'Conforme a hospedagem descrita no pacote.' },
+          { time: '09:00', duration: '90 min', activity: `Última visita: ${attractions[(day * 2) % attractions.length]}`, place: attractions[(day * 2) % attractions.length], details: 'Passeio curto próximo ao hotel; confira o deslocamento antes de sair.' },
+          { time: '10:45', duration: '45 min estimados', activity: 'Retorno ao hotel e retirada das malas', place: `${attractions[(day * 2) % attractions.length]} → hotel`, details: 'Tempo ilustrativo. Confira trânsito e horário do check-out.' },
+          { time: '11:30', duration: '60 min estimados', activity: 'Deslocamento ao aeroporto ou terminal', place: 'Hotel → terminal de embarque', details: 'Margem de planejamento; confirme o endereço e a antecedência exigida pela transportadora.' },
+          { time: '12:30', duration: 'A confirmar', activity: 'Embarque de retorno', place: 'Aeroporto ou rodoviária', details: `Horário apenas sugerido: confira o bilhete. ${pack.transporte}` }
         ];
       } else {
         const first = attractions[((day - 1) * 2) % attractions.length];
         const second = attractions[((day - 1) * 2 + 1) % attractions.length];
         events = [
-          { time: '08:00', activity: 'Café da manhã', place: hotel, details: 'Conforme a hospedagem descrita no pacote.' },
-          { time: '09:30', activity: `Visita: ${first}`, place: first, details: (pack.atividades || []).join(' · ') },
-          { time: '12:30', activity: 'Pausa para almoço', place: `Região de ${first}`, details: 'Refeição livre, exceto quando indicada como incluída no pacote.' },
-          { time: '14:00', activity: `Passeio: ${second}`, place: second, details: (pack.roteiro || [])[day] || 'Tempo para explorar o local.' },
-          { time: '17:30', activity: 'Retorno e tempo livre', place: hotel, details: 'Confira os horários de transporte local.' }
+          { time: '08:00', duration: '45 min', activity: 'Café da manhã', place: hotel, details: 'Conforme a hospedagem descrita no pacote.' },
+          { time: '09:00', duration: '45 min estimados', activity: 'Deslocamento até a primeira visita', place: `Hotel → ${first}`, details: 'Estimativa genérica para organização; confira rota, distância e trânsito do destino.' },
+          { time: '09:45', duration: '2 h 15 min', activity: `Visita: ${first}`, place: first, details: (pack.atividades || []).join(' · ') },
+          { time: '12:00', duration: '1 h 30 min', activity: 'Pausa para almoço', place: `Região de ${first}`, details: 'Refeição livre, exceto quando indicada como incluída no pacote.' },
+          { time: '13:30', duration: '45 min estimados', activity: 'Deslocamento até a segunda visita', place: `${first} → ${second}`, details: 'Estimativa genérica; confirme a rota e os horários de transporte local.' },
+          { time: '14:15', duration: '2 h 15 min', activity: `Passeio: ${second}`, place: second, details: (pack.roteiro || [])[day] || 'Tempo para explorar o local.' },
+          { time: '16:30', duration: '45 min estimados', activity: 'Retorno ao hotel', place: `${second} → hotel`, details: 'Tempo ilustrativo para deslocamento; confirme a rota local.' },
+          { time: '17:15', duration: 'Livre', activity: 'Descanso e tempo livre', place: hotel, details: 'Intervalo sem atividade programada.' }
         ];
       }
       schedule.push({ date: dateKey, events });
@@ -461,8 +502,25 @@
     }
     const dateLabel = value => new Intl.DateTimeFormat('pt-BR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${value}T12:00:00`));
     root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>SEU CRONOGRAMA</p><h1>Calendário da viagem.</h1><p>Atividades, horários e lugares do seu plano. Você pode ajustar os horários e adicionar atividades.</p></section><section class="section calendar-section">${visible.map(plan => `<article class="saved-plan"><div class="saved-plan-heading"><div><p class="eyebrow dark">${html(plan.destinationName)}</p><h2>${html(plan.packageName)}</h2><p>${plan.travelers} viajante(s) · início em ${html(dateLabel(plan.startDate))}</p></div><strong>${html(formatPrice(plan.total,'BRL'))}<small> total demonstrativo</small></strong></div>${plan.extras?.length ? `<p class="saved-extras"><strong>Adicionais:</strong> ${plan.extras.map(extra => html(extra.nome)).join(' · ')}</p>` : ''}<div class="calendar-days">${plan.schedule.map((day, dayIndex) => `<section class="calendar-day"><div class="calendar-day-heading"><span>Dia ${dayIndex + 1}</span><h3>${html(dateLabel(day.date))}</h3></div><div class="calendar-events">${day.events.map((item, eventIndex) => `<article class="calendar-event"><label>Horário<input type="time" value="${html(item.time)}" data-calendar-plan="${html(plan.id)}" data-calendar-day="${dayIndex}" data-calendar-event="${eventIndex}" data-calendar-field="time"></label><div class="calendar-event-content"><strong>${html(item.activity)}</strong><p>${html(item.details)}</p><label>Lugar<input type="text" value="${html(item.place)}" data-calendar-plan="${html(plan.id)}" data-calendar-day="${dayIndex}" data-calendar-event="${eventIndex}" data-calendar-field="place"></label></div></article>`).join('')}</div><form class="calendar-add-form" data-add-plan="${html(plan.id)}" data-add-day="${dayIndex}"><input type="time" name="time" value="18:30" aria-label="Horário da atividade" required><input name="activity" placeholder="Nova atividade" aria-label="Nome da atividade" required><input name="place" placeholder="Lugar" aria-label="Lugar da atividade" required><button class="btn-outline" type="submit">+ Adicionar ao dia</button></form></section>`).join('')}</div><p class="package-disclaimer">Plano demonstrativo salvo neste navegador. Nenhum serviço, ingresso ou hospedagem foi reservado.</p></article>`).join('')}</section>`;
+    const printButton = document.createElement('button');
+    printButton.type = 'button';
+    printButton.className = 'btn-dark calendar-print';
+    printButton.dataset.printCalendar = '';
+    printButton.textContent = 'Imprimir ou salvar em PDF ↗';
+    root.querySelector('.page-banner > p:last-child')?.after(printButton);
+    const eventCards = root.querySelectorAll('.calendar-event');
+    let cardIndex = 0;
+    visible.forEach(plan => plan.schedule.forEach(day => day.events.forEach(item => {
+      const title = eventCards[cardIndex++]?.querySelector('.calendar-event-content > strong');
+      if (!title) return;
+      const duration = document.createElement('small');
+      duration.className = 'calendar-event-duration';
+      duration.textContent = item.duration || 'Duração a definir';
+      title.after(duration);
+    })));
     if (!root.dataset.calendarHandlersBound) {
       root.dataset.calendarHandlersBound = 'true';
+      root.addEventListener('click', event => { if (event.target.closest('[data-print-calendar]')) window.print(); });
       root.addEventListener('change', event => {
       const input = event.target.closest('[data-calendar-field]');
       if (!input) return;
@@ -481,7 +539,7 @@
       const plan = plansNow.find(item => item.id === form.dataset.addPlan);
       const day = plan?.schedule?.[Number(form.dataset.addDay)];
       if (!day) return;
-      day.events.push({ time: form.elements.time.value, activity: form.elements.activity.value, place: form.elements.place.value, details: 'Atividade adicionada por você.' });
+      day.events.push({ time: form.elements.time.value, duration: 'A definir', activity: form.elements.activity.value, place: form.elements.place.value, details: 'Atividade adicionada por você.' });
       day.events.sort((a,b) => a.time.localeCompare(b.time));
       if (writePackagePlans(plansNow)) renderCalendar(root);
       });

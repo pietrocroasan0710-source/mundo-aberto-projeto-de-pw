@@ -1557,6 +1557,23 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .package-inclusion li+li { margin-top: 6px; }
 .package-person { font: 500 12px 'DM Sans',sans-serif; color: var(--muted); }
 .package-empty { padding: 30px; border-radius: 12px; background: #fffefa; color: var(--muted); }
+.compare-check { display: flex; align-items: center; gap: 8px; color: #49665c; font-size: 12px; font-weight: 700; cursor: pointer; }
+.compare-check input { accent-color: #47856f; width: 16px; height: 16px; }
+.compare-check input:disabled { opacity: .5; }
+.comparison-hint { display: grid; gap: 4px; margin-top: 28px; padding: 20px; border: 1px dashed #b7c8bf; border-radius: 12px; color: var(--muted); font-size: 12px; }
+.comparison-hint strong { color: var(--ink); font: 750 16px Manrope,sans-serif; }
+.comparison-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin: 36px 0 14px; }
+.comparison-heading h2 { margin: 0; font: 800 28px Manrope,sans-serif; }
+.comparison-heading>span { color: var(--muted); font-size: 12px; }
+.comparison-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: #fffefa; }
+.comparison-table { width: 100%; min-width: 700px; border-collapse: collapse; }
+.comparison-table th,.comparison-table td { padding: 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 12px; line-height: 1.55; }
+.comparison-table thead th { background: #eaf2ed; font: 750 13px Manrope,sans-serif; }
+.comparison-table tbody th { width: 150px; color: var(--ink); font-weight: 700; }
+.comparison-table tbody td { min-width: 170px; color: #586a70; }
+.package-comparison>.package-disclaimer { margin-top: 10px; }
+.calendar-event-duration { color: #4e8b72; font-size: 11px; font-weight: 700; }
+.calendar-print { margin-top: 15px; }
 .builder-section,.calendar-section { background: #f2f5f0; }
 .builder-layout { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(280px,.7fr); gap: 24px; align-items: start; max-width: 1180px; margin: 0 auto; }
 .builder-panel,.builder-summary,.saved-plan { border: 1px solid var(--line); border-radius: 16px; background: #fffefa; padding: 26px; }
@@ -1604,7 +1621,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .calendar-add-form .btn-outline { padding: 9px 12px; white-space: nowrap; }
 @media(max-width:850px) { .package-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media(max-width:720px) { .builder-layout { grid-template-columns: 1fr; } .builder-summary { position: static; } .calendar-add-form { grid-template-columns: 1fr 1fr; } .calendar-add-form button { grid-column: 1/-1; } }
-@media(max-width:600px) { .budget-search-field { flex-basis: 100%; } .package-grid,.package-inclusions,.builder-fields { grid-template-columns: 1fr; } .builder-panel,.builder-summary,.saved-plan { padding: 17px; } .extra-option { grid-template-columns: 20px minmax(0,1fr); } .extra-option>b { grid-column: 2; } .saved-plan-heading { display: grid; } .saved-plan-heading>strong { text-align: left; } .calendar-event { grid-template-columns: 1fr; gap: 8px; } .calendar-day-heading { display: grid; gap: 4px; } }
+@media(max-width:600px) { .budget-search-field { flex-basis: 100%; } .package-grid,.package-inclusions,.builder-fields { grid-template-columns: 1fr; } .builder-panel,.builder-summary,.saved-plan { padding: 17px; } .extra-option { grid-template-columns: 20px minmax(0,1fr); } .extra-option>b { grid-column: 2; } .saved-plan-heading { display: grid; } .saved-plan-heading>strong { text-align: left; } .calendar-event { grid-template-columns: 1fr; gap: 8px; } .calendar-day-heading { display: grid; gap: 4px; } .comparison-heading { display: grid; } .comparison-table th,.comparison-table td { padding: 10px; } }
 
 @media (max-width: 1000px) {
   .navbar nav {font-size:12px;gap:13px}
@@ -1637,6 +1654,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .map-list {grid-template-columns:1fr}
 }
 @media print {
-  .navbar,.footer,.btn-topo,.itinerary-export,.itinerary-actions,.transport-section,.budget-section {display:none!important}
+  .navbar,.footer,.btn-topo,.itinerary-export,.itinerary-actions,.transport-section,.budget-section,.calendar-print,.calendar-add-form {display:none!important}
   .itinerary-fields input,.itinerary-fields select {border:none}
+  .calendar-section {padding:12px!important;background:#fff!important}
+  .saved-plan,.calendar-day {break-inside:avoid;box-shadow:none}
+  .calendar-event input {border:0;background:transparent;padding:0}
 }

@@ -16,7 +16,7 @@ Não é necessário instalar bibliotecas JavaScript. O mapa OpenStreetMap e as f
 ## O que foi melhorado
 
 - **Catálogo de turismo:** 24 destinos e 120 atrações no Brasil e no exterior. A página inicial mostra nove destaques, e a página de exploração lista todo o catálogo. Os destinos publicados vêm de `static/json/dados.json`.
-- **Cliente não pode adicionar lugares:** botão e página de cadastro público (`adicionar.html`) removidos. Também foram retirados login e cadastro de conta fictícios: não havia backend para autenticar.
+- **Catálogo fechado:** destinos e pacotes são mantidos no projeto; não há fluxo de edição pública nem backend administrativo.
 - **Mais estabilidade:** dados JSON carregados uma vez; favorito/roteiro atualizam a interface sem reiniciar o slideshow. Temporizador único de slides.
 - **Animações:** cartões criados depois do carregamento também aparecem com transição; opção de movimento reduzido respeitada.
 - **Roteiro aprimorado:** organiza por dia (1–14), horário, observação e ordem das paradas. Pode exportar o planejamento para TXT.
@@ -30,7 +30,7 @@ Não é necessário instalar bibliotecas JavaScript. O mapa OpenStreetMap e as f
 
 ## Buscar pacotes por orçamento
 
-Na busca da página inicial, informe o limite por pessoa em reais (por exemplo, `2000`); o campo formata o valor como moeda brasileira. Há pacotes demonstrativos nos 24 destinos, de R$ 1 mil a R$ 20 mil por pessoa, em faixas essenciais, de conforto e de luxo. Ao abrir um destino, a página lista as opções dentro do orçamento, da menor para a maior; cada pacote tem transporte, hotel, refeições, roteiro, atividades, benefícios especiais, taxas incluídas e itens não incluídos. Em **Personalizar e montar meu plano**, escolha a data, o número de viajantes e adicionais opcionais para revisar o total. Ao salvar, o site cria um calendário com horários e lugares sugeridos; você pode ajustar horários/lugares e adicionar atividades. Os planos ficam no armazenamento local do navegador. Hotéis, pacotes, benefícios, adicionais e preços são exemplos fictícios; salvar não compra, paga nem reserva uma viagem.
+Na busca da página inicial, informe o limite por pessoa em reais (por exemplo, `2000`); o campo formata o valor como moeda brasileira. Há pacotes demonstrativos nos 24 destinos, de R$ 1 mil a R$ 20 mil por pessoa, em faixas essenciais, de conforto e de luxo. Compare até três opções lado a lado por preço, duração, hotel, transporte, refeições, benefícios, atividades e exclusões. Em **Personalizar e montar meu plano**, escolha a data, o número de viajantes e adicionais opcionais para revisar o total. Ao salvar, o site cria um calendário com atividades, lugares e horários sugeridos, incluindo intervalos de deslocamento. Os tempos de trajeto são estimativas genéricas para organização; confira rotas reais e horários dos bilhetes. Você pode ajustar horários/lugares, adicionar atividades e imprimir ou salvar o calendário em PDF. Os planos ficam no armazenamento local do navegador. Hotéis, pacotes, benefícios, adicionais e preços são exemplos fictícios; salvar não compra, paga nem reserva uma viagem.
 
 ```text
 Mundo_Aberto_Melhorado/
@@ -71,7 +71,6 @@ Favoritos, plano por dia e orçamento são guardados com `localStorage` e ficam 
 ## Conferência rápida
 
 - [ ] A página inicial exibe nove destaques, e a exploração lista os 24 destinos.
-- [ ] Não existe link “Adicionar lugar” nem página pública de cadastro de destino.
 - [ ] Favoritar, tirar dos favoritos e montar roteiro funcionam sem recarregar a página.
 - [ ] Roteiro permite editar dia, horário e observações, trocar ordem e exportar TXT.
 - [ ] São Paulo → Rio de Janeiro sugere ônibus. São Paulo → Paris sugere avião. Ida e volta e o número de viajantes alteram o total.
