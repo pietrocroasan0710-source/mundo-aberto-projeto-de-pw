@@ -1,0 +1,387 @@
+{
+  "aviso": "Pacotes demonstrativos com valores fictícios para o projeto acadêmico. Não são ofertas nem reservas reais.",
+  "pacotes": [
+    {
+      "id": "rio-fim-de-semana",
+      "destino": "rio-de-janeiro",
+      "nome": "Rio essencial: mar e mirantes",
+      "subtitulo": "3 dias para conhecer os cartões-postais da cidade",
+      "preco": 1890,
+      "duracao": "3 dias / 2 noites",
+      "transporte": "Ônibus executivo ida e volta saindo de São Paulo; bagagem de mão incluída.",
+      "hospedagem": "2 noites no Hotel Brisa de Copacabana (nome fictício), quarto duplo; valor por pessoa.",
+      "refeicoes": "2 cafés da manhã. Almoço e jantar por conta do viajante.",
+      "roteiro": [
+        "Dia 1: chegada, check-in e caminhada em Copacabana",
+        "Dia 2: Cristo Redentor com ingresso e tempo livre na orla",
+        "Dia 3: passeio guiado pelo centro histórico e retorno"
+      ],
+      "atividades": [
+        "Ingresso do Cristo Redentor",
+        "Passeio guiado pelo centro histórico",
+        "Orientação local para transporte público"
+      ],
+      "taxas": [
+        "Taxas rodoviárias",
+        "Taxa de serviço do operador demonstrativo"
+      ],
+      "nao_inclui": [
+        "Alimentação fora dos cafés da manhã",
+        "Pão de Açúcar e passeios opcionais",
+        "Deslocamento até a rodoviária de origem",
+        "Despesas pessoais e seguro viagem"
+      ],
+      "imagem": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1100&q=85",
+      "beneficios": [
+        "Ingresso do Cristo já incluído",
+        "Hotel perto da praia",
+        "Ônibus executivo"
+      ]
+    },
+    {
+      "id": "rio-natureza",
+      "destino": "rio-de-janeiro",
+      "nome": "Rio entre praia e natureza",
+      "subtitulo": "4 dias com hospedagem e passeio guiado",
+      "preco": 1990,
+      "duracao": "4 dias / 3 noites",
+      "transporte": "Ônibus executivo ida e volta saindo de São Paulo.",
+      "hospedagem": "3 noites no Hotel Jardim do Leme (nome fictício), quarto compartilhado econômico.",
+      "refeicoes": "3 cafés da manhã. Demais refeições não incluídas.",
+      "roteiro": [
+        "Dia 1: chegada e tarde livre na praia",
+        "Dia 2: trilha leve guiada no Parque Lage e Jardim Botânico",
+        "Dia 3: Cristo Redentor e pôr do sol na orla",
+        "Dia 4: manhã livre e retorno"
+      ],
+      "atividades": [
+        "Ingresso do Jardim Botânico",
+        "Trilha guiada de nível leve",
+        "Ingresso do Cristo Redentor"
+      ],
+      "taxas": [
+        "Taxas rodoviárias",
+        "Taxas de entrada listadas nas atividades"
+      ],
+      "nao_inclui": [
+        "Almoço, jantar e bebidas",
+        "Pão de Açúcar",
+        "Transporte urbano não descrito",
+        "Despesas pessoais e seguro viagem"
+      ],
+      "imagem": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1100&q=85",
+      "beneficios": [
+        "Três cafés da manhã",
+        "Trilha leve com guia",
+        "Mais uma noite na cidade"
+      ]
+    },
+    {
+      "id": "salvador-cultura",
+      "destino": "salvador",
+      "nome": "Salvador: cultura e litoral",
+      "subtitulo": "3 dias para descobrir o Pelourinho e a orla",
+      "preco": 1950,
+      "duracao": "3 dias / 2 noites",
+      "transporte": "Passagem aérea ida e volta saindo de São Paulo em tarifa econômica demonstrativa; item pessoal incluído.",
+      "hospedagem": "2 noites na Pousada Casa do Carmo (nome fictício), quarto duplo.",
+      "refeicoes": "2 cafés da manhã.",
+      "roteiro": [
+        "Dia 1: chegada e caminhada guiada no Pelourinho",
+        "Dia 2: Elevador Lacerda, Mercado Modelo e tarde na orla",
+        "Dia 3: manhã livre e retorno"
+      ],
+      "atividades": [
+        "Visita guiada ao centro histórico",
+        "Ingresso do Elevador Lacerda"
+      ],
+      "taxas": [
+        "Taxas aeroportuárias estimadas"
+      ],
+      "nao_inclui": [
+        "Bagagem despachada",
+        "Almoço e jantar",
+        "Traslados aeroporto-hotel",
+        "Despesas pessoais e seguro viagem"
+      ],
+      "imagem": "static/img/destinos/salvador.webp",
+      "beneficios": [
+        "Aéreo ida e volta demonstrativo",
+        "Passeio guiado no centro",
+        "Hospedagem no centro histórico"
+      ]
+    },
+    {
+      "id": "foz-cataratas",
+      "destino": "foz-do-iguacu",
+      "nome": "Foz do Iguaçu: natureza em foco",
+      "subtitulo": "3 dias com visita às Cataratas",
+      "preco": 1980,
+      "duracao": "3 dias / 2 noites",
+      "transporte": "Ônibus leito ida e volta saindo de Curitiba, conforme disponibilidade demonstrativa.",
+      "hospedagem": "2 noites no Hotel Cataratas do Sol (nome fictício), quarto duplo econômico.",
+      "refeicoes": "2 cafés da manhã.",
+      "roteiro": [
+        "Dia 1: chegada e descanso",
+        "Dia 2: visita ao Parque Nacional do Iguaçu",
+        "Dia 3: manhã livre e retorno"
+      ],
+      "atividades": [
+        "Ingresso do Parque Nacional do Iguaçu",
+        "Orientação para visita às trilhas principais"
+      ],
+      "taxas": [
+        "Taxa rodoviária",
+        "Ingresso do parque listado"
+      ],
+      "nao_inclui": [
+        "Almoço e jantar",
+        "Parque das Aves e passeios opcionais",
+        "Traslados até a rodoviária",
+        "Seguro viagem e despesas pessoais"
+      ],
+      "imagem": "static/img/destinos/foz-do-iguacu.webp",
+      "beneficios": [
+        "Ingresso das Cataratas incluído",
+        "Ônibus leito",
+        "Hotel com café da manhã"
+      ]
+    },
+    {
+      "id": "rio-conforto",
+      "destino": "rio-de-janeiro",
+      "nome": "Rio com conforto",
+      "subtitulo": "4 dias, hotel com piscina e passeio pelo litoral",
+      "preco": 2890,
+      "duracao": "4 dias / 3 noites",
+      "transporte": "Ônibus leito-cama ida e volta de São Paulo.",
+      "hospedagem": "3 noites no Hotel Mirante de Ipanema (nome fictício), quarto duplo com piscina e café da manhã.",
+      "refeicoes": "Café da manhã diário e jantar de boas-vindas.",
+      "roteiro": [
+        "Dia 1: chegada e check-in",
+        "Dia 2: Cristo Redentor e almoço livre",
+        "Dia 3: passeio de barco pela Baía de Guanabara",
+        "Dia 4: manhã livre e retorno"
+      ],
+      "atividades": [
+        "Ingresso do Cristo Redentor",
+        "Passeio de barco compartilhado",
+        "Transfer rodoviária-hotel"
+      ],
+      "taxas": [
+        "Taxas rodoviárias e entradas descritas"
+      ],
+      "nao_inclui": [
+        "Almoços e bebidas",
+        "Pão de Açúcar",
+        "Seguro viagem e despesas pessoais"
+      ],
+      "imagem": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1100&q=85",
+      "beneficios": [
+        "Poltrona leito-cama",
+        "Hotel com piscina",
+        "Jantar de boas-vindas",
+        "Transfer da rodoviária"
+      ]
+    },
+    {
+      "id": "rio-luxo",
+      "destino": "rio-de-janeiro",
+      "nome": "Rio de Janeiro: experiência luxo",
+      "subtitulo": "5 dias com hotel boutique, transfers e passeio privativo",
+      "preco": 4990,
+      "duracao": "5 dias / 4 noites",
+      "transporte": "Passagem aérea ida e volta em classe econômica premium saindo de São Paulo; bagagem despachada incluída.",
+      "hospedagem": "4 noites no Hotel Atlântico Imperial (nome fictício), suíte vista-mar, café da manhã e piscina na cobertura.",
+      "refeicoes": "Café da manhã diário e 2 jantares no hotel.",
+      "roteiro": [
+        "Dia 1: recepção no aeroporto e check-in",
+        "Dia 2: Cristo Redentor com guia privativo",
+        "Dia 3: passeio de barco privativo pela baía",
+        "Dia 4: dia livre com sugestão de spa",
+        "Dia 5: transfer de retorno"
+      ],
+      "atividades": [
+        "Transfers privativos aeroporto-hotel",
+        "Guia privativo por meio período",
+        "Ingresso do Cristo Redentor",
+        "Passeio de barco privativo"
+      ],
+      "taxas": [
+        "Taxas aeroportuárias estimadas",
+        "Taxas das atividades descritas"
+      ],
+      "nao_inclui": [
+        "Spa e tratamentos opcionais",
+        "Almoços, bebidas e jantar do dia 3",
+        "Gorjetas e despesas pessoais"
+      ],
+      "imagem": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1100&q=85",
+      "beneficios": [
+        "Suíte com vista para o mar",
+        "Bagagem despachada",
+        "Transfers privativos",
+        "Guia e passeio de barco privativos",
+        "Dois jantares no hotel"
+      ]
+    },
+    {
+      "id": "salvador-conforto",
+      "destino": "salvador",
+      "nome": "Salvador com conforto",
+      "subtitulo": "4 dias em hotel charmoso entre centro histórico e praia",
+      "preco": 2890,
+      "duracao": "4 dias / 3 noites",
+      "transporte": "Passagem aérea ida e volta de São Paulo em tarifa econômica demonstrativa; bagagem de mão incluída.",
+      "hospedagem": "3 noites no Hotel Solar da Bahia (nome fictício), quarto superior com varanda e café da manhã.",
+      "refeicoes": "Café da manhã diário e jantar típico na primeira noite.",
+      "roteiro": [
+        "Dia 1: chegada e jantar de boas-vindas",
+        "Dia 2: passeio guiado pelo Pelourinho e centro",
+        "Dia 3: praia e tarde livre",
+        "Dia 4: check-out e retorno"
+      ],
+      "atividades": [
+        "Visita guiada ao centro histórico",
+        "Transfer aeroporto-hotel",
+        "Ingresso do Elevador Lacerda"
+      ],
+      "taxas": [
+        "Taxas aeroportuárias estimadas",
+        "Ingressos listados"
+      ],
+      "nao_inclui": [
+        "Almoços e bebidas",
+        "Passeios de barco opcionais",
+        "Seguro viagem"
+      ],
+      "imagem": "static/img/destinos/salvador.webp",
+      "beneficios": [
+        "Quarto superior com varanda",
+        "Transfer aeroporto-hotel",
+        "Jantar regional de boas-vindas",
+        "Café da manhã diário"
+      ]
+    },
+    {
+      "id": "salvador-luxo",
+      "destino": "salvador",
+      "nome": "Salvador: refúgio de luxo",
+      "subtitulo": "5 dias com hotel boutique, transfer e experiência gastronômica",
+      "preco": 4890,
+      "duracao": "5 dias / 4 noites",
+      "transporte": "Passagem aérea ida e volta em tarifa flexível demonstrativa saindo de São Paulo; bagagem despachada incluída.",
+      "hospedagem": "4 noites no Hotel Casa do Farol (nome fictício), suíte com varanda, piscina e café da manhã.",
+      "refeicoes": "Café da manhã diário e 2 jantares de menu regional.",
+      "roteiro": [
+        "Dia 1: recepção e check-in",
+        "Dia 2: tour privativo no Pelourinho",
+        "Dia 3: passeio de barco compartilhado pela Baía de Todos-os-Santos",
+        "Dia 4: dia livre na praia",
+        "Dia 5: transfer de retorno"
+      ],
+      "atividades": [
+        "Transfers privativos aeroporto-hotel",
+        "Tour privativo pelo centro histórico",
+        "Passeio de barco compartilhado"
+      ],
+      "taxas": [
+        "Taxas aeroportuárias estimadas",
+        "Taxas das atividades descritas"
+      ],
+      "nao_inclui": [
+        "Almoços e bebidas",
+        "Tratamentos de spa e passeios opcionais",
+        "Despesas pessoais"
+      ],
+      "imagem": "static/img/destinos/salvador.webp",
+      "beneficios": [
+        "Suíte boutique com piscina",
+        "Tarifa aérea flexível demonstrativa",
+        "Transfers privativos",
+        "Tour privativo pelo Pelourinho",
+        "Dois jantares regionais"
+      ]
+    },
+    {
+      "id": "foz-conforto",
+      "destino": "foz-do-iguacu",
+      "nome": "Foz em família com conforto",
+      "subtitulo": "4 dias com hotel e dois parques",
+      "preco": 2990,
+      "duracao": "4 dias / 3 noites",
+      "transporte": "Passagem aérea ida e volta saindo de Curitiba em tarifa demonstrativa; item pessoal incluído.",
+      "hospedagem": "3 noites no Hotel Jardim das Cataratas (nome fictício), quarto família, piscina e café da manhã.",
+      "refeicoes": "Café da manhã diário.",
+      "roteiro": [
+        "Dia 1: chegada e piscina do hotel",
+        "Dia 2: Cataratas do Iguaçu",
+        "Dia 3: Parque das Aves e tarde livre",
+        "Dia 4: retorno"
+      ],
+      "atividades": [
+        "Ingresso do Parque Nacional do Iguaçu",
+        "Ingresso do Parque das Aves",
+        "Transfer compartilhado aeroporto-hotel"
+      ],
+      "taxas": [
+        "Taxas aeroportuárias estimadas",
+        "Ingressos dos dois parques"
+      ],
+      "nao_inclui": [
+        "Almoços e jantares",
+        "Passeios opcionais",
+        "Despesas pessoais e seguro viagem"
+      ],
+      "imagem": "static/img/destinos/foz-do-iguacu.webp",
+      "beneficios": [
+        "Quarto família com piscina",
+        "Ingresso para dois parques",
+        "Transfer compartilhado",
+        "Café da manhã diário"
+      ]
+    },
+    {
+      "id": "foz-luxo",
+      "destino": "foz-do-iguacu",
+      "nome": "Foz: Cataratas em grande estilo",
+      "subtitulo": "5 dias com hotel premium, transfers e passeio de barco",
+      "preco": 4790,
+      "duracao": "5 dias / 4 noites",
+      "transporte": "Passagem aérea ida e volta em tarifa flexível demonstrativa saindo de São Paulo; bagagem despachada incluída.",
+      "hospedagem": "4 noites no Hotel Refúgio das Águas (nome fictício), suíte premium com piscina e café da manhã.",
+      "refeicoes": "Café da manhã diário e 2 jantares no hotel.",
+      "roteiro": [
+        "Dia 1: recepção e check-in",
+        "Dia 2: visita guiada às Cataratas",
+        "Dia 3: passeio de barco compartilhado no parque",
+        "Dia 4: Parque das Aves e tarde livre",
+        "Dia 5: transfer de retorno"
+      ],
+      "atividades": [
+        "Transfers compartilhados aeroporto-hotel",
+        "Ingresso do Parque Nacional do Iguaçu",
+        "Ingresso do Parque das Aves",
+        "Passeio de barco compartilhado"
+      ],
+      "taxas": [
+        "Taxas aeroportuárias estimadas",
+        "Ingressos e passeio descritos"
+      ],
+      "nao_inclui": [
+        "Almoços e bebidas",
+        "Passeios opcionais",
+        "Seguro viagem e despesas pessoais"
+      ],
+      "imagem": "static/img/destinos/foz-do-iguacu.webp",
+      "beneficios": [
+        "Suíte premium",
+        "Tarifa aérea flexível demonstrativa",
+        "Transfers compartilhados",
+        "Visita guiada às Cataratas",
+        "Passeio de barco incluído",
+        "Dois jantares no hotel"
+      ]
+    }
+  ]
+}

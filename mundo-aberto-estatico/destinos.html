@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; frame-src https://www.openstreetmap.org; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="no-referrer">
     <title>
       Busca avançada — Mundo Aberto
@@ -41,10 +41,7 @@
             0
           </span>
         </a>
-        <a href="adicionar.html">Adicionar lugar</a>
-        <a class="nav-login" href="login.html">
-          Entrar
-        </a>
+        <a href="mapa.html">Mapa dos destinos</a>
       </nav>
     </header>
     <main>
@@ -58,7 +55,7 @@
           Encontre seu próximo destino.
         </h1>
         <p>
-          Combine palavras, tipo de experiência e faixa de nota para encontrar lugares que combinam com você.
+          Busque lugares por nome ou informe seu orçamento em reais para encontrar pacotes de viagem por pessoa.
         </p>
       </section>
       <section class="section listing-section">
@@ -69,6 +66,7 @@
             </span>
             <input id="search" name="q" placeholder="Ex.: lugares bonitos, históricos, natureza...">
           </label>
+          <label class="rating-field budget-filter-field" id="budget-filter-field"><span>Orçamento máximo (R$)</span><input id="budget-max" name="orcamento" type="text" inputmode="numeric" autocomplete="off" placeholder="Ex.: R$ 2.000"></label>
           <select id="country" aria-label="Filtrar por país">
             <option value="">
               Todos os países
@@ -78,6 +76,19 @@
             <option value="">
               Todos os tipos
             </option>
+          </select>
+          <label class="rating-field">
+            <span>Preço máximo</span>
+            <input id="price-max" type="number" min="0" step="0.01" placeholder="Valor">
+            <small>Selecione também a moeda</small>
+          </label>
+          <select id="price-currency" aria-label="Moeda do preço">
+            <option value="">Qualquer moeda</option>
+          </select>
+          <select id="price-sort" aria-label="Ordenar por preço">
+            <option value="">Ordenar por relevância</option>
+            <option value="menor">Menor preço primeiro</option>
+            <option value="maior">Maior preço primeiro</option>
           </select>
           <label class="rating-field">
             <span>
@@ -99,7 +110,7 @@
           </a>
         </form>
         <p class="rating-disclaimer">
-          As notas atuais são demonstrativas, não avaliações reais de viajantes.
+          Preços não cadastrados aparecem como “Preço a consultar”. Confira sempre os valores e horários nos canais oficiais.
         </p>
         <p class="results-count" id="results-count">
         </p>
@@ -110,10 +121,10 @@
             ✧
           </span>
           <h2>
-            Nenhum destino corresponde à busca
+            Nenhum destino corresponde aos filtros
           </h2>
           <p>
-            Tente ampliar a faixa de nota ou usar outros termos.
+            Tente mudar o país, a categoria, a moeda ou o valor máximo. Passeios sem preço cadastrado não entram no filtro de preço.
           </p>
           <a class="btn-dark" href="destinos.html">
             Limpar filtros ↗
@@ -140,8 +151,8 @@
     </footer>
     <script src="static/js/animacoes.js">
     </script>
-    <script src="static/js/cards.js">
-    </script>
+    <script src="static/js/planejamento.js"></script>
+    <script src="static/js/mapa.js"></script>
     <script src="static/js/main.js">
     </script>
   </body>

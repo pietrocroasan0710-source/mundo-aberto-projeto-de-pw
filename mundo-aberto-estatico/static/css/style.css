@@ -590,7 +590,7 @@ button{
   max-width:800px;
   letter-spacing:-2.5px
 }
-.page-banner>p:last-child{
+.page-banner>p:last-child,.page-banner>.page-banner-description{
   max-width:570px;
   color:#b9c6d0;
   font-size:14px;
@@ -1385,21 +1385,212 @@ button{
   margin:0 12px
 }
 
-/* Formulário e lista pessoal da página para adicionar destinos. */
-.add-place-section{padding-top:55px;padding-bottom:55px}
-.add-place-form{max-width:900px;margin:0 auto;padding:30px;background:var(--paper);border:1px solid var(--line);border-radius:16px}
-.add-place-intro h2,.my-places-section h2{font:800 28px/1.2 Manrope,sans-serif;letter-spacing:-1px;margin:0 0 8px}
-.add-place-intro p{font-size:13px;color:var(--muted);margin:0 0 25px}
-.add-place-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
-.add-place-fields label{display:grid;gap:7px;font-size:12px;font-weight:700}
-.add-place-fields input,.add-place-fields select,.add-place-fields textarea{width:100%;padding:13px;border:1px solid #dfe2df;border-radius:8px;background:#fffefa;color:var(--ink);font:400 13px 'DM Sans',sans-serif}
-.add-place-fields textarea{resize:vertical}
-.add-place-fields small{font-size:10px;color:var(--muted);font-weight:400}
-.add-place-fields .wide-field{grid-column:1/-1}
-.add-place-form>.btn-dark{margin-top:7px}
-.form-message{min-height:20px;font-size:12px;color:#397760}
-.my-places-section{padding-top:35px;background:var(--paper)}
-.my-places-section .section-heading{margin-bottom:25px}
-@media(max-width:720px){.add-place-form{padding:22px 17px}.add-place-fields{grid-template-columns:1fr}.add-place-fields .wide-field{grid-column:auto}}
+/* Mundo Aberto: preços de passeios e moedas locais */
+.card-price{font-size:12px!important;font-weight:800;color:var(--orange);margin:8px 0 2px!important}
+.price-panel,.price-summary{margin:22px 0;padding:20px 22px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+.price-panel{display:grid;gap:7px}
+.price-panel strong,.price-summary strong{font:800 21px/1.3 Manrope,sans-serif;color:var(--ink)}
+.price-panel small,.price-summary small{font-size:11px;color:var(--muted)}
+.price-summary p{font-size:20px;font-weight:800;margin:8px 0;color:var(--orange)}
+#price-max{width:115px;padding:11px;border:1px solid var(--line);background:#fffefa;border-radius:8px;color:var(--ink)}
+#price-currency,#price-sort{padding:11px;border:1px solid var(--line);background:#fffefa;border-radius:8px;color:var(--ink);max-width:100%}
+@media(max-width:720px){.advanced-filter #price-max,.advanced-filter #price-currency,.advanced-filter #price-sort{width:100%}.price-panel,.price-summary{padding:16px}}
 
-.add-place-form button:disabled{opacity:.65;cursor:wait}
+.attraction-price-row{display:grid!important;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:12px}.attraction-price-row small{font-size:11px;color:var(--orange);font-weight:700;text-align:right}@media(max-width:560px){.attraction-price-row{grid-template-columns:32px minmax(0,1fr)}.attraction-price-row small{grid-column:2;text-align:left}}
+
+/* Versão pública — navegação, roteiro e mapa interativo */
+[hidden] { display: none !important; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+.navbar nav a[aria-current="page"] { color:var(--orange); }
+.navbar nav {gap:clamp(10px, 2.1vw, 25px)}
+.navbar nav>a {white-space:nowrap;}
+.destination-map {margin-top:34px}
+.destination-map .section-heading {margin-bottom:16px}
+.destination-map h3 {margin:0 0 12px}
+.destination-map iframe {width:100%;height:340px;border:1px solid var(--line);border-radius:14px;background:#e8f0eb}
+.destination-map p,.map-notice {font-size:12px;color:var(--muted);margin:12px 0}
+.destination-map .text-link {display:inline-block;margin-top:5px}
+.map-promo {display:flex;align-items:center;justify-content:space-between;gap:30px;background:#d6e9e3}
+.map-promo h2 {margin:0 0 10px}
+.map-promo p:last-child {color:#50656a;margin:0}
+.map-promo .btn-dark {flex-shrink:0}
+.map-shell {display:grid;grid-template-columns:300px minmax(0, 1fr);gap:22px;max-width:1240px;margin:0 auto}
+.map-sidebar,.map-main {background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px}
+.map-sidebar h2 {font:800 23px/1.2 Manrope,sans-serif;letter-spacing:-.5px;margin:0 0 8px}
+.map-sidebar>p {font-size:12px;color:var(--muted);margin:0 0 18px}
+.map-list {max-height:590px;overflow:auto;display:grid;gap:7px}
+.map-location {display:flex;align-items:center;gap:12px;text-align:left;width:100%;border:1px solid transparent;border-radius:10px;background:transparent;padding:12px;color:var(--ink)}
+.map-location>span:first-child {font-size:22px}
+.map-location>span:nth-child(2) {flex:1;display:grid;gap:2px}
+.map-location strong {font-size:12px}
+.map-location small {font-size:10px;color:var(--muted)}
+.map-location:hover,.map-location.is-active {border-color:#c7d9d3;background:#eff8f4}
+.map-head h2 {font:800 25px/1.2 Manrope,sans-serif;margin:0 0 14px}
+.map-head .eyebrow {margin:0 0 8px}
+#explore-map {width:100%;height:550px;border:1px solid var(--line);border-radius:10px;background:#e2e9e6}
+.map-links {display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+.map-links a {display:inline-flex;align-items:center;justify-content:center}
+.itinerary-day {margin-bottom:32px}
+.itinerary-day-heading {display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #bfded3;margin-bottom:15px;padding-bottom:12px}
+.itinerary-day-heading h2 {font:800 26px Manrope,sans-serif;margin:0}
+.itinerary-day-heading span {color:var(--muted);font-size:12px}
+.itinerary-item-extended {align-items:flex-start;flex-wrap:nowrap}
+.itinerary-item-extended>.itinerary-content {flex:1;min-width:0}
+.itinerary-content h3 {font:800 23px Manrope,sans-serif;margin:5px 0}
+.itinerary-content>p {margin:3px 0 12px}
+.itinerary-fields {display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-top:12px}
+.itinerary-fields label {display:grid;gap:5px;color:var(--muted);font-size:11px;font-weight:700}
+.itinerary-fields input,.itinerary-fields select {border:1px solid var(--line);border-radius:8px;background:#fff;padding:8px 10px;color:var(--ink);font-size:12px;min-height:39px}
+.itinerary-fields .plan-note {flex:1;min-width:185px}
+.itinerary-fields .plan-note input {width:100%}
+.itinerary-actions {display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:13px}
+.small-outline {border:1px solid #cad4d3;background:#fffefa;border-radius:8px;padding:7px 10px;color:var(--ink);font:600 11px 'DM Sans',sans-serif;white-space:nowrap}
+.small-outline:hover {background:#eef7f2}
+.small-outline:disabled {opacity:.42;cursor:not-allowed}
+.itinerary-actions .remove-btn {margin-left:auto}
+.itinerary-export {margin:20px 0 30px}
+.itinerary-export button:disabled {opacity:.42;cursor:not-allowed}
+.budget-section {background:#e4eee9}
+.budget-intro {max-width:750px;margin-bottom:27px}
+.budget-intro h2 {font:800 clamp(29px,4vw,42px)/1.2 Manrope,sans-serif;margin:0 0 10px}
+.budget-intro>p:last-child {font-size:14px;color:#52636b}
+.budget-layout {display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:start}
+.budget-form {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;background:var(--paper);border-radius:16px;padding:25px}
+.budget-form label {font-size:12px;font-weight:700;color:var(--ink);display:grid;gap:7px}
+.budget-form input,.budget-form select {background:#fff;border:1px solid #d4dbd6;border-radius:9px;padding:12px;width:100%;font-size:14px;color:var(--ink);min-width:0}
+.budget-footnote {grid-column:1/-1;color:var(--muted);font-size:11px;margin:4px 0 0}
+.budget-result {border-radius:16px;padding:29px;background:var(--navy);color:#fff;display:grid;gap:8px;position:sticky;top:100px}
+.budget-result>span {font-size:13px;color:#c9dcda}
+.budget-result>strong {font:800 clamp(24px,3.3vw,36px)/1.25 Manrope,sans-serif;color:#bfe4d6;overflow-wrap:anywhere}
+.budget-result>small {color:#b5c2c5;font-size:11px}
+.budget-breakdown {display:grid;grid-template-columns:1fr auto;gap:10px 15px;border-top:1px solid #425666;margin-top:12px;padding-top:18px}
+.budget-breakdown span {font-size:12px;color:#e3e9e9}
+.budget-breakdown b {font-size:12px;text-align:right}
+
+/* Simulação de transporte */
+.page-banner-link {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.detail-aside > .full-width + .full-width { margin-top: 9px; }
+.transport-section, .budget-section { scroll-margin-top: 75px; }
+.transport-section { background: #eef3ef; }
+.transport-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.transport-form { border: 1px solid var(--line); }
+.transport-wide { grid-column: 1 / -1; }
+.transport-form button:disabled { opacity: .55; cursor: not-allowed; }
+.transport-ticket {
+  min-width: 0;
+  padding: 28px;
+  border-radius: 16px;
+  background: var(--navy);
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+.transport-ticket h3 {
+  margin: 0;
+  font: 800 clamp(21px, 3vw, 28px)/1.2 Manrope, sans-serif;
+}
+#transport-empty p { margin: 8px 0 0; color: #c9d9dc; font-size: 14px; }
+.transport-route { display: grid; gap: 9px; margin: 19px 0 15px; }
+.transport-route > div {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+}
+.transport-route dt { color: var(--teal); font-size: 12px; font-weight: 700; }
+.transport-route dd { margin: 0; font-size: 14px; font-weight: 700; }
+.transport-steps { margin: 0 0 18px; padding-left: 21px; color: #e3eded; font-size: 13px; }
+.transport-steps li + li { margin-top: 6px; }
+.transport-price {
+  display: grid;
+  gap: 4px;
+  border-top: 1px dashed #758a91;
+  padding-top: 16px;
+}
+.transport-price span, .transport-price small { color: #d6e6e8; font-size: 13px; }
+.transport-price strong { font: 800 clamp(27px, 4vw, 37px)/1.2 Manrope, sans-serif; color: var(--teal); }
+.transport-message { color: #d0dfe2; font-size: 12px; margin: 12px 0 0; }
+.transport-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 17px; margin-top: 18px; }
+.transport-actions .btn-outline { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+.transport-actions .btn-outline:disabled { opacity: .55; cursor: not-allowed; }
+.transport-ticket a { color: var(--teal); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.transport-actions a { font-size: 13px; }
+
+/* Busca por pacotes e informações incluídas na viagem */
+.budget-search-field { flex: 0 0 210px; }
+.budget-search-field input { width: 100%; max-width: 175px; border: 0; border-bottom: 1px solid #d8ded9; background: transparent; padding: 7px 0; color: var(--ink); font-size: 14px; }
+.budget-search-field .busca-texto { display: grid; gap: 4px; }
+.package-section { padding-top: 52px; }
+.package-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; }
+.package-card { overflow: hidden; border: 1px solid var(--line); border-radius: 15px; background: #fffefa; box-shadow: 0 8px 25px #142b1a0a; }
+.package-card>img { display: block; width: 100%; height: 210px; object-fit: cover; }
+.package-card-body { display: grid; gap: 10px; padding: 20px; }
+.package-duration,.package-disclaimer { color: var(--muted); font-size: 11px; }
+.package-card h3 { margin: 0; font: 800 22px/1.2 Manrope,sans-serif; }
+.package-card-body>p { min-height: 36px; margin: 0; color: var(--muted); font-size: 13px; }
+.package-card-body>strong { color: var(--orange); font: 800 23px Manrope,sans-serif; }
+.package-card-body>strong small { color: var(--muted); font: 500 12px 'DM Sans',sans-serif; }
+.package-highlights { display: grid; gap: 6px; margin: 2px 0 0; padding: 0; list-style: none; }
+.package-highlights li { color: #49665c; font-size: 11px; line-height: 1.4; }
+.package-highlights li::before { content: '✓'; color: #3b9272; font-weight: 800; margin-right: 7px; }
+.package-card .btn-dark { display: inline-flex; justify-content: center; margin-top: 5px; }
+.package-detail-layout { align-items: start; }
+.package-inclusions { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 15px; margin-top: 25px; }
+.package-inclusion { border: 1px solid var(--line); border-radius: 12px; padding: 18px; background: #fffefa; }
+.package-inclusion h3 { margin: 0 0 11px; font: 750 16px Manrope,sans-serif; }
+.package-inclusion ul { margin: 0; padding-left: 19px; color: #5d6c71; font-size: 13px; line-height: 1.65; }
+.package-inclusion li+li { margin-top: 6px; }
+.package-person { font: 500 12px 'DM Sans',sans-serif; color: var(--muted); }
+.package-empty { padding: 30px; border-radius: 12px; background: #fffefa; color: var(--muted); }
+@media(max-width:850px) { .package-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) { .budget-search-field { flex-basis: 100%; } .package-grid,.package-inclusions { grid-template-columns: 1fr; } }
+
+@media (max-width: 1000px) {
+  .navbar nav {font-size:12px;gap:13px}
+  .map-shell {grid-template-columns:250px minmax(0,1fr)}
+}
+@media (max-width: 720px) {
+  .navbar nav>a {white-space:normal}
+  .map-promo {display:block}
+  .map-promo .btn-dark {display:inline-flex;margin-top:20px}
+  .map-shell,.budget-layout,.transport-layout {grid-template-columns:minmax(0,1fr)}
+  .map-sidebar,.map-main {padding:16px}
+  .map-list {max-height:230px;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .map-location {padding:10px 7px;gap:6px}
+  .map-location>span:first-child {font-size:17px}
+  .map-location strong {font-size:11px}
+  #explore-map {height:350px}
+  .itinerary-item-extended {flex-wrap:wrap}
+  .itinerary-item-extended>img {width:85px;height:85px}
+  .itinerary-item-extended>.itinerary-content {min-width:calc(100% - 105px)}
+  .itinerary-fields {margin-left:-97px;padding-top:10px}
+  .itinerary-actions {margin-left:-97px}
+  .itinerary-actions .remove-btn {margin-left:0}
+  .budget-form {padding:17px;gap:12px}
+  .budget-result {position:static}
+  .transport-ticket {padding:20px}
+}
+@media (max-width: 385px) {
+  .budget-form {grid-template-columns:1fr}
+  .itinerary-fields .plan-note {min-width:160px}
+  .map-list {grid-template-columns:1fr}
+}
+@media print {
+  .navbar,.footer,.btn-topo,.itinerary-export,.itinerary-actions,.transport-section,.budget-section {display:none!important}
+  .itinerary-fields input,.itinerary-fields select {border:none}
+}

@@ -1,57 +1,77 @@
-# Mundo Aberto — Guia turístico global
+# Mundo Aberto — Versão pública melhorada
 
-Versão estática em HTML, CSS e JavaScript. Os destinos e paisagens são carregados de `static/json/dados.json` (somente leitura). O visual responsivo original, slideshow, busca avançada por texto (incluindo termos como “lugares bonitos” e “históricos”), país, tipo de experiência e faixa de notas, detalhes, favoritos e roteiro foram mantidos.
+Projeto acadêmico de Programação Web (HTML, CSS e JavaScript) — 2026.
 
-## Executar localmente
+## Como abrir no VS Code
 
-Como o site carrega JSON usando `fetch`, abra-o por um servidor HTTP local, não diretamente como `file://`.
+1. Extraia o ZIP.
+2. Abra a pasta `Mundo_Aberto_Melhorado` no Visual Studio Code.
+3. Instale a extensão **Live Server** caso ainda não esteja instalada.
+4. Abra `index.html` com **Open with Live Server**.
 
-- **VS Code:** instale a extensão Live Server, abra `index.html` e escolha **Open with Live Server**.
-- **Python, se já estiver instalado:** na pasta do projeto execute `python -m http.server 8000` e abra `http://localhost:8000`.
-- **Hospedagem estática:** publique a pasta inteira em GitHub Pages, Netlify, Cloudflare Pages ou outro host que sirva arquivos estáticos. Não há etapa de build nem dependências para instalar.
+Não é necessário instalar bibliotecas JavaScript. O mapa OpenStreetMap e as fotos originais do Unsplash precisam de internet. As fotos dos novos destinos estão incluídas no projeto.
 
-## Dados e privacidade
+**Importante:** não abra `index.html` diretamente via `file://`, porque os dados JSON usam `fetch`. Se preferir Python, execute `python -m http.server 8000` dentro da pasta do site e abra `http://localhost:8000`.
 
-Edite `static/json/dados.json` para alterar destinos e paisagens. O navegador apenas lê esse arquivo; JavaScript comum da página não consegue gravar alterações de volta no JSON do site.
+## O que foi melhorado
 
-As notas e tags do catálogo são demonstrativas e estão em `static/json/dados.json`; não representam avaliações reais. Favoritos e roteiro ficam no `localStorage` deste navegador e deste endereço. Eles não sincronizam entre dispositivos e podem ser apagados pelo usuário. Cadastro/login seguro, sessões, sincronização e gravação compartilhada exigem um backend; por isso as telas de conta informam que esses recursos estão desativados. Não digite senhas neste protótipo.
+- **Catálogo de turismo:** 24 destinos e 120 atrações no Brasil e no exterior. A página inicial mostra nove destaques, e a página de exploração lista todo o catálogo. Os destinos publicados vêm de `static/json/dados.json`.
+- **Cliente não pode adicionar lugares:** botão e página de cadastro público (`adicionar.html`) removidos. Também foram retirados login e cadastro de conta fictícios: não havia backend para autenticar.
+- **Mais estabilidade:** dados JSON carregados uma vez; favorito/roteiro atualizam a interface sem reiniciar o slideshow. Temporizador único de slides.
+- **Animações:** cartões criados depois do carregamento também aparecem com transição; opção de movimento reduzido respeitada.
+- **Roteiro aprimorado:** organiza por dia (1–14), horário, observação e ordem das paradas. Pode exportar o planejamento para TXT.
+- **Passagens:** em **Meu roteiro → Simular passagem**, escolha país e cidade de saída, destino, ida ou ida e volta e número de viajantes. O planejador sugere ônibus entre cidades do mesmo país e avião para viagens internacionais. O atalho **Como chegar** já seleciona o destino visitado.
+- **Calculadora de orçamento:** informe dias, custo por noite, alimentação, transporte, ingressos e gastos extras. O cálculo é feito localmente e salvo neste navegador. Não realiza cotação/conversão de moedas.
+- **Mapa de destinos (`mapa.html`):** mapa interativo embutido do OpenStreetMap com marcadores aproximados da cidade ou região e links individuais de cada destino.
+- **Acessibilidade e responsividade:** estados do menu, feedback, botões com descrições, foco visível e layout adequado ao celular.
+- **Preços:** o catálogo de passeios usa valores fictícios na moeda local. As passagens são simuladas em reais (BRL). Use **Pesquisar passagens** para consultar opções disponíveis e **Usar no orçamento** para preencher o campo de transporte de um orçamento em BRL.
 
 ## Estrutura
 
-- `index.html`, `destinos.html`, `destino.html`, `favoritos.html`, `roteiro.html`: páginas estáticas.
-- `login.html`, `cadastro.html`: explicação da limitação de autenticação sem servidor.
-- `static/css/style.css`: estilos responsivos originais.
-- `static/js/`: slideshow, interações e efeitos sem jQuery.
-- `static/json/dados.json`: catálogo de destinos e imagens.
+## Buscar pacotes por orçamento
 
-As imagens são hospedadas externamente no Unsplash e requerem conexão com a internet.
+Na busca da página inicial, informe o limite por pessoa em reais (por exemplo, `2000`); o campo formata o valor como moeda brasileira. O catálogo mostra destinos que têm pelo menos um pacote nessa faixa, incluindo categorias de conforto e luxo entre R$ 2 mil e R$ 5 mil. Ao abrir um destino, a página lista os pacotes compatíveis; cada pacote tem uma página com transporte, hotel, refeições, roteiro, atividades, benefícios especiais, taxas incluídas e itens não incluídos. Os benefícios crescem com a faixa de preço: opções básicas, mais conforto nos pacotes intermediários e vantagens premium nos pacotes de luxo. Os hotéis, pacotes, benefícios e preços em `static/json/pacotes.json` são fictícios: este site não consulta disponibilidade nem realiza reservas.
 
-## Como ler e editar o catálogo
+```text
+Mundo_Aberto_Melhorado/
+  index.html                Página inicial
+  destinos.html             Busca e filtros
+  destino.html              Detalhe de cada destino e mapa da região
+  favoritos.html            Favoritos locais
+  roteiro.html              Roteiro por dias, passagens e orçamento
+  mapa.html                 Mapa interativo das regiões
+  static/css/style.css      Aparência responsiva
+  static/js/main.js         Catálogo, busca, favoritos, menu e slides
+  static/js/planejamento.js  Organização do roteiro e orçamento
+  static/js/transporte.js    Simulação de ônibus e avião
+  static/js/mapa.js         Seleção e visualização do mapa
+  static/js/animacoes.js    Movimento e botão voltar ao topo
+  static/json/dados.json    Destinos e coordenadas aproximadas
+  static/json/pacotes.json  Pacotes demonstrativos e inclusões
+  static/img/destinos/      Fotos dos novos destinos
+  CREDITOS_FOTOS.md        Créditos e licenças das fotos incluídas
+```
 
-O arquivo JSON não aceita comentários dentro dele, então esta seção explica o que cada campo significa:
+## Atualizar os destinos — somente pelo responsável pelo código
 
-- `paisagens`: imagens e legendas usadas no slideshow da página inicial.
-- `destinos`: lista de lugares exibidos pelo site.
-- `slug`: identificador usado no endereço da página de detalhes.
-- `categoria`, `pais`, `cidade` e `continente`: informações usadas nos filtros e na busca.
-- `atracoes`, `melhor_epoca` e `duracao`: conteúdo mostrado na página de detalhes.
-- `nota`: nota demonstrativa de 0 a 5, usada no filtro por faixa.
-- `tags`: temas usados pela busca semântica, como `bonito`, `historico`, `natureza`, `aventura` e `gastronomia`.
+Edite `static/json/dados.json` no projeto e publique novamente os arquivos na hospedagem. Não há botão para incluir destinos no site público. Para permitir que um administrador cadastre locais online **sem disponibilizar essa opção aos clientes**, no futuro será necessário criar um painel separado e autenticado com backend e validação de permissões no servidor. Apenas ocultar um link HTML não oferece segurança.
 
-Ao adicionar um destino, mantenha os mesmos campos dos destinos existentes e use uma nota entre 0 e 5.
+Os campos `lat` e `lon` são **referências aproximadas** da região; não indicam obrigatoriamente a entrada exata de um ponto turístico. Não use o mapa embutido como navegação de segurança.
 
+Os campos `preco_passeio`, `moeda`, `fonte_preco` e `atualizado_em` registram os preços de referência. Os preços e as notas desta versão são ilustrativos.
 
-## Adicionar lugares pelo site
+## Privacidade e limites
 
-Abra `adicionar.html` ou escolha **Adicionar lugar** no menu. O formulário salva os novos destinos no armazenamento local deste navegador; eles aparecem na busca, nos detalhes, nos favoritos e no roteiro. A seção “Meus lugares” permite removê-los.
+Favoritos, plano por dia e orçamento são guardados com `localStorage` e ficam **somente neste navegador e neste endereço**; não sincronizam entre pessoas ou dispositivos, e desaparecem se os dados locais forem apagados. Não existe cadastro de usuário nem coleta de senhas. O mapa embutido e as fotos originais dependem do OpenStreetMap e do Unsplash. A política de segurança de conteúdo limita as origens utilizadas.
 
-Esse cadastro não altera `static/json/dados.json`, não sincroniza com outros navegadores ou dispositivos e é apagado se os dados locais do site forem removidos.
+## Conferência rápida
 
-## Proteções da versão estática
-
-- Fotos enviadas pelo formulário aceitam apenas JPEG, PNG ou WebP, têm limites de tamanho e dimensão e são abertas e convertidas para JPEG no navegador antes de serem guardadas. O arquivo não é enviado a um servidor.
-- O formulário limita o número de lugares e o espaço ocupado pelos dados neste navegador.
-- Os textos cadastrados são escapados antes de serem apresentados nas páginas.
-- As páginas usam uma Política de Segurança de Conteúdo que bloqueia scripts externos e limita a origem das imagens e estilos.
-
-Essas medidas ajudam a reduzir riscos no navegador, mas não tornam o conteúdo local confiável para outras pessoas. Como não existe servidor, cada pessoa pode alterar seus próprios dados do navegador. Para receber cadastros compartilhados com garantias mais fortes, o projeto precisaria de backend e regras de validação no servidor. A hospedagem também deve enviar cabeçalhos de segurança próprios para reforçar a política configurada nas páginas.
+- [ ] A página inicial exibe nove destaques, e a exploração lista os 24 destinos.
+- [ ] Não existe link “Adicionar lugar” nem página pública de cadastro de destino.
+- [ ] Favoritar, tirar dos favoritos e montar roteiro funcionam sem recarregar a página.
+- [ ] Roteiro permite editar dia, horário e observações, trocar ordem e exportar TXT.
+- [ ] São Paulo → Rio de Janeiro sugere ônibus. São Paulo → Paris sugere avião. Ida e volta e o número de viajantes alteram o total.
+- [ ] **Usar no orçamento** preenche o campo de transporte em BRL.
+- [ ] Orçamento calcula uma noite a menos que o número de dias e atualiza imediatamente.
+- [ ] Mapa troca de região quando selecionado outro destino.
+- [ ] Menu abre no celular e fecha por Escape ou toque em um link.
