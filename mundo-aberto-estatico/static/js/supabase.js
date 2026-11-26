@@ -6,5 +6,11 @@ const { createClient } = supabase;
 
 const supabaseClient = createClient(
     SUPABASE_URL,
-    SUPABASE_KEY
+    SUPABASE_KEY, 
+    {auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true
+    }
+}
 );
