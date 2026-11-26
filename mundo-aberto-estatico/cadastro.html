@@ -1,9 +1,10 @@
 <!doctype html>
+<!-- Explica por que cadastro de contas está desativado nesta versão estática. -->
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://fyubhfcffvukzlsvrqpk.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="no-referrer">
     <title>
       Cadastro — Mundo Aberto
@@ -46,64 +47,24 @@
           </div>
         </div>
         <div class="auth-panel">
-          <p class="eyebrow dark">CONTA DE VIAJANTE</p>
-          <h1>Crie sua conta</h1>
-          <p class="auth-subtitle">Comece a planejar suas próximas viagens.</p>
-          <form id="register-form">
-            <label for="name">Nome completo</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Seu nome"
-              autocomplete="name"
-              required
-            >
-            <label for="email">E-mail</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="seuemail@exemplo.com"
-              autocomplete="email"
-              required
-            >
-            <label for="password">Senha</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Mínimo de 6 caracteres"
-              minlength="6"
-              autocomplete="new-password"
-              required
-            >
-            <label for="confirm-password">Confirmar senha</label>
-            <input
-              type="password"
-              id="confirm-password"
-              name="confirm-password"
-              placeholder="Digite a senha novamente"
-              minlength="6"
-              autocomplete="new-password"
-              required
-            >
-            <p id="register-message" role="status"></p>
-            <button type="submit" class="btn-dark">
-              Criar minha conta
-            </button>
-          </form>
-          <button type="button" id="google-btn" class="btn-dark">
-            Continuar com o Google
-          </button>
-          <p class="auth-subtitle">Já possui uma conta? <a href="login.html">Entrar</a></p>
+          <p class="eyebrow dark">
+            CONTA DE VIAJANTE
+          </p>
+          <h1>
+            Cadastro desativado
+          </h1>
+          <p class="auth-subtitle">
+            Não é possível criar uma conta de forma segura sem um servidor. Use favoritos e roteiro, salvos localmente neste navegador.
+          </p>
+          <a class="btn-dark" href="destinos.html">
+            Explorar destinos ↗
+          </a>
         </div>
       </section>
     </main>
-    <!-- Ordem importa: CDN → supabase.js → auth.js → main.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="static/js/supabase.js"></script>
-    <script src="static/js/auth.js"></script>
-    <script src="static/js/main.js"></script>
+    <script src="static/js/main.js">
+    </script>
   </body>
 </html>
+
+

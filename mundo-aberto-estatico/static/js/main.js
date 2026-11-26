@@ -538,19 +538,29 @@
     const params = new URLSearchParams(location.search);
     const plans = readPackagePlans();
     const selectedId = params.get('plano');
-    const visible = selectedId ? plans.filter(plan => plan.id === selectedId) : plans;
+    const matchingPlan = selectedId ? plans.filter(plan => plan.id === selectedId) : [];
+    const visible = matchingPlan.length ? matchingPlan : plans;
     if (!visible.length) {
       root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>SEU CRONOGRAMA</p><h1>Seu calendário de viagem.</h1><p>Monte um pacote para criar seu cronograma por dia.</p></section><section class="section"><div class="empty-state"><span>✧</span><h2>Nenhum plano salvo ainda</h2><p>Escolha um pacote, personalize a viagem e salve seu plano para montar o calendário.</p><a class="btn-dark" href="destinos.html">Encontrar um pacote ↗</a></div></section>`;
       return;
     }
     const dateLabel = value => new Intl.DateTimeFormat('pt-BR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${value}T12:00:00`));
     root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>SEU CRONOGRAMA</p><h1>Calendário da viagem.</h1><p>Atividades, horários e lugares do seu plano. Você pode ajustar os horários e adicionar atividades.</p></section><section class="section calendar-section">${visible.map(plan => `<article class="saved-plan"><div class="saved-plan-heading"><div><p class="eyebrow dark">${html(plan.destinationName)}</p><h2>${html(plan.packageName)}</h2><p>${plan.travelers} viajante(s) · início em ${html(dateLabel(plan.startDate))}</p></div><strong>${html(formatPrice(plan.total,'BRL'))}<small> total demonstrativo</small></strong></div>${plan.extras?.length ? `<p class="saved-extras"><strong>Adicionais:</strong> ${plan.extras.map(extra => html(extra.nome)).join(' · ')}</p>` : ''}<div class="calendar-days">${plan.schedule.map((day, dayIndex) => `<section class="calendar-day"><div class="calendar-day-heading"><span>Dia ${dayIndex + 1}</span><h3>${html(dateLabel(day.date))}</h3></div><div class="calendar-events">${day.events.map((item, eventIndex) => `<article class="calendar-event"><label>Horário<input type="time" value="${html(item.time)}" data-calendar-plan="${html(plan.id)}" data-calendar-day="${dayIndex}" data-calendar-event="${eventIndex}" data-calendar-field="time"></label><div class="calendar-event-content"><strong>${html(item.activity)}</strong><p>${html(item.details)}</p><label>Lugar<input type="text" value="${html(item.place)}" data-calendar-plan="${html(plan.id)}" data-calendar-day="${dayIndex}" data-calendar-event="${eventIndex}" data-calendar-field="place"></label></div></article>`).join('')}</div><form class="calendar-add-form" data-add-plan="${html(plan.id)}" data-add-day="${dayIndex}"><input type="time" name="time" value="18:30" aria-label="Horário da atividade" required><input name="activity" placeholder="Nova atividade" aria-label="Nome da atividade" required><input name="place" placeholder="Lugar" aria-label="Lugar da atividade" required><button class="btn-outline" type="submit">+ Adicionar ao dia</button></form></section>`).join('')}</div><p class="package-disclaimer">Plano demonstrativo salvo neste navegador. Nenhum serviço, ingresso ou hospedagem foi reservado.</p></article>`).join('')}</section>`;
-    if (params.get('fechado') === '1' && visible.some(item => item.demoPayment?.status === 'simulado')) {
+    if (params.get('fechado') === '1' && visible.some(item => item.id === selectedId && item.demoPayment?.status === 'simulado')) {
       const notice = document.createElement('div');
       notice.className = 'plan-confirmation';
       notice.innerHTML = '<strong>Plano fechado na simulação!</strong><span>Não houve cobrança e nenhuma reserva real foi feita.</span>';
       root.querySelector('.calendar-section')?.prepend(notice);
     }
+    const calendarTools = document.createElement('div');
+    calendarTools.className = 'calendar-tools';
+    const deleteAllButton = document.createElement('button');
+    deleteAllButton.type = 'button';
+    deleteAllButton.className = 'btn-outline calendar-delete-all';
+    deleteAllButton.dataset.deleteAllPlans = '';
+    deleteAllButton.textContent = 'Apagar todos os planos salvos';
+    calendarTools.append(deleteAllButton);
+    root.querySelector('.calendar-section')?.prepend(calendarTools);
     const printButton = document.createElement('button');
     printButton.type = 'button';
     printButton.className = 'btn-dark calendar-print';
@@ -567,9 +577,30 @@
       duration.textContent = item.duration || 'Duração a definir';
       title.after(duration);
     })));
+    const savedPlanCards = root.querySelectorAll('.saved-plan');
+    visible.forEach((plan, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'small-outline plan-delete';
+      button.dataset.deletePlan = plan.id;
+      button.textContent = 'Apagar este plano';
+      savedPlanCards[index]?.querySelector('.saved-plan-heading')?.append(button);
+    });
     if (!root.dataset.calendarHandlersBound) {
       root.dataset.calendarHandlersBound = 'true';
-      root.addEventListener('click', event => { if (event.target.closest('[data-print-calendar]')) window.print(); });
+      root.addEventListener('click', event => {
+        if (event.target.closest('[data-print-calendar]')) window.print();
+        if (event.target.closest('[data-delete-all-plans]')) {
+          if (!window.confirm('Apagar todos os planos salvos neste navegador?')) return;
+          if (writePackagePlans([])) renderCalendar(root);
+          return;
+        }
+        const button = event.target.closest('[data-delete-plan]');
+        if (!button) return;
+        if (!window.confirm('Apagar este plano salvo neste navegador?')) return;
+        const remaining = readPackagePlans().filter(plan => plan.id !== button.dataset.deletePlan);
+        if (writePackagePlans(remaining)) renderCalendar(root);
+      });
       root.addEventListener('change', event => {
       const input = event.target.closest('[data-calendar-field]');
       if (!input) return;

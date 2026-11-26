@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://fyubhfcffvukzlsvrqpk.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="no-referrer">
     <title>
       Entrar — Mundo Aberto
@@ -53,31 +53,18 @@
           </div>
         </div>
         <div class="auth-panel">
-            <p class="eyebrow dark">CONTA DE VIAJANTE</p>
-            <h1>Bem-vindo de volta!</h1>
-            <p class="auth-subtitle">Entre na sua conta e continue planejando suas viagens.</p>
-            <form id="login-form">
-                <label for="email">E-mail</label>
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="seuemail@exemplo.com"
-                    required
-                >
-                <label for="password">Senha</label>
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Sua senha"
-                    required
-                >
-                <p id="login-message" role="status"></p>
-                <button type="submit" class="btn-dark">
-                    Entrar
-                </button>
-            </form>
-            <button type="button" id="google-btn" class="btn-dark">Continuar com o Google</button>
-            <p class="auth-subtitle">Ainda não possui uma conta?<a href="cadastro.html">Cadastre-se</a></p>
+          <p class="eyebrow dark">
+            CONTA DE VIAJANTE
+          </p>
+          <h1>
+            Login desativado
+          </h1>
+          <p class="auth-subtitle">
+            Este site agora é estático. Entrar/cadastrar com segurança exige um backend ou provedor de autenticação; não armazenamos senhas neste navegador.
+          </p>
+          <a class="btn-dark" href="destinos.html">
+            Continuar explorando ↗
+          </a>
         </div>
       </section>
     </main>
@@ -95,12 +82,6 @@
         Explorar ↗
       </a>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-    </script>
-    <script src="static/js/supabase.js">
-    </script>
-    <script src="static/js/auth.js">
-    </script>
     <script src="static/js/main.js">
     </script>
   </body>
