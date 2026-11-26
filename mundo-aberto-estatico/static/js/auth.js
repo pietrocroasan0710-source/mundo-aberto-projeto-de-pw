@@ -24,10 +24,6 @@ async function entrarUsuario(email, senha) {
 
     if (error) throw error;
 
-    console.log("Login realizado com sucesso!");
-    console.log("Usuário:", data.user);
-    console.log("Sessão ativa:", !!data.session);
-
     return data;
 }
 
@@ -35,7 +31,7 @@ async function entrarComGoogle() {
     const { error } = await supabaseClient.auth.signInWithOAuth({
         provider: 'google',
         options: {
-            redirectTo: window.location.origin + '/index.html'
+            redirectTo: new URL('index.html', window.location.href).href
         }
     });
 
@@ -158,36 +154,42 @@ function atualizarNavbar(session) {
     }
     link.classList.add('nav-login'); // garante que será achado de novo depois
 
-    // Remove o menu com nome do usuário, se existir de antes
-    const menuAntigo = document.getElementById('user-menu');
-    if (menuAntigo) menuAntigo.remove();
+    const registerLink = nav.querySelector('a.nav-register, a[href="cadastro.html"]');
 
     if (session) {
         link.textContent = 'Sair';
         link.href = '#';
-        link.onclick = (e) => {
+        link.setAttribute('aria-label', 'Sair da conta');
+        link.onclick = async (e) => {
             e.preventDefault();
-            sairDaConta();
+            link.textContent = 'Saindo...';
+            try {
+                await sairDaConta();
+            } catch {
+                link.textContent = 'Sair';
+            }
         };
+        if (registerLink) registerLink.hidden = true;
     } else {
         link.textContent = 'Entrar';
         link.href = 'login.html';
         link.onclick = null;
+        link.setAttribute('aria-label', 'Entrar na conta');
+        if (registerLink) registerLink.hidden = false;
     }
 }
-// ---------- TESTE DE SESSÃO ----------
+
 async function verificarSessao() {
-    const { data, error } = await supabaseClient.auth.getSession();
-
-    console.log("Sessão continua ativa?", !!data.session);
-
-    if (data.session) {
-        console.log("Usuário logado:", data.session.user.email);
-    } else {
-        console.log("Nenhum usuário logado.");
+    try {
+        const { data, error } = await supabaseClient.auth.getSession();
+        if (error) throw error;
+        atualizarNavbar(data.session);
+        return data.session;
+    } catch {
+        atualizarNavbar(null);
+        return null;
     }
-
-    if (error) console.error("Erro:", error);
 }
 
+supabaseClient.auth.onAuthStateChange((_event, session) => atualizarNavbar(session));
 verificarSessao();

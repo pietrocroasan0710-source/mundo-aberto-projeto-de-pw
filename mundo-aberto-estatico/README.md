@@ -9,7 +9,7 @@ Projeto acadêmico de Programação Web (HTML, CSS e JavaScript) — 2026.
 3. Instale a extensão **Live Server** caso ainda não esteja instalada.
 4. Abra `index.html` com **Open with Live Server**.
 
-Não é necessário instalar bibliotecas JavaScript. O mapa OpenStreetMap e as fotos originais do Unsplash precisam de internet. As fotos dos novos destinos estão incluídas no projeto.
+Não é necessário instalar bibliotecas JavaScript. Login e cadastro usam o projeto Supabase configurado em `static/js/supabase.js`, e o cliente Supabase é carregado do jsDelivr; por isso, as páginas de conta precisam de internet. O URL de retorno do site deve estar permitido nas configurações de autenticação do Supabase. O botão Google também depende de o provedor Google estar habilitado no Supabase. O mapa OpenStreetMap e as fotos originais do Unsplash também precisam de internet.
 
 **Importante:** não abra `index.html` diretamente via `file://`, porque os dados JSON usam `fetch`. Se preferir Python, execute `python -m http.server 8000` dentro da pasta do site e abra `http://localhost:8000`.
 
@@ -17,6 +17,7 @@ Não é necessário instalar bibliotecas JavaScript. O mapa OpenStreetMap e as f
 
 - **Catálogo de turismo:** 24 destinos e 120 atrações no Brasil e no exterior. A página inicial mostra nove destaques, e a página de exploração lista todo o catálogo. Os destinos publicados vêm de `static/json/dados.json`.
 - **Catálogo fechado:** destinos e pacotes são mantidos no projeto; não há fluxo de edição pública nem backend administrativo.
+- **Conta de viajante:** as páginas `login.html` e `cadastro.html` estão conectadas ao Supabase. Entrar, criar conta, confirmação por e-mail (se habilitada no projeto) e Google (se configurado) usam o provedor de autenticação; não guardamos a senha no site.
 - **Mais estabilidade:** dados JSON carregados uma vez; favorito/roteiro atualizam a interface sem reiniciar o slideshow. Temporizador único de slides.
 - **Animações:** cartões criados depois do carregamento também aparecem com transição; opção de movimento reduzido respeitada.
 - **Roteiro aprimorado:** organiza por dia (1–14), horário, observação e ordem das paradas. Pode exportar o planejamento para TXT.
@@ -37,16 +38,19 @@ Mundo_Aberto_Melhorado/
   index.html                Página inicial
   destinos.html             Busca e filtros
   destino.html              Detalhe de cada destino e mapa da região
-  montar-pacote.html        Personalização de viajantes, data e adicionais
+  comparar.html            Comparação de destinos
+  login.html               Entrar na conta
+  cadastro.html            Criar conta
+  montar-pacote.html       Personalização de viajantes, data e adicionais
   pagamento.html            Fechamento demonstrativo sem cobrança
-  calendario.html           Cronograma por dia salvo neste navegador
-  montar-pacote.html        Personalização de viajantes, data e adicionais
   calendario.html           Cronograma da viagem salvo neste navegador
   favoritos.html            Favoritos locais
   roteiro.html              Roteiro por dias, passagens e orçamento
   mapa.html                 Mapa interativo das regiões
   static/css/style.css      Aparência responsiva
   static/js/main.js         Catálogo, busca, favoritos, menu e slides
+  static/js/auth.js         Cadastro, login, Google e sessão
+  static/js/supabase.js     Cliente do projeto de autenticação
   static/js/planejamento.js  Organização do roteiro e orçamento
   static/js/transporte.js    Simulação de ônibus e avião
   static/js/mapa.js         Seleção e visualização do mapa
@@ -67,11 +71,12 @@ Os campos `preco_passeio`, `moeda`, `fonte_preco` e `atualizado_em` registram os
 
 ## Privacidade e limites
 
-Favoritos, plano por dia e orçamento são guardados com `localStorage` e ficam **somente neste navegador e neste endereço**; não sincronizam entre pessoas ou dispositivos, e desaparecem se os dados locais forem apagados. Não existe cadastro de usuário nem coleta de senhas. O mapa embutido e as fotos originais dependem do OpenStreetMap e do Unsplash. A política de segurança de conteúdo limita as origens utilizadas.
+Favoritos, plano por dia e orçamento ficam no `localStorage` deste navegador e endereço. A conta usa o Supabase configurado pelo projeto; e-mail e senha são enviados diretamente ao serviço de autenticação quando a pessoa envia o formulário. O site não salva senhas no navegador. O mapa e as fotos originais dependem do OpenStreetMap e do Unsplash. A política de segurança limita as origens usadas.
 
 ## Conferência rápida
 
 - [ ] A página inicial exibe nove destaques, e a exploração lista os 24 destinos.
+- [ ] O menu mostra Entrar e Criar conta; o cadastro e o login funcionam com o projeto Supabase configurado.
 - [ ] Favoritar, tirar dos favoritos e montar roteiro funcionam sem recarregar a página.
 - [ ] Roteiro permite editar dia, horário e observações, trocar ordem e exportar TXT.
 - [ ] São Paulo → Rio de Janeiro sugere ônibus. São Paulo → Paris sugere avião. Ida e volta e o número de viajantes alteram o total.

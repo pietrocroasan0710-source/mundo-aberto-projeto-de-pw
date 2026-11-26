@@ -1,90 +1,49 @@
 <!doctype html>
-<!-- Explica por que login seguro precisa de um backend. -->
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://fyubhfcffvukzlsvrqpk.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="no-referrer">
-    <title>
-      Entrar — Mundo Aberto
-    </title>
+    <title>Entrar — Mundo Aberto</title>
     <link rel="stylesheet" href="static/css/style.css">
   </head>
   <body>
     <header class="navbar">
-      <a class="logo" href="index.html">
-        <span class="logo-icon">
-          ✦
-        </span>
-        mundo
-        <span>
-          aberto
-        </span>
-      </a>
+      <a class="logo" href="index.html"><span class="logo-icon">✦</span>mundo <span>aberto</span></a>
       <nav>
-        <a href="index.html">
-          Início
-        </a>
-        <a href="destinos.html">
-          Explorar destinos
-        </a>
-        <a href="favoritos.html">
-          ♡ Favoritos
-        </a>
-        <a href="roteiro.html">
-          Meu roteiro
-        </a>
+        <a href="index.html">Início</a>
+        <a href="destinos.html">Explorar destinos</a>
+        <a class="nav-login" href="login.html" aria-current="page">Entrar</a>
+        <a class="nav-register" href="cadastro.html">Criar conta</a>
       </nav>
     </header>
     <main>
       <section class="auth-layout">
         <div class="auth-photo">
           <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85" alt="Paisagem de viagem">
-          <div>
-            <p class="eyebrow">
-              MUNDO ABERTO
-            </p>
-            <h2>
-              O próximo capítulo
-              <br>
-              é seu.
-            </h2>
-          </div>
+          <div><p class="eyebrow">MUNDO ABERTO</p><h2>O próximo capítulo<br>é seu.</h2></div>
         </div>
         <div class="auth-panel">
-          <p class="eyebrow dark">
-            CONTA DE VIAJANTE
-          </p>
-          <h1>
-            Login desativado
-          </h1>
-          <p class="auth-subtitle">
-            Este site agora é estático. Entrar/cadastrar com segurança exige um backend ou provedor de autenticação; não armazenamos senhas neste navegador.
-          </p>
-          <a class="btn-dark" href="destinos.html">
-            Continuar explorando ↗
-          </a>
+          <p class="eyebrow dark">CONTA DE VIAJANTE</p>
+          <h1>Que bom ter você de volta.</h1>
+          <p class="auth-subtitle">Entre para continuar organizando seus planos.</p>
+          <form id="login-form" class="auth-form">
+            <label for="email">E-mail<input id="email" name="email" type="email" autocomplete="email" required></label>
+            <label for="password">Senha<input id="password" name="password" type="password" autocomplete="current-password" required></label>
+            <button class="btn-dark full-width" type="submit">Entrar</button>
+            <button class="btn-outline full-width" id="google-btn" type="button">Continuar com Google</button>
+            <p id="login-message" class="auth-message" aria-live="polite"></p>
+          </form>
+          <p class="auth-switch">Ainda não tem conta? <a href="cadastro.html">Criar conta</a></p>
+          <p class="auth-privacy">Sua senha é enviada diretamente ao serviço seguro de autenticação. O site não a salva neste navegador.</p>
         </div>
       </section>
     </main>
-    <footer class="footer">
-      <a class="logo" href="index.html">
-        ✦ mundo
-        <span>
-          aberto
-        </span>
-      </a>
-      <p>
-        Favoritos e roteiro ficam neste navegador.
-      </p>
-      <a href="destinos.html">
-        Explorar ↗
-      </a>
-    </footer>
-    <script src="static/js/main.js">
-    </script>
+    <footer class="footer"><a class="logo" href="index.html">✦ mundo <span>aberto</span></a><p>Seus próximos destinos começam aqui.</p><a href="destinos.html">Explorar ↗</a></footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="static/js/supabase.js"></script>
+    <script src="static/js/auth.js"></script>
+    <script src="static/js/main.js"></script>
   </body>
 </html>
-
-

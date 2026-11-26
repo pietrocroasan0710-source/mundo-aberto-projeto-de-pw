@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://fyubhfcffvukzlsvrqpk.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="no-referrer">
     <title>Fechamento demonstrativo — Mundo Aberto</title>
     <link rel="stylesheet" href="static/css/style.css">
@@ -12,10 +12,10 @@
     <header class="navbar">
       <a class="logo" href="index.html"><span class="logo-icon">✦</span>mundo <span>aberto</span></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
-      <nav id="menu"><a href="index.html">Início</a><a href="destinos.html">Explorar destinos</a><a href="favoritos.html">♡ Favoritos</a><a href="roteiro.html">Meu roteiro <span class="nav-count" data-roteiro-count>0</span></a><a href="mapa.html">Mapa dos destinos</a><a href="calendario.html">Meus planos</a></nav>
+      <nav id="menu"><a href="index.html">Início</a><a href="destinos.html">Explorar destinos</a><a href="favoritos.html">♡ Favoritos</a><a href="roteiro.html">Meu roteiro <span class="nav-count" data-roteiro-count>0</span></a><a href="mapa.html">Mapa dos destinos</a><a href="calendario.html">Meus planos</a><a class="nav-login" href="login.html">Entrar</a><a class="nav-register" href="cadastro.html">Criar conta</a></nav>
     </header>
     <main id="payment-root"></main>
     <footer class="footer"><a class="logo" href="index.html">✦ mundo <span>aberto</span></a><p>Etapa demonstrativa de fechamento do pacote.</p><a href="destinos.html">Explorar destinos ↗</a></footer>
-    <script src="static/js/animacoes.js"></script><script src="static/js/planejamento.js"></script><script src="static/js/mapa.js"></script><script src="static/js/main.js"></script>
+    <script src="static/js/animacoes.js"></script><script src="static/js/planejamento.js"></script><script src="static/js/mapa.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="static/js/supabase.js"></script><script src="static/js/auth.js"></script><script src="static/js/main.js"></script>
   </body>
 </html>

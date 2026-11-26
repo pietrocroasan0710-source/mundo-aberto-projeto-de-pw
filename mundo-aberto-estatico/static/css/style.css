@@ -902,7 +902,7 @@ button{
   font-size:11px;
   font-weight:700
 }
-/* Telas informativas de login e cadastro sem backend. */
+/* Login e criação de conta. */
 .auth-layout{
   min-height:calc(100vh - 155px);
   display:grid;
@@ -979,6 +979,10 @@ button{
   border-color:#7cb5a1;
   box-shadow:0 0 0 3px #b8e0d240
 }
+.auth-form>label small,.auth-privacy{font-size:10px;color:var(--muted);font-weight:400;line-height:1.55}
+.auth-message{min-height:18px;margin:0;color:#9a4b3d;font-size:12px;line-height:1.5}
+.auth-message:empty{display:none}
+.auth-privacy{margin:12px 0 0;text-align:center}
 .terms{
   font-size:11px;
   color:var(--muted);
