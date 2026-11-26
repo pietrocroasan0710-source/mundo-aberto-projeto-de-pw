@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; frame-src https://www.openstreetmap.org; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://fyubhfcffvukzlsvrqpk.supabase.co; object-src 'none'; frame-src https://www.openstreetmap.org; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="no-referrer">
     <title>
       Favoritos — Mundo Aberto
@@ -42,7 +42,7 @@
           </span>
         </a>
         <a href="mapa.html">Mapa dos destinos</a><a href="calendario.html">Meus planos</a>
-      </nav>
+      <a class="nav-login" href="login.html">Entrar</a></nav>
     </header>
     <main>
       <section class="page-banner">
@@ -97,6 +97,9 @@
     </script>
     <script src="static/js/planejamento.js"></script>
     <script src="static/js/mapa.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="static/js/supabase.js"></script>
+    <script src="static/js/auth.js"></script>
     <script src="static/js/main.js">
     </script>
   </body>
