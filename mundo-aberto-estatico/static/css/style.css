@@ -1580,7 +1580,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .builder-panel h2,.builder-summary h2 { margin: 0 0 16px; font: 800 27px/1.2 Manrope,sans-serif; }
 .builder-panel h3 { margin: 30px 0 6px; font: 750 19px Manrope,sans-serif; }
 .builder-help { margin: 0 0 14px; color: var(--muted); font-size: 12px; }
-.builder-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 15px; }
+.builder-fields { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px; }
 .builder-fields label { display: grid; gap: 7px; color: var(--ink); font-size: 12px; font-weight: 700; }
 .builder-fields input { width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: white; color: var(--ink); }
 .extra-options { display: grid; gap: 9px; }
@@ -1619,9 +1619,33 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .calendar-event-content>p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
 .calendar-add-form { display: grid; grid-template-columns: 100px 1fr 1fr auto; gap: 8px; align-items: center; padding: 13px 18px; background: #fafbf8; }
 .calendar-add-form .btn-outline { padding: 9px 12px; white-space: nowrap; }
+.payment-section { background: #f2f5f0; min-height: 55vh; }
+.payment-layout { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(300px,.85fr); gap: 24px; align-items: start; max-width: 1100px; margin: 0 auto; }
+.payment-options,.payment-summary { padding: 26px; border: 1px solid var(--line); border-radius: 16px; background: #fffefa; }
+.payment-options h2,.payment-summary h2 { margin: 0 0 18px; font: 800 26px/1.2 Manrope,sans-serif; }
+.payment-choice { display: flex; align-items: start; gap: 12px; margin: 10px 0; padding: 16px; border: 1px solid var(--line); border-radius: 11px; cursor: pointer; }
+.payment-choice input { margin-top: 4px; accent-color: #47856f; }
+.payment-choice span { display: grid; gap: 5px; }
+.payment-choice strong { font-size: 14px; }
+.payment-choice small,.demo-payment-notice { color: var(--muted); font-size: 12px; line-height: 1.55; }
+.installment-field { margin: 14px 0; padding: 15px; border-radius: 10px; background: #f2f5f0; }
+.installment-field label { display: grid; gap: 7px; font-size: 12px; font-weight: 700; }
+.installment-field select { max-width: 220px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: white; }
+.installment-field>small { display: block; margin-top: 8px; color: var(--muted); font-size: 11px; }
+.demo-payment-notice { padding: 14px; border-left: 3px solid #6a9b82; border-radius: 5px; background: #edf5ef; }
+.payment-summary { background: var(--navy); color: white; }
+.payment-summary .eyebrow { color: var(--teal); }
+.payment-summary h2 { color: white; }
+.payment-summary>p:not(.eyebrow) { color: #d0dfe2; font-size: 12px; }
+.payment-summary .builder-total { border-top: 1px solid #425666; padding-top: 16px; }
+.payment-summary>small { display: block; margin-top: 12px; color: #c9d9dc; font-size: 10px; line-height: 1.5; }
+.payment-back { display: block; margin-top: 12px; color: var(--teal); font-size: 12px; text-align: center; }
+.plan-confirmation { display: grid; gap: 4px; max-width: 1180px; margin: 0 auto 18px; padding: 16px 20px; border: 1px solid #b5d5c0; border-radius: 11px; background: #eaf5ed; color: #285f43; }
+.plan-confirmation span { font-size: 12px; }
 @media(max-width:850px) { .package-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media(max-width:720px) { .builder-layout { grid-template-columns: 1fr; } .builder-summary { position: static; } .calendar-add-form { grid-template-columns: 1fr 1fr; } .calendar-add-form button { grid-column: 1/-1; } }
-@media(max-width:600px) { .budget-search-field { flex-basis: 100%; } .package-grid,.package-inclusions,.builder-fields { grid-template-columns: 1fr; } .builder-panel,.builder-summary,.saved-plan { padding: 17px; } .extra-option { grid-template-columns: 20px minmax(0,1fr); } .extra-option>b { grid-column: 2; } .saved-plan-heading { display: grid; } .saved-plan-heading>strong { text-align: left; } .calendar-event { grid-template-columns: 1fr; gap: 8px; } .calendar-day-heading { display: grid; gap: 4px; } .comparison-heading { display: grid; } .comparison-table th,.comparison-table td { padding: 10px; } }
+@media(max-width:720px) { .payment-layout { grid-template-columns: 1fr; } }
+@media(max-width:600px) { .budget-search-field { flex-basis: 100%; } .package-grid,.package-inclusions,.builder-fields { grid-template-columns: 1fr; } .builder-panel,.builder-summary,.saved-plan,.payment-options,.payment-summary { padding: 17px; } .extra-option { grid-template-columns: 20px minmax(0,1fr); } .extra-option>b { grid-column: 2; } .saved-plan-heading { display: grid; } .saved-plan-heading>strong { text-align: left; } .calendar-event { grid-template-columns: 1fr; gap: 8px; } .calendar-day-heading { display: grid; gap: 4px; } .comparison-heading { display: grid; } .comparison-table th,.comparison-table td { padding: 10px; } }
 
 @media (max-width: 1000px) {
   .navbar nav {font-size:12px;gap:13px}

@@ -30,7 +30,7 @@ Não é necessário instalar bibliotecas JavaScript. O mapa OpenStreetMap e as f
 
 ## Buscar pacotes por orçamento
 
-Na busca da página inicial, informe o limite por pessoa em reais (por exemplo, `2000`); o campo formata o valor como moeda brasileira. Há pacotes demonstrativos nos 24 destinos, de R$ 1 mil a R$ 20 mil por pessoa, em faixas essenciais, de conforto e de luxo. Compare até três opções lado a lado por preço, duração, hotel, transporte, refeições, benefícios, atividades e exclusões. Em **Personalizar e montar meu plano**, escolha a data, o número de viajantes e adicionais opcionais para revisar o total. Ao salvar, o site cria um calendário com atividades, lugares e horários sugeridos, incluindo intervalos de deslocamento. Os tempos de trajeto são estimativas genéricas para organização; confira rotas reais e horários dos bilhetes. Você pode ajustar horários/lugares, adicionar atividades e imprimir ou salvar o calendário em PDF. Os planos ficam no armazenamento local do navegador. Hotéis, pacotes, benefícios, adicionais e preços são exemplos fictícios; salvar não compra, paga nem reserva uma viagem.
+Na busca da página inicial, informe o limite por pessoa em reais (por exemplo, `2000`); o campo formata o valor como moeda brasileira. Há pacotes demonstrativos nos 24 destinos, de R$ 1 mil a R$ 20 mil por pessoa, em faixas essenciais, de conforto e de luxo. Ao abrir um destino, use **Ver planos**. Compare até três opções lado a lado por preço, duração, hotel, transporte, refeições, benefícios, atividades e exclusões. Em **Personalizar e montar meu plano**, escolha data, viajantes, horário para sair do hotel e adicionais opcionais. Depois, há uma etapa de pagamento fictício com opções de demonstração; ela não pede dados financeiros e não processa cobrança. Ao concluir, o site cria um calendário com atividades, lugares e horários sugeridos, incluindo intervalos de deslocamento. Os tempos de trajeto são estimativas genéricas para organização; confira rotas reais e horários dos bilhetes. Você pode ajustar horários/lugares, adicionar atividades e imprimir ou salvar o calendário em PDF. Os planos ficam no armazenamento local do navegador. Hotéis, pacotes, benefícios, adicionais e preços são exemplos fictícios; fechar a simulação não reserva uma viagem.
 
 ```text
 Mundo_Aberto_Melhorado/
@@ -38,6 +38,7 @@ Mundo_Aberto_Melhorado/
   destinos.html             Busca e filtros
   destino.html              Detalhe de cada destino e mapa da região
   montar-pacote.html        Personalização de viajantes, data e adicionais
+  pagamento.html            Fechamento demonstrativo sem cobrança
   calendario.html           Cronograma por dia salvo neste navegador
   montar-pacote.html        Personalização de viajantes, data e adicionais
   calendario.html           Cronograma da viagem salvo neste navegador
