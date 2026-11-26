@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; frame-src https://www.openstreetmap.org; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="no-referrer">
     <title>
       Meu roteiro — Mundo Aberto
@@ -41,10 +41,7 @@
             0
           </span>
         </a>
-        
-        <a class="nav-login" href="login.html">
-          Entrar
-        </a>
+        <a href="mapa.html">Mapa dos destinos</a><a href="calendario.html">Meus planos</a>
       </nav>
     </header>
     <main>
@@ -57,15 +54,16 @@
         <h1>
           Seu mundo, seu roteiro.
         </h1>
-        <p>
-          Organize os passeios que deseja conhecer e consulte a soma das entradas cadastradas. Valores em moedas diferentes aparecem separados.
+        <p class="page-banner-description">
+          Organize sua viagem por dia e horário, mude a ordem das paradas e estime os gastos da viagem.
         </p>
+        <a class="page-banner-link" href="#transporte">Simular passagem ↗</a>
       </section>
       <section class="section listing-section">
         <p class="results-count" id="results-count">
         </p>
-        <div class="itinerary-list" id="itinerary-list">
-        </div>
+        <div id="itinerary-price-summary" class="price-summary" hidden></div>
+        <div class="itinerary-list" id="itinerary-list"></div>
         <div class="empty-state" id="empty-state" hidden>
           <span>
             ✈
@@ -80,10 +78,112 @@
             Encontrar destinos ↗
           </a>
         </div>
+        <div class="itinerary-export">
+          <button type="button" class="btn-outline" id="export-itinerary" disabled>Baixar meu roteiro (.txt) ↓</button>
+        </div>
         <div class="center-action" id="itinerary-action">
           <a class="btn-dark" href="destinos.html">
             Adicionar mais destinos ↗
           </a>
+        </div>
+      </section>
+      <section class="section transport-section" id="transporte" aria-labelledby="transport-title">
+        <div class="budget-intro">
+          <h2 id="transport-title">Como chegar ao destino</h2>
+          <p id="transport-description">Escolha a saída e o destino para simular uma passagem em reais (R$).</p>
+        </div>
+        <div class="transport-layout">
+          <form class="budget-form transport-form" id="transport-form" aria-describedby="transport-description">
+            <label>País de saída
+              <select name="pais" required>
+                <option value="">Selecione o país</option>
+              </select>
+            </label>
+            <label>Cidade de saída
+              <input type="text" name="cidade" list="transport-cities" placeholder="Ex.: São Paulo" maxlength="100" required>
+              <datalist id="transport-cities"></datalist>
+            </label>
+            <label class="transport-wide">Destino
+              <select name="destino" required>
+                <option value="">Selecione um destino</option>
+              </select>
+            </label>
+            <label>Passagem
+              <select name="trecho">
+                <option value="ida">Somente ida</option>
+                <option value="volta">Ida e volta</option>
+              </select>
+            </label>
+            <label>Viajantes
+              <input type="number" name="viajantes" min="1" step="1" value="1" required>
+            </label>
+            <button class="btn-dark transport-wide" type="submit" disabled>Simular passagem</button>
+          </form>
+          <div class="transport-ticket" aria-live="polite">
+            <div id="transport-empty">
+              <h3>Sua passagem</h3>
+              <p>O trajeto e o valor aparecem aqui após a simulação.</p>
+            </div>
+            <div id="transport-result" hidden>
+              <h3 id="transport-mode"></h3>
+              <dl class="transport-route">
+                <div><dt>Saída</dt><dd id="transport-origin"></dd></div>
+                <div><dt>Chegada</dt><dd id="transport-destination"></dd></div>
+              </dl>
+              <ol class="transport-steps" id="transport-steps"></ol>
+              <div class="transport-price" id="transport-price">
+                <span>Total simulado</span>
+                <strong id="transport-total"></strong>
+                <small id="transport-breakdown"></small>
+              </div>
+              <p class="transport-message" id="transport-message"></p>
+              <div class="transport-actions" id="transport-actions">
+                <button class="btn-outline" type="button" id="apply-transport">Usar no orçamento</button>
+                <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer" id="search-transport">Pesquisar passagens ↗</a>
+              </div>
+              <p class="transport-message" id="transport-currency-message" hidden>
+                Selecione BRL <a href="#calculadora">no orçamento</a> para incluir a passagem em reais.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section budget-section" id="calculadora">
+        <div class="budget-intro">
+          <p class="eyebrow dark">CALCULADORA DE VIAGEM</p>
+          <h2>Quanto vai custar sua aventura?</h2>
+          <p>Some seus gastos de hospedagem, alimentação, transporte e passeios na moeda que você escolher.</p>
+        </div>
+        <div class="budget-layout">
+          <form class="budget-form" id="budget-form">
+            <label>Moeda da estimativa
+              <select name="currency">
+                <option value="BRL">BRL — Real</option><option value="USD">USD — Dólar</option>
+                <option value="EUR">EUR — Euro</option><option value="JPY">JPY — Iene</option>
+                <option value="GBP">GBP — Libra</option>
+              </select>
+            </label>
+            <label>Quantidade de dias
+              <input name="days" type="number" min="1" max="60" step="1" value="3">
+            </label>
+            <label>Hospedagem por noite
+              <input name="lodging" type="number" min="0" step="0.01" value="0" placeholder="0,00">
+            </label>
+            <label>Alimentação por dia
+              <input name="food" type="number" min="0" step="0.01" value="0" placeholder="0,00">
+            </label>
+            <label>Transporte (total)
+              <input name="transport" type="number" min="0" step="0.01" value="0" placeholder="0,00">
+            </label>
+            <label>Passeios e ingressos (total)
+              <input name="tickets" type="number" min="0" step="0.01" value="0" placeholder="0,00">
+            </label>
+            <label>Outros gastos (total)
+              <input name="extras" type="number" min="0" step="0.01" value="0" placeholder="0,00">
+            </label>
+            <p class="budget-footnote">Consideramos uma diária de hospedagem por noite (dias menos um). Valores salvos somente neste dispositivo.</p>
+          </form>
+          <div class="budget-result" id="budget-result" aria-live="polite"></div>
         </div>
       </section>
     </main>
@@ -103,11 +203,13 @@
     </footer>
     <script src="static/js/animacoes.js">
     </script>
-    <script src="static/js/cards.js">
-    </script>
+    <script src="static/js/planejamento.js"></script>
+    <script src="static/js/transporte.js"></script>
+    <script src="static/js/mapa.js"></script>
     <script src="static/js/main.js">
     </script>
   </body>
 </html>
+
 
 

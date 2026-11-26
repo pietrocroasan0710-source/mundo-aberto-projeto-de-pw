@@ -1,824 +1,490 @@
 {
   "paisagens": [
-    {
-      "local": "Praia tropical",
-      "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=85"
-    },
-    {
-      "local": "Montanhas ao amanhecer",
-      "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=85"
-    },
-    {
-      "local": "Floresta com neblina",
-      "url": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1920&q=85"
-    },
-    {
-      "local": "Lago entre montanhas",
-      "url": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=85"
-    },
-    {
-      "local": "Natureza pelo mundo",
-      "url": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1920&q=85"
-    }
+    {"local":"Praia tropical","url":"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=85"},
+    {"local":"Montanhas ao amanhecer","url":"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=85"},
+    {"local":"Floresta com neblina","url":"https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1920&q=85"},
+    {"local":"Lago entre montanhas","url":"https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=85"},
+    {"local":"Natureza pelo mundo","url":"https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1920&q=85"}
   ],
   "destinos": [
     {
-      "id": 1,
-      "slug": "rio-de-janeiro",
-      "nome": "Rio de Janeiro",
-      "cidade": "Rio de Janeiro",
-      "pais": "Brasil",
-      "continente": "América do Sul",
-      "categoria": "Praias e natureza",
-      "emoji": "🇧🇷",
+      "id": 1, "slug": "rio-de-janeiro", "nome": "Rio de Janeiro", "cidade": "Rio de Janeiro",
+      "pais": "Brasil", "continente": "América do Sul", "categoria": "Praias e natureza", "emoji": "🇧🇷",
       "imagem": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1100&q=85",
-      "resumo": "Montanhas, praias famosas e uma energia que é só do Rio.",
+      "resumo": "Montanhas, praias famosas e uma energia que é só do Rio. Preços fictícios.",
       "descricao": "O Rio de Janeiro combina paisagens naturais impressionantes com cultura, música e vida urbana. Reserve tempo para conhecer o Cristo Redentor, caminhar pela orla e apreciar a vista do Pão de Açúcar.",
-      "atracoes": [
-        "Cristo Redentor",
-        "Pão de Açúcar",
-        "Praia de Copacabana",
-        "Jardim Botânico"
-      ],
-      "melhor_epoca": "Maio a outubro",
-      "duracao": "3 a 5 dias",
-      "nota": 4.8,
-      "tags": [
-        "bonito",
-        "natureza",
-        "praia",
-        "cidade"
-      ],
-      "moeda": "BRL",
-      "preco_passeio": null,
-      "preco_tipo": "nao_informado",
-      "fonte_preco": "",
-      "atualizado_em": "",
+      "atracoes": ["Cristo Redentor","Pão de Açúcar","Praia de Copacabana","Jardim Botânico","Parque Lage","Museu do Amanhã"],
+      "melhor_epoca": "Maio a outubro", "duracao": "3 a 5 dias", "nota": 4.8,
+      "tags": ["bonito","natureza","praia","cidade"],
+      "moeda": "BRL", "preco_passeio": 35, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": -22.9068, "lon": -43.1729,
       "passeios": [
-        {
-          "nome": "Cristo Redentor",
-          "preco": null,
-          "moeda": "BRL",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Pão de Açúcar",
-          "preco": null,
-          "moeda": "BRL",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Praia de Copacabana",
-          "preco": null,
-          "moeda": "BRL",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Jardim Botânico",
-          "preco": null,
-          "moeda": "BRL",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        }
+        {"nome":"Cristo Redentor","preco":135,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Pão de Açúcar","preco":190,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Praia de Copacabana","preco":0,"moeda":"BRL","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Jardim Botânico","preco":35,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Parque Lage","preco":0,"moeda":"BRL","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Museu do Amanhã","preco":42,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
       ]
     },
     {
-      "id": 2,
-      "slug": "paris",
-      "nome": "Paris",
-      "cidade": "Paris",
-      "pais": "França",
-      "continente": "Europa",
-      "categoria": "Cultura e história",
-      "emoji": "🇫🇷",
+      "id": 2, "slug": "paris", "nome": "Paris", "cidade": "Paris",
+      "pais": "França", "continente": "Europa", "categoria": "Cultura e história", "emoji": "🇫🇷",
       "imagem": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1100&q=85",
-      "resumo": "Arte, arquitetura, cafés charmosos e passeios às margens do Sena.",
+      "resumo": "Arte, arquitetura, cafés charmosos e passeios às margens do Sena. Preços fictícios.",
       "descricao": "Paris é um destino marcante para quem gosta de arte, arquitetura e gastronomia. Além dos monumentos conhecidos, explore bairros a pé, jardins e pequenas livrarias.",
-      "atracoes": [
-        "Torre Eiffel",
-        "Museu do Louvre",
-        "Catedral de Notre-Dame",
-        "Montmartre"
-      ],
-      "melhor_epoca": "Abril a junho e setembro a outubro",
-      "duracao": "3 a 5 dias",
-      "nota": 4.9,
-      "tags": [
-        "bonito",
-        "historico",
-        "cultura",
-        "cidade",
-        "gastronomia"
-      ],
-      "moeda": "EUR",
-      "preco_passeio": null,
-      "preco_tipo": "nao_informado",
-      "fonte_preco": "",
-      "atualizado_em": "",
+      "atracoes": ["Torre Eiffel","Museu do Louvre","Catedral de Notre-Dame","Montmartre","Museu d'Orsay","Jardim de Luxemburgo"],
+      "melhor_epoca": "Abril a junho e setembro a outubro", "duracao": "3 a 5 dias", "nota": 4.9,
+      "tags": ["bonito","historico","cultura","cidade","gastronomia"],
+      "moeda": "EUR", "preco_passeio": 16, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": 48.8566, "lon": 2.3522,
       "passeios": [
-        {
-          "nome": "Torre Eiffel",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Museu do Louvre",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Catedral de Notre-Dame",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Montmartre",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        }
+        {"nome":"Torre Eiffel","preco":24,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Museu do Louvre","preco":31,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Catedral de Notre-Dame","preco":0,"moeda":"EUR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Montmartre","preco":0,"moeda":"EUR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Museu d'Orsay","preco":16,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Jardim de Luxemburgo","preco":0,"moeda":"EUR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
       ]
     },
     {
-      "id": 3,
-      "slug": "kyoto",
-      "nome": "Kyoto",
-      "cidade": "Kyoto",
-      "pais": "Japão",
-      "continente": "Ásia",
-      "categoria": "Cultura e história",
-      "emoji": "🇯🇵",
+      "id": 3, "slug": "kyoto", "nome": "Kyoto", "cidade": "Kyoto",
+      "pais": "Japão", "continente": "Ásia", "categoria": "Cultura e história", "emoji": "🇯🇵",
       "imagem": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1100&q=85",
-      "resumo": "Templos, jardins tradicionais e ruas históricas.",
+      "resumo": "Templos, jardins tradicionais e ruas históricas. Preços fictícios.",
       "descricao": "Kyoto preserva templos, santuários, jardins e bairros tradicionais. É um lugar para desacelerar, observar a arquitetura e descobrir a cultura japonesa com respeito aos costumes locais.",
-      "atracoes": [
-        "Fushimi Inari-taisha",
-        "Arashiyama",
-        "Kinkaku-ji",
-        "Gion"
-      ],
-      "melhor_epoca": "Março a maio e outubro a novembro",
-      "duracao": "2 a 4 dias",
-      "nota": 4.9,
-      "tags": [
-        "bonito",
-        "historico",
-        "cultura",
-        "natureza"
-      ],
-      "moeda": "JPY",
-      "preco_passeio": null,
-      "preco_tipo": "nao_informado",
-      "fonte_preco": "",
-      "atualizado_em": "",
+      "atracoes": ["Fushimi Inari-taisha","Arashiyama","Kinkaku-ji","Gion","Templo Kiyomizu-dera","Castelo Nijō"],
+      "melhor_epoca": "Março a maio e outubro a novembro", "duracao": "2 a 4 dias", "nota": 4.9,
+      "tags": ["bonito","historico","cultura","natureza"],
+      "moeda": "JPY", "preco_passeio": 500, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": 35.0116, "lon": 135.7681,
       "passeios": [
-        {
-          "nome": "Fushimi Inari-taisha",
-          "preco": null,
-          "moeda": "JPY",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Arashiyama",
-          "preco": null,
-          "moeda": "JPY",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Kinkaku-ji",
-          "preco": null,
-          "moeda": "JPY",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Gion",
-          "preco": null,
-          "moeda": "JPY",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        }
+        {"nome":"Fushimi Inari-taisha","preco":0,"moeda":"JPY","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Arashiyama","preco":0,"moeda":"JPY","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Kinkaku-ji","preco":550,"moeda":"JPY","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Gion","preco":0,"moeda":"JPY","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Templo Kiyomizu-dera","preco":500,"moeda":"JPY","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Castelo Nijō","preco":850,"moeda":"JPY","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
       ]
     },
     {
-      "id": 4,
-      "slug": "machu-picchu",
-      "nome": "Machu Picchu",
-      "cidade": "Cusco",
-      "pais": "Peru",
-      "continente": "América do Sul",
-      "categoria": "Aventura",
-      "emoji": "🇵🇪",
+      "id": 4, "slug": "machu-picchu", "nome": "Machu Picchu", "cidade": "Cusco",
+      "pais": "Peru", "continente": "América do Sul", "categoria": "Aventura", "emoji": "🇵🇪",
       "imagem": "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1100&q=85",
-      "resumo": "Uma cidade histórica inca em meio às montanhas dos Andes.",
+      "resumo": "Uma cidade histórica inca em meio às montanhas dos Andes. Preços fictícios.",
       "descricao": "Machu Picchu é um sítio arqueológico extraordinário cercado pela paisagem andina. A visita exige planejamento prévio, atenção às regras de acesso e consideração com a preservação do patrimônio.",
-      "atracoes": [
-        "Cidadela de Machu Picchu",
-        "Montanha Huayna Picchu",
-        "Cusco histórico",
-        "Vale Sagrado"
-      ],
-      "melhor_epoca": "Maio a setembro",
-      "duracao": "2 a 3 dias na região",
-      "nota": 4.9,
-      "tags": [
-        "bonito",
-        "historico",
-        "aventura",
-        "natureza"
-      ],
-      "moeda": "PEN",
-      "preco_passeio": null,
-      "preco_tipo": "nao_informado",
-      "fonte_preco": "",
-      "atualizado_em": "",
-      "passeios": [        {
-          "nome": "Cidadela de Machu Picchu",
-          "preco": null,
-          "moeda": "PEN",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Montanha Huayna Picchu",
-          "preco": null,
-          "moeda": "PEN",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Cusco histórico",
-          "preco": null,
-          "moeda": "PEN",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Vale Sagrado",
-          "preco": null,
-          "moeda": "PEN",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        }
+      "atracoes": ["Cidadela de Machu Picchu","Montanha Huayna Picchu","Cusco histórico","Vale Sagrado","Museu de Sítio Manuel Chávez Ballón","Parque Arqueológico de Ollantaytambo"],
+      "melhor_epoca": "Maio a setembro", "duracao": "2 a 3 dias na região", "nota": 4.9,
+      "tags": ["bonito","historico","aventura","natureza"],
+      "moeda": "PEN", "preco_passeio": 23, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": -13.1631, "lon": -72.545,
+      "passeios": [
+        {"nome":"Cidadela de Machu Picchu","preco":155,"moeda":"PEN","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Montanha Huayna Picchu","preco":205,"moeda":"PEN","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Cusco histórico","preco":0,"moeda":"PEN","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Vale Sagrado","preco":0,"moeda":"PEN","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Museu de Sítio Manuel Chávez Ballón","preco":23,"moeda":"PEN","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Parque Arqueológico de Ollantaytambo","preco":72,"moeda":"PEN","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
       ]
     },
     {
-      "id": 5,
-      "slug": "santorini",
-      "nome": "Santorini",
-      "cidade": "Santorini",
-      "pais": "Grécia",
-      "continente": "Europa",
-      "categoria": "Praias e natureza",
-      "emoji": "🇬🇷",
+      "id": 5, "slug": "santorini", "nome": "Santorini", "cidade": "Santorini",
+      "pais": "Grécia", "continente": "Europa", "categoria": "Praias e natureza", "emoji": "🇬🇷",
       "imagem": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1100&q=85",
-      "resumo": "Casas brancas, mar azul e vilarejos com vista para a caldeira.",
+      "resumo": "Casas brancas, mar azul e vilarejos com vista para a caldeira. Preços fictícios.",
       "descricao": "Santorini é conhecida por suas vilas nas encostas, praias de origem vulcânica e vistas para o mar Egeu. Caminhadas entre vilarejos ajudam a descobrir ângulos mais tranquilos da ilha.",
-      "atracoes": [
-        "Oia",
-        "Fira",
-        "Praia Vermelha",
-        "Akrotiri"
-      ],
-      "melhor_epoca": "Abril a junho e setembro a outubro",
-      "duracao": "2 a 4 dias",
-      "nota": 4.8,
-      "tags": [
-        "bonito",
-        "natureza",
-        "praia"
-      ],
-      "moeda": "EUR",
-      "preco_passeio": null,
-      "preco_tipo": "nao_informado",
-      "fonte_preco": "",
-      "atualizado_em": "",
+      "atracoes": ["Oia","Fira","Praia Vermelha","Akrotiri","Vila de Imerovigli","Museu Pré-histórico de Thera"],
+      "melhor_epoca": "Abril a junho e setembro a outubro", "duracao": "2 a 4 dias", "nota": 4.8,
+      "tags": ["bonito","natureza","praia"],
+      "moeda": "EUR", "preco_passeio": 11, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": 36.3932, "lon": 25.4615,
       "passeios": [
-        {
-          "nome": "Oia",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Fira",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Praia Vermelha",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Akrotiri",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        }
+        {"nome":"Oia","preco":0,"moeda":"EUR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Fira","preco":0,"moeda":"EUR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Praia Vermelha","preco":0,"moeda":"EUR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Akrotiri","preco":19,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Vila de Imerovigli","preco":0,"moeda":"EUR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Museu Pré-histórico de Thera","preco":11,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
       ]
     },
     {
-      "id": 6,
-      "slug": "nova-york",
-      "nome": "Nova York",
-      "cidade": "Nova York",
-      "pais": "Estados Unidos",
-      "continente": "América do Norte",
-      "categoria": "Cidade e gastronomia",
-      "emoji": "🇺🇸",
+      "id": 6, "slug": "nova-york", "nome": "Nova York", "cidade": "Nova York",
+      "pais": "Estados Unidos", "continente": "América do Norte", "categoria": "Cidade e gastronomia", "emoji": "🇺🇸",
       "imagem": "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=1100&q=85",
-      "resumo": "Museus, parques, bairros criativos e uma cidade que nunca para.",
+      "resumo": "Museus, parques, bairros criativos e uma cidade que nunca para. Preços fictícios.",
       "descricao": "Nova York reúne arte, gastronomia e bairros muito diferentes entre si. Planeje por regiões para aproveitar melhor o tempo e lembre que muitos museus e atrações exigem ingresso reservado.",
-      "atracoes": [
-        "Central Park",
-        "Estátua da Liberdade",
-        "Times Square",
-        "Metropolitan Museum of Art"
-      ],
-      "melhor_epoca": "Abril a junho e setembro a novembro",
-      "duracao": "4 a 6 dias",
-      "nota": 4.7,
-      "tags": [
-        "cidade",
-        "cultura",
-        "gastronomia"
-      ],
-      "moeda": "USD",
-      "preco_passeio": null,
-      "preco_tipo": "nao_informado",
-      "fonte_preco": "",
-      "atualizado_em": "",
+      "atracoes": ["Central Park","Estátua da Liberdade","Times Square","Metropolitan Museum of Art","Ponte do Brooklyn","High Line"],
+      "melhor_epoca": "Abril a junho e setembro a novembro", "duracao": "4 a 6 dias", "nota": 4.7,
+      "tags": ["cidade","cultura","gastronomia"],
+      "moeda": "USD", "preco_passeio": 27, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": 40.7128, "lon": -74.006,
       "passeios": [
-        {
-          "nome": "Central Park",
-          "preco": null,
-          "moeda": "USD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Estátua da Liberdade",
-          "preco": null,
-          "moeda": "USD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Times Square",
-          "preco": null,
-          "moeda": "USD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Metropolitan Museum of Art",
-          "preco": null,
-          "moeda": "USD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        }
+        {"nome":"Central Park","preco":0,"moeda":"USD","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Estátua da Liberdade","preco":27,"moeda":"USD","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Times Square","preco":0,"moeda":"USD","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Metropolitan Museum of Art","preco":32,"moeda":"USD","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Ponte do Brooklyn","preco":0,"moeda":"USD","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"High Line","preco":0,"moeda":"USD","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
       ]
     },
     {
-      "id": 7,
-      "slug": "cape-town",
-      "nome": "Cidade do Cabo",
-      "cidade": "Cidade do Cabo",
-      "pais": "África do Sul",
-      "continente": "África",
-      "categoria": "Aventura",
-      "emoji": "🇿🇦",
+      "id": 13, "slug": "foz-do-iguacu", "nome": "Foz do Iguaçu", "cidade": "Foz do Iguaçu",
+      "pais": "Brasil", "continente": "América do Sul", "categoria": "Praias e natureza", "emoji": "🇧🇷",
+      "imagem": "static/img/destinos/foz-do-iguacu.webp",
+      "resumo": "Cataratas, Mata Atlântica e passeios na Tríplice Fronteira. Preços fictícios.",
+      "descricao": "As passarelas do Parque Nacional do Iguaçu permitem ver de perto as quedas do rio. Separe outro dia para conhecer o Parque das Aves ou visitar a usina de Itaipu.",
+      "atracoes": ["Cataratas do Iguaçu","Parque das Aves","Itaipu Binacional","Marco das Três Fronteiras"],
+      "melhor_epoca": "Março a maio e setembro a novembro", "duracao": "3 a 4 dias", "nota": 4.9,
+      "tags": ["bonito","natureza","cachoeira","aventura","Paraná"],
+      "moeda": "BRL", "preco_passeio": 62, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": -25.5469, "lon": -54.5864,
+      "passeios": [
+        {"nome":"Cataratas do Iguaçu","preco":125,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Parque das Aves","preco":98,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Itaipu Binacional","preco":65,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Marco das Três Fronteiras","preco":62,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
+      ]
+    },
+    {
+      "id": 14, "slug": "lencois-maranhenses", "nome": "Lençóis Maranhenses", "cidade": "Barreirinhas e Santo Amaro do Maranhão",
+      "pais": "Brasil", "continente": "América do Sul", "categoria": "Praias e natureza", "emoji": "🇧🇷",
+      "imagem": "static/img/destinos/lencois-maranhenses.webp",
+      "resumo": "Dunas de areia branca e lagoas de água doce no Maranhão. Preços fictícios.",
+      "descricao": "A chuva preenche as depressões entre as dunas e forma lagoas sazonais. Barreirinhas dá acesso aos circuitos da Lagoa Azul e da Lagoa Bonita. Santo Amaro e Atins são outras bases para explorar a região.",
+      "atracoes": ["Circuito da Lagoa Azul","Circuito da Lagoa Bonita","Vila de Atins","Lagoa da Gaivota (Santo Amaro)"],
+      "melhor_epoca": "Junho a setembro, na temporada das lagoas", "duracao": "3 a 5 dias", "nota": 4.9,
+      "tags": ["bonito","natureza","dunas","lagoas","aventura","Maranhão"],
+      "moeda": "BRL", "preco_passeio": 120, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa. Os circuitos incluem o passeio guiado.",
+      "atualizado_em": "2026-11-16", "lat": -2.5333, "lon": -43.1167,
+      "passeios": [
+        {"nome":"Circuito da Lagoa Azul","preco":145,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Circuito da Lagoa Bonita","preco":155,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Vila de Atins","preco":0,"moeda":"BRL","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Lagoa da Gaivota (Santo Amaro)","preco":120,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
+      ]
+    },
+    {
+      "id": 15, "slug": "gize", "nome": "Pirâmides de Gizé", "cidade": "Gizé",
+      "pais": "Egito", "continente": "África", "categoria": "Cultura e história", "emoji": "🇪🇬",
+      "imagem": "static/img/destinos/gize.webp",
+      "resumo": "Pirâmides do Egito Antigo e a Grande Esfinge no planalto de Gizé. Preços fictícios.",
+      "descricao": "O planalto reúne os complexos funerários dos faraós Quéops, Quéfren e Miquerinos. A Grande Esfinge fica junto ao complexo de Quéfren. Vale reservar tempo para observar o conjunto a partir dos mirantes do sítio arqueológico.",
+      "atracoes": ["Grande Pirâmide de Quéops","Pirâmide de Quéfren","Pirâmide de Miquerinos","Grande Esfinge de Gizé"],
+      "melhor_epoca": "Outubro a abril", "duracao": "1 dia", "nota": 4.9,
+      "tags": ["bonito","historico","cultura","arqueologia","deserto","Cairo"],
+      "moeda": "EGP", "preco_passeio": 680, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa. Os valores incluem o acesso ao planalto.",
+      "atualizado_em": "2026-11-16", "lat": 29.9761, "lon": 31.1328,
+      "passeios": [
+        {"nome":"Grande Pirâmide de Quéops","preco":1650,"moeda":"EGP","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Pirâmide de Quéfren","preco":960,"moeda":"EGP","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Pirâmide de Miquerinos","preco":950,"moeda":"EGP","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Grande Esfinge de Gizé","preco":680,"moeda":"EGP","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
+      ]
+    },
+    {
+      "id": 7, "slug": "cape-town", "nome": "Cidade do Cabo", "cidade": "Cidade do Cabo",
+      "pais": "África do Sul", "continente": "África", "categoria": "Aventura", "emoji": "🇿🇦",
       "imagem": "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1100&q=85",
-      "resumo": "Montanhas, litoral, vinícolas e uma natureza impressionante.",
+      "resumo": "Montanhas, litoral, vinícolas e uma natureza impressionante. Preços fictícios.",
       "descricao": "A Cidade do Cabo é cercada por paisagens costeiras e montanhas. Combine mirantes, passeios culturais e áreas naturais, verificando condições meteorológicas e orientações locais antes das trilhas.",
-      "atracoes": [
-        "Table Mountain",
-        "V&A Waterfront",
-        "Cabo da Boa Esperança",
-        "Kirstenbosch"
-      ],
-      "melhor_epoca": "Novembro a março",
-      "duracao": "4 a 6 dias",
-      "nota": 4.8,
-      "tags": [
-        "bonito",
-        "aventura",
-        "natureza",
-        "praia"
-      ],
-      "moeda": "ZAR",
-      "preco_passeio": null,
-      "preco_tipo": "nao_informado",
-      "fonte_preco": "",
-      "atualizado_em": "",
+      "atracoes": ["Table Mountain","V&A Waterfront","Cabo da Boa Esperança","Kirstenbosch","Bairro de Bo-Kaap","Ilha Robben (Robben Island)"],
+      "melhor_epoca": "Novembro a março", "duracao": "4 a 6 dias", "nota": 4.8,
+      "tags": ["bonito","aventura","natureza","praia"],
+      "moeda": "ZAR", "preco_passeio": 260, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": -33.9249, "lon": 18.4241,
       "passeios": [
-        {
-          "nome": "Table Mountain",
-          "preco": null,
-          "moeda": "ZAR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "V&A Waterfront",
-          "preco": null,
-          "moeda": "ZAR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Cabo da Boa Esperança",
-          "preco": null,
-          "moeda": "ZAR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Kirstenbosch",
-          "preco": null,
-          "moeda": "ZAR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        }
+        {"nome":"Table Mountain","preco":490,"moeda":"ZAR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"V&A Waterfront","preco":0,"moeda":"ZAR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Cabo da Boa Esperança","preco":470,"moeda":"ZAR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Kirstenbosch","preco":260,"moeda":"ZAR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Bairro de Bo-Kaap","preco":0,"moeda":"ZAR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Ilha Robben (Robben Island)","preco":620,"moeda":"ZAR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
       ]
     },
     {
-      "id": 8,
-      "slug": "queenstown",
-      "nome": "Queenstown",
-      "cidade": "Queenstown",
-      "pais": "Nova Zelândia",
-      "continente": "Oceania",
-      "categoria": "Aventura",
-      "emoji": "🇳🇿",
+      "id": 8, "slug": "queenstown", "nome": "Queenstown", "cidade": "Queenstown",
+      "pais": "Nova Zelândia", "continente": "Oceania", "categoria": "Aventura", "emoji": "🇳🇿",
       "imagem": "https://images.unsplash.com/photo-1469521669194-babb45599def?auto=format&fit=crop&w=1100&q=85",
-      "resumo": "Lagos cristalinos, montanhas e atividades ao ar livre.",
+      "resumo": "Lagos cristalinos, montanhas e atividades ao ar livre. Preços fictícios.",
       "descricao": "Queenstown é uma base popular para explorar lagos e montanhas da Ilha Sul. Há opções de trilhas, passeios panorâmicos e atividades de aventura, sempre escolhendo operadores e equipamentos adequados.",
-      "atracoes": [
-        "Lake Wakatipu",
-        "Skyline Queenstown",
-        "Glenorchy",
-        "Queenstown Gardens"
-      ],
-      "melhor_epoca": "Dezembro a fevereiro para o verão; junho a agosto para neve",
-      "duracao": "3 a 5 dias",
-      "nota": 4.8,
-      "tags": [
-        "bonito",
-        "aventura",
-        "natureza"
-      ],
-      "moeda": "NZD",
-      "preco_passeio": null,      "preco_tipo": "nao_informado",
-      "fonte_preco": "",
-      "atualizado_em": "",
+      "atracoes": ["Lake Wakatipu","Skyline Queenstown","Glenorchy","Queenstown Gardens","Arrowtown","Lake Hayes"],
+      "melhor_epoca": "Dezembro a fevereiro para o verão; junho a agosto para neve", "duracao": "3 a 5 dias", "nota": 4.8,
+      "tags": ["bonito","aventura","natureza"],
+      "moeda": "NZD", "preco_passeio": 72, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": -45.0312, "lon": 168.6626,
       "passeios": [
-        {
-          "nome": "Lake Wakatipu",
-          "preco": null,
-          "moeda": "USD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Skyline Queenstown",
-          "preco": null,
-          "moeda": "USD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Glenorchy",
-          "preco": null,
-          "moeda": "USD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Queenstown Gardens",
-          "preco": null,
-          "moeda": "USD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        }
+        {"nome":"Lake Wakatipu","preco":0,"moeda":"NZD","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Skyline Queenstown","preco":72,"moeda":"NZD","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Glenorchy","preco":0,"moeda":"NZD","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Queenstown Gardens","preco":0,"moeda":"NZD","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Arrowtown","preco":0,"moeda":"NZD","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Lake Hayes","preco":0,"moeda":"NZD","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
       ]
     },
     {
-      "id": 9,
-      "slug": "roma",
-      "nome": "Roma",
-      "cidade": "Roma",
-      "pais": "Itália",
-      "continente": "Europa",
-      "categoria": "Cultura e história",
-      "emoji": "🇮🇹",
+      "id": 9, "slug": "roma", "nome": "Roma", "cidade": "Roma",
+      "pais": "Itália", "continente": "Europa", "categoria": "Cultura e história", "emoji": "🇮🇹",
       "imagem": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1100&q=85",
-      "resumo": "Ruínas antigas, praças históricas e uma culinária inesquecível.",
+      "resumo": "Ruínas antigas, praças históricas e uma culinária inesquecível. Preços fictícios.",
       "descricao": "Roma é um museu a céu aberto, com camadas de história espalhadas pela cidade. Reserve entradas para atrações concorridas e caminhe pelas praças e ruas para conhecer a cidade além dos pontos mais famosos.",
-      "atracoes": [
-        "Coliseu",
-        "Fórum Romano",
-        "Fontana di Trevi",
-        "Museus do Vaticano"
-      ],
-      "melhor_epoca": "Abril a junho e setembro a outubro",
-      "duracao": "3 a 5 dias",
-      "nota": 4.9,
-      "tags": [
-        "historico",
-        "cultura",
-        "gastronomia",
-        "cidade"
-      ],
-      "moeda": "EUR",
-      "preco_passeio": null,
-      "preco_tipo": "nao_informado",
-      "fonte_preco": "",
-      "atualizado_em": "",
+      "atracoes": ["Coliseu","Fórum Romano","Fontana di Trevi","Museus do Vaticano","Panteão de Roma","Piazza Navona"],
+      "melhor_epoca": "Abril a junho e setembro a outubro", "duracao": "3 a 5 dias", "nota": 4.9,
+      "tags": ["historico","cultura","gastronomia","cidade"],
+      "moeda": "EUR", "preco_passeio": 3, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa. Coliseu e Fórum Romano compartilham o ingresso. A Fontana di Trevi considera o acesso à área próxima à fonte.",
+      "atualizado_em": "2026-11-16", "lat": 41.9028, "lon": 12.4964,
       "passeios": [
-        {
-          "nome": "Coliseu",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Fórum Romano",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Fontana di Trevi",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Museus do Vaticano",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        }
+        {"nome":"Coliseu","preco":19,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Fórum Romano","preco":19,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Fontana di Trevi","preco":3,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Museus do Vaticano","preco":24,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Panteão de Roma","preco":8,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Piazza Navona","preco":0,"moeda":"EUR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
       ]
     },
     {
-      "id": 10,
-      "slug": "bali",
-      "nome": "Bali",
-      "cidade": "Ubud e região",
-      "pais": "Indonésia",
-      "continente": "Ásia",
-      "categoria": "Praias e natureza",
-      "emoji": "🇮🇩",
+      "id": 10, "slug": "bali", "nome": "Bali", "cidade": "Ubud e região",
+      "pais": "Indonésia", "continente": "Ásia", "categoria": "Praias e natureza", "emoji": "🇮🇩",
       "imagem": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1100&q=85",
-      "resumo": "Terraços de arroz, templos, florestas e praias tropicais.",
+      "resumo": "Terraços de arroz, templos, florestas e praias tropicais. Preços fictícios.",
       "descricao": "Bali combina paisagens tropicais, templos e comunidades com tradições próprias. Vista-se de acordo com as regras dos locais sagrados e procure opções de turismo que respeitem a natureza e os moradores.",
-      "atracoes": [
-        "Terraços de arroz de Tegallalang",
-        "Ubud",
-        "Templo de Uluwatu",
-        "Floresta dos Macacos"
-      ],
-      "melhor_epoca": "Abril a outubro",
-      "duracao": "5 a 7 dias",
-      "nota": 4.8,
-      "tags": [
-        "bonito",
-        "natureza",
-        "praia",
-        "cultura"
-      ],
-      "moeda": "IDR",
-      "preco_passeio": null,
-      "preco_tipo": "nao_informado",
-      "fonte_preco": "",
-      "atualizado_em": "",
+      "atracoes": ["Terraços de arroz de Tegallalang","Ubud","Templo de Uluwatu","Floresta dos Macacos","Templo de Tanah Lot","Templo de Tirta Empul"],
+      "melhor_epoca": "Abril a outubro", "duracao": "5 a 7 dias", "nota": 4.8,
+      "tags": ["bonito","natureza","praia","cultura"],
+      "moeda": "IDR", "preco_passeio": 30000, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": -8.5069, "lon": 115.2625,
       "passeios": [
-        {
-          "nome": "Terraços de arroz de Tegallalang",
-          "preco": null,
-          "moeda": "USD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Ubud",
-          "preco": null,
-          "moeda": "USD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Templo de Uluwatu",
-          "preco": null,
-          "moeda": "USD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Floresta dos Macacos",
-          "preco": null,
-          "moeda": "USD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        }
+        {"nome":"Terraços de arroz de Tegallalang","preco":30000,"moeda":"IDR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Ubud","preco":0,"moeda":"IDR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Templo de Uluwatu","preco":65000,"moeda":"IDR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Floresta dos Macacos","preco":125000,"moeda":"IDR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Templo de Tanah Lot","preco":80000,"moeda":"IDR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Templo de Tirta Empul","preco":55000,"moeda":"IDR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
       ]
     },
     {
-      "id": 11,
-      "slug": "banff",
-      "nome": "Parque Nacional Banff",
-      "cidade": "Alberta",
-      "pais": "Canadá",
-      "continente": "América do Norte",
-      "categoria": "Praias e natureza",
-      "emoji": "🇨🇦",
+      "id": 11, "slug": "banff", "nome": "Parque Nacional Banff", "cidade": "Alberta",
+      "pais": "Canadá", "continente": "América do Norte", "categoria": "Praias e natureza", "emoji": "🇨🇦",
       "imagem": "https://images.unsplash.com/photo-1503614472-8c93d56cd4b0?auto=format&fit=crop&w=1100&q=85",
-      "resumo": "Lagos glaciais e trilhas em meio às Montanhas Rochosas.",
+      "resumo": "Lagos glaciais e trilhas em meio às Montanhas Rochosas. Preços fictícios.",
       "descricao": "Banff é conhecido por seus lagos de cor intensa e trilhas alpinas. Consulte avisos do parque, regras para vida selvagem e condições sazonais antes de sair para explorar.",
-      "atracoes": [
-        "Lake Louise",
-        "Moraine Lake",
-        "Banff Gondola",
-        "Johnston Canyon"
-      ],
-      "melhor_epoca": "Junho a setembro para trilhas; dezembro a março para neve",
-      "duracao": "3 a 5 dias",
-      "nota": 4.9,
-      "tags": [
-        "bonito",
-        "natureza",
-        "aventura"
-      ],
-      "moeda": "CAD",
-      "preco_passeio": null,
-      "preco_tipo": "nao_informado",
-      "fonte_preco": "",
-      "atualizado_em": "",
+      "atracoes": ["Lake Louise","Moraine Lake","Banff Gondola","Johnston Canyon","Peyto Lake","Bow Falls"],
+      "melhor_epoca": "Junho a setembro para trilhas; dezembro a março para neve", "duracao": "3 a 5 dias", "nota": 4.9,
+      "tags": ["bonito","natureza","aventura"],
+      "moeda": "CAD", "preco_passeio": 12.5, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa. Lake Louise, Moraine Lake, Johnston Canyon, Peyto Lake e Bow Falls compartilham o passe diário do parque. A gôndola tem ingresso à parte.",
+      "atualizado_em": "2026-11-16", "lat": 51.1784, "lon": -115.5708,
       "passeios": [
-        {
-          "nome": "Lake Louise",
-          "preco": null,
-          "moeda": "CAD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Moraine Lake",
-          "preco": null,
-          "moeda": "CAD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Banff Gondola",
-          "preco": null,
-          "moeda": "CAD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Johnston Canyon",
-          "preco": null,
-          "moeda": "CAD",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        }
+        {"nome":"Lake Louise","preco":12.5,"moeda":"CAD","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Moraine Lake","preco":12.5,"moeda":"CAD","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Banff Gondola","preco":70,"moeda":"CAD","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Johnston Canyon","preco":12.5,"moeda":"CAD","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Peyto Lake","preco":12.5,"moeda":"CAD","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Bow Falls","preco":12.5,"moeda":"CAD","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
       ]
     },
     {
-      "id": 12,
-      "slug": "lisboa",
-      "nome": "Lisboa",
-      "cidade": "Lisboa",
-      "pais": "Portugal",
-      "continente": "Europa",
-      "categoria": "Cidade e gastronomia",
-      "emoji": "🇵🇹",
+      "id": 12, "slug": "lisboa", "nome": "Lisboa", "cidade": "Lisboa",
+      "pais": "Portugal", "continente": "Europa", "categoria": "Cidade e gastronomia", "emoji": "🇵🇹",
       "imagem": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1100&q=85",
-      "resumo": "Miradouros, elétricos, azulejos e sabores portugueses.",
+      "resumo": "Miradouros, elétricos, azulejos e sabores portugueses. Preços fictícios.",
       "descricao": "Lisboa mistura bairros históricos, miradouros e uma cena gastronômica rica. Use calçados confortáveis para as ladeiras e considere passeios de um dia a Sintra ou Cascais.",
-      "atracoes": [
-        "Torre de Belém",
-        "Alfama",
-        "Mosteiro dos Jerónimos",
-        "Praça do Comércio"
-      ],
-      "melhor_epoca": "Março a junho e setembro a outubro",
-      "duracao": "3 a 4 dias",
-      "nota": 4.8,
-      "tags": [
-        "historico",
-        "cultura",
-        "gastronomia",
-        "cidade"
-      ],
-      "moeda": "EUR",
-      "preco_passeio": null,
-      "preco_tipo": "nao_informado",
-      "fonte_preco": "",
-      "atualizado_em": "",
+      "atracoes": ["Torre de Belém","Alfama","Mosteiro dos Jerónimos","Praça do Comércio","Castelo de São Jorge","Miradouro da Senhora do Monte"],
+      "melhor_epoca": "Março a junho e setembro a outubro", "duracao": "3 a 4 dias", "nota": 4.8,
+      "tags": ["historico","cultura","gastronomia","cidade"],
+      "moeda": "EUR", "preco_passeio": 16, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": 38.7223, "lon": -9.1393,
       "passeios": [
-        {
-          "nome": "Torre de Belém",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Alfama",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Mosteiro dos Jerónimos",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        },
-        {
-          "nome": "Praça do Comércio",
-          "preco": null,
-          "moeda": "EUR",
-          "gratuito": false,
-          "fonte_preco": "",
-          "atualizado_em": ""
-        }
+        {"nome":"Torre de Belém","preco":16,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Alfama","preco":0,"moeda":"EUR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Mosteiro dos Jerónimos","preco":19,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Praça do Comércio","preco":0,"moeda":"EUR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Castelo de São Jorge","preco":18,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Miradouro da Senhora do Monte","preco":0,"moeda":"EUR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
+      ]
+    },
+    {
+      "id": 16, "slug": "sao-paulo", "nome": "São Paulo", "cidade": "São Paulo",
+      "pais": "Brasil", "continente": "América do Sul", "categoria": "Cidade e gastronomia", "emoji": "🇧🇷",
+      "imagem": "static/img/destinos/sao-paulo.webp",
+      "resumo": "Museus, parques e gastronomia de vários cantos do mundo. Preços fictícios.",
+      "descricao": "A Avenida Paulista concentra centros culturais como o MASP. No centro, a Pinacoteca e o Mercado Municipal rendem passeios diferentes no mesmo dia. O Parque Ibirapuera é uma boa pausa entre os programas urbanos.",
+      "atracoes": ["Museu de Arte de São Paulo (MASP)","Parque Ibirapuera","Mercado Municipal de São Paulo","Pinacoteca de São Paulo"],
+      "melhor_epoca": "Abril a setembro", "duracao": "3 a 5 dias", "nota": 4.7,
+      "tags": ["cidade","gastronomia","cultura","museu","Avenida Paulista"],
+      "moeda": "BRL", "preco_passeio": 38, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": -23.5503, "lon": -46.6339,
+      "passeios": [
+        {"nome":"Museu de Arte de São Paulo (MASP)","preco":80,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Parque Ibirapuera","preco":0,"moeda":"BRL","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Mercado Municipal de São Paulo","preco":0,"moeda":"BRL","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Pinacoteca de São Paulo","preco":38,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
+      ]
+    },
+    {
+      "id": 17, "slug": "salvador", "nome": "Salvador", "cidade": "Salvador",
+      "pais": "Brasil", "continente": "América do Sul", "categoria": "Cultura e história", "emoji": "🇧🇷",
+      "imagem": "static/img/destinos/salvador.webp",
+      "resumo": "Casarões coloridos, cultura afro-brasileira e orla na Bahia. Preços fictícios.",
+      "descricao": "O Pelourinho reúne igrejas e praças do centro histórico de Salvador. O Elevador Lacerda liga a Cidade Alta à região do Mercado Modelo. Na orla, o Farol da Barra é um ponto para apreciar o pôr do sol.",
+      "atracoes": ["Pelourinho","Elevador Lacerda","Farol da Barra","Mercado Modelo"],
+      "melhor_epoca": "Setembro a fevereiro", "duracao": "3 a 5 dias", "nota": 4.8,
+      "tags": ["bonito","historico","cultura","gastronomia","praia","Bahia"],
+      "moeda": "BRL", "preco_passeio": 1.5, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": -12.9714, "lon": -38.5014,
+      "passeios": [
+        {"nome":"Pelourinho","preco":0,"moeda":"BRL","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Elevador Lacerda","preco":1.5,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Farol da Barra","preco":25,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Mercado Modelo","preco":0,"moeda":"BRL","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
+      ]
+    },
+    {
+      "id": 18, "slug": "campos-do-jordao", "nome": "Campos do Jordão", "cidade": "Campos do Jordão",
+      "pais": "Brasil", "continente": "América do Sul", "categoria": "Aventura", "emoji": "🇧🇷",
+      "imagem": "static/img/destinos/campos-do-jordao.webp",
+      "resumo": "Trilhas, araucárias e jardins na Serra da Mantiqueira. Preços fictícios.",
+      "descricao": "O Horto Florestal oferece trilhas entre araucárias, e o Parque Amantikir reúne jardins temáticos. Depois dos passeios ao ar livre, dá para conhecer a Vila Capivari ou visitar o Palácio Boa Vista.",
+      "atracoes": ["Vila Capivari","Parque Amantikir","Horto Florestal","Palácio Boa Vista"],
+      "melhor_epoca": "Maio a agosto para quem gosta de frio", "duracao": "2 a 3 dias", "nota": 4.7,
+      "tags": ["bonito","natureza","aventura","trilha","montanha","Serra da Mantiqueira"],
+      "moeda": "BRL", "preco_passeio": 26, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": -22.7389, "lon": -45.5908,
+      "passeios": [
+        {"nome":"Vila Capivari","preco":0,"moeda":"BRL","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Parque Amantikir","preco":95,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Horto Florestal","preco":26,"moeda":"BRL","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Palácio Boa Vista","preco":0,"moeda":"BRL","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
+      ]
+    },
+    {
+      "id": 19, "slug": "buenos-aires", "nome": "Buenos Aires", "cidade": "Buenos Aires",
+      "pais": "Argentina", "continente": "América do Sul", "categoria": "Cidade e gastronomia", "emoji": "🇦🇷",
+      "imagem": "static/img/destinos/buenos-aires.webp",
+      "resumo": "Tango, teatros históricos, cafés e as casas coloridas do Caminito. Preços fictícios.",
+      "descricao": "O centro de Buenos Aires reúne o Obelisco, o Teatro Colón e a Plaza de Mayo. No bairro de La Boca, o Caminito tem fachadas coloridas e artistas de rua. Reserve uma noite para experimentar a gastronomia portenha.",
+      "atracoes": ["Obelisco de Buenos Aires","Caminito","Teatro Colón","Plaza de Mayo"],
+      "melhor_epoca": "Março a maio e setembro a novembro", "duracao": "3 a 5 dias", "nota": 4.8,
+      "tags": ["cidade","gastronomia","historico","cultura","tango","La Boca"],
+      "moeda": "ARS", "preco_passeio": 39000, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa. O Obelisco considera a vista externa e o Teatro Colón considera a visita guiada.",
+      "atualizado_em": "2026-11-16", "lat": -34.5997, "lon": -58.3819,
+      "passeios": [
+        {"nome":"Obelisco de Buenos Aires","preco":0,"moeda":"ARS","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Caminito","preco":0,"moeda":"ARS","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Teatro Colón","preco":39000,"moeda":"ARS","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Plaza de Mayo","preco":0,"moeda":"ARS","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
+      ]
+    },
+    {
+      "id": 20, "slug": "chichen-itza", "nome": "Chichén Itzá", "cidade": "Tinúm, Yucatán",
+      "pais": "México", "continente": "América do Norte", "categoria": "Cultura e história", "emoji": "🇲🇽",
+      "imagem": "static/img/destinos/chichen-itza.webp",
+      "resumo": "Pirâmides, templos e um cenote em uma antiga cidade maia. Preços fictícios.",
+      "descricao": "O Templo de Kukulcán é o destaque da praça principal. O Grande Jogo de Pelota, o Templo dos Guerreiros e o Cenote Sagrado ajudam a entender como o esporte, a arquitetura e os rituais faziam parte da vida da cidade.",
+      "atracoes": ["Templo de Kukulcán (El Castillo)","Grande Jogo de Pelota","Cenote Sagrado","Templo dos Guerreiros"],
+      "melhor_epoca": "Novembro a março", "duracao": "1 dia", "nota": 4.9,
+      "tags": ["historico","cultura","bonito","arqueologia","maia","pirâmide"],
+      "moeda": "MXN", "preco_passeio": 690, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa. Um único ingresso cobre as quatro atrações.",
+      "atualizado_em": "2026-11-16", "lat": 20.6831, "lon": -88.5686,
+      "passeios": [
+        {"nome":"Templo de Kukulcán (El Castillo)","preco":690,"moeda":"MXN","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Grande Jogo de Pelota","preco":690,"moeda":"MXN","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Cenote Sagrado","preco":690,"moeda":"MXN","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Templo dos Guerreiros","preco":690,"moeda":"MXN","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
+      ]
+    },
+    {
+      "id": 21, "slug": "londres", "nome": "Londres", "cidade": "Londres",
+      "pais": "Reino Unido", "continente": "Europa", "categoria": "Cultura e história", "emoji": "🇬🇧",
+      "imagem": "static/img/destinos/londres.webp",
+      "resumo": "Museus, parques e monumentos às margens do Tâmisa. Preços fictícios.",
+      "descricao": "Comece por Westminster, onde ficam o Parlamento e a torre do Big Ben. A Tower Bridge mostra outro trecho do Tâmisa. Para alternar entre passeios cobertos e ao ar livre, combine o Museu Britânico com uma caminhada no Hyde Park.",
+      "atracoes": ["Big Ben e Palácio de Westminster","Tower Bridge","Museu Britânico","Hyde Park"],
+      "melhor_epoca": "Maio a setembro", "duracao": "4 a 6 dias", "nota": 4.8,
+      "tags": ["historico","cultura","cidade","museu","Inglaterra","London"],
+      "moeda": "GBP", "preco_passeio": 17.5, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa. Westminster e Tower Bridge consideram a visita interna.",
+      "atualizado_em": "2026-11-16", "lat": 51.5072, "lon": -0.1275,
+      "passeios": [
+        {"nome":"Big Ben e Palácio de Westminster","preco":38,"moeda":"GBP","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Tower Bridge","preco":17.5,"moeda":"GBP","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Museu Britânico","preco":0,"moeda":"GBP","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Hyde Park","preco":0,"moeda":"GBP","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
+      ]
+    },
+    {
+      "id": 22, "slug": "toquio", "nome": "Tóquio", "cidade": "Tóquio",
+      "pais": "Japão", "continente": "Ásia", "categoria": "Cidade e gastronomia", "emoji": "🇯🇵",
+      "imagem": "static/img/destinos/toquio.webp",
+      "resumo": "Templos, mirantes e a vida urbana nos bairros da capital japonesa. Preços fictícios.",
+      "descricao": "Em Asakusa, visite o templo Sensō-ji e siga para a Tokyo Skytree do outro lado do rio. O movimento do cruzamento de Shibuya e as alamedas arborizadas do Santuário Meiji mostram dois ritmos da mesma cidade.",
+      "atracoes": ["Templo Sensō-ji","Cruzamento de Shibuya","Santuário Meiji","Tokyo Skytree"],
+      "melhor_epoca": "Março a maio e outubro a novembro", "duracao": "4 a 6 dias", "nota": 4.9,
+      "tags": ["cidade","gastronomia","cultura","templo","Tokyo","Asakusa","Sensoji"],
+      "moeda": "JPY", "preco_passeio": 2300, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": 35.6897, "lon": 139.6922,
+      "passeios": [
+        {"nome":"Templo Sensō-ji","preco":0,"moeda":"JPY","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Cruzamento de Shibuya","preco":0,"moeda":"JPY","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Santuário Meiji","preco":0,"moeda":"JPY","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Tokyo Skytree","preco":2300,"moeda":"JPY","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
+      ]
+    },
+    {
+      "id": 23, "slug": "sydney", "nome": "Sydney", "cidade": "Sydney",
+      "pais": "Austrália", "continente": "Oceania", "categoria": "Praias e natureza", "emoji": "🇦🇺",
+      "imagem": "static/img/destinos/sydney.webp",
+      "resumo": "A Ópera de Sydney, jardins à beira do porto e praias no Pacífico. Preços fictícios.",
+      "descricao": "Circular Quay é um bom começo para conhecer a Ópera de Sydney e apreciar a ponte do porto. O Jardim Botânico fica perto dali. Em outro dia, vale caminhar pela orla da Praia de Bondi.",
+      "atracoes": ["Ópera de Sydney","Sydney Harbour Bridge","Praia de Bondi","Royal Botanic Garden Sydney"],
+      "melhor_epoca": "Setembro a novembro e março a maio", "duracao": "3 a 5 dias", "nota": 4.8,
+      "tags": ["bonito","natureza","praia","cidade","arquitetura","Opera House"],
+      "moeda": "AUD", "preco_passeio": 52, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa. A Ópera de Sydney considera a visita guiada e a ponte considera a travessia a pé.",
+      "atualizado_em": "2026-11-16", "lat": -33.8678, "lon": 151.21,
+      "passeios": [
+        {"nome":"Ópera de Sydney","preco":52,"moeda":"AUD","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Sydney Harbour Bridge","preco":0,"moeda":"AUD","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Praia de Bondi","preco":0,"moeda":"AUD","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Royal Botanic Garden Sydney","preco":0,"moeda":"AUD","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
+      ]
+    },
+    {
+      "id": 24, "slug": "barcelona", "nome": "Barcelona", "cidade": "Barcelona",
+      "pais": "Espanha", "continente": "Europa", "categoria": "Cultura e história", "emoji": "🇪🇸",
+      "imagem": "static/img/destinos/barcelona.webp",
+      "resumo": "Arquitetura de Gaudí, ruas medievais e mercados na Catalunha. Preços fictícios.",
+      "descricao": "A Sagrada Família e o Parque Güell mostram formas diferentes da arquitetura de Antoni Gaudí. No centro, percorra as ruas do Bairro Gótico e pare no Mercado da Boqueria para conhecer os sabores locais.",
+      "atracoes": ["Basílica da Sagrada Família","Parque Güell","Bairro Gótico","Mercado da Boqueria"],
+      "melhor_epoca": "Abril a junho e setembro a outubro", "duracao": "3 a 5 dias", "nota": 4.8,
+      "tags": ["bonito","historico","cultura","cidade","gastronomia","Gaudí","Catalunha"],
+      "moeda": "EUR", "preco_passeio": 17, "preco_tipo": "simulado",
+      "fonte_preco": "Preços fictícios por pessoa.",
+      "atualizado_em": "2026-11-16", "lat": 41.3828, "lon": 2.1769,
+      "passeios": [
+        {"nome":"Basílica da Sagrada Família","preco":28,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Parque Güell","preco":17,"moeda":"EUR","gratuito":false,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Bairro Gótico","preco":0,"moeda":"EUR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"},
+        {"nome":"Mercado da Boqueria","preco":0,"moeda":"EUR","gratuito":true,"fonte_preco":"Simulação","atualizado_em":"2026-11-16"}
       ]
     }
   ]

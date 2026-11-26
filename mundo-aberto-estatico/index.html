@@ -1,11 +1,10 @@
 <!doctype html>
 <!-- Página inicial: apresentação, busca rápida e destinos em destaque. -->
-<!-- Teste de commit -->
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; frame-src https://www.openstreetmap.org; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="no-referrer">
     <meta name="theme-color" content="#101b2b">
     <meta name="description" content="Encontre passeios pelo mundo, compare preços de entrada e monte seu próximo roteiro.">
@@ -33,9 +32,6 @@
         <a href="index.html">
           Início
         </a>
-         <a href="comparacao.html">
-          Início
-        </a>
         <a href="destinos.html">
           Encontrar passeios
         </a>
@@ -48,10 +44,7 @@
             0
           </span>
         </a>
-        
-        <a class="nav-login" href="login.html">
-          Entrar
-        </a>
+        <a href="mapa.html">Mapa dos destinos</a><a href="calendario.html">Meus planos</a>
       </nav>
     </header>
     <main>
@@ -86,6 +79,11 @@
                   ONDE QUER PASSEAR?
                 </small>
                 <input name="q" placeholder="País, cidade ou atração">
+              </span>
+            </label>
+            <label class="busca-campo budget-search-field">
+              <span class="busca-texto"><small>ORÇAMENTO POR PESSOA (R$)</small>
+                <input name="orcamento" type="text" inputmode="numeric" autocomplete="off" placeholder="Ex.: R$ 2.000" aria-label="Orçamento máximo por pessoa em reais">
               </span>
             </label>
             <button class="btn-buscar">
@@ -146,7 +144,7 @@
             </span>
           </a>
         </div>
-        <div class="destination-grid" id="home-destinations" data-limit="6">
+        <div class="destination-grid" id="home-destinations" data-limit="9">
         </div>
         <div class="center-action">
           <a class="btn-outline" href="destinos.html">
@@ -156,6 +154,11 @@
             </span>
           </a>
         </div>
+      </section>
+      <section class="section map-promo">
+        <div><p class="eyebrow dark">EXPLORE VISUALMENTE</p><h2>O mundo em um mapa.</h2>
+          <p>Escolha um dos destinos e conheça a região antes da sua viagem.</p></div>
+        <a class="btn-dark" href="mapa.html">Abrir mapa interativo ↗</a>
       </section>
       <section class="quote-band">
         <div class="quote-mark">
@@ -211,11 +214,11 @@
               <span>
                 03
               </span>
-              Monte seu próprio roteiro
+              Simule passagens e monte seu roteiro
             </li>
           </ul>
-          <a class="btn-dark" href="destinos.html">
-            Planejar uma aventura
+          <a class="btn-dark" href="roteiro.html#transporte">
+            Simular transporte
             <span>
               ↗
             </span>
@@ -245,11 +248,12 @@
     </footer>
     <script src="static/js/animacoes.js">
     </script>
-    <script src="static/js/cards.js">
-    </script>
+    <script src="static/js/planejamento.js"></script>
+    <script src="static/js/mapa.js"></script>
     <script src="static/js/main.js">
     </script>
   </body>
 </html>
+
 
 
