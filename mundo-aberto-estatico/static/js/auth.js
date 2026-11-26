@@ -23,6 +23,11 @@ async function entrarUsuario(email, senha) {
     });
 
     if (error) throw error;
+
+    console.log("Login realizado com sucesso!");
+    console.log("Usuário:", data.user);
+    console.log("Sessão ativa:", !!data.session);
+
     return data;
 }
 
@@ -170,3 +175,19 @@ function atualizarNavbar(session) {
         link.onclick = null;
     }
 }
+// ---------- TESTE DE SESSÃO ----------
+async function verificarSessao() {
+    const { data, error } = await supabaseClient.auth.getSession();
+
+    console.log("Sessão continua ativa?", !!data.session);
+
+    if (data.session) {
+        console.log("Usuário logado:", data.session.user.email);
+    } else {
+        console.log("Nenhum usuário logado.");
+    }
+
+    if (error) console.error("Erro:", error);
+}
+
+verificarSessao();
