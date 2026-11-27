@@ -1693,6 +1693,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .saved-plan,.calendar-day {break-inside:avoid;box-shadow:none}
   .calendar-event input {border:0;background:transparent;padding:0}
 }
+<<<<<<< HEAD
 
 /* Cartões expansíveis em Meus planos e confirmação do cronograma */
 .my-plan-disclosure { overflow: hidden; border-radius: 12px; }
@@ -1725,4 +1726,19 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .my-plan-status { grid-column: 2; }
   .my-plan-disclosure > summary::after { grid-column: 2; }
   .schedule-confirm-box .btn-dark { width: 100%; justify-content: center; }
+=======
+/* Acrescente no final do static/css/style.css */
+.package-actions{
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+.package-actions .btn-dark{
+  flex:1;
+  text-align:center
+}
+.package-actions .heart-btn{
+  flex:none;
+  cursor:pointer
+>>>>>>> 24ed5221a11d2cd35720bffa9b1308c5b9bc70a9
 }

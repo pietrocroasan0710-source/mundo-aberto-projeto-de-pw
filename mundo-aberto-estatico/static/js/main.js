@@ -1,19 +1,21 @@
 /*
  * Mundo Aberto — catálogo público.
  * Dados publicados: static/json/dados.json (somente leitura).
- * Favoritos e seleção do roteiro: armazenamento local do visitante.
+ * Roteiro: armazenamento local do visitante. Favoritos: conta (Supabase) ou só em memória (visitante).
  * O catálogo e os pacotes demonstrativos são publicados como arquivos estáticos.
  */
 (() => {
   'use strict';
 
-  const STORAGE = { favorites: 'mundoAberto.favoritos', itinerary: 'mundoAberto.roteiro', packagePlans: 'mundoAberto.pacotesSalvos' };
+  const STORAGE = { itinerary: 'mundoAberto.roteiro', packagePlans: 'mundoAberto.pacotesSalvos' };
   let catalog = [];
   let packages = [];
   let comparisonSelection = [];
   let listingControls = null;
   let slideInterval = null;
   let toastTimer = null;
+  let favoritesCache = []; // lista de favoritos: Supabase se logado; só em memória se visitante (nada vai ao localStorage)
+  let favoritesRemote = false; // true = usuário logado (favoritos na conta)
 
   function readList(key) {
     try {
@@ -25,6 +27,68 @@
   function saveList(key, value) {
     try { localStorage.setItem(key, JSON.stringify(value)); return true; }
     catch { notify('Não foi possível salvar. Verifique o espaço e as permissões do navegador.', true); return false; }
+  }
+
+  // Favoritos: conta logada usa o Supabase (por usuário); visitante fica só em memória (some ao recarregar).
+  async function loadFavorites() {
+    favoritesRemote = false;
+    if (typeof supabaseClient === 'undefined' || typeof buscarFavoritos !== 'function') return;
+    let session = null;
+    try {
+      const result = await supabaseClient.auth.getSession();
+      session = result.data?.session || null;
+    } catch (error) {
+      console.error('Mundo Aberto: não foi possível verificar a sessão', error);
+    }
+    if (!session) return; // visitante: favoritos só em memória
+    try {
+      favoritesCache = [...new Set(await buscarFavoritos())];
+      favoritesRemote = true;
+    } catch (error) {
+      // Logado, mas a leitura falhou: mantém o modo "conta" (sem salvar no navegador) e mostra o motivo.
+      console.error('Mundo Aberto: erro ao ler a tabela favoritos', error);
+      favoritesCache = [];
+      favoritesRemote = true;
+      notify('Não foi possível carregar seus favoritos: ' + (error.message || 'erro desconhecido'), true);
+    }
+  }
+
+  function getFavorites() {
+    return favoritesCache;
+  }
+
+  // Favorito de pacote: chave "pacote:<destino>:<id>" (não colide com o slug dos destinos).
+  const packageKey = pack => `pacote:${pack.destino}:${pack.id}`;
+  const isPackageKey = key => packages.some(pack => packageKey(pack) === key);
+
+  function packageHeart(pack, favorites) {
+    const selected = favorites.includes(packageKey(pack));
+    return `<button type="button" class="heart-btn ${selected ? 'is-favorite' : ''}" data-favorite-package="${html(packageKey(pack))}"
+      aria-label="${selected ? 'Remover' : 'Adicionar'} ${html(pack.nome)} ${selected ? 'dos' : 'aos'} favoritos" aria-pressed="${selected}">${selected ? '♥' : '♡'}</button>`;
+  }
+
+  function renderFavoritePackages() {
+    let root = document.getElementById('favorite-packages');
+    const fallbackGrid = !root ? document.querySelector('[data-favorites-only]') : null;
+    root = root || fallbackGrid;
+    if (!root) return;
+    const favorites = getFavorites();
+    const items = packages.filter(pack => favorites.includes(packageKey(pack)) && catalog.some(d => d.slug === pack.destino));
+    if (fallbackGrid) { // página antiga de favoritos (grade de destinos): mostra os pacotes no lugar
+      const empty = document.getElementById('empty-state');
+      if (empty) empty.hidden = true;
+      const label = document.getElementById('results-count');
+      if (label) label.textContent = `${items.length} ${items.length === 1 ? 'pacote favorito' : 'pacotes favoritos'}`;
+    }
+    if (!items.length) {
+      root.innerHTML = '<p class="package-empty">Você ainda não favoritou nenhum pacote. Abra um destino e toque no ♡ do pacote.</p>';
+      return;
+    }
+    root.innerHTML = `<div class="package-grid">${items.map(pack => {
+      const d = catalog.find(item => item.slug === pack.destino);
+      const href = `destino.html?slug=${encodeURIComponent(d.slug)}&pacote=${encodeURIComponent(pack.id)}&orcamento=20000`;
+      return `<article class="package-card"><img src="${html(pack.imagem || d.imagem)}" alt="Paisagem de ${html(d.nome)}" loading="lazy"><div class="package-card-body"><span class="package-duration">${html(d.nome)} · ${html(pack.duracao)}</span><h3>${html(pack.nome)}</h3><p>${html(pack.subtitulo)}</p><strong>${html(formatPrice(pack.preco, 'BRL'))} <small>/ pessoa</small></strong><div class="package-actions"><a class="btn-dark" href="${href}">Ver detalhes ↗</a>${packageHeart(pack, favorites)}</div></div></article>`;
+    }).join('')}</div>`;
   }
 
   function html(value) {
@@ -114,7 +178,6 @@
   }
 
   function card(destination, favorites, packageBudget = null) {
-    const selected = favorites.includes(destination.slug);
     const destinationHref = detailUrl(destination.slug) + (packageBudget ? '&orcamento=' + encodeURIComponent(packageBudget) : '');
     return `
       <article class="destination-card reveal">
@@ -131,9 +194,6 @@
           <div class="card-actions">
             <span class="destination-rating" title="Nota ilustrativa; não representa avaliação de usuários">★ ${Number(destination.nota || 0).toFixed(1)} <small>exemplo</small></span>
             <a href="${destinationHref}" class="text-link">${packageBudget ? 'Ver pacotes ↗' : 'Conhecer ↗'}</a>
-            <button type="button" class="heart-btn ${selected ? 'is-favorite' : ''}" data-favorite="${html(destination.slug)}"
-              aria-label="${selected ? 'Remover' : 'Adicionar'} ${html(destination.nome)} ${selected ? 'dos' : 'aos'} favoritos"
-              aria-pressed="${selected}">${selected ? '♥' : '♡'}</button>
           </div>
         </div>
       </article>`;
@@ -171,7 +231,7 @@
   function renderListing() {
     const grid = document.getElementById('destination-grid');
     if (!grid) return;
-    const favorites = readList(STORAGE.favorites);
+    const favorites = getFavorites();
     const c = listingControls || {};
     const terms = normalize(c.search?.value).trim().split(/\s+/).filter(Boolean);
     const min = c.minRating?.value ? Number(c.minRating.value) : 0;
@@ -295,7 +355,6 @@
       renderDestinationPackages(root, d, available, budget);
       return;
     }
-    const fav = readList(STORAGE.favorites).includes(slug);
     const planned = readList(STORAGE.itinerary).includes(slug);
     const attractions = (d.passeios?.length ? d.passeios : d.atracoes || []);
     root.innerHTML = `
@@ -334,8 +393,8 @@
           </section>` : ''}
         </article>
         <aside class="detail-aside"><p class="eyebrow dark">GUARDE PARA SUA VIAGEM</p>
-          <h3>Não perca esse lugar de vista.</h3><p>Favoritos e roteiro ficam salvos no seu navegador.</p>
-          <a class="btn-dark full-width" href="destino.html?slug=${encodeURIComponent(slug)}&orcamento=20000">Ver planos ↗</a><button class="btn-outline full-width" type="button" data-favorite="${html(slug)}">${fav ? '♥ Remover dos favoritos' : '♡ Salvar nos favoritos'}</button>
+          <h3>Não perca esse lugar de vista.</h3><p>Seu roteiro fica salvo no seu navegador.</p>
+          <a class="btn-dark full-width" href="destino.html?slug=${encodeURIComponent(slug)}&orcamento=20000">Ver planos ↗</a>
           <button class="btn-dark full-width" type="button" data-itinerary="${html(slug)}">${planned ? '✓ Remover do roteiro' : '+ Adicionar ao meu roteiro'}</button>
           <a class="btn-outline full-width" href="roteiro.html?destino=${encodeURIComponent(slug)}#transporte">Como chegar ↗</a>
           <div class="aside-meta"><span>⌖ País</span><strong>${html(d.pais)}</strong>
@@ -349,7 +408,7 @@
     document.title = `Pacotes em ${d.nome} — Mundo Aberto`;
     const back = 'destinos.html?orcamento=' + encodeURIComponent(budget);
     comparisonSelection = [];
-    const cards = available.map(pack => `<article class="package-card"><img src="${html(pack.imagem || d.imagem)}" alt="Paisagem de ${html(d.nome)}" loading="lazy"><div class="package-card-body"><span class="package-duration">${html(pack.duracao)}</span><h3>${html(pack.nome)}</h3><p>${html(pack.subtitulo)}</p><ul class="package-highlights">${(pack.beneficios || []).slice(0, 3).map(item => `<li>${html(item)}</li>`).join('')}</ul><strong>${html(formatPrice(pack.preco, 'BRL'))} <small>/ pessoa</small></strong><label class="compare-check"><input type="checkbox" value="${html(pack.id)}" data-compare-package> Comparar pacote</label><a class="btn-dark" href="destino.html?slug=${encodeURIComponent(d.slug)}&pacote=${encodeURIComponent(pack.id)}&orcamento=${encodeURIComponent(budget)}">Ver detalhes ↗</a></div></article>`).join('');
+    const cards = available.map(pack => `<article class="package-card"><img src="${html(pack.imagem || d.imagem)}" alt="Paisagem de ${html(d.nome)}" loading="lazy"><div class="package-card-body"><span class="package-duration">${html(pack.duracao)}</span><h3>${html(pack.nome)}</h3><p>${html(pack.subtitulo)}</p><ul class="package-highlights">${(pack.beneficios || []).slice(0, 3).map(item => `<li>${html(item)}</li>`).join('')}</ul><strong>${html(formatPrice(pack.preco, 'BRL'))} <small>/ pessoa</small></strong><label class="compare-check"><input type="checkbox" value="${html(pack.id)}" data-compare-package> Comparar pacote</label><div class="package-actions"><a class="btn-dark" href="destino.html?slug=${encodeURIComponent(d.slug)}&pacote=${encodeURIComponent(pack.id)}&orcamento=${encodeURIComponent(budget)}">Ver detalhes ↗</a>${packageHeart(pack, getFavorites())}</div></div></article>`).join('');
     root.innerHTML = `<section class="detail-hero"><img src="${html(d.imagem)}" alt="Paisagem de ${html(d.nome)}"><div class="detail-shade"></div><div class="detail-hero-content"><a class="back-link" href="${back}">← Destinos no meu orçamento</a><p class="eyebrow"><span></span>PACOTES DEMONSTRATIVOS · ${html(d.pais.toUpperCase())}</p><h1>${html(d.nome)}</h1><p>Opções por pessoa até ${html(formatPrice(budget, 'BRL'))}. Compare o que está incluído em cada viagem.</p></div></section><section class="section package-section"><div class="section-heading"><div><p class="eyebrow dark">SUA PRÓXIMA VIAGEM</p><h2>${available.length ? 'Pacotes disponíveis' : 'Nenhum pacote nesta faixa'}</h2></div><span class="package-disclaimer">Valores fictícios para demonstração</span></div>${available.length ? `<div class="package-grid">${cards}</div><div id="package-comparison" class="package-comparison"></div>` : '<p class="package-empty">Aumente o orçamento na busca para ver mais opções.</p>'}</section>`;
     const comparisonRoot = document.getElementById('package-comparison');
     renderPackageComparison(comparisonRoot, []);
@@ -389,7 +448,7 @@
   function renderPackageDetail(root, d, pack, budget) {
     const section = (title, values) => `<section class="package-inclusion"><h3>${title}</h3><ul>${(values || []).map(value => `<li>${html(value)}</li>`).join('')}</ul></section>`;
     const back = `destino.html?slug=${encodeURIComponent(d.slug)}&orcamento=${encodeURIComponent(budget)}`;
-    root.innerHTML = `<section class="detail-hero"><img src="${html(pack.imagem || d.imagem)}" alt="Paisagem de ${html(d.nome)}"><div class="detail-shade"></div><div class="detail-hero-content"><a class="back-link" href="${back}">← Todos os pacotes de ${html(d.nome)}</a><p class="eyebrow"><span></span>PACOTE DEMONSTRATIVO · ${html(d.pais.toUpperCase())}</p><h1>${html(pack.nome)}</h1><p>${html(pack.subtitulo)}</p></div></section><section class="detail-layout package-detail-layout"><article class="detail-main"><p class="eyebrow dark">DETALHES DA VIAGEM</p><h2>${html(pack.duracao)} · ${html(formatPrice(pack.preco, 'BRL'))} por pessoa</h2><p class="package-disclaimer">Valores fictícios para demonstração; esta página não realiza reservas.</p><div class="package-inclusions">${section('Benefícios especiais',pack.beneficios)}${section('Transporte',[pack.transporte])}${section('Hospedagem',[pack.hospedagem])}${section('Refeições',[pack.refeicoes])}${section('Roteiro',pack.roteiro)}${section('Atividades incluídas',pack.atividades)}${section('Taxas incluídas',pack.taxas)}${section('Não incluído',pack.nao_inclui)}</div></article><aside class="detail-aside"><p class="eyebrow dark">RESUMO DO PACOTE</p><h3>${html(formatPrice(pack.preco, 'BRL'))}<small class="package-person"> por pessoa</small></h3><p>${html(pack.duracao)} em ${html(d.nome)}.</p><a class="btn-dark full-width" href="montar-pacote.html?destino=${encodeURIComponent(d.slug)}&pacote=${encodeURIComponent(pack.id)}">Personalizar e montar meu plano ↗</a><a class="btn-outline full-width" href="${back}">Voltar aos pacotes ↗</a><p class="package-disclaimer">Montar o plano não efetua reserva nem pagamento.</p></aside></section>`;
+    root.innerHTML = `<section class="detail-hero"><img src="${html(pack.imagem || d.imagem)}" alt="Paisagem de ${html(d.nome)}"><div class="detail-shade"></div><div class="detail-hero-content"><a class="back-link" href="${back}">← Todos os pacotes de ${html(d.nome)}</a><p class="eyebrow"><span></span>PACOTE DEMONSTRATIVO · ${html(d.pais.toUpperCase())}</p><h1>${html(pack.nome)}</h1><p>${html(pack.subtitulo)}</p></div></section><section class="detail-layout package-detail-layout"><article class="detail-main"><p class="eyebrow dark">DETALHES DA VIAGEM</p><h2>${html(pack.duracao)} · ${html(formatPrice(pack.preco, 'BRL'))} por pessoa</h2><p class="package-disclaimer">Valores fictícios para demonstração; esta página não realiza reservas.</p><div class="package-inclusions">${section('Benefícios especiais',pack.beneficios)}${section('Transporte',[pack.transporte])}${section('Hospedagem',[pack.hospedagem])}${section('Refeições',[pack.refeicoes])}${section('Roteiro',pack.roteiro)}${section('Atividades incluídas',pack.atividades)}${section('Taxas incluídas',pack.taxas)}${section('Não incluído',pack.nao_inclui)}</div></article><aside class="detail-aside"><p class="eyebrow dark">RESUMO DO PACOTE</p><h3>${html(formatPrice(pack.preco, 'BRL'))}<small class="package-person"> por pessoa</small></h3><p>${html(pack.duracao)} em ${html(d.nome)}.</p><a class="btn-dark full-width" href="montar-pacote.html?destino=${encodeURIComponent(d.slug)}&pacote=${encodeURIComponent(pack.id)}">Personalizar e montar meu plano ↗</a><button class="btn-outline full-width" type="button" data-favorite-package="${html(packageKey(pack))}">${getFavorites().includes(packageKey(pack)) ? '♥ Remover pacote dos favoritos' : '♡ Salvar pacote nos favoritos'}</button><a class="btn-outline full-width" href="${back}">Voltar aos pacotes ↗</a><p class="package-disclaimer">Montar o plano não efetua reserva nem pagamento.</p></aside></section>`;
   }
 
   function readPackagePlans() {
@@ -712,8 +771,9 @@
   function renderDynamic() {
     updateNavCount();
     const home = document.getElementById('home-destinations');
-    if (home) renderCards(home, catalog.slice(0, Number(home.dataset.limit) || 6), readList(STORAGE.favorites));
+    if (home) renderCards(home, catalog.slice(0, Number(home.dataset.limit) || 6), getFavorites());
     renderListing();
+    renderFavoritePackages();
     renderDetails();
     renderPackageBuilder(document.getElementById('package-builder-root'));
     renderPayment(document.getElementById('payment-root'));
@@ -722,13 +782,42 @@
     window.MundoAbertoMapa?.render(catalog);
   }
 
-  document.addEventListener('click', event => {
-    const button = event.target.closest('[data-favorite], [data-itinerary]');
+  document.addEventListener('click', async event => {
+    const button = event.target.closest('[data-favorite-package], [data-itinerary]');
     if (!button || !catalog.length) return;
-    const isFavorite = button.hasAttribute('data-favorite');
-    const key = isFavorite ? STORAGE.favorites : STORAGE.itinerary;
-    const slug = isFavorite ? button.dataset.favorite : button.dataset.itinerary;
-    if (!catalog.some(d => d.slug === slug)) return;
+    const isFavorite = button.hasAttribute('data-favorite-package'); // só pacotes podem ser favoritados
+    const key = STORAGE.itinerary;
+    // "slug" = chave "pacote:<destino>:<id>" (favorito) ou slug do destino (roteiro)
+    const slug = isFavorite ? button.dataset.favoritePackage : button.dataset.itinerary;
+    if (isFavorite ? !isPackageKey(slug) : !catalog.some(d => d.slug === slug)) return;
+
+    // Usuário logado: favorito salvo na conta (Supabase), atualizando a tela na hora.
+    if (isFavorite && favoritesRemote) {
+      const previous = favoritesCache;
+      const adding = !previous.includes(slug);
+      favoritesCache = adding ? [...previous, slug] : previous.filter(v => v !== slug);
+      renderDynamic();
+      try {
+        await (adding ? adicionarFavorito(slug) : removerFavorito(slug));
+        notify(adding ? 'Salvo nos favoritos!' : 'Removido dos favoritos.');
+      } catch (error) {
+        console.error('Mundo Aberto: erro ao salvar favorito', error);
+        favoritesCache = previous;
+        renderDynamic();
+        notify('Não foi possível salvar o favorito: ' + (error.message || 'tente de novo.'), true);
+      }
+      return;
+    }
+
+    // Visitante: favorito só em memória (não grava no localStorage).
+    if (isFavorite) {
+      const adding = !favoritesCache.includes(slug);
+      favoritesCache = adding ? [...favoritesCache, slug] : favoritesCache.filter(v => v !== slug);
+      notify(adding ? 'Salvo nos favoritos!' : 'Removido dos favoritos.');
+      renderDynamic();
+      return;
+    }
+
     const current = readList(key);
     const adding = !current.includes(slug);
     if (!saveList(key, adding ? [...current, slug] : current.filter(v => v !== slug))) return;
@@ -747,6 +836,7 @@
       if (!Array.isArray(data.destinos)) throw new Error('Dados de destinos inválidos');
       catalog = data.destinos; // Somente destinos aprovados e publicados pelo projeto.
       packages = Array.isArray(packageData.pacotes) ? packageData.pacotes : [];
+      await loadFavorites();
       initializeListing();
       window.MundoAbertoPlanejamento?.init(catalog, { html, formatPrice, detailUrl, mapUrl, hasCoords, notify, readList, saveList, STORAGE });
       window.MundoAbertoTransporte?.init(catalog, { formatPrice, normalize, hasCoords, savedDestinations: readList(STORAGE.itinerary) });
