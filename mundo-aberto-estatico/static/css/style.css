@@ -1693,7 +1693,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .saved-plan,.calendar-day {break-inside:avoid;box-shadow:none}
   .calendar-event input {border:0;background:transparent;padding:0}
 }
-<<<<<<< HEAD
 
 /* Cartões expansíveis em Meus planos e confirmação do cronograma */
 .my-plan-disclosure { overflow: hidden; border-radius: 12px; }
@@ -1726,28 +1725,74 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .my-plan-status { grid-column: 2; }
   .my-plan-disclosure > summary::after { grid-column: 2; }
   .schedule-confirm-box .btn-dark { width: 100%; justify-content: center; }
-=======
-/* Acrescente no final do static/css/style.css */
-.package-actions{
-  display:flex;
-  align-items:center;
-  gap:10px
-}
-.package-actions .btn-dark{
-  flex:1;
-  text-align:center
-}
-.package-actions .heart-btn{
-  flex:none;
-  cursor:pointer
->>>>>>> 24ed5221a11d2cd35720bffa9b1308c5b9bc70a9
 }
 
-/* Favoritos: os pacotes são desenhados dentro de #destination-grid.
-   Sem isso, a grade de destinos (3 colunas) prende todo o .package-grid em uma coluna só. */
-[data-favorites-only]{
-  display:block
-}
-[data-favorites-only] .package-grid{
-  width:100%
+/* Pagamento demonstrativo, aviso de conclusão e cancelamento do pacote */
+.payment-progress-wrap { padding: 24px 22px 0; background: #f2f5f0; }
+.payment-progress { display: flex; justify-content: center; gap: clamp(24px,7vw,100px); max-width: 880px; margin: 0 auto; padding: 0; list-style: none; }
+.payment-progress li { display: flex; align-items: center; gap: 10px; color: #86938d; }
+.payment-progress li > span { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid #c8d1ca; border-radius: 50%; background: white; font-size: 13px; font-weight: 800; }
+.payment-progress li.complete > span,.payment-progress li.current > span { border-color: #43856e; background: #43856e; color: white; }
+.payment-progress li.current > span { box-shadow: 0 0 0 5px #43856e22; }
+.payment-progress li div { display: grid; gap: 2px; }
+.payment-progress li strong { color: var(--ink); font-size: 12px; }
+.payment-progress li small { font-size: 10px; }
+.payment-page { background: linear-gradient(180deg,#f2f5f0 0%,#e8f0e9 100%); }
+.payment-page .payment-layout { gap: 28px; }
+.payment-page .payment-options,.payment-page .payment-summary { box-shadow: 0 18px 50px #142b1a12; }
+.payment-page .payment-options { padding: clamp(22px,4vw,38px); }
+.payment-page .payment-options h2 { margin-bottom: 7px; }
+.payment-intro { margin: 0 0 20px; color: var(--muted); font-size: 13px; }
+.payment-page .payment-choice { align-items: center; min-height: 78px; border-color: #dce5de; background: #fff; transition: border-color .18s, box-shadow .18s, background .18s; }
+.payment-page .payment-choice:has(input:checked) { border-color: #4e8b72; background: #f1f8f3; box-shadow: 0 0 0 2px #4e8b7218; }
+.payment-page .payment-choice input { width: 17px; height: 17px; accent-color: #47856f; }
+.payment-page .payment-choice span { flex: 1; }
+.payment-page .payment-choice > b { display: grid; min-width: 40px; height: 34px; place-items: center; border-radius: 8px; background: #eaf2ed; color: #3e715d; font-size: 11px; }
+.payment-page .demo-payment-notice { padding: 16px; border: 1px solid #cfe2d4; border-left: 4px solid #6a9b82; border-radius: 10px; }
+.payment-page .demo-payment-notice strong { display: inline-block; margin-bottom: 5px; color: #285f43; }
+.payment-page .payment-summary { position: sticky; top: 95px; padding: 30px; border: 0; border-radius: 18px; background: linear-gradient(145deg,#1b3441,#10232d); box-shadow: 0 22px 50px #142b1a26; }
+.payment-page .payment-summary .eyebrow { letter-spacing: .12em; }
+.payment-page .payment-summary h2 { font-size: 25px; }
+.payment-destination { color: #c1e0d4!important; }
+.payment-summary-divider { height: 1px; margin: 18px 0; background: #ffffff24; }
+.payment-page .builder-total { margin-top: 22px; padding-top: 18px; border-top: 1px solid #ffffff35; }
+.payment-page .builder-total strong { color: #bce7d5; font-size: 34px; }
+.payment-page .payment-summary .btn-dark { min-height: 50px; border-radius: 10px; background: #bde4d4; color: #102b24; font-weight: 800; }
+.payment-page .payment-summary .btn-dark:hover { background: #d0f0e2; }
+.plan-toast { position: fixed; z-index: 1000; top: 92px; right: clamp(14px,4vw,48px); display: grid; grid-template-columns: 38px minmax(0,1fr) 28px; align-items: center; gap: 12px; width: min(440px,calc(100vw - 28px)); padding: 16px; border: 1px solid #b5d5c0; border-radius: 14px; background: #f4fbf5; color: #285f43; box-shadow: 0 18px 55px #142b1a25; animation: planToastIn .28s ease-out both; }
+.plan-toast-icon { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 50%; background: #3e8b67; color: white; font-size: 19px; font-weight: 800; }
+.plan-toast > span:nth-child(2) { display: grid; gap: 4px; }
+.plan-toast strong { font: 800 15px Manrope,sans-serif; }
+.plan-toast small { color: #536e60; font-size: 11px; line-height: 1.45; }
+.plan-toast > button { align-self: start; border: 0; background: transparent; color: #52715f; cursor: pointer; font-size: 22px; line-height: 1; }
+.plan-toast.is-cancelled { border-color: #e6c9bc; background: #fff8f4; color: #874532; }
+.plan-toast.is-cancelled .plan-toast-icon { background: #a65e49; }
+.plan-toast.is-cancelled small { color: #795f57; }
+@keyframes planToastIn { from { opacity: 0; transform: translateY(-9px); } to { opacity: 1; transform: translateY(0); } }
+.my-plan-status.is-cancelled { background: #fff0e9; color: #874532; }
+.cancel-package-button { margin-left: 10px; padding: 9px 13px; border: 1px solid #d7a99b; border-radius: 8px; background: #fff8f4; color: #874532; cursor: pointer; font: 700 12px 'DM Sans',sans-serif; }
+.cancel-package-button:hover { background: #ffede5; border-color: #b96f58; }
+.cancel-package-dialog { width: min(500px,calc(100vw - 28px)); max-width: none; padding: 0; border: 0; border-radius: 18px; background: transparent; color: var(--ink); box-shadow: 0 25px 90px #10232d55; }
+.cancel-package-dialog::backdrop { background: #0d1d27a8; backdrop-filter: blur(3px); }
+.cancel-package-card { position: relative; display: grid; gap: 15px; padding: clamp(22px,5vw,36px); border-radius: 18px; background: #fffefa; }
+.cancel-package-card h2 { margin: 0; font: 800 25px/1.2 Manrope,sans-serif; }
+.cancel-package-card p:not(.eyebrow) { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+.cancel-package-card > label { display: grid; gap: 8px; font-size: 12px; font-weight: 700; }
+.cancel-package-card select { width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: white; color: var(--ink); font: 13px 'DM Sans',sans-serif; }
+.cancel-dialog-close { position: absolute; top: 12px; right: 14px; border: 0; background: transparent; color: var(--muted); cursor: pointer; font-size: 25px; }
+.cancel-dialog-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-top: 4px; }
+.cancel-dialog-actions .btn-dark { background: #984b37; }
+.cancel-dialog-actions .btn-dark:hover { background: #7e392a; }
+@media(max-width:600px) {
+ .payment-progress-wrap { padding: 18px 12px 0; }
+ .payment-progress { justify-content: space-between; gap: 7px; }
+ .payment-progress li { gap: 6px; }
+ .payment-progress li > span { width: 29px; height: 29px; font-size: 11px; }
+ .payment-progress li strong { font-size: 10px; }
+ .payment-progress li small { font-size: 9px; }
+ .payment-page .payment-summary { position: static; }
+ .plan-toast { top: 76px; right: 14px; }
+ .cancel-dialog-actions { display: grid; grid-template-columns: 1fr; }
+ .cancel-dialog-actions button { justify-content: center; }
+ .cancel-package-button { margin: 12px 0 0; }
 }

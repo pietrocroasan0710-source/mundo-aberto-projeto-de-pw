@@ -1,21 +1,19 @@
 /*
  * Mundo Aberto — catálogo público.
  * Dados publicados: static/json/dados.json (somente leitura).
- * Roteiro: armazenamento local do visitante. Favoritos: conta (Supabase) ou só em memória (visitante).
+ * Favoritos e seleção do roteiro: armazenamento local do visitante.
  * O catálogo e os pacotes demonstrativos são publicados como arquivos estáticos.
  */
 (() => {
   'use strict';
 
-  const STORAGE = { itinerary: 'mundoAberto.roteiro', packagePlans: 'mundoAberto.pacotesSalvos' };
+  const STORAGE = { favorites: 'mundoAberto.favoritos', itinerary: 'mundoAberto.roteiro', packagePlans: 'mundoAberto.pacotesSalvos' };
   let catalog = [];
   let packages = [];
   let comparisonSelection = [];
   let listingControls = null;
   let slideInterval = null;
   let toastTimer = null;
-  let favoritesCache = []; // lista de favoritos: Supabase se logado; só em memória se visitante (nada vai ao localStorage)
-  let favoritesRemote = false; // true = usuário logado (favoritos na conta)
 
   function readList(key) {
     try {
@@ -27,64 +25,6 @@
   function saveList(key, value) {
     try { localStorage.setItem(key, JSON.stringify(value)); return true; }
     catch { notify('Não foi possível salvar. Verifique o espaço e as permissões do navegador.', true); return false; }
-  }
-
-  // Favoritos: conta logada usa o Supabase (por usuário); visitante fica só em memória (some ao recarregar).
-  async function loadFavorites() {
-    favoritesRemote = false;
-    if (typeof supabaseClient === 'undefined' || typeof buscarFavoritos !== 'function') return;
-    let session = null;
-    try {
-      const result = await supabaseClient.auth.getSession();
-      session = result.data?.session || null;
-    } catch (error) {
-      console.error('Mundo Aberto: não foi possível verificar a sessão', error);
-    }
-    if (!session) return; // visitante: favoritos só em memória
-    try {
-      favoritesCache = [...new Set(await buscarFavoritos())];
-      favoritesRemote = true;
-    } catch (error) {
-      // Logado, mas a leitura falhou: mantém o modo "conta" (sem salvar no navegador) e mostra o motivo.
-      console.error('Mundo Aberto: erro ao ler a tabela favoritos', error);
-      favoritesCache = [];
-      favoritesRemote = true;
-      notify('Não foi possível carregar seus favoritos: ' + (error.message || 'erro desconhecido'), true);
-    }
-  }
-
-  function getFavorites() {
-    return favoritesCache;
-  }
-
-  // Favorito de pacote: chave "pacote:<destino>:<id>" (não colide com o slug dos destinos).
-  const packageKey = pack => `pacote:${pack.destino}:${pack.id}`;
-  const isPackageKey = key => packages.some(pack => packageKey(pack) === key);
-
-  function packageHeart(pack, favorites) {
-    const selected = favorites.includes(packageKey(pack));
-    return `<button type="button" class="heart-btn ${selected ? 'is-favorite' : ''}" data-favorite-package="${html(packageKey(pack))}"
-      aria-label="${selected ? 'Remover' : 'Adicionar'} ${html(pack.nome)} ${selected ? 'dos' : 'aos'} favoritos" aria-pressed="${selected}">${selected ? '♥' : '♡'}</button>`;
-  }
-
-  function renderFavoritePackages() {
-    let root = document.getElementById('favorite-packages');
-    const fallbackGrid = !root ? document.querySelector('[data-favorites-only]') : null;
-    root = root || fallbackGrid;
-    if (!root) return;
-    const favorites = getFavorites();
-    const items = packages.filter(pack => favorites.includes(packageKey(pack)) && catalog.some(d => d.slug === pack.destino));
-    if (fallbackGrid) { // página antiga de favoritos (grade de destinos): mostra os pacotes no lugar
-      const empty = document.getElementById('empty-state');
-      if (empty) empty.hidden = items.length > 0; // sem favoritos: mostra o mesmo bloco de estado vazio do roteiro
-      const label = document.getElementById('results-count');
-      if (label) label.textContent = `${items.length} ${items.length === 1 ? 'pacote favorito' : 'pacotes favoritos'}`;
-    }
-    root.innerHTML = `<div class="package-grid">${items.map(pack => {
-      const d = catalog.find(item => item.slug === pack.destino);
-      const href = `destino.html?slug=${encodeURIComponent(d.slug)}&pacote=${encodeURIComponent(pack.id)}&orcamento=20000`;
-      return `<article class="package-card"><img src="${html(pack.imagem || d.imagem)}" alt="Paisagem de ${html(d.nome)}" loading="lazy"><div class="package-card-body"><span class="package-duration">${html(d.nome)} · ${html(pack.duracao)}</span><h3>${html(pack.nome)}</h3><p>${html(pack.subtitulo)}</p><strong>${html(formatPrice(pack.preco, 'BRL'))} <small>/ pessoa</small></strong><div class="package-actions"><a class="btn-dark" href="${href}">Ver detalhes ↗</a>${packageHeart(pack, favorites)}</div></div></article>`;
-    }).join('')}</div>`;
   }
 
   function html(value) {
@@ -174,6 +114,7 @@
   }
 
   function card(destination, favorites, packageBudget = null) {
+    const selected = favorites.includes(destination.slug);
     const destinationHref = detailUrl(destination.slug) + (packageBudget ? '&orcamento=' + encodeURIComponent(packageBudget) : '');
     return `
       <article class="destination-card reveal">
@@ -190,6 +131,9 @@
           <div class="card-actions">
             <span class="destination-rating" title="Nota ilustrativa; não representa avaliação de usuários">★ ${Number(destination.nota || 0).toFixed(1)} <small>exemplo</small></span>
             <a href="${destinationHref}" class="text-link">${packageBudget ? 'Ver pacotes ↗' : 'Conhecer ↗'}</a>
+            <button type="button" class="heart-btn ${selected ? 'is-favorite' : ''}" data-favorite="${html(destination.slug)}"
+              aria-label="${selected ? 'Remover' : 'Adicionar'} ${html(destination.nome)} ${selected ? 'dos' : 'aos'} favoritos"
+              aria-pressed="${selected}">${selected ? '♥' : '♡'}</button>
           </div>
         </div>
       </article>`;
@@ -227,7 +171,7 @@
   function renderListing() {
     const grid = document.getElementById('destination-grid');
     if (!grid) return;
-    const favorites = getFavorites();
+    const favorites = readList(STORAGE.favorites);
     const c = listingControls || {};
     const terms = normalize(c.search?.value).trim().split(/\s+/).filter(Boolean);
     const min = c.minRating?.value ? Number(c.minRating.value) : 0;
@@ -351,6 +295,7 @@
       renderDestinationPackages(root, d, available, budget);
       return;
     }
+    const fav = readList(STORAGE.favorites).includes(slug);
     const planned = readList(STORAGE.itinerary).includes(slug);
     const attractions = (d.passeios?.length ? d.passeios : d.atracoes || []);
     root.innerHTML = `
@@ -389,8 +334,8 @@
           </section>` : ''}
         </article>
         <aside class="detail-aside"><p class="eyebrow dark">GUARDE PARA SUA VIAGEM</p>
-          <h3>Não perca esse lugar de vista.</h3><p>Seu roteiro fica salvo no seu navegador.</p>
-          <a class="btn-dark full-width" href="destino.html?slug=${encodeURIComponent(slug)}&orcamento=20000">Ver planos ↗</a>
+          <h3>Não perca esse lugar de vista.</h3><p>Favoritos e roteiro ficam salvos no seu navegador.</p>
+          <a class="btn-dark full-width" href="destino.html?slug=${encodeURIComponent(slug)}&orcamento=20000">Ver planos ↗</a><button class="btn-outline full-width" type="button" data-favorite="${html(slug)}">${fav ? '♥ Remover dos favoritos' : '♡ Salvar nos favoritos'}</button>
           <button class="btn-dark full-width" type="button" data-itinerary="${html(slug)}">${planned ? '✓ Remover do roteiro' : '+ Adicionar ao meu roteiro'}</button>
           <a class="btn-outline full-width" href="roteiro.html?destino=${encodeURIComponent(slug)}#transporte">Como chegar ↗</a>
           <div class="aside-meta"><span>⌖ País</span><strong>${html(d.pais)}</strong>
@@ -404,7 +349,7 @@
     document.title = `Pacotes em ${d.nome} — Mundo Aberto`;
     const back = 'destinos.html?orcamento=' + encodeURIComponent(budget);
     comparisonSelection = [];
-    const cards = available.map(pack => `<article class="package-card"><img src="${html(pack.imagem || d.imagem)}" alt="Paisagem de ${html(d.nome)}" loading="lazy"><div class="package-card-body"><span class="package-duration">${html(pack.duracao)}</span><h3>${html(pack.nome)}</h3><p>${html(pack.subtitulo)}</p><ul class="package-highlights">${(pack.beneficios || []).slice(0, 3).map(item => `<li>${html(item)}</li>`).join('')}</ul><strong>${html(formatPrice(pack.preco, 'BRL'))} <small>/ pessoa</small></strong><label class="compare-check"><input type="checkbox" value="${html(pack.id)}" data-compare-package> Comparar pacote</label><div class="package-actions"><a class="btn-dark" href="destino.html?slug=${encodeURIComponent(d.slug)}&pacote=${encodeURIComponent(pack.id)}&orcamento=${encodeURIComponent(budget)}">Ver detalhes ↗</a>${packageHeart(pack, getFavorites())}</div></div></article>`).join('');
+    const cards = available.map(pack => `<article class="package-card"><img src="${html(pack.imagem || d.imagem)}" alt="Paisagem de ${html(d.nome)}" loading="lazy"><div class="package-card-body"><span class="package-duration">${html(pack.duracao)}</span><h3>${html(pack.nome)}</h3><p>${html(pack.subtitulo)}</p><ul class="package-highlights">${(pack.beneficios || []).slice(0, 3).map(item => `<li>${html(item)}</li>`).join('')}</ul><strong>${html(formatPrice(pack.preco, 'BRL'))} <small>/ pessoa</small></strong><label class="compare-check"><input type="checkbox" value="${html(pack.id)}" data-compare-package> Comparar pacote</label><a class="btn-dark" href="destino.html?slug=${encodeURIComponent(d.slug)}&pacote=${encodeURIComponent(pack.id)}&orcamento=${encodeURIComponent(budget)}">Ver detalhes ↗</a></div></article>`).join('');
     root.innerHTML = `<section class="detail-hero"><img src="${html(d.imagem)}" alt="Paisagem de ${html(d.nome)}"><div class="detail-shade"></div><div class="detail-hero-content"><a class="back-link" href="${back}">← Destinos no meu orçamento</a><p class="eyebrow"><span></span>PACOTES DEMONSTRATIVOS · ${html(d.pais.toUpperCase())}</p><h1>${html(d.nome)}</h1><p>Opções por pessoa até ${html(formatPrice(budget, 'BRL'))}. Compare o que está incluído em cada viagem.</p></div></section><section class="section package-section"><div class="section-heading"><div><p class="eyebrow dark">SUA PRÓXIMA VIAGEM</p><h2>${available.length ? 'Pacotes disponíveis' : 'Nenhum pacote nesta faixa'}</h2></div><span class="package-disclaimer">Valores fictícios para demonstração</span></div>${available.length ? `<div class="package-grid">${cards}</div><div id="package-comparison" class="package-comparison"></div>` : '<p class="package-empty">Aumente o orçamento na busca para ver mais opções.</p>'}</section>`;
     const comparisonRoot = document.getElementById('package-comparison');
     renderPackageComparison(comparisonRoot, []);
@@ -444,7 +389,7 @@
   function renderPackageDetail(root, d, pack, budget) {
     const section = (title, values) => `<section class="package-inclusion"><h3>${title}</h3><ul>${(values || []).map(value => `<li>${html(value)}</li>`).join('')}</ul></section>`;
     const back = `destino.html?slug=${encodeURIComponent(d.slug)}&orcamento=${encodeURIComponent(budget)}`;
-    root.innerHTML = `<section class="detail-hero"><img src="${html(pack.imagem || d.imagem)}" alt="Paisagem de ${html(d.nome)}"><div class="detail-shade"></div><div class="detail-hero-content"><a class="back-link" href="${back}">← Todos os pacotes de ${html(d.nome)}</a><p class="eyebrow"><span></span>PACOTE DEMONSTRATIVO · ${html(d.pais.toUpperCase())}</p><h1>${html(pack.nome)}</h1><p>${html(pack.subtitulo)}</p></div></section><section class="detail-layout package-detail-layout"><article class="detail-main"><p class="eyebrow dark">DETALHES DA VIAGEM</p><h2>${html(pack.duracao)} · ${html(formatPrice(pack.preco, 'BRL'))} por pessoa</h2><p class="package-disclaimer">Valores fictícios para demonstração; esta página não realiza reservas.</p><div class="package-inclusions">${section('Benefícios especiais',pack.beneficios)}${section('Transporte',[pack.transporte])}${section('Hospedagem',[pack.hospedagem])}${section('Refeições',[pack.refeicoes])}${section('Roteiro',pack.roteiro)}${section('Atividades incluídas',pack.atividades)}${section('Taxas incluídas',pack.taxas)}${section('Não incluído',pack.nao_inclui)}</div></article><aside class="detail-aside"><p class="eyebrow dark">RESUMO DO PACOTE</p><h3>${html(formatPrice(pack.preco, 'BRL'))}<small class="package-person"> por pessoa</small></h3><p>${html(pack.duracao)} em ${html(d.nome)}.</p><a class="btn-dark full-width" href="montar-pacote.html?destino=${encodeURIComponent(d.slug)}&pacote=${encodeURIComponent(pack.id)}">Personalizar e montar meu plano ↗</a><button class="btn-outline full-width" type="button" data-favorite-package="${html(packageKey(pack))}">${getFavorites().includes(packageKey(pack)) ? '♥ Remover pacote dos favoritos' : '♡ Salvar pacote nos favoritos'}</button><a class="btn-outline full-width" href="${back}">Voltar aos pacotes ↗</a><p class="package-disclaimer">Montar o plano não efetua reserva nem pagamento.</p></aside></section>`;
+    root.innerHTML = `<section class="detail-hero"><img src="${html(pack.imagem || d.imagem)}" alt="Paisagem de ${html(d.nome)}"><div class="detail-shade"></div><div class="detail-hero-content"><a class="back-link" href="${back}">← Todos os pacotes de ${html(d.nome)}</a><p class="eyebrow"><span></span>PACOTE DEMONSTRATIVO · ${html(d.pais.toUpperCase())}</p><h1>${html(pack.nome)}</h1><p>${html(pack.subtitulo)}</p></div></section><section class="detail-layout package-detail-layout"><article class="detail-main"><p class="eyebrow dark">DETALHES DA VIAGEM</p><h2>${html(pack.duracao)} · ${html(formatPrice(pack.preco, 'BRL'))} por pessoa</h2><p class="package-disclaimer">Valores fictícios para demonstração; esta página não realiza reservas.</p><div class="package-inclusions">${section('Benefícios especiais',pack.beneficios)}${section('Transporte',[pack.transporte])}${section('Hospedagem',[pack.hospedagem])}${section('Refeições',[pack.refeicoes])}${section('Roteiro',pack.roteiro)}${section('Atividades incluídas',pack.atividades)}${section('Taxas incluídas',pack.taxas)}${section('Não incluído',pack.nao_inclui)}</div></article><aside class="detail-aside"><p class="eyebrow dark">RESUMO DO PACOTE</p><h3>${html(formatPrice(pack.preco, 'BRL'))}<small class="package-person"> por pessoa</small></h3><p>${html(pack.duracao)} em ${html(d.nome)}.</p><a class="btn-dark full-width" href="montar-pacote.html?destino=${encodeURIComponent(d.slug)}&pacote=${encodeURIComponent(pack.id)}">Personalizar e montar meu plano ↗</a><a class="btn-outline full-width" href="${back}">Voltar aos pacotes ↗</a><p class="package-disclaimer">Montar o plano não efetua reserva nem pagamento.</p></aside></section>`;
   }
 
   function readPackagePlans() {
@@ -563,12 +508,16 @@
       root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>REVISE ANTES DO PAGAMENTO</p><h1>Confirme seu cronograma primeiro.</h1><p>Confira os horários e os lugares do plano antes de seguir.</p></section><section class="section payment-section"><a class="btn-dark" href="calendario.html?plano=${encodeURIComponent(plan.id)}&revisao=1">Revisar horários e lugares ↗</a></section>`;
       return;
     }
+    if (plan.cancellation) {
+      root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>PLANO CANCELADO · SIMULAÇÃO</p><h1>Este pacote foi cancelado.</h1><p>O cancelamento é apenas demonstrativo. Nenhuma cobrança ou reserva real foi afetada.</p></section><section class="section payment-section"><a class="btn-dark" href="calendario.html?plano=${encodeURIComponent(plan.id)}">Ver meus planos ↗</a></section>`;
+      return;
+    }
     if (plan.demoPayment) {
       root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>PLANO FECHADO · SIMULAÇÃO</p><h1>Seu plano já foi concluído.</h1><p>Esta etapa não fez cobrança nem reservou serviços.</p></section><section class="section payment-section"><a class="btn-dark" href="calendario.html?plano=${encodeURIComponent(plan.id)}&fechado=1">Abrir meu calendário ↗</a></section>`;
       return;
     }
     document.title = 'Fechamento demonstrativo — Mundo Aberto';
-    root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>ETAPA FICTÍCIA</p><h1>Feche seu plano de viagem.</h1><p>Confira o resumo e escolha uma forma de pagamento demonstrativa.</p></section><section class="section payment-section"><form id="demo-payment-form" class="payment-layout"><div class="payment-options"><p class="eyebrow dark">FORMA DE PAGAMENTO</p><h2>Como você pagaria?</h2><label class="payment-choice"><input type="radio" name="method" value="pix" checked><span><strong>Pix de demonstração</strong><small>Confirmação simulada, sem gerar cobrança ou código de pagamento.</small></span></label><label class="payment-choice"><input type="radio" name="method" value="cartao"><span><strong>Cartão de teste</strong><small>Não pediremos número do cartão, senha ou código de segurança.</small></span></label><div id="installment-field" class="installment-field" hidden><label>Parcelas<select name="installments"><option value="1">1x sem juros</option><option value="3">3x sem juros</option><option value="6">6x sem juros</option></select></label><small id="installment-preview"></small></div><p class="demo-payment-notice"><strong>Importante:</strong> esta etapa é apenas uma demonstração visual. Nenhum dado financeiro será solicitado, enviado ou cobrado.</p></div><aside class="payment-summary"><p class="eyebrow">RESUMO FINAL</p><h2>${html(plan.packageName)}</h2><p>${html(plan.destinationName)} · ${plan.travelers} viajante(s)</p><p>Data de início: ${html(plan.startDate)}</p>${plan.extras?.length ? `<p>Adicionais: ${plan.extras.map(extra => html(extra.nome)).join(' · ')}</p>` : '<p>Sem adicionais selecionados.</p>'}<div class="builder-total"><span>Total do plano</span><strong>${html(formatPrice(plan.total,'BRL'))}</strong></div><button class="btn-dark full-width" type="submit">Confirmar fechamento fictício ↗</button><a class="payment-back" href="montar-pacote.html?destino=${encodeURIComponent(plan.destination)}&pacote=${encodeURIComponent(plan.packageId)}">Voltar e personalizar</a><small>O plano só será marcado como concluído nesta simulação. Não é uma reserva.</small></aside></form></section>`;
+    root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>ETAPA FICTÍCIA</p><h1>Feche seu plano de viagem.</h1><p>Confira o resumo e escolha uma forma de pagamento demonstrativa.</p></section><section class="payment-progress-wrap"><ol class="payment-progress"><li class="complete"><span>✓</span><div><strong>Plano pronto</strong><small>Personalizado</small></div></li><li class="complete"><span>✓</span><div><strong>Cronograma</strong><small>Horários confirmados</small></div></li><li class="current"><span>3</span><div><strong>Pagamento</strong><small>Etapa fictícia</small></div></li></ol></section><section class="section payment-section payment-page"><form id="demo-payment-form" class="payment-layout"><div class="payment-options"><p class="eyebrow dark">FORMA DE PAGAMENTO</p><h2>Como você pagaria?</h2><p class="payment-intro">Escolha uma opção para concluir a demonstração do seu pacote.</p><label class="payment-choice"><input type="radio" name="method" value="pix" checked><span><strong>Pix de demonstração</strong><small>Confirmação simulada, sem gerar cobrança ou código de pagamento.</small></span><b>PIX</b></label><label class="payment-choice"><input type="radio" name="method" value="cartao"><span><strong>Cartão de teste</strong><small>Não pediremos número do cartão, senha ou código de segurança.</small></span><b>▰</b></label><div id="installment-field" class="installment-field" hidden><label>Parcelas<select name="installments"><option value="1">1x sem juros</option><option value="3">3x sem juros</option><option value="6">6x sem juros</option></select></label><small id="installment-preview"></small></div><p class="demo-payment-notice"><strong>🔒 Demonstração segura</strong><br>Esta etapa é apenas visual. Nenhum dado financeiro será solicitado, enviado ou cobrado.</p></div><aside class="payment-summary"><p class="eyebrow">SEU RESUMO</p><h2>${html(plan.packageName)}</h2><p class="payment-destination">✦ ${html(plan.destinationName)} · ${plan.travelers} viajante(s)</p><div class="payment-summary-divider"></div><p>Data de início: ${html(plan.startDate)}</p>${plan.extras?.length ? `<p>Adicionais: ${plan.extras.map(extra => html(extra.nome)).join(' · ')}</p>` : '<p>Sem adicionais selecionados.</p>'}<div class="builder-total"><span>Total demonstrativo</span><strong>${html(formatPrice(plan.total,'BRL'))}</strong></div><button class="btn-dark full-width" type="submit">Concluir meu pacote ↗</button><a class="payment-back" href="calendario.html?plano=${encodeURIComponent(plan.id)}&revisao=1">Voltar ao cronograma</a><small>Não é uma reserva real. Você não será cobrado.</small></aside></form></section>`;
     const form = document.getElementById('demo-payment-form');
     const methodInputs = form.querySelectorAll('[name="method"]');
     const installmentField = document.getElementById('installment-field');
@@ -632,7 +581,12 @@
       if (copy) summaryCopy.append(copy);
       summary.append(image, summaryCopy);
       if (total) summary.append(total);
-      if (plan.demoPayment?.status === 'simulado') {
+      if (plan.cancellation) {
+        const badge = document.createElement('span');
+        badge.className = 'my-plan-status is-cancelled';
+        badge.textContent = 'Cancelado na simulação';
+        summary.append(badge);
+      } else if (plan.demoPayment?.status === 'simulado') {
         const badge = document.createElement('span');
         badge.className = 'my-plan-status';
         badge.textContent = 'Fechado na simulação';
@@ -661,9 +615,23 @@
     });
     if (params.get('fechado') === '1' && visible.some(item => item.id === selectedId && item.demoPayment?.status === 'simulado')) {
       const notice = document.createElement('div');
-      notice.className = 'plan-confirmation';
-      notice.innerHTML = '<strong>Plano fechado na simulação!</strong><span>Não houve cobrança e nenhuma reserva real foi feita.</span>';
-      root.querySelector('.calendar-section')?.prepend(notice);
+      notice.className = 'plan-toast';
+      notice.setAttribute('role', 'status');
+      notice.setAttribute('aria-live', 'polite');
+      notice.innerHTML = '<span class="plan-toast-icon">✓</span><span><strong>Pacote fechado!</strong><small>Seu cronograma está em Meus planos. Nenhuma cobrança ou reserva real foi feita.</small></span><button type="button" aria-label="Fechar aviso">×</button>';
+      root.prepend(notice);
+      notice.querySelector('button').addEventListener('click', () => notice.remove());
+      window.setTimeout(() => notice.isConnected && notice.remove(), 7000);
+    }
+    if (params.get('cancelado') === '1' && visible.some(item => item.id === selectedId && item.cancellation)) {
+      const notice = document.createElement('div');
+      notice.className = 'plan-toast is-cancelled';
+      notice.setAttribute('role', 'status');
+      notice.setAttribute('aria-live', 'polite');
+      notice.innerHTML = '<span class="plan-toast-icon">✓</span><span><strong>Pacote cancelado</strong><small>Apenas na demonstração; nenhuma cobrança ou reserva foi afetada.</small></span><button type="button" aria-label="Fechar aviso">×</button>';
+      root.prepend(notice);
+      notice.querySelector('button').addEventListener('click', () => notice.remove());
+      window.setTimeout(() => notice.isConnected && notice.remove(), 7000);
     }
     const calendarTools = document.createElement('div');
     calendarTools.className = 'calendar-tools';
@@ -697,11 +665,40 @@
       button.dataset.deletePlan = plan.id;
       button.textContent = 'Apagar este plano';
       savedPlanCards[index]?.querySelector('.my-plan-content')?.append(button);
+      if (plan.demoPayment?.status === 'simulado' && !plan.cancellation) {
+        const cancelButton = document.createElement('button');
+        cancelButton.type = 'button';
+        cancelButton.className = 'cancel-package-button';
+        cancelButton.dataset.cancelPlan = plan.id;
+        cancelButton.textContent = 'Cancelar pacote';
+        savedPlanCards[index]?.querySelector('.my-plan-content')?.append(cancelButton);
+      }
     });
     if (!root.dataset.calendarHandlersBound) {
       root.dataset.calendarHandlersBound = 'true';
       root.addEventListener('click', event => {
         if (event.target.closest('[data-print-calendar]')) window.print();
+        const cancelButton = event.target.closest('[data-cancel-plan]');
+        if (cancelButton) {
+          const cancelPlanId = cancelButton.dataset.cancelPlan;
+          const dialog = document.createElement('dialog');
+          dialog.className = 'cancel-package-dialog';
+          dialog.innerHTML = `<form class="cancel-package-card"><button class="cancel-dialog-close" type="button" aria-label="Fechar">×</button><p class="eyebrow dark">CANCELAMENTO</p><h2>Quer cancelar este pacote?</h2><p>Na simulação, o pacote ficará marcado como cancelado. Não existe cobrança nem reserva real.</p><label>Se quiser, conte o motivo<select name="reason"><option value="">Prefiro não informar</option><option value="Mudei de ideia">Mudei de ideia</option><option value="Encontrei outra opção">Encontrei outra opção</option><option value="Preciso alterar as datas">Preciso alterar as datas</option><option value="Outro motivo">Outro motivo</option></select></label><div class="cancel-dialog-actions"><button class="btn-outline" type="button" data-keep-package>Manter pacote</button><button class="btn-dark" type="submit">Confirmar cancelamento</button></div></form>`;
+          document.body.append(dialog);
+          dialog.showModal();
+          dialog.querySelector('[data-keep-package]').addEventListener('click', () => dialog.close());
+          dialog.querySelector('.cancel-dialog-close').addEventListener('click', () => dialog.close());
+          dialog.addEventListener('close', () => dialog.remove(), { once: true });
+          dialog.querySelector('form').addEventListener('submit', submitEvent => {
+            submitEvent.preventDefault();
+            const plansNow = readPackagePlans();
+            const cancelPlan = plansNow.find(item => item.id === cancelPlanId);
+            if (!cancelPlan || cancelPlan.cancellation) return;
+            cancelPlan.cancellation = { reason: dialog.querySelector('[name="reason"]').value, cancelledAt: new Date().toISOString() };
+            if (writePackagePlans(plansNow)) location.href = `calendario.html?plano=${encodeURIComponent(cancelPlanId)}&cancelado=1`;
+          });
+          return;
+        }
         const confirmButton = event.target.closest('[data-confirm-schedule]');
         if (confirmButton) {
           const card = confirmButton.closest('.saved-plan');
@@ -767,9 +764,8 @@
   function renderDynamic() {
     updateNavCount();
     const home = document.getElementById('home-destinations');
-    if (home) renderCards(home, catalog.slice(0, Number(home.dataset.limit) || 6), getFavorites());
+    if (home) renderCards(home, catalog.slice(0, Number(home.dataset.limit) || 6), readList(STORAGE.favorites));
     renderListing();
-    renderFavoritePackages();
     renderDetails();
     renderPackageBuilder(document.getElementById('package-builder-root'));
     renderPayment(document.getElementById('payment-root'));
@@ -778,42 +774,13 @@
     window.MundoAbertoMapa?.render(catalog);
   }
 
-  document.addEventListener('click', async event => {
-    const button = event.target.closest('[data-favorite-package], [data-itinerary]');
+  document.addEventListener('click', event => {
+    const button = event.target.closest('[data-favorite], [data-itinerary]');
     if (!button || !catalog.length) return;
-    const isFavorite = button.hasAttribute('data-favorite-package'); // só pacotes podem ser favoritados
-    const key = STORAGE.itinerary;
-    // "slug" = chave "pacote:<destino>:<id>" (favorito) ou slug do destino (roteiro)
-    const slug = isFavorite ? button.dataset.favoritePackage : button.dataset.itinerary;
-    if (isFavorite ? !isPackageKey(slug) : !catalog.some(d => d.slug === slug)) return;
-
-    // Usuário logado: favorito salvo na conta (Supabase), atualizando a tela na hora.
-    if (isFavorite && favoritesRemote) {
-      const previous = favoritesCache;
-      const adding = !previous.includes(slug);
-      favoritesCache = adding ? [...previous, slug] : previous.filter(v => v !== slug);
-      renderDynamic();
-      try {
-        await (adding ? adicionarFavorito(slug) : removerFavorito(slug));
-        notify(adding ? 'Salvo nos favoritos!' : 'Removido dos favoritos.');
-      } catch (error) {
-        console.error('Mundo Aberto: erro ao salvar favorito', error);
-        favoritesCache = previous;
-        renderDynamic();
-        notify('Não foi possível salvar o favorito: ' + (error.message || 'tente de novo.'), true);
-      }
-      return;
-    }
-
-    // Visitante: favorito só em memória (não grava no localStorage).
-    if (isFavorite) {
-      const adding = !favoritesCache.includes(slug);
-      favoritesCache = adding ? [...favoritesCache, slug] : favoritesCache.filter(v => v !== slug);
-      notify(adding ? 'Salvo nos favoritos!' : 'Removido dos favoritos.');
-      renderDynamic();
-      return;
-    }
-
+    const isFavorite = button.hasAttribute('data-favorite');
+    const key = isFavorite ? STORAGE.favorites : STORAGE.itinerary;
+    const slug = isFavorite ? button.dataset.favorite : button.dataset.itinerary;
+    if (!catalog.some(d => d.slug === slug)) return;
     const current = readList(key);
     const adding = !current.includes(slug);
     if (!saveList(key, adding ? [...current, slug] : current.filter(v => v !== slug))) return;
@@ -832,7 +799,6 @@
       if (!Array.isArray(data.destinos)) throw new Error('Dados de destinos inválidos');
       catalog = data.destinos; // Somente destinos aprovados e publicados pelo projeto.
       packages = Array.isArray(packageData.pacotes) ? packageData.pacotes : [];
-      await loadFavorites();
       initializeListing();
       window.MundoAbertoPlanejamento?.init(catalog, { html, formatPrice, detailUrl, mapUrl, hasCoords, notify, readList, saveList, STORAGE });
       window.MundoAbertoTransporte?.init(catalog, { formatPrice, normalize, hasCoords, savedDestinations: readList(STORAGE.itinerary) });
