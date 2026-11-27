@@ -1796,3 +1796,17 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
  .cancel-dialog-actions button { justify-content: center; }
  .cancel-package-button { margin: 12px 0 0; }
 }
+
+/* Recibo local do pedido e detalhes da solicitação de cancelamento */
+.purchase-record { display: grid; gap: 10px; margin: 0 0 22px; padding: 19px; border: 1px solid #d3e1d7; border-radius: 13px; background: linear-gradient(135deg,#f5faf5,#edf4ef); }
+.purchase-record .eyebrow { margin: 0; font-size: 10px; }
+.purchase-record h3 { margin: -4px 0 2px; font: 800 18px Manrope,sans-serif; }
+.purchase-record dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; margin: 0; }
+.purchase-record dl > div { display: grid; gap: 3px; min-width: 0; padding: 10px; border-radius: 8px; background: #fffefa; }
+.purchase-record dt { color: var(--muted); font-size: 10px; }
+.purchase-record dd { overflow-wrap: anywhere; margin: 0; color: var(--ink); font-size: 12px; font-weight: 700; }
+.purchase-record-note { margin: 0; color: #547061; font-size: 11px; line-height: 1.5; }
+.cancel-package-order { display: grid; gap: 5px; padding: 15px; border: 1px solid var(--line); border-radius: 10px; background: #f4f7f3; }
+.cancel-package-order strong { font: 800 16px Manrope,sans-serif; }
+.cancel-package-order span { color: var(--muted); font-size: 12px; }
+@media(max-width:600px) { .purchase-record dl { grid-template-columns: 1fr; } }

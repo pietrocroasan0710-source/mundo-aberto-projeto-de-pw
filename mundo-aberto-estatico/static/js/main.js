@@ -535,7 +535,9 @@
       const plans = readPackagePlans();
       const saved = plans.find(item => item.id === plan.id);
       if (!saved) return;
-      saved.demoPayment = { status: 'simulado', method: form.elements.method.value, installments: form.elements.method.value === 'cartao' ? Number(form.elements.installments.value) : 1, closedAt: new Date().toISOString() };
+      const closedAt = new Date().toISOString();
+      const reference = `MA-${Date.now().toString(36).toUpperCase()}`;
+      saved.demoPayment = { status: 'simulado', method: form.elements.method.value, methodLabel: form.elements.method.value === 'pix' ? 'Pix demonstrativo' : 'Cartão de teste', installments: form.elements.method.value === 'cartao' ? Number(form.elements.installments.value) : 1, closedAt, reference, amount: saved.total };
       if (!writePackagePlans(plans)) return;
       location.href = `calendario.html?plano=${encodeURIComponent(plan.id)}&fechado=1`;
     });
@@ -610,6 +612,41 @@
         reviewLink.textContent = 'Revisar e confirmar horários ↗';
         content.append(reviewLink);
       }
+      if (plan.demoPayment?.status === 'simulado') {
+        const record = document.createElement('section');
+        record.className = 'purchase-record';
+        record.innerHTML = '<p class="eyebrow dark">HISTÓRICO DO PEDIDO</p>';
+        const recordTitle = document.createElement('h3');
+        recordTitle.textContent = plan.cancellation ? 'Cancelamento registrado' : 'Pacote concluído';
+        record.append(recordTitle);
+        const facts = document.createElement('dl');
+        const addFact = (label, value) => {
+          const row = document.createElement('div');
+          const term = document.createElement('dt');
+          term.textContent = label;
+          const detail = document.createElement('dd');
+          detail.textContent = value || '—';
+          row.append(term, detail);
+          facts.append(row);
+        };
+        addFact('Pedido', plan.demoPayment.reference);
+        addFact('Status', plan.cancellation ? 'Cancelado na simulação' : 'Concluído na simulação');
+        addFact('Forma escolhida', plan.demoPayment.methodLabel || (plan.demoPayment.method === 'pix' ? 'Pix demonstrativo' : 'Cartão de teste'));
+        addFact('Total demonstrativo', formatPrice(plan.demoPayment.amount ?? plan.total, 'BRL'));
+        addFact('Data do fechamento', new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(plan.demoPayment.closedAt)));
+        if (plan.cancellation) {
+          addFact('Solicitação', plan.cancellation.reference);
+          addFact('Data do cancelamento', new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(plan.cancellation.cancelledAt)));
+          addFact('Motivo informado', plan.cancellation.reason || 'Não informado');
+        }
+        record.append(facts);
+        const disclaimer = document.createElement('p');
+        disclaimer.className = 'purchase-record-note';
+        disclaimer.textContent = plan.cancellation ? 'Como a compra foi fictícia, nenhum estorno real é necessário.' : 'Registro demonstrativo salvo somente neste navegador. Nenhuma cobrança ou reserva foi feita.';
+        record.append(disclaimer);
+        const scheduleList = content.querySelector('.calendar-days');
+        content.insertBefore(record, scheduleList || content.firstChild);
+      }
       disclosure.append(summary, content);
       card.replaceChildren(disclosure);
     });
@@ -618,7 +655,8 @@
       notice.className = 'plan-toast';
       notice.setAttribute('role', 'status');
       notice.setAttribute('aria-live', 'polite');
-      notice.innerHTML = '<span class="plan-toast-icon">✓</span><span><strong>Pacote fechado!</strong><small>Seu cronograma está em Meus planos. Nenhuma cobrança ou reserva real foi feita.</small></span><button type="button" aria-label="Fechar aviso">×</button>';
+      const closedPlan = visible.find(item => item.id === selectedId);
+      notice.innerHTML = `<span class="plan-toast-icon">✓</span><span><strong>Pedido ${html(closedPlan?.demoPayment?.reference || 'confirmado')}!</strong><small>Pacote concluído. Nenhuma cobrança ou reserva real foi feita.</small></span><button type="button" aria-label="Fechar aviso">×</button>`;
       root.prepend(notice);
       notice.querySelector('button').addEventListener('click', () => notice.remove());
       window.setTimeout(() => notice.isConnected && notice.remove(), 7000);
@@ -681,9 +719,10 @@
         const cancelButton = event.target.closest('[data-cancel-plan]');
         if (cancelButton) {
           const cancelPlanId = cancelButton.dataset.cancelPlan;
+          const cancelTarget = readPackagePlans().find(item => item.id === cancelPlanId);
           const dialog = document.createElement('dialog');
           dialog.className = 'cancel-package-dialog';
-          dialog.innerHTML = `<form class="cancel-package-card"><button class="cancel-dialog-close" type="button" aria-label="Fechar">×</button><p class="eyebrow dark">CANCELAMENTO</p><h2>Quer cancelar este pacote?</h2><p>Na simulação, o pacote ficará marcado como cancelado. Não existe cobrança nem reserva real.</p><label>Se quiser, conte o motivo<select name="reason"><option value="">Prefiro não informar</option><option value="Mudei de ideia">Mudei de ideia</option><option value="Encontrei outra opção">Encontrei outra opção</option><option value="Preciso alterar as datas">Preciso alterar as datas</option><option value="Outro motivo">Outro motivo</option></select></label><div class="cancel-dialog-actions"><button class="btn-outline" type="button" data-keep-package>Manter pacote</button><button class="btn-dark" type="submit">Confirmar cancelamento</button></div></form>`;
+          dialog.innerHTML = `<form class="cancel-package-card"><button class="cancel-dialog-close" type="button" aria-label="Fechar">×</button><p class="eyebrow dark">CANCELAMENTO</p><h2>Quer cancelar este pacote?</h2><div class="cancel-package-order"><strong>${html(cancelTarget?.packageName || 'Pacote')}</strong><span>${html(cancelTarget?.destinationName || '')}</span><span>Pedido ${html(cancelTarget?.demoPayment?.reference || '')} · ${html(formatPrice(cancelTarget?.total || 0, 'BRL'))}</span></div><p>Confira o pedido antes de confirmar. Na simulação, ele ficará marcado como cancelado; não há cobrança nem reserva real.</p><label>Se quiser, conte o motivo<select name="reason"><option value="">Prefiro não informar</option><option value="Mudei de ideia">Mudei de ideia</option><option value="Encontrei outra opção">Encontrei outra opção</option><option value="Preciso alterar as datas">Preciso alterar as datas</option><option value="Outro motivo">Outro motivo</option></select></label><div class="cancel-dialog-actions"><button class="btn-outline" type="button" data-keep-package>Manter pacote</button><button class="btn-dark" type="submit">Confirmar cancelamento</button></div></form>`;
           document.body.append(dialog);
           dialog.showModal();
           dialog.querySelector('[data-keep-package]').addEventListener('click', () => dialog.close());
@@ -694,7 +733,7 @@
             const plansNow = readPackagePlans();
             const cancelPlan = plansNow.find(item => item.id === cancelPlanId);
             if (!cancelPlan || cancelPlan.cancellation) return;
-            cancelPlan.cancellation = { reason: dialog.querySelector('[name="reason"]').value, cancelledAt: new Date().toISOString() };
+            cancelPlan.cancellation = { status: 'cancelado_simulado', reason: dialog.querySelector('[name="reason"]').value, cancelledAt: new Date().toISOString(), reference: `CAN-${Date.now().toString(36).toUpperCase()}` };
             if (writePackagePlans(plansNow)) location.href = `calendario.html?plano=${encodeURIComponent(cancelPlanId)}&cancelado=1`;
           });
           return;
