@@ -1693,3 +1693,36 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .saved-plan,.calendar-day {break-inside:avoid;box-shadow:none}
   .calendar-event input {border:0;background:transparent;padding:0}
 }
+
+/* Cartões expansíveis em Meus planos e confirmação do cronograma */
+.my-plan-disclosure { overflow: hidden; border-radius: 12px; }
+.my-plan-disclosure > summary { list-style: none; cursor: pointer; }
+.my-plan-disclosure > summary::-webkit-details-marker { display: none; }
+.my-plan-summary { display: grid; grid-template-columns: 150px minmax(0,1fr) auto; align-items: center; gap: 20px; }
+.my-plan-photo { display: block; width: 150px; height: 110px; border-radius: 10px; object-fit: cover; background: #eaf2ed; }
+.my-plan-summary-copy { min-width: 0; }
+.my-plan-summary-copy .saved-plan-heading { border: 0; padding: 0; }
+.my-plan-summary-copy .saved-plan-heading h2 { font-size: 21px; }
+.my-plan-summary-copy .saved-plan-heading > strong { display: none; }
+.my-plan-summary > strong { color: var(--orange); font: 800 20px Manrope,sans-serif; text-align: right; white-space: nowrap; }
+.my-plan-status { grid-column: 2 / -1; justify-self: start; padding: 6px 10px; border-radius: 99px; background: #eaf5ed; color: #285f43; font-size: 11px; font-weight: 700; }
+.my-plan-disclosure > summary::after { content: '＋ Abrir cronograma'; grid-column: 2 / -1; color: #4e8b72; font-size: 12px; font-weight: 700; }
+.my-plan-disclosure[open] > summary::after { content: '− Recolher cronograma'; }
+.my-plan-content { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); }
+.schedule-confirm-box { display: grid; gap: 12px; margin-top: 20px; padding: 18px; border: 1px solid #b7c8bf; border-radius: 12px; background: #f2f7f2; }
+.schedule-confirm-box > label { display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 700; }
+.schedule-confirm-box input { width: 17px; height: 17px; accent-color: #47856f; }
+.schedule-confirm-box .btn-dark { justify-self: start; }
+.schedule-confirm-box .btn-dark:disabled { opacity: .5; cursor: not-allowed; }
+.schedule-confirm-box > small { color: var(--muted); font-size: 11px; }
+.schedule-review-link { display: inline-flex; margin-top: 18px; }
+@media(max-width:600px) {
+  .my-plan-summary { grid-template-columns: 88px minmax(0,1fr); gap: 12px; }
+  .my-plan-photo { width: 88px; height: 82px; }
+  .my-plan-summary-copy .saved-plan-heading h2 { font-size: 17px; }
+  .my-plan-summary-copy .saved-plan-heading p:last-child { line-height: 1.5; }
+  .my-plan-summary > strong { grid-column: 2; text-align: left; font-size: 17px; }
+  .my-plan-status { grid-column: 2; }
+  .my-plan-disclosure > summary::after { grid-column: 2; }
+  .schedule-confirm-box .btn-dark { width: 100%; justify-content: center; }
+}

@@ -470,7 +470,7 @@
     }
     document.title = `Personalizar ${pack.nome} — Mundo Aberto`;
     const extras = pack.extras || [];
-    root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>MONTE SUA VIAGEM</p><h1>Personalize seu pacote.</h1><p>${html(pack.nome)} · ${html(destination.nome)} · ${html(pack.duracao)}</p></section><section class="section builder-section"><form id="package-builder-form" class="builder-layout"><div class="builder-panel"><p class="eyebrow dark">ESCOLHAS DA VIAGEM</p><h2>Como você quer viajar?</h2><div class="builder-fields"><label>Data de início<input type="date" name="startDate" min="${new Date().toISOString().slice(0,10)}" value="${defaultTripDate()}" required></label><label>Número de viajantes<input type="number" name="travelers" min="1" max="8" value="1" required></label><label>Saída do hotel para passeios<input type="time" name="activityStart" min="07:00" max="10:30" step="1800" value="09:00" required></label></div><h3>Adicione experiências</h3><p class="builder-help">Os adicionais são opcionais e calculados por pessoa.</p><div class="extra-options">${extras.map(extra => `<label class="extra-option"><input type="checkbox" name="extras" value="${html(extra.id)}" data-extra-price="${Number(extra.preco)}"><span><strong>${html(extra.nome)}</strong><small>${html(extra.descricao)}</small></span><b>+ ${html(formatPrice(extra.preco,'BRL'))} / pessoa</b></label>`).join('')}</div></div><aside class="builder-summary"><p class="eyebrow">RESUMO DO PLANO</p><h2>${html(pack.nome)}</h2><p>${html(destination.nome)} · ${html(pack.duracao)}</p><div class="builder-price-row"><span>Pacote por pessoa</span><strong>${html(formatPrice(pack.preco,'BRL'))}</strong></div><div class="builder-price-row"><span>Viajantes</span><strong id="builder-travelers-label">1</strong></div><div class="builder-price-row"><span>Adicionais</span><strong id="builder-extras-total">${html(formatPrice(0,'BRL'))}</strong></div><div class="builder-total"><span>Total demonstrativo</span><strong id="builder-total">${html(formatPrice(pack.preco,'BRL'))}</strong></div><button class="btn-dark full-width" type="submit">Salvar plano e montar calendário ↗</button><small>Este site não cobra nem reserva. O plano ficará salvo somente neste navegador.</small></aside></form></section>`;
+    root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>MONTE SUA VIAGEM</p><h1>Personalize seu pacote.</h1><p>${html(pack.nome)} · ${html(destination.nome)} · ${html(pack.duracao)}</p></section><section class="section builder-section"><form id="package-builder-form" class="builder-layout"><div class="builder-panel"><p class="eyebrow dark">ESCOLHAS DA VIAGEM</p><h2>Como você quer viajar?</h2><div class="builder-fields"><label>Data de início<input type="date" name="startDate" min="${new Date().toISOString().slice(0,10)}" value="${defaultTripDate()}" required></label><label>Número de viajantes<input type="number" name="travelers" min="1" max="8" value="1" required></label><label>Saída do hotel para passeios<input type="time" name="activityStart" min="07:00" max="10:30" step="1800" value="09:00" required></label></div><h3>Adicione experiências</h3><p class="builder-help">Os adicionais são opcionais e calculados por pessoa.</p><div class="extra-options">${extras.map(extra => `<label class="extra-option"><input type="checkbox" name="extras" value="${html(extra.id)}" data-extra-price="${Number(extra.preco)}"><span><strong>${html(extra.nome)}</strong><small>${html(extra.descricao)}</small></span><b>+ ${html(formatPrice(extra.preco,'BRL'))} / pessoa</b></label>`).join('')}</div></div><aside class="builder-summary"><p class="eyebrow">RESUMO DO PLANO</p><h2>${html(pack.nome)}</h2><p>${html(destination.nome)} · ${html(pack.duracao)}</p><div class="builder-price-row"><span>Pacote por pessoa</span><strong>${html(formatPrice(pack.preco,'BRL'))}</strong></div><div class="builder-price-row"><span>Viajantes</span><strong id="builder-travelers-label">1</strong></div><div class="builder-price-row"><span>Adicionais</span><strong id="builder-extras-total">${html(formatPrice(0,'BRL'))}</strong></div><div class="builder-total"><span>Total demonstrativo</span><strong id="builder-total">${html(formatPrice(pack.preco,'BRL'))}</strong></div><button class="btn-dark full-width" type="submit">Continuar para revisar cronograma ↗</button><small>Este site não cobra nem reserva. O plano ficará salvo somente neste navegador.</small></aside></form></section>`;
     const form = document.getElementById('package-builder-form');
     const updateTotal = () => {
       const travelers = Math.max(1, Math.min(8, Number(form.elements.travelers.value) || 1));
@@ -488,11 +488,11 @@
       const travelers = Math.max(1, Math.min(8, Number(form.elements.travelers.value) || 1));
       const selected = [...form.querySelectorAll('[data-extra-price]:checked')].map(input => extras.find(extra => extra.id === input.value)).filter(Boolean);
       const total = (Number(pack.preco) + selected.reduce((sum, extra) => sum + Number(extra.preco), 0)) * travelers;
-      const plan = { id: `plano-${Date.now()}`, destination: destination.slug, destinationName: destination.nome, packageId: pack.id, packageName: pack.nome, startDate, activityStart: form.elements.activityStart.value, travelers, extras: selected, total, schedule: buildTripSchedule(destination, pack, startDate, form.elements.activityStart.value) };
+      const plan = { id: `plano-${Date.now()}`, destination: destination.slug, destinationName: destination.nome, packageId: pack.id, packageName: pack.nome, packageImage: pack.imagem || destination.imagem, packageDuration: pack.duracao, startDate, activityStart: form.elements.activityStart.value, travelers, extras: selected, total, scheduleConfirmed: false, schedule: buildTripSchedule(destination, pack, startDate, form.elements.activityStart.value) };
       const plans = readPackagePlans().filter(item => item.id !== plan.id);
       plans.unshift(plan);
       if (!writePackagePlans(plans)) return;
-      location.href = `pagamento.html?plano=${encodeURIComponent(plan.id)}`;
+      location.href = `calendario.html?plano=${encodeURIComponent(plan.id)}&revisao=1`;
     });
   }
 
@@ -502,6 +502,10 @@
     const plan = readPackagePlans().find(item => item.id === planId);
     if (!plan) {
       root.innerHTML = '<section class="error-state"><h1>Plano não encontrado</h1><a class="btn-dark" href="calendario.html">Ver meus planos ↗</a></section>';
+      return;
+    }
+    if (!plan.scheduleConfirmed) {
+      root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>REVISE ANTES DO PAGAMENTO</p><h1>Confirme seu cronograma primeiro.</h1><p>Confira os horários e os lugares do plano antes de seguir.</p></section><section class="section payment-section"><a class="btn-dark" href="calendario.html?plano=${encodeURIComponent(plan.id)}&revisao=1">Revisar horários e lugares ↗</a></section>`;
       return;
     }
     if (plan.demoPayment) {
@@ -540,12 +544,66 @@
     const selectedId = params.get('plano');
     const matchingPlan = selectedId ? plans.filter(plan => plan.id === selectedId) : [];
     const visible = matchingPlan.length ? matchingPlan : plans;
+    const reviewing = params.get('revisao') === '1' && matchingPlan.length > 0 && !matchingPlan[0].scheduleConfirmed && !matchingPlan[0].demoPayment;
     if (!visible.length) {
       root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>SEU CRONOGRAMA</p><h1>Seu calendário de viagem.</h1><p>Monte um pacote para criar seu cronograma por dia.</p></section><section class="section"><div class="empty-state"><span>✧</span><h2>Nenhum plano salvo ainda</h2><p>Escolha um pacote, personalize a viagem e salve seu plano para montar o calendário.</p><a class="btn-dark" href="destinos.html">Encontrar um pacote ↗</a></div></section>`;
       return;
     }
     const dateLabel = value => new Intl.DateTimeFormat('pt-BR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${value}T12:00:00`));
     root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>SEU CRONOGRAMA</p><h1>Calendário da viagem.</h1><p>Atividades, horários e lugares do seu plano. Você pode ajustar os horários e adicionar atividades.</p></section><section class="section calendar-section">${visible.map(plan => `<article class="saved-plan"><div class="saved-plan-heading"><div><p class="eyebrow dark">${html(plan.destinationName)}</p><h2>${html(plan.packageName)}</h2><p>${plan.travelers} viajante(s) · início em ${html(dateLabel(plan.startDate))}</p></div><strong>${html(formatPrice(plan.total,'BRL'))}<small> total demonstrativo</small></strong></div>${plan.extras?.length ? `<p class="saved-extras"><strong>Adicionais:</strong> ${plan.extras.map(extra => html(extra.nome)).join(' · ')}</p>` : ''}<div class="calendar-days">${plan.schedule.map((day, dayIndex) => `<section class="calendar-day"><div class="calendar-day-heading"><span>Dia ${dayIndex + 1}</span><h3>${html(dateLabel(day.date))}</h3></div><div class="calendar-events">${day.events.map((item, eventIndex) => `<article class="calendar-event"><label>Horário<input type="time" value="${html(item.time)}" data-calendar-plan="${html(plan.id)}" data-calendar-day="${dayIndex}" data-calendar-event="${eventIndex}" data-calendar-field="time"></label><div class="calendar-event-content"><strong>${html(item.activity)}</strong><p>${html(item.details)}</p><label>Lugar<input type="text" value="${html(item.place)}" data-calendar-plan="${html(plan.id)}" data-calendar-day="${dayIndex}" data-calendar-event="${eventIndex}" data-calendar-field="place"></label></div></article>`).join('')}</div><form class="calendar-add-form" data-add-plan="${html(plan.id)}" data-add-day="${dayIndex}"><input type="time" name="time" value="18:30" aria-label="Horário da atividade" required><input name="activity" placeholder="Nova atividade" aria-label="Nome da atividade" required><input name="place" placeholder="Lugar" aria-label="Lugar da atividade" required><button class="btn-outline" type="submit">+ Adicionar ao dia</button></form></section>`).join('')}</div><p class="package-disclaimer">Plano demonstrativo salvo neste navegador. Nenhum serviço, ingresso ou hospedagem foi reservado.</p></article>`).join('')}</section>`;
+    const bannerTitle = root.querySelector('.page-banner h1');
+    if (bannerTitle) bannerTitle.textContent = reviewing ? 'Revise o cronograma antes de continuar.' : 'Meus planos de viagem.';
+    const bannerCopy = root.querySelector('.page-banner > p:last-child');
+    if (bannerCopy) bannerCopy.textContent = reviewing
+      ? 'Ajuste os horários e lugares, depois confirme o cronograma para liberar o fechamento do pacote.'
+      : 'Seus pacotes ficam organizados em cartões. Abra um deles para ver e editar o cronograma.';
+
+    const savedPlanCards = [...root.querySelectorAll('.saved-plan')];
+    savedPlanCards.forEach((card, index) => {
+      const plan = visible[index];
+      const oldHeading = card.querySelector('.saved-plan-heading');
+      const copy = oldHeading?.querySelector('div');
+      const total = oldHeading?.querySelector('strong');
+      const destination = catalog.find(item => item.slug === plan.destination);
+      const image = document.createElement('img');
+      image.className = 'my-plan-photo';
+      image.src = plan.packageImage || destination?.imagem || '';
+      image.alt = `Foto do pacote ${plan.packageName}`;
+      image.loading = 'lazy';
+      const summary = document.createElement('summary');
+      summary.className = 'my-plan-summary';
+      const summaryCopy = document.createElement('div');
+      summaryCopy.className = 'my-plan-summary-copy';
+      if (copy) summaryCopy.append(copy);
+      summary.append(image, summaryCopy);
+      if (total) summary.append(total);
+      if (plan.demoPayment?.status === 'simulado') {
+        const badge = document.createElement('span');
+        badge.className = 'my-plan-status';
+        badge.textContent = 'Fechado na simulação';
+        summary.append(badge);
+      }
+      const disclosure = document.createElement('details');
+      disclosure.className = 'my-plan-disclosure';
+      disclosure.open = Boolean(reviewing && plan.id === selectedId);
+      const content = document.createElement('div');
+      content.className = 'my-plan-content';
+      [...card.childNodes].forEach(node => { if (node !== oldHeading) content.append(node); });
+      if (reviewing && plan.id === selectedId) {
+        const confirmBox = document.createElement('div');
+        confirmBox.className = 'schedule-confirm-box';
+        confirmBox.innerHTML = '<label><input type="checkbox" data-schedule-ack> Revisei os horários e lugares deste cronograma.</label><button class="btn-dark" type="button" data-confirm-schedule disabled>Confirmar horários e seguir para pagamento ↗</button><small>Depois da confirmação, você poderá escolher a forma de pagamento fictícia.</small>';
+        content.append(confirmBox);
+      } else if (!plan.scheduleConfirmed && !plan.demoPayment) {
+        const reviewLink = document.createElement('a');
+        reviewLink.className = 'btn-dark schedule-review-link';
+        reviewLink.href = `calendario.html?plano=${encodeURIComponent(plan.id)}&revisao=1`;
+        reviewLink.textContent = 'Revisar e confirmar horários ↗';
+        content.append(reviewLink);
+      }
+      disclosure.append(summary, content);
+      card.replaceChildren(disclosure);
+    });
     if (params.get('fechado') === '1' && visible.some(item => item.id === selectedId && item.demoPayment?.status === 'simulado')) {
       const notice = document.createElement('div');
       notice.className = 'plan-confirmation';
@@ -577,19 +635,30 @@
       duration.textContent = item.duration || 'Duração a definir';
       title.after(duration);
     })));
-    const savedPlanCards = root.querySelectorAll('.saved-plan');
     visible.forEach((plan, index) => {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'small-outline plan-delete';
       button.dataset.deletePlan = plan.id;
       button.textContent = 'Apagar este plano';
-      savedPlanCards[index]?.querySelector('.saved-plan-heading')?.append(button);
+      savedPlanCards[index]?.querySelector('.my-plan-content')?.append(button);
     });
     if (!root.dataset.calendarHandlersBound) {
       root.dataset.calendarHandlersBound = 'true';
       root.addEventListener('click', event => {
         if (event.target.closest('[data-print-calendar]')) window.print();
+        const confirmButton = event.target.closest('[data-confirm-schedule]');
+        if (confirmButton) {
+          const card = confirmButton.closest('.saved-plan');
+          if (!card?.querySelector('[data-schedule-ack]')?.checked) return;
+          const plansNow = readPackagePlans();
+          const plan = plansNow.find(item => item.id === selectedId);
+          if (!plan) return;
+          plan.scheduleConfirmed = true;
+          plan.scheduleConfirmedAt = new Date().toISOString();
+          if (writePackagePlans(plansNow)) location.href = `pagamento.html?plano=${encodeURIComponent(plan.id)}`;
+          return;
+        }
         if (event.target.closest('[data-delete-all-plans]')) {
           if (!window.confirm('Apagar todos os planos salvos neste navegador?')) return;
           if (writePackagePlans([])) renderCalendar(root);
@@ -602,6 +671,12 @@
         if (writePackagePlans(remaining)) renderCalendar(root);
       });
       root.addEventListener('change', event => {
+      const acknowledgement = event.target.closest('[data-schedule-ack]');
+      if (acknowledgement) {
+        const confirm = acknowledgement.closest('.schedule-confirm-box')?.querySelector('[data-confirm-schedule]');
+        if (confirm) confirm.disabled = !acknowledgement.checked;
+        return;
+      }
       const input = event.target.closest('[data-calendar-field]');
       if (!input) return;
       const current = readPackagePlans();
