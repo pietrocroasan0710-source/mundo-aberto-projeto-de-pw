@@ -76,13 +76,9 @@
     const items = packages.filter(pack => favorites.includes(packageKey(pack)) && catalog.some(d => d.slug === pack.destino));
     if (fallbackGrid) { // página antiga de favoritos (grade de destinos): mostra os pacotes no lugar
       const empty = document.getElementById('empty-state');
-      if (empty) empty.hidden = true;
+      if (empty) empty.hidden = items.length > 0; // sem favoritos: mostra o mesmo bloco de estado vazio do roteiro
       const label = document.getElementById('results-count');
       if (label) label.textContent = `${items.length} ${items.length === 1 ? 'pacote favorito' : 'pacotes favoritos'}`;
-    }
-    if (!items.length) {
-      root.innerHTML = '<p class="package-empty">Você ainda não favoritou nenhum pacote. Abra um destino e toque no ♡ do pacote.</p>';
-      return;
     }
     root.innerHTML = `<div class="package-grid">${items.map(pack => {
       const d = catalog.find(item => item.slug === pack.destino);
