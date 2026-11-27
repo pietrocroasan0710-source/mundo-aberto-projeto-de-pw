@@ -1742,3 +1742,12 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   cursor:pointer
 >>>>>>> 24ed5221a11d2cd35720bffa9b1308c5b9bc70a9
 }
+
+/* Favoritos: os pacotes são desenhados dentro de #destination-grid.
+   Sem isso, a grade de destinos (3 colunas) prende todo o .package-grid em uma coluna só. */
+[data-favorites-only]{
+  display:block
+}
+[data-favorites-only] .package-grid{
+  width:100%
+}
