@@ -1,20 +1,21 @@
 /*
  * Mundo Aberto — catálogo público.
  * Dados publicados: static/json/dados.json (somente leitura).
- * Favoritos e seleção do roteiro: armazenamento local do visitante.
+ * Roteiro: armazenamento local do visitante. Favoritos: conta (Supabase) ou só em memória (visitante).
  * O catálogo e os pacotes demonstrativos são publicados como arquivos estáticos.
  */
 (() => {
   'use strict';
 
-  const STORAGE = { favorites: 'mundoAberto.favoritos', itinerary: 'mundoAberto.roteiro', packagePlans: 'mundoAberto.pacotesSalvos' };
+  const STORAGE = { itinerary: 'mundoAberto.roteiro', packagePlans: 'mundoAberto.pacotesSalvos' };
   let catalog = [];
   let packages = [];
   let comparisonSelection = [];
   let listingControls = null;
   let slideInterval = null;
   let toastTimer = null;
-  let favoritesCache = null; // null = visitante (localStorage); lista = usuário logado (Supabase)
+  let favoritesCache = []; // lista de favoritos: Supabase se logado; só em memória se visitante (nada vai ao localStorage)
+  let favoritesRemote = false; // true = usuário logado (favoritos na conta)
 
   function readList(key) {
     try {
@@ -28,9 +29,9 @@
     catch { notify('Não foi possível salvar. Verifique o espaço e as permissões do navegador.', true); return false; }
   }
 
-  // Favoritos: conta logada usa o Supabase (por usuário); visitante usa o localStorage.
+  // Favoritos: conta logada usa o Supabase (por usuário); visitante fica só em memória (some ao recarregar).
   async function loadFavorites() {
-    favoritesCache = null;
+    favoritesRemote = false;
     if (typeof supabaseClient === 'undefined' || typeof buscarFavoritos !== 'function') return;
     let session = null;
     try {
@@ -39,19 +40,21 @@
     } catch (error) {
       console.error('Mundo Aberto: não foi possível verificar a sessão', error);
     }
-    if (!session) return; // visitante: favoritos só neste navegador
+    if (!session) return; // visitante: favoritos só em memória
     try {
       favoritesCache = [...new Set(await buscarFavoritos())];
+      favoritesRemote = true;
     } catch (error) {
       // Logado, mas a leitura falhou: mantém o modo "conta" (sem salvar no navegador) e mostra o motivo.
       console.error('Mundo Aberto: erro ao ler a tabela favoritos', error);
       favoritesCache = [];
+      favoritesRemote = true;
       notify('Não foi possível carregar seus favoritos: ' + (error.message || 'erro desconhecido'), true);
     }
   }
 
   function getFavorites() {
-    return favoritesCache ?? readList(STORAGE.favorites);
+    return favoritesCache;
   }
 
   // Favorito de pacote: chave "pacote:<destino>:<id>" (não colide com o slug dos destinos).
@@ -390,7 +393,7 @@
           </section>` : ''}
         </article>
         <aside class="detail-aside"><p class="eyebrow dark">GUARDE PARA SUA VIAGEM</p>
-          <h3>Não perca esse lugar de vista.</h3><p>Favoritos e roteiro ficam salvos no seu navegador.</p>
+          <h3>Não perca esse lugar de vista.</h3><p>Seu roteiro fica salvo no seu navegador.</p>
           <a class="btn-dark full-width" href="destino.html?slug=${encodeURIComponent(slug)}&orcamento=20000">Ver planos ↗</a>
           <button class="btn-dark full-width" type="button" data-itinerary="${html(slug)}">${planned ? '✓ Remover do roteiro' : '+ Adicionar ao meu roteiro'}</button>
           <a class="btn-outline full-width" href="roteiro.html?destino=${encodeURIComponent(slug)}#transporte">Como chegar ↗</a>
@@ -708,13 +711,13 @@
     const button = event.target.closest('[data-favorite-package], [data-itinerary]');
     if (!button || !catalog.length) return;
     const isFavorite = button.hasAttribute('data-favorite-package'); // só pacotes podem ser favoritados
-    const key = isFavorite ? STORAGE.favorites : STORAGE.itinerary;
+    const key = STORAGE.itinerary;
     // "slug" = chave "pacote:<destino>:<id>" (favorito) ou slug do destino (roteiro)
     const slug = isFavorite ? button.dataset.favoritePackage : button.dataset.itinerary;
     if (isFavorite ? !isPackageKey(slug) : !catalog.some(d => d.slug === slug)) return;
 
     // Usuário logado: favorito salvo na conta (Supabase), atualizando a tela na hora.
-    if (isFavorite && favoritesCache) {
+    if (isFavorite && favoritesRemote) {
       const previous = favoritesCache;
       const adding = !previous.includes(slug);
       favoritesCache = adding ? [...previous, slug] : previous.filter(v => v !== slug);
@@ -728,6 +731,15 @@
         renderDynamic();
         notify('Não foi possível salvar o favorito: ' + (error.message || 'tente de novo.'), true);
       }
+      return;
+    }
+
+    // Visitante: favorito só em memória (não grava no localStorage).
+    if (isFavorite) {
+      const adding = !favoritesCache.includes(slug);
+      favoritesCache = adding ? [...favoritesCache, slug] : favoritesCache.filter(v => v !== slug);
+      notify(adding ? 'Salvo nos favoritos!' : 'Removido dos favoritos.');
+      renderDynamic();
       return;
     }
 
