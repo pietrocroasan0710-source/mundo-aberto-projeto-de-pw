@@ -1693,3 +1693,17 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .saved-plan,.calendar-day {break-inside:avoid;box-shadow:none}
   .calendar-event input {border:0;background:transparent;padding:0}
 }
+/* Acrescente no final do static/css/style.css */
+.package-actions{
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+.package-actions .btn-dark{
+  flex:1;
+  text-align:center
+}
+.package-actions .heart-btn{
+  flex:none;
+  cursor:pointer
+}
