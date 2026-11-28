@@ -122,7 +122,7 @@
     const plan = loadObject(PLAN_KEY);
     const items = helpers.readList(helpers.STORAGE.itinerary).map(s => bySlug.get(s)).filter(Boolean);
     if (!items.length) return;
-    const lines = ['MUNDO ABERTO — MEU ROTEIRO', 'Gerado em ' + new Date().toLocaleDateString('pt-BR'), ''];
+    const lines = ['VIAGEM NO SEU BOLSO — MEU ROTEIRO', 'Gerado em ' + new Date().toLocaleDateString('pt-BR'), ''];
     [...new Set(items.map(d => dayOf(d.slug, plan)))].sort((a,b) => a-b).forEach(day => {
       lines.push(formatDay(day));
       items.filter(d => dayOf(d.slug, plan) === day).forEach(d => {
@@ -136,7 +136,7 @@
     const url = URL.createObjectURL(new Blob([lines.join('\r\n')], { type: 'text/plain;charset=utf-8' }));
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'meu-roteiro-mundo-aberto.txt';
+    link.download = 'meu-roteiro-viagem-no-seu-bolso.txt';
     link.click();
     window.setTimeout(() => URL.revokeObjectURL(url), 2000);
   }

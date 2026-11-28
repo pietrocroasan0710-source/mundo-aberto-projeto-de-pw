@@ -1834,3 +1834,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 [data-favorites-only] .package-grid{
   width:100%
 }
+
+.footer .company-credit { margin: 0; color: #bfe4d6; font-size: 11px; }
+.footer .company-credit strong { color: #fff; font-weight: 700; }

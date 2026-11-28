@@ -1,11 +1,11 @@
-# Mundo Aberto — Versão pública melhorada
+# Viagem no seu bolso — Versão pública melhorada
 
-Projeto acadêmico de Programação Web (HTML, CSS e JavaScript) — 2026.
+Projeto acadêmico de Programação Web (HTML, CSS e JavaScript) — 2026. Empresa: Econômica Viagens.
 
 ## Como abrir no VS Code
 
 1. Extraia o ZIP.
-2. Abra a pasta `Mundo_Aberto_Melhorado` no Visual Studio Code.
+2. Abra a pasta `viagem-no-seu-bolso` no Visual Studio Code.
 3. Instale a extensão **Live Server** caso ainda não esteja instalada.
 4. Abra `index.html` com **Open with Live Server**.
 
@@ -34,7 +34,7 @@ Não é necessário instalar bibliotecas JavaScript. Login e cadastro usam o pro
 Na busca da página inicial, informe o limite por pessoa em reais (por exemplo, `2000`); o campo formata o valor como moeda brasileira. Há pacotes demonstrativos nos 24 destinos, de R$ 1 mil a R$ 20 mil por pessoa, em faixas essenciais, de conforto e de luxo. Ao abrir um destino, use **Ver planos**. Compare até três opções lado a lado por preço, duração, hotel, transporte, refeições, benefícios, atividades e exclusões. Em **Personalizar e montar meu plano**, escolha data, viajantes, horário para sair do hotel e adicionais opcionais. Depois de personalizar, o site cria um cronograma com atividades, lugares e horários sugeridos, incluindo intervalos de deslocamento. A pessoa pode editar e adicionar atividades e precisa marcar que revisou e confirmar os horários antes de seguir para a etapa de pagamento fictício; essa etapa oferece opções demonstrativas, não pede dados financeiros e não processa cobrança. Em **Meus planos**, cada viagem aparece em um cartão compacto com foto e nome; ao abrir, mostra todo o cronograma. Ao concluir o pacote, aparece uma notificação de confirmação. Pacotes concluídos têm uma opção de cancelamento com confirmação, resumo do pedido e motivo opcional; o registro local guarda referências demonstrativas, datas e status. Como não há pagamento real, não há cobrança, reserva ou estorno real. Os tempos de trajeto são estimativas genéricas para organização; confira rotas reais e horários dos bilhetes. Você pode ajustar horários/lugares, adicionar atividades, apagar um plano ou todos os planos salvos e imprimir ou salvar o calendário em PDF. Os planos ficam no armazenamento local do navegador. Hotéis, pacotes, benefícios, adicionais e preços são exemplos fictícios; fechar a simulação não reserva uma viagem.
 
 ```text
-Mundo_Aberto_Melhorado/
+viagem-no-seu-bolso/
   index.html                Página inicial
   destinos.html             Busca e filtros
   destino.html              Detalhe de cada destino e mapa da região

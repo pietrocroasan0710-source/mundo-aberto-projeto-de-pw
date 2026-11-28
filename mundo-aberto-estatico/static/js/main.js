@@ -1,5 +1,5 @@
 /*
- * Mundo Aberto — catálogo público.
+ * Viagem no seu bolso — catálogo público.
  * Dados publicados: static/json/dados.json (somente leitura).
  * Roteiro: armazenamento local do visitante. Favoritos: conta (Supabase) ou só em memória (visitante).
  * O catálogo e os pacotes demonstrativos são publicados como arquivos estáticos.
@@ -38,7 +38,7 @@
       const result = await supabaseClient.auth.getSession();
       session = result.data?.session || null;
     } catch (error) {
-      console.error('Mundo Aberto: não foi possível verificar a sessão', error);
+      console.error('Viagem no seu bolso: não foi possível verificar a sessão', error);
     }
     if (!session) return; // visitante: favoritos só em memória
     try {
@@ -46,7 +46,7 @@
       favoritesRemote = true;
     } catch (error) {
       // Logado, mas a leitura falhou: mantém o modo "conta" (sem salvar no navegador) e mostra o motivo.
-      console.error('Mundo Aberto: erro ao ler a tabela favoritos', error);
+      console.error('Viagem no seu bolso: erro ao ler a tabela favoritos', error);
       favoritesCache = [];
       favoritesRemote = true;
       notify('Não foi possível carregar seus favoritos: ' + (error.message || 'erro desconhecido'), true);
@@ -334,7 +334,7 @@
       root.innerHTML = '<section class="error-state"><p class="eyebrow dark">404</p><h1>Destino não encontrado</h1><a class="btn-dark" href="destinos.html">Ver destinos ↗</a></section>';
       return;
     }
-    document.title = `${d.nome} — Mundo Aberto`;
+    document.title = `${d.nome} — Viagem no seu bolso`;
     const budget = parseBudget(params.get('orcamento'));
     const packageId = params.get('pacote');
     if (packageId) {
@@ -401,7 +401,7 @@
   }
 
   function renderDestinationPackages(root, d, available, budget) {
-    document.title = `Pacotes em ${d.nome} — Mundo Aberto`;
+    document.title = `Pacotes em ${d.nome} — Viagem no seu bolso`;
     const back = 'destinos.html?orcamento=' + encodeURIComponent(budget);
     comparisonSelection = [];
     const cards = available.map(pack => `<article class="package-card"><img src="${html(pack.imagem || d.imagem)}" alt="Paisagem de ${html(d.nome)}" loading="lazy"><div class="package-card-body"><span class="package-duration">${html(pack.duracao)}</span><h3>${html(pack.nome)}</h3><p>${html(pack.subtitulo)}</p><ul class="package-highlights">${(pack.beneficios || []).slice(0, 3).map(item => `<li>${html(item)}</li>`).join('')}</ul><strong>${html(formatPrice(pack.preco, 'BRL'))} <small>/ pessoa</small></strong><label class="compare-check"><input type="checkbox" value="${html(pack.id)}" data-compare-package> Comparar pacote</label><div class="package-actions"><a class="btn-dark" href="destino.html?slug=${encodeURIComponent(d.slug)}&pacote=${encodeURIComponent(pack.id)}&orcamento=${encodeURIComponent(budget)}">Ver detalhes ↗</a>${packageHeart(pack, getFavorites())}</div></div></article>`).join('');
@@ -523,7 +523,7 @@
       root.innerHTML = '<section class="error-state"><h1>Não encontramos esse pacote</h1><a class="btn-dark" href="destinos.html">Explorar destinos ↗</a></section>';
       return;
     }
-    document.title = `Personalizar ${pack.nome} — Mundo Aberto`;
+    document.title = `Personalizar ${pack.nome} — Viagem no seu bolso`;
     const extras = pack.extras || [];
     root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>MONTE SUA VIAGEM</p><h1>Personalize seu pacote.</h1><p>${html(pack.nome)} · ${html(destination.nome)} · ${html(pack.duracao)}</p></section><section class="section builder-section"><form id="package-builder-form" class="builder-layout"><div class="builder-panel"><p class="eyebrow dark">ESCOLHAS DA VIAGEM</p><h2>Como você quer viajar?</h2><div class="builder-fields"><label>Data de início<input type="date" name="startDate" min="${new Date().toISOString().slice(0,10)}" value="${defaultTripDate()}" required></label><label>Número de viajantes<input type="number" name="travelers" min="1" max="8" value="1" required></label><label>Saída do hotel para passeios<input type="time" name="activityStart" min="07:00" max="10:30" step="1800" value="09:00" required></label></div><h3>Adicione experiências</h3><p class="builder-help">Os adicionais são opcionais e calculados por pessoa.</p><div class="extra-options">${extras.map(extra => `<label class="extra-option"><input type="checkbox" name="extras" value="${html(extra.id)}" data-extra-price="${Number(extra.preco)}"><span><strong>${html(extra.nome)}</strong><small>${html(extra.descricao)}</small></span><b>+ ${html(formatPrice(extra.preco,'BRL'))} / pessoa</b></label>`).join('')}</div></div><aside class="builder-summary"><p class="eyebrow">RESUMO DO PLANO</p><h2>${html(pack.nome)}</h2><p>${html(destination.nome)} · ${html(pack.duracao)}</p><div class="builder-price-row"><span>Pacote por pessoa</span><strong>${html(formatPrice(pack.preco,'BRL'))}</strong></div><div class="builder-price-row"><span>Viajantes</span><strong id="builder-travelers-label">1</strong></div><div class="builder-price-row"><span>Adicionais</span><strong id="builder-extras-total">${html(formatPrice(0,'BRL'))}</strong></div><div class="builder-total"><span>Total demonstrativo</span><strong id="builder-total">${html(formatPrice(pack.preco,'BRL'))}</strong></div><button class="btn-dark full-width" type="submit">Continuar para revisar cronograma ↗</button><small>Este site não cobra nem reserva. O plano ficará salvo somente neste navegador.</small></aside></form></section>`;
     const form = document.getElementById('package-builder-form');
@@ -571,7 +571,7 @@
       root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>PLANO FECHADO · SIMULAÇÃO</p><h1>Seu plano já foi concluído.</h1><p>Esta etapa não fez cobrança nem reservou serviços.</p></section><section class="section payment-section"><a class="btn-dark" href="calendario.html?plano=${encodeURIComponent(plan.id)}&fechado=1">Abrir meu calendário ↗</a></section>`;
       return;
     }
-    document.title = 'Fechamento demonstrativo — Mundo Aberto';
+    document.title = 'Fechamento demonstrativo — Viagem no seu bolso';
     root.innerHTML = `<section class="page-banner"><p class="eyebrow"><span></span>ETAPA FICTÍCIA</p><h1>Feche seu plano de viagem.</h1><p>Confira o resumo e escolha uma forma de pagamento demonstrativa.</p></section><section class="payment-progress-wrap"><ol class="payment-progress"><li class="complete"><span>✓</span><div><strong>Plano pronto</strong><small>Personalizado</small></div></li><li class="complete"><span>✓</span><div><strong>Cronograma</strong><small>Horários confirmados</small></div></li><li class="current"><span>3</span><div><strong>Pagamento</strong><small>Etapa fictícia</small></div></li></ol></section><section class="section payment-section payment-page"><form id="demo-payment-form" class="payment-layout"><div class="payment-options"><p class="eyebrow dark">FORMA DE PAGAMENTO</p><h2>Como você pagaria?</h2><p class="payment-intro">Escolha uma opção para concluir a demonstração do seu pacote.</p><label class="payment-choice"><input type="radio" name="method" value="pix" checked><span><strong>Pix de demonstração</strong><small>Confirmação simulada, sem gerar cobrança ou código de pagamento.</small></span><b>PIX</b></label><label class="payment-choice"><input type="radio" name="method" value="cartao"><span><strong>Cartão de teste</strong><small>Não pediremos número do cartão, senha ou código de segurança.</small></span><b>▰</b></label><div id="installment-field" class="installment-field" hidden><label>Parcelas<select name="installments"><option value="1">1x sem juros</option><option value="3">3x sem juros</option><option value="6">6x sem juros</option></select></label><small id="installment-preview"></small></div><p class="demo-payment-notice"><strong>🔒 Demonstração segura</strong><br>Esta etapa é apenas visual. Nenhum dado financeiro será solicitado, enviado ou cobrado.</p></div><aside class="payment-summary"><p class="eyebrow">SEU RESUMO</p><h2>${html(plan.packageName)}</h2><p class="payment-destination">✦ ${html(plan.destinationName)} · ${plan.travelers} viajante(s)</p><div class="payment-summary-divider"></div><p>Data de início: ${html(plan.startDate)}</p>${plan.extras?.length ? `<p>Adicionais: ${plan.extras.map(extra => html(extra.nome)).join(' · ')}</p>` : '<p>Sem adicionais selecionados.</p>'}<div class="builder-total"><span>Total demonstrativo</span><strong>${html(formatPrice(plan.total,'BRL'))}</strong></div><button class="btn-dark full-width" type="submit">Concluir meu pacote ↗</button><a class="payment-back" href="calendario.html?plano=${encodeURIComponent(plan.id)}&revisao=1">Voltar ao cronograma</a><small>Não é uma reserva real. Você não será cobrado.</small></aside></form></section>`;
     const form = document.getElementById('demo-payment-form');
     const methodInputs = form.querySelectorAll('[name="method"]');
@@ -888,7 +888,7 @@
         await (adding ? adicionarFavorito(slug) : removerFavorito(slug));
         notify(adding ? 'Salvo nos favoritos!' : 'Removido dos favoritos.');
       } catch (error) {
-        console.error('Mundo Aberto: erro ao salvar favorito', error);
+        console.error('Viagem no seu bolso: erro ao salvar favorito', error);
         favoritesCache = previous;
         renderDynamic();
         notify('Não foi possível salvar o favorito: ' + (error.message || 'tente de novo.'), true);
@@ -931,7 +931,7 @@
       initializeSlideshow(data.paisagens);
       renderDynamic();
     } catch (error) {
-      console.error('Mundo Aberto:', error);
+      console.error('Viagem no seu bolso:', error);
       const target = document.querySelector('#destination-grid, #home-destinations, #detail-root, #itinerary-list, #map-list, #package-builder-root, #calendar-root');
       if (target) target.innerHTML = '<div class="empty-state"><h2>Não foi possível carregar os destinos</h2><p>Use o Live Server no VS Code para abrir o projeto e confira o arquivo dados.json.</p></div>';
     }
