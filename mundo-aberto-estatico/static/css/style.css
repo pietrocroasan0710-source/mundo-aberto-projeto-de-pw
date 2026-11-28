@@ -1810,3 +1810,27 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .cancel-package-order strong { font: 800 16px Manrope,sans-serif; }
 .cancel-package-order span { color: var(--muted); font-size: 12px; }
 @media(max-width:600px) { .purchase-record dl { grid-template-columns: 1fr; } }
+
+/* Acrescente no final do static/css/style.css */
+.package-actions{
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+.package-actions .btn-dark{
+  flex:1;
+  text-align:center
+}
+.package-actions .heart-btn{
+  flex:none;
+  cursor:pointer
+}
+
+/* Favoritos: os pacotes são desenhados dentro de #destination-grid.
+   Sem isso, a grade de destinos (3 colunas) prende todo o .package-grid em uma coluna só. */
+[data-favorites-only]{
+  display:block
+}
+[data-favorites-only] .package-grid{
+  width:100%
+}
